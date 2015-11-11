@@ -1,0 +1,51 @@
+// Styling for page header
+
+// Page header containing both the page title and navigational breadcrumb links
+#page-header {
+	display: table;
+	width: 100%;
+	padding: 15px 20px;
+	border-width: 0;
+	border-bottom: solid 1px $box-border-color;
+	box-sizing: border-box;
+	background-color: $box-background-color;
+	box-shadow: none;
+	@include layout(hybrid) {
+		padding: 10px 12px;
+	}
+	h1 {
+		margin: 0;
+		text-align: left;
+		@include layout(compact) {
+			font-size: 18px;
+		}
+	}
+}
+// Page heading containing the page title (h1) as well as the author and date
+// info (if it's a blog post)
+#page-heading {
+	display: table-cell;
+	@include layout(hybrid) {
+		display: table-row;
+	}
+}
+
+// Container for the navigational breadcrumbs that indicate the page's hierarchy
+// on the site
+#page-breadcrumbs {
+	display: table-cell;
+	text-align: right;
+	font-size: 12px;
+	text-shadow: none;
+	vertical-align: middle;
+	cursor: default;
+	@include layout(hybrid) {
+		display: table-row;
+		text-align: left;
+	}
+}
+// Delimiters which separate indibidual breadcrumb links
+.page-breadcrumb-delimiter {
+	padding: 0 5px;
+	font-size: 10px;
+}

@@ -1,0 +1,113 @@
+// Styling for blog entries
+
+// Container for all blog post entries on a given page
+.blog-posts.entries {
+	max-width: $post-max-width;
+	@include layout(compact) {
+		max-width: none;
+	}
+}
+
+.post.entry-tile {
+	// Ensure that blog post tiles are stacked (as opposed to side-by-side like
+	// the small group tiles are)
+	display: block;
+	// Increase font size of post content to match font size of page content
+	.entry-content {
+		font-size: 16px;
+	}
+}
+
+.post.entry-single .entry-thumbnail {
+	text-align: center;
+}
+
+.post-content {
+	& > *:first-child {
+		margin-top: 0;
+	}
+}
+
+// The top-level list of comments
+.commentlist {
+	// Do not unnecessarily indent the top-level list of comments
+	margin-left: 0;
+	// Nested comment lists
+	.children {
+		margin-left: 20px;
+	}
+}
+
+// An individual comment
+.comment {
+	margin: 20px 0;
+	list-style-type: none;
+}
+// A comment's content body
+.comment-body {
+	padding: 20px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: $box-border-color;
+	background-color: $box-background-color;
+	border-radius: $page-border-radius;
+	// The body of a comment made by the author of the respective post
+	.bypostauthor & {
+		border-style: solid;
+		border-width: 2px;
+	}
+}
+
+// Author header (including name and avatar) for an individual commenr
+.comment-author {
+	width: 100%;
+	margin-right: 20px;
+	// Remove any extraneous spacing between author avatar and name
+	font-size: 0;
+}
+// Author avatar (author's Gravatar is used if he/she has one)
+.avatar {
+	display: inline-block;
+	margin-right: 10px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: $box-border-color;
+	border-radius: 3px;
+	vertical-align: middle;
+	@include layout(compact) {
+		display: none;
+	}
+}
+// Author name
+.author-name {
+	display: block;
+	font-style: normal;
+	// h3 styling is in page.scss
+	@extend h3;
+	vertical-align: middle;
+}
+.comment-date {
+	display: block;
+}
+
+.comment-details {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 16px;
+}
+
+.comment-controls {
+	display: table;
+	width: 100%;
+}
+.comment-control {
+	display: table-cell;
+}
+
+.comment-reply-control {
+	text-align: left;
+}
+
+.comment-edit-control {
+	text-align: right;
+}

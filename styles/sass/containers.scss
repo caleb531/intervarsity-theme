@@ -1,0 +1,93 @@
+// Styling for site-wide container elements
+
+html {
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+body {
+	margin: 0;
+	color: #fff;
+}
+
+// The core container for all page elements in <body>, excluding scripts
+#body-core {
+	max-width: $body-max-width;
+	min-width: 320px;
+	margin: 0 auto;
+}
+
+// The container for everything beneath site header but above site footer
+#page {
+	background-color: $page-background-color;
+	border-radius: $page-border-radius;
+	color: $content-color;
+	overflow: hidden;
+	@include layout(body-max) {
+		border-radius: 0;
+	}
+}
+
+// The Featured Image container for the page
+#page-thumbnail {
+	text-align: center;
+	font-size: 0;
+	img {
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+		border-bottom-color: $box-border-color;
+	}
+}
+
+// The container for page content from Visual Editor
+#content {
+	margin: 0 auto;
+	padding: $content-padding-x $content-padding-y;
+	box-sizing: border-box;
+	font-size: 16px;
+	// Page slider displays below slides a row of navigation controls which
+	// already provides sufficient padding
+	#page-slider + & {
+		padding-top: 0;
+	}
+	@include layout(hybrid) {
+		padding: $content-hybrid-padding-y $content-hybrid-padding-x;
+		border-radius: 0;
+	}
+	@include layout(compact) {
+		padding: $content-compact-padding-y $content-compact-padding-x;
+	}
+	// Container generally provides sufficient padding, so prevent the first
+	// <h1> or <p> from adding superfluous padding
+	& > *:first-child {
+		margin-top: 0;
+	}
+	// Underline links in content to make them more distinguishable
+	a {
+		text-decoration: underline;
+	}
+	// Do not underline links nested in specific elements
+	.entry-header,
+	.pagination,
+	.comment-details {
+		a {
+			text-decoration: none;
+		}
+	}
+}
+
+// Ensure all HTML semantic elements are block-level elements
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+nav,
+section {
+	display: block;
+}

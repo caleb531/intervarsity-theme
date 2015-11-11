@@ -1,0 +1,209 @@
+// Styling for site header
+
+// Heading for the entire site; contains the site logo (header image), site
+// navigation, social links, and search box
+#site-header {
+	position: relative;
+	text-align: left;
+	padding: 0 10px;
+	padding-bottom: 2px;
+	font-size: 13px;
+	user-select: none;
+	vertical-align: middle;
+	@include layout(hybrid) {
+		padding-left: 0;
+		padding-right: 0;
+		border-left-width: 0;
+		border-right-width: 0;
+		border-radius: 0;
+	}
+	// Tooltips used to describe header icons
+	// Tooltips fade into view when hovered over
+	.tooltip {
+		left: 50%;
+		z-index: 5;
+		transform: translateX(-50%);
+		margin-top: 10px;
+		padding: 8px;
+		background-color: $menu-background-color;
+		background-clip: padding-box;
+		line-height: normal;
+		font-size: 11px;
+		color: #fff;
+		text-decoration: none;
+		cursor: inherit;
+		@include transition-fade();
+		@include floating-panel();
+		@include panel-arrow(top, 50%);
+	}
+	// Place data-tooltip and data-tooltp-title attributes on any element in the
+	// header; the front end script will automatically append a tooltip to each
+	// of those elements (with the respective title set from data-tooltip-title)
+	[data-tooltip] {
+		position: relative;
+		&:hover .tooltip {
+			@include transition-fade-in();
+		}
+	}
+	ul {
+		list-style: none;
+		margin: 0;
+		padding-left: 0;
+	}
+	li {
+		display: inline-block;
+		position: relative;
+		padding: 0;
+	}
+}
+
+// The horizontal row containing navigation, social links, and search (i.e.
+// everything in site header except logo)
+#site-header-core {
+	display: table;
+	width: 100%;
+	// Set a min-height to ensure search icon does not butt up against page
+	// container if nav and social header are both empty
+	min-height: 36px;
+}
+
+// Ensure all containers within #site-header-core have the proper layout
+#site-header-nav,
+#site-header-social,
+#site-header-search {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+// Container for the site logo (i.e. the header image)
+#site-logo {
+	position: relative;
+	padding: 0;
+	text-align: center;
+	font-size: 0;
+	// Ensure that link takes on width and height of inner image
+	a {
+		display: inline-block;
+	}
+	img {
+		// The maximum width for the site logo; a completely arbitrary value;
+		// might be worth making this value a variable in the future
+		max-width: 800px;
+		width: 100%;
+		max-height: none;
+		margin-top: 0;
+	}
+}
+
+// Container for social links which link to chapter's social media pages
+#site-header-social {
+	padding-right: 20px;
+	font-size: 0;
+	text-align: right;
+	white-space: nowrap;
+	transition: padding $transition-duration $transition-easing;
+	.site-header-search-active & {
+		padding-right: 5px;
+	}
+	@include layout(very-compact) {
+		padding-right: 5px;
+	}
+	// All social icons, as well as the social header message
+	.social {
+		display: inline-block;
+		font-size: 13px;
+		vertical-align: middle;
+		&.message {
+			padding-right: 10px;
+			cursor: default;
+			color: $subtle-gray;
+			transition: all $transition-duration $transition-easing;
+			transition-property: opacity, margin, padding, font-size;
+			// Slide message out of view when search box is open
+			.site-header-search-active & {
+				opacity: 0;
+				margin-right: -100%;
+				padding-right: 0;
+				font-size: 0;
+			}
+		}
+		// Only the social icons
+		a {
+			display: block;
+			position: relative;
+			$social-icon-size: 24px;
+			width: $social-icon-size;
+			height: $social-icon-size;
+			margin-right: 2px;
+			padding: 7px 0;
+			text-align: center;
+			font-size: $social-icon-size;
+			line-height: $social-icon-size;
+			color: #fff;
+		}
+	}
+}
+
+// Container for site search field
+#site-header-search {
+	width: 1%;
+	position: relative;
+	padding: 0;
+	text-align: right;
+	@include layout(hybrid) {
+		padding-right: 10px;
+	}
+	.searchform {
+		vertical-align: middle;
+	}
+	// Compute values that affect width of search box container
+	// $search-icon-* variables are initially defined in form.scss
+	$input-padding-x: 4px;
+	$input-border-width: 1px;
+	$input-width: $search-icon-size + $search-icon-padding + ($input-padding-x * 2) + ($input-border-width * 2);
+	.search-icon {
+		left: $search-icon-padding;
+		color: #fff;
+	}
+	// Search input
+	.search {
+		display: block;
+		// Input width is initially large enough to fit search icon with padding
+		width: $input-width;
+		max-width: none;
+		padding: 3px $input-padding-x;
+		padding-left: $search-icon-size + $search-icon-padding + $input-padding-x;
+		border: solid $input-border-width transparent;
+		border-radius: 0;
+		box-sizing: border-box;
+		background: none;
+		font-size: 13px;
+		color: #fff;
+		cursor: default;
+		transition: all $transition-duration $transition-easing;
+		transition-property: width, border-color, background-color, box-shadow;
+		// Expand search box to its open state when it is focused or when it
+		// contains a value (the front end script updates the input's value
+		// attribute as soon as its value property is changed, so this is
+		// guaranteed to work)
+		&:focus,
+		&:not([value=""]) {
+			width: 160px;
+			border-color: $header-border-color;
+			background-color: rgba(#fff, 0.1);
+			outline: none;
+			cursor: text;
+			&::placeholder {
+				color: $subtle-gray;
+			}
+		}
+		&::placeholder {
+			transition: color $transition-duration $transition-easing;
+			color: #000;
+		}
+	}
+	// Do not display Submit button; the front end script makes the Search icon trigger a form submit when clicked (only if the search input is not empty)
+	.searchsubmit {
+		display: none;
+	}
+}

@@ -1,0 +1,137 @@
+// Styling for all post and small group entries
+
+$entry-tile-border-radius: 4px;
+$entry-tile-margin: 20px;
+
+// Classes used to enable flexible table layout for some container elements
+.entry-row {
+	display: table-row;
+}
+.entry-cell {
+	display: table-cell;
+	vertical-align: top;
+}
+
+// Container for all entries on the page
+.entries {
+	margin: 0 auto;
+	font-size: 0;
+	// Center tiles for one-column layout
+	@include layout(body-max) {
+		text-align: center;
+	}
+	@include layout(compact) {
+		margin-left: -$content-compact-padding-x;
+	    margin-right: -$content-compact-padding-x;
+	}
+}
+
+// A single entry
+.entry {
+	.entry-thumbnail {
+		text-align: center;
+		img {
+			border-width: 0;
+			border-radius: 3px;
+		}
+	}
+	// Style Edit icon across from all entry titles
+	.entry-header .entry-edit-link {
+		display: table-cell;
+		// Ensure that custom fonts do not shift icon alignment
+		font-family: sans-serif;
+		font-size: 0;
+		text-align: right;
+		vertical-align: middle;
+	}
+	// Minimize space around entire entry content
+	.entry-content {
+		p {
+			&:first-child {
+				margin-top: 0;
+			}
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+// Tile entries appear on taxonomy pages, archives, author pages, etc.
+.entry-tile {
+	display: inline-block;
+	width: auto;
+	margin: $entry-tile-margin;
+	box-sizing: border-box;
+	text-align: left;
+	font-size: 12px;
+	vertical-align: top;
+	overflow: hidden;
+	// Header containing entry heading (h2), and post edit link
+	.entry-header {
+		display: table;
+		width: 100%;
+		position: relative;
+		margin: 0;
+		padding: 6px 12px;
+		border-style: solid;
+		border-width: 1px;
+		border-top-left-radius: $entry-tile-border-radius;
+		border-top-right-radius: $entry-tile-border-radius;
+		box-sizing: border-box;
+		@include layout(compact) {
+			border-left-width: 0;
+			border-right-width: 0;
+			border-radius: 0;
+		}
+		@include layout(very-compact) {
+			padding: 6px;
+		}
+		a {
+			color: #fff;
+		}
+	}
+	// Heading title of entry
+	.entry-title {
+		display: table-cell;
+		font-size: 20px;
+		vertical-align: middle;
+	}
+	// Main container for entry; contains content, thumbnail, and other details
+	.entry-main {
+		padding: 20px;
+		border-style: solid;
+		border-width: 1px;
+		border-color: $box-border-color;
+		border-bottom-left-radius: $entry-tile-border-radius;
+		border-bottom-right-radius: $entry-tile-border-radius;
+		border-top-width: 0;
+		box-sizing: border-box;
+		background-color: $page-background-color;
+		@include layout(compact) {
+			padding: 15px;
+			border-left-width: 0;
+			border-right-width: 0;
+			border-radius: 0;
+		}
+	}
+	// Add space between entry's featured image and entry's main content
+	.entry-thumbnail {
+		padding-right: 15px;
+		img {
+			max-width: 150px;
+		}
+	}
+	@include layout(compact) {
+		max-width: none;
+		margin-left: 0;
+		margin-right: 0;
+	    &:not(:last-child) {
+	    	margin-bottom: 0;
+			border-width: 0;
+		}
+		.entry-thumbnail img {
+			max-width: 100px;
+		}
+	}
+}

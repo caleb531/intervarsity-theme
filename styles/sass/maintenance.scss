@@ -1,0 +1,50 @@
+// Styles for maintenance page created by WP Maintenance Mode
+@import 'mixins';
+@import 'variables';
+
+body {
+	margin: 0 auto;
+	background-color: #000;
+	font-family: sans-serif;
+	font-family: iv-font-primary-family;
+	color: #fff;
+}
+
+.wrap {
+	width: auto;
+	text-align: left;
+	h1, p {
+		padding: 0 50px;
+		@include layout(compact) {
+			padding: 0 20px;
+		}
+	}
+	h1 {
+		width: auto;
+		margin: 0;
+		$padding-y: 15px;
+		padding-top: $padding-y;
+		padding-bottom: $padding-y;
+		background-color: #333;
+		background-color: iv-color-accent-mid;
+		font-family: sans-serif;
+		font-family: iv-font-accent-family;
+		font-weight: 400;
+		font-size: 40px;
+		color: #fff;
+	}
+	p {
+		margin: 1em 0;
+		font-size: 20px;
+		line-height: normal;
+	}
+	a {
+		color: #36c;
+		color: iv-color-accent-mid;
+		&:hover {
+			color: #47d;
+			color: iv-color-accent-light;
+		}
+	}
+
+}

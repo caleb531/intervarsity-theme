@@ -1,0 +1,192 @@
+// Styling for content-type elements (e.g. headings, links, paragraphs, lists,
+// blockquotes, images, tables, etc.)
+
+body {
+	line-height: 1.7;
+	// break-word "indicates that normally unbreakable words may be broken at
+	// arbitrary points if there are no otherwise acceptable break points in the
+	// line." (https://developer.mozilla.org/en-US/docs/Web/CSS/word-wrap)
+	word-wrap: break-word;
+}
+
+// Individual page headings
+h1, h2, h3, h4, h5, h6 {
+	clear: both;
+	margin: 0.8em 0;
+	line-height: 1.5;
+}
+h1 {
+	font-size: 28px;
+}
+h2 {
+	font-size: 24px;
+}
+h3 {
+	font-size: 20px;
+}
+h4 {
+	font-size: 16px;
+}
+h5 {
+	font-size: 14px;
+}
+h6 {
+	font-size: 12px;
+}
+
+// Font styles
+dfn,
+cite,
+em,
+i {
+	font-style: italic;
+}
+strong, b, dt {
+	font-weight: bold;
+}
+
+// Links
+a {
+	outline-width: 0;
+	text-decoration: none;
+	transition: color $transition-duration $transition-easing;
+	&:focus {
+		outline-width: 0;
+	}
+	img {
+		border: 0;
+	}
+}
+
+// Paragraphs
+p {
+	margin: 20px 0;
+}
+
+// Quote blocks
+blockquote {
+	position: relative;
+	margin: 0 15px;
+	padding-left: 15px;
+	padding-right: 30px;
+	border-left-style: solid;
+	border-left-width: 2px;
+	quotes: "" "";
+}
+
+// Code snippets and code blocks
+code, pre {
+	border-style: solid;
+	border-width: 1px;
+	border-color: $box-border-color;
+	background-color: $box-background-color;
+}
+code {
+	padding: 0 3px;
+}
+pre {
+	padding: 15px;
+}
+
+// Horizontal dividers
+hr {
+	height: 1px;
+	margin: 0.5em 0;
+	border-width: 0;
+	background-color: $box-border-color;
+}
+
+// Lists
+
+ul, ol {
+	margin-left: 30px;
+	margin-bottom: 12px;
+	padding: 0;
+}
+
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+	margin-bottom: 0;
+}
+
+ul {
+	list-style: square;
+}
+
+ol {
+	list-style: decimal;
+}
+
+// Remove spacing between h3 headings within lists
+li h3 {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+// Tables
+table {
+	width: 100%;
+	margin: 0 auto;
+	border-collapse: collapse;
+	background-color: $box-background-color;
+	text-align: center;
+}
+th, td {
+	padding: 5px 10px;
+	border: solid 1px $box-border-color;
+}
+th {
+	background-color: rgba(#000, 0.05);
+	font-weight: bold;
+}
+td {
+	text-align: left;
+}
+
+// Media-type elements
+
+img,
+embed,
+iframe,
+object {
+	max-width: 100%;
+}
+img {
+	height: auto;
+}
+
+// Floating classes
+
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 20px;
+	margin-bottom: 10px;
+}
+
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 20px;
+	margin-bottom: 10px;
+}
+
+.aligncenter {
+	clear: both;
+	display: block;
+	margin: 20px auto;
+}
+
+// Captions under images
+
+.wp-caption {
+	font-size: 0;
+	text-align: center;
+}
+.wp-caption-text,
+.gallery-caption {
+	margin-top: 0;
+	font-size: 16px;
+}

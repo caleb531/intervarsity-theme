@@ -1,0 +1,98 @@
+// Styling for site navigation within site header
+
+// Site navigation control for hybrid layout
+#nav-control-responsive {
+	display: none;
+	width: $nav-control-size;
+	height: $nav-control-size;
+	padding: $nav-control-padding-y $nav-control-padding-x;
+	font-size: $nav-control-size;
+	line-height: $nav-control-size;
+	transition: padding $transition-duration $transition-easing;
+	color: #fff;
+	cursor: default;
+	// Menu icon isn't perfectly centered; shift it slightly
+	.iv-icon {
+		position: relative;
+		top: 1px;
+	}
+	// Only show site
+	@include layout(hybrid) {
+		display: block;
+	}
+	// For very conmpact )i.e. 320px width) screens, minimize control padding
+	@include layout(very-compact) {
+		.site-header-search-active & {
+			padding-left: $nav-control-very-compact-padding-left;
+			padding-right: 0;
+		}
+	}
+}
+
+// Site navigation
+#site-header-nav {
+	// All navigation links
+	ul a {
+		display: block;
+		box-sizing: border-box;
+		text-align: left;
+		font-size: 13px;
+		color: #fff;
+		white-space: nowrap;
+	}
+	// Top-level navigation menu
+	& > ul {
+		a {
+			padding: 9px 15px 7px;
+		}
+		// Top-level menu converts to popover menu for hybrid layout
+		@include layout(hybrid) {
+			@include floating-menu();
+			@include panel-arrow(top, 24px);
+			margin-left: 4px;
+			transition-delay: 0s;
+			.site-header-nav-open &,
+			 {
+				@include transition-fade-in();
+			}
+			a {
+				padding: 10px $nav-control-padding-x;
+			}
+		}
+		// Padding of nav control is reduced for very-compact layout; shift menu
+		// arrow in accordance with reduced padding so arrow is still centered
+		// underneath control
+		@include layout(very-compact) {
+			.site-header-search-active & {
+				&:before,
+				&:after {
+					transform: translateX(-($nav-control-padding-x - $nav-control-very-compact-padding-left));
+				}
+			}
+		}
+	}
+	// Navigation sub-menus
+	.sub-menu {
+		@include floating-menu();
+		@include panel-arrow(top, 30px);
+		transition-delay: $transition-duration;
+		text-align: left;
+		// Reposition sub-menus for hybrid layout so they remain accessible
+		@include layout(hybrid) {
+			top: 0;
+			left: 100%;
+			margin-top: -$header-border-width;
+			margin-left: $tooltip-arrow-height + $header-border-width;
+			pointer-events: none;
+			transition-delay: 0s;
+			@include panel-arrow(left, 12px);
+		}
+	}
+	// All sub-menus fade in when hovered over
+	.menu-item:hover > .sub-menu,
+	.sub-menu-open {
+		pointer-events: auto;
+		@include transition-fade-in();
+		transition-delay: 0s;
+	}
+}

@@ -1,0 +1,58 @@
+// Styling for site footer
+
+#site-footer {
+	padding: 20px 10px;
+	box-sizing: border-box;
+	font-size: 11px;
+	text-align: center;
+	color: $subtle-gray;
+	// Page footer links
+	a {
+		color: #fff;
+	}
+	// The image link which points to the InterVarsity Christian Fellowship/USA
+	// website
+	.ivcf-link {
+		// Enusre that link takes on width and height of inner image
+		display: inline-block;
+		margin: 3px 0;
+	}
+	.ivcf-image {
+		max-width: 200px;
+	}
+}
+
+// The top-level site navigation is also displayed in the footer for convenience
+// (but without submenus)
+#site-footer-nav {
+	margin-bottom: 10px;
+	// The footer navigation isn't guaranteed to fit in the footer at small
+	// viewport widths
+	@include layout(compact) {
+		display: none;
+	}
+	a {
+		padding: 0 8px;
+	}
+	ul {
+		margin: 0;
+	}
+	li {
+		display: inline-block;
+		// Separate individual navigation links with a pipe
+		&:after {
+			content: '|';
+		}
+		&:last-child:after {
+			content: '';
+		}
+	}
+}
+
+// Decrease height of custom footer content because of smaller font size
+#site-footer-content {
+	line-height: 1.5em;
+	p {
+		margin: 0;
+	}
+}

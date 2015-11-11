@@ -1,0 +1,66 @@
+// Stylesheet parameters
+
+// Transitions
+$transition-duration: 0.3s;
+$transition-easing: ease-in-out;
+
+// Core body of page
+$body-max-width: 960px;
+$post-max-width: $body-max-width * 0.8;
+
+// Page area under site header but above site footer
+$page-background-color: #fff;
+$page-border-radius: 5px;
+
+// Site header
+$header-border-color: rgba(#fff, 0.25);
+$panel-border-color: #fff;
+$header-border-width: 2px;
+$header-border-radius: 4px;
+$header-box-shadow: 0 5px 10px rgba(#000, 0.5);
+$menu-background-color: #000;
+
+// Site navigation toggle control
+$nav-control-size: 30px;
+$nav-control-padding-x: 15px;
+$nav-control-very-compact-padding-left: 7px;
+$nav-control-padding-y: 0;
+
+// Header tooltips
+$tooltip-arrow-width: 20px;
+$tooltip-arrow-height: $tooltip-arrow-width / 2;
+$tooltip-container-padding: 5px;
+$tooltip-arrow-inner-width: $tooltip-arrow-width - ($header-border-width * 2) / 2;
+$tooltip-arrow-inner-height: $tooltip-arrow-inner-width / 2;
+
+// Page content
+$content-color: #444;
+// Content padding
+$content-padding-x: 30px;
+$content-padding-y: 30px;
+$content-hybrid-padding-x: 20px;
+$content-hybrid-padding-y: 30px;
+$content-compact-padding-x: 15px;
+$content-compact-padding-y: 20px;
+
+// Content box (also used for tables)
+$box-background-color: #f3f3f3;
+$box-border-color: #aaa;
+// Sutle gray text color used against black backgrounds
+$subtle-gray: rgba(#fff, 0.5);
+
+// Styling for form elements (inputs, buttons)
+$input-button: 'input[type="button"], input[type="submit"], button';
+$input-text: 'input[type="text"], input[type="password"], input[type="search"], textarea';
+$input-padding-x: 10px;
+$input-padding-y: 6px;
+$input-border-width: 1px;
+
+
+// Responsive widths
+$layout-widths: (
+	body-max: $body-max-width,
+	hybrid: 768px,
+	compact: 540px,
+	very-compact: 340px
+);

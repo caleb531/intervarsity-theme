@@ -1,0 +1,51 @@
+// Styling for slider added by InterVarsity plugin
+
+// Container for a page slider; the InterVarsity theme and plugin both integrate
+// with the Cyclone Slider 2 plugin
+#page-slider {
+    background: none;
+	user-select: none;
+	cursor: default;
+    // Container for slides container and pager
+	.cycloneslider {
+		margin: 0;
+	}
+    // Add border below sliders container so that slides are visually separate
+    // from other page content
+	.cycloneslider-slides {
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-bottom-color: $box-border-color;
+        background-color: #000;
+	}
+    // The plugin by default gives a white background to individual slides;
+    // remove it so that the background of the slide container shows (the
+    // background is only noticeable when transitioning between slides)
+	.cycloneslider-slide {
+		background: none;
+	}
+	// Pager control allowing for random access to any slide
+	.cycloneslider-pager {
+		position: static;
+		height: auto;
+		text-align: center;
+		font-size: 0;
+		// Pager dot corresponding to a single slide
+		span {
+			display: inline-block;
+            $pager-control-size: 12px;
+			width: $pager-control-size;
+			height: $pager-control-size;
+			margin: 10px 8px;
+			background-color: rgba(#000, 0.25);
+			border-radius: 50%;
+			box-shadow: none;
+			transition: all $transition-duration $transition-easing;
+			transition-property: background-color;
+			// Do not show the single pager dot if only one slide exists
+			&:only-child {
+				visibility: hidden;
+			}
+		}
+	}
+}

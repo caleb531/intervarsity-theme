@@ -1,0 +1,92 @@
+// Styling for all form elements
+
+#{$input-button},
+#{$input-text} {
+	display: inline-block;
+	-webkit-appearance: none;
+	margin: 0;
+	padding: $input-padding-y $input-padding-x;
+	box-sizing: border-box;
+	font-size: 100%;
+	line-height: normal;
+	vertical-align: middle;
+}
+
+#{$input-button} {
+	border-style: solid;
+	border-width: $input-border-width;
+	border-radius: 2px;
+	text-align: center;
+	transition: all $transition-duration $transition-easing;
+	transition-property: background-color;
+	color: #fff;
+	&:hover {
+		color: #fff;
+	}
+	&.button-small {
+		padding: 4px 6px;
+		font-size: 11px;
+	}
+}
+
+// Inputs
+#{$input-text} {
+	border-style: solid;
+	border-width: $input-border-width;
+	border-color: $box-border-color;
+	border-radius: 2px;
+	background-color: #fff;
+	transition: all ($transition-duration / 2) $transition-easing;
+	transition-property: border-color, background-color, box-shadow;
+	color: #666;
+	box-shadow: none;
+}
+
+// Strip all browser styling for search inputs
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+	display: none;
+}
+
+textarea {
+	overflow: auto;
+	vertical-align: top;
+	width: 100%;
+}
+
+.searchform {
+	display: inline-block;
+	position: relative;
+	cursor: default;
+}
+
+$search-icon-size: 16px;
+$search-icon-padding: $search-icon-size / 2;
+
+.search-icon {
+	display: inline-block;
+	position: absolute;
+	top: 50%;
+	left: (($search-icon-padding + $input-padding-x) / 2) + $input-border-width + 1px;
+	margin-top: -($search-icon-size / 2) - 1;
+	width: $search-icon-size;
+	height: $search-icon-size;
+	font-size: $search-icon-size;
+	line-height: $search-icon-size;
+}
+
+input.search {
+	padding-left: $search-icon-size + $search-icon-padding + $input-padding-x;
+}
+
+// Search query
+.search-query {
+	font-style: italic;
+}
+
+// Center text within passowrd-protected post forms
+form.post-password-form {
+	text-align: center;
+}

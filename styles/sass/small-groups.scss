@@ -1,0 +1,92 @@
+// Small groups
+
+$sg-tile-max-width: 400px;
+
+// Container for small group entry tiles; tiles are left-aligned within the
+// container so as to create a grid-like appearance; setting a max-width centers
+// the grid
+.iv-small-groups.entries {
+	max-width: ($sg-tile-max-width + ($entry-tile-margin * 2)) * 2;
+}
+
+.iv_small_group.entry-tile {
+	display: inline-block;
+	max-width: $sg-tile-max-width;
+	@include layout(compact) {
+		max-width: none;
+	}
+}
+
+// Individual small group pages
+.iv_small_group.entry-single {
+
+	// Container for entry's featured image
+	.entry-thumbnail {
+		padding-right: 20px;
+		img {
+			max-width: 200px;
+			@include layout(hybrid) {
+				max-width: 150px;
+			}
+		}
+	}
+	// Collapse containers on mobile
+	@include layout(compact) {
+		.entry-row,
+		.entry-cell {
+			display: block;
+		}
+		.entry-thumbnail {
+			padding-right: 0;
+		}
+		// Add extra spacing between content description and featured image
+		// because they are now visually stacked
+		.entry-content {
+			margin-top: 10px;
+		}
+	}
+
+}
+
+// Related small groups
+.sg-related {
+	// Totally arbitrary; might consider making this a variable
+    max-width: 600px;
+    margin: 0 auto;
+	// Display table as a list for compact layout. Each related small group's
+	// time will appear under its respective name
+	@include layout(compact) {
+		table {
+			display: block;
+			border-width: 0;
+			background: none;
+		}
+		thead {
+			display: none;
+		}
+		tr {
+			display: block;
+			padding-bottom: 8px;
+			&:last-child {
+				padding-bottom: 0;
+			}
+		}
+		td {
+			display: block;
+			padding: 0;
+			border-width: 0;
+		}
+		.sg-name {
+			a {
+				font-weight: bold;
+			}
+		}
+	}
+}
+
+// Do not display Submit button for small group "Filter by Day" form; the
+// front-end script will automatically submit the form when the user selects a
+// value
+#sg-filter input[type="submit"] {
+	display: none;
+}

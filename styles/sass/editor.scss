@@ -1,0 +1,21 @@
+// Styling for the content of the visual editor
+@import 'variables';
+@import 'content';
+
+// Define accent color used for emphasis; this will ultimately be overridden by
+// the user-chosen accent color on the frontend
+$accent-color: #25a;
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	color: $content-color;
+}
+
+a {
+	color: $accent-color;
+	text-decoration: underline;
+}
+
+blockquote {
+	border-left-color: $accent-color;
+}

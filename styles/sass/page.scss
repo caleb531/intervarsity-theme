@@ -1,0 +1,90 @@
+// Styling for standard semantic and container elements
+
+// Pagination links
+.pagination {
+	text-align: center;
+	cursor: default;
+	user-select: none;
+}
+// Page number links
+.pagination > a,
+// Number for current page
+.pagination > span {
+	display: inline-block;
+	$link-size: 24px;
+	width: $link-size;
+	height: $link-size;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 50%;
+	line-height: $link-size;
+	color: #fff;
+	font-size: 13px;
+	vertical-align: middle;
+	transition: all $transition-duration $transition-easing;
+	transition-property: border-color, background-color;
+	$icon-size: $link-size / 2;
+	.iv-icon {
+		position: relative;
+	}
+	$chevron-offset: 1px;
+	&.prev .iv-icon {
+		left: -$chevron-offset;
+	}
+	&.next .iv-icon {
+		right: -$chevron-offset;
+	}
+}
+
+// "No Results" page
+#no-results {
+	text-align: center;
+	p {
+		font-size: 15px;
+	}
+	.searchform {
+		margin-bottom: 20px;
+	}
+}
+
+// "Not Found" page
+.error404 #content {
+	margin: 20px 0;
+	text-align: center;
+	h1 {
+		margin: 0;
+		font-size: 50px;
+		line-height: 1;
+	}
+	p {
+		font-size: 15px;
+	}
+	.search {
+		width: 200px;
+	}
+}
+
+// Offscreen text for screen readers
+.screen-reader-text {
+	display: inline-block !important;
+	position: absolute !important;
+	z-index: 1000 !important;
+	top: -1000em !important;
+	left: -1000em !important;
+	width: 1px !important;
+	height: 1px !important;
+	padding: 0 !important;
+	border-width: 0 !important;
+	overflow: hidden !important;
+	// Skip links for screen readers
+	&.skip-link:focus {
+		top: 5px !important;
+		left: 5px !important;
+		width: auto !important;
+		height: auto !important;
+		padding: 15px 23px 14px !important;
+		background-color: $box-background-color !important;
+		font-weight: bold !important;
+		box-shadow: 0 0 2px 2px rgba(#000,0.6) !important;
+	}
+}

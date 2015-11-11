@@ -1,0 +1,76 @@
+<?php
+/**
+ * The template for displaying individual (single) small group entries
+ *
+ * @package InterVarsity
+ */
+
+get_header(); ?>
+
+	<?php while ( have_posts() ) : the_post(); ?>
+
+		<article id="post-<?php the_ID(); ?>" <?php post_class( 'entry entry-single' ); ?>>
+
+			<div class="entry-main entry-row">
+
+				<?php if ( has_post_thumbnail() ): ?>
+					<div class="entry-thumbnail entry-cell">
+						<?php the_post_thumbnail( 'single-1x' ); ?>
+					</div>
+				<?php endif; ?>
+
+				<div class="entry-cell">
+
+					<div class="entry-content">
+						<?php the_content(); ?>
+					</div>
+
+					<?php the_sg_details( '<h2>Details</h2><p class="sg-details">', '</p>' ); ?>
+
+					<?php the_sg_contact( '<h2>Contact</h2><p class="sg-contact">For questions, contact ', '.</p>' ); ?>
+
+				</div>
+
+			</div>
+
+		</article>
+
+		<?php
+		$iv_related_sgs = iv_get_related_sgs( $post );
+		if ( count ( $iv_related_sgs ) !== 0 ):
+		?>
+
+			<hr />
+
+			<section class="sg-related">
+
+				<h2>Related Small Groups</h2>
+
+				<p>Click the small group name for more details.</p>
+
+				<table>
+					<thead>
+						<tr>
+							<th class="sg-name">Name</th>
+							<th class="sg-time">Time</th>
+						</tr>
+					</thead>
+					<tbody>
+					<?php
+					foreach ( $iv_related_sgs as $post ): setup_postdata( $post ); ?>
+
+						<tr>
+							<td class="sg-name"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></td>
+							<td class="sg-time"><?php the_sg_time(); ?></td>
+						</tr>
+
+					<?php endforeach; wp_reset_postdata(); ?>
+					</tbody>
+				</table>
+
+			</section>
+		<?php endif; ?>
+
+	<?php endwhile; wp_reset_query(); ?>
+
+<?php get_footer(); ?>

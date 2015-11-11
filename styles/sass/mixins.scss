@@ -1,0 +1,126 @@
+// Sass Mixins
+
+// Applies the given styling to a media query; all allowable values for $layout
+// are declared in the $layout-widths variable in variables.scss
+@mixin layout($layout) {
+	$width: map-get($layout-widths, $layout);
+	@media only screen and (max-width: $width) {
+		@content;
+	}
+}
+
+// Applies an stylistic arrow to the given panel based on the given position
+// (top or left; the direction in which the arrow is pointing) and offset; wen
+// including this mixin, be sure that the floating-panel() OR floating-menu()
+// mixin are also included
+@mixin panel-arrow($position, $offset: 50%) {
+	// Arrow border
+	&:before {
+		content: '';
+		width: 0;
+		height: 0;
+		position: absolute;
+		z-index: 10;
+		border-style: solid;
+		border-width: $tooltip-arrow-height;
+		border-color: transparent;
+		transition: transform $transition-duration $transition-easing;
+		@if $position == top {
+			bottom: 100%;
+			left: $offset;
+			margin-bottom: $header-border-width;
+			margin-left: -$tooltip-arrow-width / 2;
+			border-top-width: 0;
+			border-bottom-color: $panel-border-color;
+		} @else if $position == left {
+			left: -$header-border-width;
+			top: $offset;
+			border-left-width: 0;
+			border-right-color: $panel-border-color;
+		}
+	}
+	// Arrow fill
+	&:after {
+		content: '';
+		width: 0;
+		height: 0;
+		position: absolute;
+		z-index: 20;
+		border-style: solid;
+		border-width: $tooltip-arrow-inner-height;
+		border-color: transparent;
+		transition: transform $transition-duration $transition-easing;
+		@if $position == top {
+			bottom: 100%;
+			left: $offset;
+			margin-bottom: 0;
+			margin-left: -$tooltip-arrow-inner-width / 2;
+			border-top-width: 0;
+			border-bottom-color: $menu-background-color;
+		} @else if $position == left {
+			left: -$header-border-width;
+			top: $offset;
+			margin-left: (-$tooltip-arrow-inner-width / 2) + $header-border-width;
+			margin-top: $header-border-width / 2;
+			border-left-width: 0;
+			border-right-color: $menu-background-color;
+		}
+	}
+}
+
+// Enables a fade transition for the given element (also initially hides it)
+@mixin transition-fade() {
+	opacity: 0;
+	z-index: -1;
+	transition-property: opacity, z-index;
+	transition-duration: $transition-duration, $transition-duration * 2;
+	transition-timing-function: $transition-easing;
+}
+
+// Fade in the given element (one for which fade transition has been enabled)
+@mixin transition-fade-in() {
+	opacity: 1;
+	z-index: 9999;
+	transition-property: opacity;
+	transition-duration: $transition-duration;
+}
+
+// Styling for floating fading panel (used for menus, tooltips, etc.)
+@mixin floating-panel() {
+	display: block;
+	position: absolute;
+	border: solid $header-border-width $panel-border-color;
+	border-radius: $header-border-radius;
+	box-sizing: border-box;
+	box-shadow: $header-box-shadow;
+	@include transition-fade();
+}
+
+// Styling for floating fading menu
+@mixin floating-menu() {
+	@include floating-panel();
+	top: 100%;
+	left: 0;
+	margin-top: 4px;
+	li {
+		display: block;
+		position: relative;
+		min-width: 100px;
+		margin: 0;
+		padding: 0;
+		border-width: 0;
+		border-bottom: solid $header-border-width $header-border-color;
+		background-color: $menu-background-color;
+		// Ensure that rounded corners of first and last children match that of
+		// the parent (for the appropriate corners, of course)
+		&:first-child {
+			border-top-left-radius: $header-border-radius - $header-border-width;
+			border-top-right-radius: $header-border-radius - $header-border-width;
+		}
+		&:last-child {
+			border-bottom-left-radius: $header-border-radius - $header-border-width;
+			border-bottom-right-radius: $header-border-radius - $header-border-width;
+			border-bottom-width: 0;
+		}
+	}
+}
