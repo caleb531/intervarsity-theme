@@ -91,52 +91,103 @@ function iv_get_sg_gender( $title ) {
 
 }
 
-// Retrieve related small groups for the given small group
+// The minimum relevance factor a SG must have in order to be deemed similar to
+// the target SG
+define( 'IV_MIN_SG_RELEVANCE_FACTOR', 2 );
+
+// Retrieve related small groups for the given small group (SG)
 function iv_get_related_sgs( $target_sg ) {
-	// The target SG is the small group for which to find related SGs
+	// The target SG is the SG for which to find related SGs
 
 	// Retrieve associated campus object for target SG
 	$campus = iv_get_campus( $target_sg );
-	// Keep array of related small groups
+	// Keep array of related SGs
 	$related_sgs = array();
-	// Retrieve all other small groups from same campus
+	// Retrieve all other SGs from same campus
 	$campus_sgs = get_posts( array(
 		'post_type'      => 'iv_small_group',
 		'posts_per_page' => -1,
 		// Don't include target SG in list of other SGs
 		'post__not_in'   => array( $target_sg->ID ),
-		'sg_campus'      => $campus->slug,
+		'sg_campus'      => ( ! empty( $campus ) ? $campus->slug : null),
 		'orderby'        => 'title',
 		'order'          => 'ASC'
 	) );
-	// Format SG titles to ensure casing and punctiation do not interfere
+	// Format SG titles to ensure casing and punctuation are irrelevant
 	$target_title = iv_simplify_sg_title( $target_sg->post_title );
 	// Retrieve array of words in target SG title
 	$target_words = iv_get_words_in_title( $target_title );
 	// Parse out specific gender (if any) from SG title
 	$target_gender = iv_get_sg_gender( $target_title );
 
-	// Loop through small groups in same campus
+	// SGs are grouped by the number of common words they share with the
+	// title of the target SG
+	$coed_sg_groups = array();
+	$gender_sg_groups = array();
+
 	foreach ( $campus_sgs as $sg ) {
+
 		// Retrieve SG data for comparison
 		$sg_title = iv_simplify_sg_title( $sg->post_title );
 		$sg_words = iv_get_words_in_title( $sg_title );
 		$sg_gender = iv_get_sg_gender( $sg_title );
-		// If small group pertains to a specific gender
-		if ( null !== $sg_gender ) {
-			// ...and if genders match
-			if ( $sg_gender === $target_gender ) {
-				// ...then SG is related
-				$related_sgs[] = $sg;
+
+		// Include all co-ed SGs, as well as include gender-specific SGs whose
+		// gender matches that of the target SG
+		if ( ( null === $sg_gender || $target_gender === $sg_gender ) ) {
+
+			// The relevance factor for a SG is calculated from the number of
+			// words its title shares with the target SG's title
+			$relevance_factor = count( array_intersect( $target_words, $sg_words ) );
+
+			// Co-ed SGs must have a relevance factor greater than or equal to
+			// the minimum in order to be considered related
+			if ( $sg_gender === null && $relevance_factor >= IV_MIN_SG_RELEVANCE_FACTOR ) {
+
+				if ( ! array_key_exists( $relevance_factor, $coed_sg_groups ) ) {
+					$coed_sg_groups[ $relevance_factor ] = array();
+				}
+				$coed_sg_groups[ $relevance_factor ][] = $sg;
+
+			} else if ( $sg_gender !== null ) {
+				// Otherwise, SG is implicitly gender-specific
+
+				if ( ! array_key_exists( $relevance_factor, $gender_sg_groups ) ) {
+					$gender_sg_groups[ $relevance_factor ] = array();
+				}
+				$gender_sg_groups[ $relevance_factor ][] = $sg;
+
 			}
-		} else if ( null === $sg_gender ) {
-			// If two or more words in titles match, SG is related
-			$matching_words = array_intersect( $target_words, $sg_words );
-			if ( count( $matching_words ) >= 2 ) {
-				$related_sgs[] = $sg;
+
+		}
+
+	}
+
+	// The most relevant gender-specific SGs have greater precedence than the
+	// most relevant co-ed SGs
+	if ( 0 !== count( $gender_sg_groups ) ) {
+		// Store all gender-specific SGs with the same gender as a flat array
+		krsort( $gender_sg_groups );
+		foreach ( $gender_sg_groups as $sg_group ) {
+			foreach ( $sg_group as $sg ) {
+				$related_gender_sgs[] = $sg;
 			}
 		}
+	} else {
+		$related_gender_sgs = array();
 	}
+
+	// Store only the most relevant co-ed SGs as a flat array
+	if ( 0 !== count( $coed_sg_groups ) ) {
+		$largest_relevance_factor = max( array_keys( $coed_sg_groups ) );
+		$related_coed_sgs = $coed_sg_groups[ $largest_relevance_factor ];
+	} else {
+		$related_coed_sgs = array();
+	}
+
+	// Merge the two arrays into the final list of related SGs (capping the size
+	// thereof at the defined max size)
+	$related_sgs = array_slice( array_merge( $related_gender_sgs, $related_coed_sgs ), 0, IV_DEFAULT_MAX_RELATED_SGS );
 
 	return $related_sgs;
 
