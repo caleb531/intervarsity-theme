@@ -537,7 +537,8 @@ class InterVarsity_Customize {
 		$wp_customize->add_setting( 'iv_sgs_per_page', array(
 			'type'              => 'theme_mod',
 			'transport'         => 'refresh',
-			'sanitize_callback' => array( $this, 'sanitize_integer' )
+			'sanitize_callback' => array( $this, 'sanitize_integer' ),
+			'default'           => IV_DEFAULT_SGS_PER_PAGE
 		) );
 		$wp_customize->add_control( 'iv_sgs_per_page', array(
 			'section'     => 'iv_sg_options',

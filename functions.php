@@ -99,7 +99,7 @@ function iv_modify_posts_query( $query ) {
 			$query->set( 'post_type', 'iv_small_group' );
 			$query->set( 'orderby', 'title' );
 			$query->set( 'order', 'ASC' );
-			$query->set( 'posts_per_page', intval( get_theme_mod( 'iv_sgs_per_page', get_option( 'posts_per_page' ) ) ) );
+			$query->set( 'posts_per_page', intval( get_theme_mod( 'iv_sgs_per_page', IV_DEFAULT_SGS_PER_PAGE ) ) );
 
 			// Filter small groups by day if the sg_day parameter is given
 			if ( ! empty( $_GET['sg_day'] ) ) {
