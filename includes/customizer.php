@@ -522,12 +522,6 @@ class InterVarsity_Customize {
 			'description' => 'This section allows you to customize all settings pertaining to small groups.'
 		) );
 
-		$wp_customize->add_section( 'iv_sg_options', array(
-			'title'       => 'General',
-			'description' => 'This section allows you to customize general settings pertaining to small groups.',
-			'panel'       => 'iv_sg_options'
-		) );
-
 		$wp_customize->add_setting( 'iv_sg_index_page', array(
 			'type'              => 'theme_mod',
 			'transport'         => 'refresh',
