@@ -655,7 +655,7 @@ class InterVarsity_Customize {
 		) );
 
 		$wp_customize->add_section( 'iv_footer_ivcf_options', array(
-			'title'       => 'IVCF National Website Link',
+			'title'       => 'IVCF Website Link',
 			'description' => 'This section allows you to customize the link to the national InterVarsity Christian Fellowship/USA website in the site footer.',
 			'panel'       => 'iv_footer_panel'
 		) );
