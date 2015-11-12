@@ -61,10 +61,19 @@ function iv_get_campus( $sg ) {
 	return $campus;
 }
 
+// Regular expresison patterns used to determinw gender-specific small groups
+define( 'IV_GENDER_MEN_PATT', '/\b((men|man|guy)s?)\b/' );
+define( 'IV_GENDER_WOMEN_PATT', '/\b((women|woman|girl)s?|(ladys?|ladies))\b/' );
+
 // Simplifies small group title by removing non-alphanumeric characters
 function iv_simplify_sg_title( $title ) {
 
-	return strtolower( preg_replace( '/[^A-Za-z0-9 ]/', '', $title ) );
+	$title = strtolower( $title );
+	$title = preg_replace( '/[^a-z0-9 ]/', '', $title );
+	// Gender-specific words like "Men's" and "Guy's" should be equivalent
+	$title = preg_replace( IV_GENDER_MEN_PATT, 'mens', $title );
+	$title = preg_replace( IV_GENDER_WOMEN_PATT, 'womens', $title );
+	return $title;
 
 }
 
@@ -80,9 +89,9 @@ function iv_get_words_in_title( $title ) {
 function iv_get_sg_gender( $title ) {
 
 	// Match gender in title using regular expressions
-	if ( preg_match( '/\b((men|man|guy)s?)\b/', $title ) ) {
+	if ( preg_match( IV_GENDER_MEN_PATT, $title ) ) {
 		return 'men';
-	} else if ( preg_match( '/\b((women|woman|girl)s?|(ladys?|ladies))\b/', $title ) ) {
+	} else if ( preg_match( IV_GENDER_WOMEN_PATT, $title ) ) {
 		return 'women';
 	} else {
 		// If gender is not found, assume small group is co-ed
@@ -132,33 +141,38 @@ function iv_get_related_sgs( $target_sg ) {
 		$sg_words = iv_get_words_in_title( $sg_title );
 		$sg_gender = iv_get_sg_gender( $sg_title );
 
-		// The relevance factor for a SG is calculated from the number of
-		// words its title shares with the target SG's title
+		// The relevance factor for a SG is calculated from the number of words
+		// its title shares with the target SG's title
 		$relevance_factor = count( array_intersect( $target_words, $sg_words ) );
 
-		// Co-ed SGs must have a relevance factor greater than or equal to
+		// All related SGs must have a relevance factor greater than or equal to
 		// the minimum in order to be considered related
-		if ( null === $sg_gender && $relevance_factor >= IV_MIN_SG_RELEVANCE_FACTOR ) {
-			// Dereference array to avoid repeating below logic
-			$sg_groups = &$coed_sg_groups;
-		} else if ( null !== $sg_gender && $target_gender === $sg_gender ) {
-			// Otherwise, if the SG is gender-specific, the SG gender must match
-			// the target gender
-			$sg_groups = &$gender_sg_groups;
-		} else {
-			// Reset the pointer on each iteration to avoid re-using the value
-			// from the previous iteration
-			unset( $sg_groups );
-		}
+		if ( $relevance_factor >= IV_MIN_SG_RELEVANCE_FACTOR ) {
 
-		// If either of the above two conditions evaluated to true
-		if ( isset( $sg_groups ) ) {
-
-			// Place key into groups container according to its relevance
-			if ( ! array_key_exists( $relevance_factor, $sg_groups ) ) {
-				$sg_groups[ $relevance_factor ] = array();
+			// If SG is co-ed
+			if ( null === $sg_gender ) {
+				// Dereference array to avoid repeating below logic
+				$sg_groups = &$coed_sg_groups;
+			} else if ( null !== $sg_gender && $target_gender === $sg_gender ) {
+				// Otherwise, if the SG is gender-specific, the SG gender must
+				// match the target gender
+				$sg_groups = &$gender_sg_groups;
+			} else {
+				// Reset the pointer on each iteration to avoid re-using the
+				// value from the previous iteration
+				unset( $sg_groups );
 			}
-			array_push( $sg_groups[ $relevance_factor ], $sg );
+
+			// If either of the above two conditions evaluated to true
+			if ( isset( $sg_groups ) ) {
+
+				// Place key into groups container according to its relevance
+				if ( ! array_key_exists( $relevance_factor, $sg_groups ) ) {
+					$sg_groups[ $relevance_factor ] = array();
+				}
+				array_push( $sg_groups[ $relevance_factor ], $sg );
+
+			}
 
 		}
 
