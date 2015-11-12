@@ -16,10 +16,12 @@ define( 'IV_DEFAULT_NO_SG_MESSAGE', 'Sorry, but there are no {{campus}} small gr
 define( 'IV_DEFAULT_NULL_SEARCH_HEADING', 'No Small Groups Found' );
 define( 'IV_DEFAULT_NULL_SEARCH_MESSAGE', "Sorry, but no small groups matched your search terms.\nPlease try again with some different keywords." );
 
-// Default maximum number of related small groups to list for any small group
-define( 'IV_DEFAULT_MAX_RELATED_SGS', 10 );
 // Default maximum number of small groups to list per page
 define( 'IV_DEFAULT_SGS_PER_PAGE', 6 );
+// Default "enabled" state for related small groups feature
+define( 'IV_DEFAULT_RELATED_SGS_ENABLED', true );
+// Default maximum number of related small groups to list for any small group
+define( 'IV_DEFAULT_MAX_RELATED_SGS', 10 );
 
 // Default accent color used throughout site
 define( 'IV_DEFAULT_ACCENT_COLOR', '#3366cc' );

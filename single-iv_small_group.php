@@ -37,7 +37,7 @@ get_header(); ?>
 
 		<?php
 		$iv_related_sgs = iv_get_related_sgs( $post );
-		if ( count ( $iv_related_sgs ) !== 0 ):
+		if ( get_theme_mod( 'iv_related_sgs_enabled', IV_DEFAULT_RELATED_SGS_ENABLED ) && 0 !== count ( $iv_related_sgs ) ):
 		?>
 
 			<hr />

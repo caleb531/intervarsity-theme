@@ -515,11 +515,17 @@ class InterVarsity_Customize {
 
 	public function add_small_group_options( $wp_customize ) {
 
-		$wp_customize->add_section( 'iv_sg_options', array(
+		$wp_customize->add_panel( 'iv_sg_panel', array(
 			'title'       => 'Small Groups',
-			// Place section beneath "Homepage" panel
+			// Place panel beneath "Homepage" panel
 			'priority'    => 110,
-			'description' => 'This section allows you to customize all settings pertaining to small groups.'
+			'description' => 'This panel allows you to customize all settings pertaining to small groups.'
+		) );
+
+		$wp_customize->add_section( 'iv_sg_general_options', array(
+			'title'       => 'General',
+			'description' => 'This section allows you to customize general settings pertaining to small groups.',
+			'panel'       => 'iv_sg_panel'
 		) );
 
 		$wp_customize->add_setting( 'iv_sg_index_page', array(
@@ -528,7 +534,7 @@ class InterVarsity_Customize {
 			'sanitize_callback' => array( $this, 'sanitize_integer' )
 		) );
 		$wp_customize->add_control( 'iv_sg_index_page', array(
-			'section'     => 'iv_sg_options',
+			'section'     => 'iv_sg_general_options',
 			'type'        => 'dropdown-pages',
 			'label'       => 'Small Group Index Page',
 			'description' => 'The main index page where campuses with small groups are listed'
@@ -541,7 +547,7 @@ class InterVarsity_Customize {
 			'default'           => IV_DEFAULT_SGS_PER_PAGE
 		) );
 		$wp_customize->add_control( 'iv_sgs_per_page', array(
-			'section'     => 'iv_sg_options',
+			'section'     => 'iv_sg_general_options',
 			'type'        => 'select',
 			'label'       => 'Small Groups Per Page',
 			'description' => 'The maximum number of small groups to show per page',
@@ -551,6 +557,25 @@ class InterVarsity_Customize {
 				'8'  => '8',
 				'10' => '10'
 			)
+		) );
+
+		$wp_customize->add_section( 'iv_related_sg_options', array(
+			'title'       => 'Related Small Groups',
+			'description' => 'This section allows you to customize settings pertaining to the related small groups feature.',
+			'panel'       => 'iv_sg_panel'
+		) );
+
+		$wp_customize->add_setting( 'iv_related_sgs_enabled', array(
+			'type'              => 'theme_mod',
+			'transport'         => 'refresh',
+			'sanitize_callback' => array( $this, 'sanitize_boolean' ),
+			'default'           => IV_DEFAULT_RELATED_SGS_ENABLED
+		) );
+		$wp_customize->add_control( 'iv_related_sgs_enabled', array(
+			'section' => 'iv_related_sg_options',
+			'type'    => 'checkbox',
+			'label'   => 'List related small groups',
+			'description' => 'When enabled, a list of related small groups will appear below any individual small group'
 		) );
 
 	}
