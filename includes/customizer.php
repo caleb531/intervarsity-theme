@@ -649,9 +649,9 @@ class InterVarsity_Customize {
 
 		$wp_customize->add_panel( 'iv_footer_panel', array(
 			'title'       => 'Footer',
-			// Place section beneath "404 Page" section
+			// Place panel beneath "404 Page" section
 			'priority'    => 120,
-			'description' => 'This section allows you to customize links and text in the site footer.'
+			'description' => 'This panel allows you to customize links and text in the site footer.'
 		) );
 
 		$wp_customize->add_section( 'iv_footer_ivcf_options', array(
