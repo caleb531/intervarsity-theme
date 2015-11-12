@@ -116,26 +116,55 @@ function iv_get_related_sgs( $target_sg ) {
 	// Parse out specific gender (if any) from SG title
 	$target_gender = iv_get_sg_gender( $target_title );
 
-	// Loop through small groups in same campus
+	// Group all small groups by the number of common words they share with the
+	// title of the target small group
+	$related_sg_groups = array();
+	// The minimum number of common words a small group must have to be deemed
+	// similar
+	$min_num_common_words = 2;
+	// The largest number of common words found among all small groups
+	$largest_num_common_words = $min_num_common_words;
+
 	foreach ( $campus_sgs as $sg ) {
-		// Retrieve SG data for comparison
+
+		// Retrieve small group data for comparison
 		$sg_title = iv_simplify_sg_title( $sg->post_title );
 		$sg_words = iv_get_words_in_title( $sg_title );
 		$sg_gender = iv_get_sg_gender( $sg_title );
-		// If small group pertains to a specific gender
-		if ( null !== $sg_gender ) {
-			// ...and if genders match
-			if ( $sg_gender === $target_gender ) {
-				// ...then SG is related
-				$related_sgs[] = $sg;
-			}
-		} else if ( null === $sg_gender ) {
-			// If two or more words in titles match, SG is related
-			$matching_words = array_intersect( $target_words, $sg_words );
-			if ( count( $matching_words ) >= 2 ) {
-				$related_sgs[] = $sg;
+		// Include all co-ed small groups, and include gender-specific small
+		// groups whose gender matches that of the target small group
+		if ( ( $sg_gender === null || $target_gender === $sg_gender ) ) {
+			$num_common_words = count( array_intersect( $target_words, $sg_words ) );
+			// Never list small groups that have no common words
+			if ( $num_common_words >= $min_num_common_words ) {
+				// Kepe track of largest number of common words
+				if ( $num_common_words > $largest_num_common_words ) {
+					$largest_num_common_words = $num_common_words;
+				}
+				// Group small groups by number of common words
+				if ( ! array_key_exists( $num_common_words, $related_sg_groups ) ) {
+					$related_sg_groups[ $num_common_words ] = array(
+						'co-ed'  => array(),
+						'gender' => array()
+					);
+				}
+				// Group co-ed and gender-specific small groups separately
+				if ( $sg_gender === null ) {
+					$related_sg_groups[ $num_common_words ]['co-ed'][] = $sg;
+				} else {
+					$related_sg_groups[ $num_common_words ]['gender'][] = $sg;
+				}
 			}
 		}
+	}
+
+	if ( array_key_exists( $largest_num_common_words, $related_sg_groups ) ) {
+		// If at least one small group was found to have the
+		$largest_group = $related_sg_groups[ $largest_num_common_words ];
+		// Gender-specific small groups should appear before co-ed small groups
+		$related_sgs = array_slice( array_merge( $largest_group['gender'], $largest_group['co-ed'] ), 0, IV_DEFAULT_MAX_RELATED_SGS );
+	} else {
+		$related_sgs = array();
 	}
 
 	return $related_sgs;
