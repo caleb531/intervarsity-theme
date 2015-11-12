@@ -142,14 +142,14 @@ function iv_get_related_sgs( $target_sg ) {
 
 			// Co-ed SGs must have a relevance factor greater than or equal to
 			// the minimum in order to be considered related
-			if ( $sg_gender === null && $relevance_factor >= IV_MIN_SG_RELEVANCE_FACTOR ) {
+			if ( null === $sg_gender && $relevance_factor >= IV_MIN_SG_RELEVANCE_FACTOR ) {
 
 				if ( ! array_key_exists( $relevance_factor, $coed_sg_groups ) ) {
 					$coed_sg_groups[ $relevance_factor ] = array();
 				}
 				$coed_sg_groups[ $relevance_factor ][] = $sg;
 
-			} else if ( $sg_gender !== null ) {
+			} else if ( null !== $sg_gender ) {
 				// Otherwise, SG is implicitly gender-specific
 
 				if ( ! array_key_exists( $relevance_factor, $gender_sg_groups ) ) {
