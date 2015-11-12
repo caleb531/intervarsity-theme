@@ -132,32 +132,33 @@ function iv_get_related_sgs( $target_sg ) {
 		$sg_words = iv_get_words_in_title( $sg_title );
 		$sg_gender = iv_get_sg_gender( $sg_title );
 
-		// Include all co-ed SGs, as well as include gender-specific SGs whose
-		// gender matches that of the target SG
-		if ( ( null === $sg_gender || $target_gender === $sg_gender ) ) {
+		// The relevance factor for a SG is calculated from the number of
+		// words its title shares with the target SG's title
+		$relevance_factor = count( array_intersect( $target_words, $sg_words ) );
 
-			// The relevance factor for a SG is calculated from the number of
-			// words its title shares with the target SG's title
-			$relevance_factor = count( array_intersect( $target_words, $sg_words ) );
+		// Co-ed SGs must have a relevance factor greater than or equal to
+		// the minimum in order to be considered related
+		if ( null === $sg_gender && $relevance_factor >= IV_MIN_SG_RELEVANCE_FACTOR ) {
+			// Dereference array to avoid repeating below logic
+			$sg_groups = &$coed_sg_groups;
+		} else if ( null !== $sg_gender && $target_gender === $sg_gender ) {
+			// Otherwise, if the SG is gender-specific, the SG gender must match
+			// the target gender
+			$sg_groups = &$gender_sg_groups;
+		} else {
+			// Reset the pointer on each iteration to avoid re-using the value
+			// from the previous iteration
+			unset( $sg_groups );
+		}
 
-			// Co-ed SGs must have a relevance factor greater than or equal to
-			// the minimum in order to be considered related
-			if ( null === $sg_gender && $relevance_factor >= IV_MIN_SG_RELEVANCE_FACTOR ) {
+		// If either of the above two conditions evaluated to true
+		if ( isset( $sg_groups ) ) {
 
-				if ( ! array_key_exists( $relevance_factor, $coed_sg_groups ) ) {
-					$coed_sg_groups[ $relevance_factor ] = array();
-				}
-				$coed_sg_groups[ $relevance_factor ][] = $sg;
-
-			} else if ( null !== $sg_gender ) {
-				// Otherwise, SG is implicitly gender-specific
-
-				if ( ! array_key_exists( $relevance_factor, $gender_sg_groups ) ) {
-					$gender_sg_groups[ $relevance_factor ] = array();
-				}
-				$gender_sg_groups[ $relevance_factor ][] = $sg;
-
+			// Place key into groups container according to its relevance
+			if ( ! array_key_exists( $relevance_factor, $sg_groups ) ) {
+				$sg_groups[ $relevance_factor ] = array();
 			}
+			array_push( $sg_groups[ $relevance_factor ], $sg );
 
 		}
 
