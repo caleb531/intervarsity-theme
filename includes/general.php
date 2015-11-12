@@ -140,17 +140,18 @@ function iv_get_related_sgs( $target_sg ) {
 			// words its title shares with the target SG's title
 			$relevance_factor = count( array_intersect( $target_words, $sg_words ) );
 
-			// Never list SGs whose relevance factor is less than the minimum
+			// Co-ed SGs must have a relevance factor greater than or equal to
+			// the minimum in order to be considered related
 			if ( $sg_gender === null && $relevance_factor >= IV_MIN_SG_RELEVANCE_FACTOR ) {
 
-					if ( ! array_key_exists( $relevance_factor, $coed_sg_groups ) ) {
-						$coed_sg_groups[ $relevance_factor ] = array();
-					}
-					$coed_sg_groups[ $relevance_factor ][] = $sg;
+				if ( ! array_key_exists( $relevance_factor, $coed_sg_groups ) ) {
+					$coed_sg_groups[ $relevance_factor ] = array();
+				}
+				$coed_sg_groups[ $relevance_factor ][] = $sg;
 
 			} else if ( $sg_gender !== null ) {
-
 				// Otherwise, SG is implicitly gender-specific
+
 				if ( ! array_key_exists( $relevance_factor, $gender_sg_groups ) ) {
 					$gender_sg_groups[ $relevance_factor ] = array();
 				}
@@ -162,9 +163,10 @@ function iv_get_related_sgs( $target_sg ) {
 
 	}
 
-	// The most relevant gender-specific SGs are more relevant than the most
-	// relevant co-ed SGs
+	// The most relevant gender-specific SGs have greater precedence than the
+	// most relevant co-ed SGs
 	if ( 0 !== count( $gender_sg_groups ) ) {
+		// Store all gender-specific SGs with the same gender as a flat array
 		krsort( $gender_sg_groups );
 		foreach ( $gender_sg_groups as $sg_group ) {
 			foreach ( $sg_group as $sg ) {
@@ -174,12 +176,17 @@ function iv_get_related_sgs( $target_sg ) {
 	} else {
 		$related_gender_sgs = array();
 	}
+
+	// Store only the most relevant co-ed SGs as a flat array
 	if ( 0 !== count( $coed_sg_groups ) ) {
 		$largest_relevance_factor = max( array_keys( $coed_sg_groups ) );
 		$related_coed_sgs = $coed_sg_groups[ $largest_relevance_factor ];
 	} else {
 		$related_coed_sgs = array();
 	}
+
+	// Merge the two arrays into the final list of related SGs (capping the size
+	// thereof at the defined max size)
 	$related_sgs = array_slice( array_merge( $related_gender_sgs, $related_coed_sgs ), 0, IV_DEFAULT_MAX_RELATED_SGS );
 
 	return $related_sgs;
