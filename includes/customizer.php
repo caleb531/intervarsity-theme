@@ -350,7 +350,8 @@ class InterVarsity_Customize {
 		$wp_customize->add_setting( 'iv_email_enabled', array(
 			'type'              => 'theme_mod',
 			'transport'         => 'refresh',
-			'sanitize_callback' => array( $this, 'sanitize_boolean' )
+			'sanitize_callback' => array( $this, 'sanitize_boolean' ),
+			'default'           => get_option( 'admin_email' )
 		) );
 		$wp_customize->add_control( 'iv_email_enabled', array(
 			'section' => 'iv_email_panel',
