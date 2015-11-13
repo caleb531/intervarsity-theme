@@ -15,8 +15,8 @@ class InterVarsity_Customize {
 		$this->add_font_options( $wp_customize );
 		$this->add_social_options( $wp_customize );
 		$this->add_homepage_options( $wp_customize );
-		$this->add_small_group_options( $wp_customize );
-		$this->add_message_options( $wp_customize );
+		$this->add_sg_options( $wp_customize );
+		$this->add_special_page_options( $wp_customize );
 		$this->add_footer_options( $wp_customize );
 
 	}
@@ -350,7 +350,8 @@ class InterVarsity_Customize {
 		$wp_customize->add_setting( 'iv_email_enabled', array(
 			'type'              => 'theme_mod',
 			'transport'         => 'refresh',
-			'sanitize_callback' => array( $this, 'sanitize_boolean' )
+			'sanitize_callback' => array( $this, 'sanitize_boolean' ),
+			'default'           => get_option( 'admin_email' )
 		) );
 		$wp_customize->add_control( 'iv_email_enabled', array(
 			'section' => 'iv_email_panel',
@@ -397,6 +398,48 @@ class InterVarsity_Customize {
 
 	}
 
+	public function add_homepage_options( $wp_customize ) {
+
+		$wp_customize->add_panel( 'iv_home_panel', array(
+			'title'       => 'Front Page',
+			// Place panel beneath "Menus" panel
+			'priority'    => 105,
+			'description' => 'This panel allows you to customize the content boxes which appear on the front page. The theme allows for up to three content boxes.'
+		) );
+
+		$wp_customize->add_section( 'iv_home_general_options', array(
+			'panel'       => 'iv_home_panel',
+			'title'       => 'General',
+			// Place section above all other sections in "Homepage" panel
+			'priority'    => 20,
+			'description' => 'This section allows you to customize general display options pertaining to the front page.'
+		) );
+
+		$wp_customize->add_setting( 'iv_home_page_header_enabled', array(
+			'type'              => 'theme_mod',
+			'transport'         => 'refresh',
+			'default'           => IV_DEFAULT_HOME_PAGE_HEADER_ENABLED,
+			'sanitize_callback' => array( $this, 'sanitize_boolean' )
+		) );
+		$wp_customize->add_control( 'iv_home_page_header_enabled', array(
+			'section'     => 'iv_home_general_options',
+			'type'        => 'checkbox',
+			'label'       => 'Show page header',
+			'description' => 'When disabled, hides the page header and title on the front page'
+		) );
+
+		for ( $i = 1; $i <= IV_NUM_HOME_BOXES; $i += 1 ) {
+			$this->add_home_box_settings( $wp_customize, $i );
+		}
+
+		// Move "Static Front Page" section under "Homepage" panel
+		$static_front_page = $wp_customize->get_section( 'static_front_page' );
+		$static_front_page->panel = 'iv_home_panel';
+		// Place section beneath "Content Box" sections of "Homepage" panel
+		$static_front_page->priority = 60;
+
+	}
+
 	// Add the necessary section, settings, and controls for a home content box
 	// with the given index (this method is used within a loop for the sake of
 	// code reuse)
@@ -409,7 +452,7 @@ class InterVarsity_Customize {
 			'title'       => "Content Box $index",
 			// Place section beneath "General" section in "Homepage" panel
 			'priority'    => 40,
-			'description' => 'This section allows you to customize content box $index on the front page.'
+			'description' => "This section allows you to customize content box $index on the front page."
 		) );
 
 		$wp_customize->add_setting( "{$id_base}_enabled", array(
@@ -471,61 +514,26 @@ class InterVarsity_Customize {
 
 	}
 
-	public function add_homepage_options( $wp_customize ) {
+	public function add_sg_options( $wp_customize ) {
 
-		$wp_customize->add_panel( 'iv_home_panel', array(
-			'title'       => 'Front Page',
-			// Place panel beneath "Menus" panel
-			'priority'    => 105,
-			'description' => 'This panel allows you to customize the content boxes which appear on the front page. The theme allows for up to three content boxes.'
+		$wp_customize->add_panel( 'iv_sg_panel', array(
+			'title'       => 'Small Groups',
+			// Place panel beneath "Homepage" panel
+			'priority'    => 110,
+			'description' => 'This panel allows you to customize all settings pertaining to small groups.'
 		) );
 
-		$wp_customize->add_section( 'iv_home_general_options', array(
-			'panel'       => 'iv_home_panel',
-			'title'       => 'General',
-			// Place section above all other sections in "Homepage" panel
-			'priority'    => 20,
-			'description' => 'This section allows you to customize general display options pertaining to the front page.'
-		) );
-
-		$wp_customize->add_setting( 'iv_home_page_header_enabled', array(
-			'type'              => 'theme_mod',
-			'transport'         => 'refresh',
-			'default'           => IV_DEFAULT_HOME_PAGE_HEADER_ENABLED,
-			'sanitize_callback' => array( $this, 'sanitize_boolean' )
-		) );
-		$wp_customize->add_control( 'iv_home_page_header_enabled', array(
-			'section'     => 'iv_home_general_options',
-			'type'        => 'checkbox',
-			'label'       => 'Show page header',
-			'description' => 'When disabled, hides the page header and title on the front page'
-		) );
-
-		for ( $i = 1; $i <= IV_NUM_HOME_BOXES; $i += 1 ) {
-			$this->add_home_box_settings( $wp_customize, $i );
-		}
-
-		// Move "Static Front Page" section under "Homepage" panel
-		$static_front_page = $wp_customize->get_section( 'static_front_page' );
-		$static_front_page->panel = 'iv_home_panel';
-		// Place section beneath "Content Box" sections of "Homepage" panel
-		$static_front_page->priority = 60;
+		$this->add_general_sg_options( $wp_customize );
+		$this->add_related_sg_options( $wp_customize );
 
 	}
 
-	public function add_small_group_options( $wp_customize ) {
+	public function add_general_sg_options( $wp_customize ) {
 
-		$wp_customize->add_section( 'iv_sg_options', array(
-			'title'       => 'Small Groups',
-			// Place section beneath "Homepage" panel
-			'priority'    => 110,
-			'description' => 'This section allows you to customize all settings pertaining to small groups.'
-		) );
-
-		$wp_customize->add_section( 'iv_sg_options', array(
+		$wp_customize->add_section( 'iv_sg_general_options', array(
 			'title'       => 'General',
 			'description' => 'This section allows you to customize general settings pertaining to small groups.',
-			'panel'       => 'iv_sg_options'
+			'panel'       => 'iv_sg_panel'
 		) );
 
 		$wp_customize->add_setting( 'iv_sg_index_page', array(
@@ -534,7 +542,7 @@ class InterVarsity_Customize {
 			'sanitize_callback' => array( $this, 'sanitize_integer' )
 		) );
 		$wp_customize->add_control( 'iv_sg_index_page', array(
-			'section'     => 'iv_sg_options',
+			'section'     => 'iv_sg_general_options',
 			'type'        => 'dropdown-pages',
 			'label'       => 'Small Group Index Page',
 			'description' => 'The main index page where campuses with small groups are listed'
@@ -543,10 +551,11 @@ class InterVarsity_Customize {
 		$wp_customize->add_setting( 'iv_sgs_per_page', array(
 			'type'              => 'theme_mod',
 			'transport'         => 'refresh',
-			'sanitize_callback' => array( $this, 'sanitize_integer' )
+			'sanitize_callback' => array( $this, 'sanitize_integer' ),
+			'default'           => IV_DEFAULT_SGS_PER_PAGE
 		) );
 		$wp_customize->add_control( 'iv_sgs_per_page', array(
-			'section'     => 'iv_sg_options',
+			'section'     => 'iv_sg_general_options',
 			'type'        => 'select',
 			'label'       => 'Small Groups Per Page',
 			'description' => 'The maximum number of small groups to show per page',
@@ -560,13 +569,69 @@ class InterVarsity_Customize {
 
 	}
 
-	public function add_message_options( $wp_customize ) {
+	public function add_related_sg_options( $wp_customize ) {
 
-		$wp_customize->add_section( 'iv_message_options', array(
-			'title'       => 'Messages',
-			// Place section beneath "Small Groups" section
+		$wp_customize->add_section( 'iv_related_sg_options', array(
+			'title'       => 'Related Small Groups',
+			'description' => 'This section allows you to customize settings pertaining to the related small groups feature.',
+			'panel'       => 'iv_sg_panel'
+		) );
+
+		$wp_customize->add_setting( 'iv_related_sgs_enabled', array(
+			'type'              => 'theme_mod',
+			'transport'         => 'refresh',
+			'sanitize_callback' => array( $this, 'sanitize_boolean' ),
+			'default'           => IV_DEFAULT_RELATED_SGS_ENABLED
+		) );
+		$wp_customize->add_control( 'iv_related_sgs_enabled', array(
+			'section' => 'iv_related_sg_options',
+			'type'    => 'checkbox',
+			'label'   => 'List related small groups',
+			'description' => 'When enabled, a list of related small groups will appear below any individual small group'
+		) );
+
+		$wp_customize->add_setting( 'iv_max_related_sgs', array(
+			'type'              => 'theme_mod',
+			'transport'         => 'refresh',
+			'sanitize_callback' => array( $this, 'sanitize_integer' ),
+			'default'           => IV_DEFAULT_MAX_RELATED_SGS
+		) );
+		$wp_customize->add_control( 'iv_max_related_sgs', array(
+			'section'     => 'iv_related_sg_options',
+			'type'        => 'select',
+			'label'       => 'Maximum Related Small Groups',
+			'description' => 'The maximum number of related small groups to show for any individual small group',
+			'choices'     => array(
+				'4'  => '4',
+				'6'  => '6',
+				'8'  => '8',
+				'10' => '10'
+			)
+		) );
+
+	}
+
+	public function add_special_page_options( $wp_customize ) {
+
+		$wp_customize->add_panel( 'iv_special_page_panel', array(
+			'title'       => 'Special Pages',
+			// Place panel beneath "Small Groups" panel
 			'priority'    => 115,
-			'description' => 'This section allows you to customize headings and messages for various special pages.'
+			'description' => 'This panel allows you to customize headings and messages for various special pages.'
+		) );
+
+		$this->add_no_sg_options( $wp_customize );
+		$this->add_search_null_options( $wp_customize );
+		$this->add_404_options( $wp_customize );
+
+	}
+
+	public function add_no_sg_options( $wp_customize ) {
+
+		$wp_customize->add_section( 'iv_no_sg_options', array(
+			'title'       => 'No Small Groups Listed',
+			'description' => 'This section allows you to customize headings and messages for campus pages with no small groups listed.',
+			'panel'       => 'iv_special_page_panel'
 		) );
 
 		$wp_customize->add_setting( 'iv_no_sg_heading', array(
@@ -576,10 +641,9 @@ class InterVarsity_Customize {
 			'default'           => IV_DEFAULT_NO_SG_HEADING
 		) );
 		$wp_customize->add_control( 'iv_no_sg_heading', array(
-			'section'     => 'iv_message_options',
-			'type'        => 'text',
-			'label'       => '"No Small Groups Listed" Heading',
-			'description' => 'The heading to display on a campus page with no small groups listed. Type {{campus}} to insert the current campus name.'
+			'section' => 'iv_no_sg_options',
+			'type'    => 'text',
+			'label'   => 'Heading'
 		) );
 
 		$wp_customize->add_setting( 'iv_no_sg_message', array(
@@ -589,10 +653,20 @@ class InterVarsity_Customize {
 			'default'           => IV_DEFAULT_NO_SG_MESSAGE
 		) );
 		$wp_customize->add_control( 'iv_no_sg_message', array(
-			'section'     => 'iv_message_options',
+			'section'     => 'iv_no_sg_options',
 			'type'        => 'textarea',
-			'label'       => '"No Small Groups Listed" Message',
-			'description' => 'The message to display on a campus page with no small groups listed. Type {{campus}} to insert the current campus name.'
+			'label'       => 'Message',
+			'description' => 'Type {{campus}} to insert the current campus name'
+		) );
+
+	}
+
+	public function add_search_null_options( $wp_customize ) {
+
+		$wp_customize->add_section( 'iv_search_null_options', array(
+			'title'       => 'No Small Groups Found',
+			'description' => 'This section allows you to customize headings and messages for search result pages where no small groups were found.',
+			'panel'       => 'iv_special_page_panel'
 		) );
 
 		$wp_customize->add_setting( 'iv_search_null_heading', array(
@@ -602,10 +676,9 @@ class InterVarsity_Customize {
 			'default'           => IV_DEFAULT_NULL_SEARCH_HEADING
 		) );
 		$wp_customize->add_control( 'iv_search_null_heading', array(
-			'section'     => 'iv_message_options',
-			'type'        => 'text',
-			'label'       => '"No Small Groups Found" Heading',
-			'description' => 'The heading to display on search result pages where no small groups were found'
+			'section' => 'iv_search_null_options',
+			'type'    => 'text',
+			'label'   => 'Heading'
 		) );
 
 		$wp_customize->add_setting( 'iv_search_null_message', array(
@@ -615,12 +688,21 @@ class InterVarsity_Customize {
 			'default'           => IV_DEFAULT_NULL_SEARCH_MESSAGE
 		) );
 		$wp_customize->add_control( 'iv_search_null_message', array(
-			'section'     => 'iv_message_options',
+			'section'     => 'iv_search_null_options',
 			'type'        => 'textarea',
-			'label'       => '"No Small Groups Found" Message',
-			'description' => 'The message to display on search result pages where no small groups were found'
+			'label'       => 'Message',
+			'description' => 'A search box will appear below this message'
 		) );
 
+	}
+
+	public function add_404_options( $wp_customize ) {
+
+		$wp_customize->add_section( 'iv_404_options', array(
+			'title'       => 'Page Not Found',
+			'description' => 'This section allows you to customize headings and messages for 404 "Page Not Found" pages.',
+			'panel'       => 'iv_special_page_panel'
+		) );
 
 		$wp_customize->add_setting( 'iv_404_heading', array(
 			'type'              => 'theme_mod',
@@ -629,10 +711,9 @@ class InterVarsity_Customize {
 			'default'           => IV_DEFAULT_404_HEADING
 		) );
 		$wp_customize->add_control( 'iv_404_heading', array(
-			'section'     => 'iv_message_options',
-			'type'        => 'text',
-			'label'       => '"Page Not Found" Heading',
-			'description' => 'The heading to display on the 404 "Not Found" page'
+			'section' => 'iv_404_options',
+			'type'    => 'text',
+			'label'   => 'Heading'
 		) );
 
 		$wp_customize->add_setting( 'iv_404_message', array(
@@ -642,10 +723,10 @@ class InterVarsity_Customize {
 			'default'           => IV_DEFAULT_404_MESSAGE
 		) );
 		$wp_customize->add_control( 'iv_404_message', array(
-			'section'     => 'iv_message_options',
+			'section'     => 'iv_404_options',
 			'type'        => 'textarea',
-			'label'       => '"Page Not Found" Message',
-			'description' => 'The message to display on the 404 "Not Found" page; a search box appears below this message when displayed'
+			'label'       => 'Message',
+			'description' => 'A search box will appear below this message'
 		) );
 
 	}
@@ -654,13 +735,20 @@ class InterVarsity_Customize {
 
 		$wp_customize->add_panel( 'iv_footer_panel', array(
 			'title'       => 'Footer',
-			// Place section beneath "404 Page" section
+			// Place panel beneath "404 Page" section
 			'priority'    => 120,
-			'description' => 'This section allows you to customize links and text in the site footer.'
+			'description' => 'This panel allows you to customize links and text in the site footer.'
 		) );
 
+		$this->add_ivcf_link_options( $wp_customize );
+		$this->add_copyright_text_options( $wp_customize );
+
+	}
+
+	public function add_ivcf_link_options( $wp_customize ) {
+
 		$wp_customize->add_section( 'iv_footer_ivcf_options', array(
-			'title'       => 'IVCF National Website Link',
+			'title'       => 'IVCF Website Link',
 			'description' => 'This section allows you to customize the link to the national InterVarsity Christian Fellowship/USA website in the site footer.',
 			'panel'       => 'iv_footer_panel'
 		) );
@@ -712,6 +800,10 @@ class InterVarsity_Customize {
 			'mime_type'   => 'image',
 			'description' => 'The image used for the IVCF link (this shows in place of the chosen link text)'
 		) ) );
+
+	}
+
+	public function add_copyright_text_options( $wp_customize ) {
 
 		$wp_customize->add_section( 'iv_footer_copyright_options', array(
 			'title'       => 'Copyright Text',

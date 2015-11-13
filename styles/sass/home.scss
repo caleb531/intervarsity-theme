@@ -46,11 +46,14 @@ $icon-offset-y: 2px;
 		padding: $box-compact-margin-y $box-compact-margin-x;
 		// Make home box container butt up against preceding container to
 		// conserve space
-		#page-slider + &,
 		#page-thumbnail + &,
 		#page-header + & {
 			margin-top: 0;
 			border-top-width: 0;
+		}
+		// Page slider typically shows page controls, so don't remove border
+		#page-slider + & {
+			margin-top: 0;
 		}
 	}
 	// A single content box
