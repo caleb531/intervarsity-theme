@@ -590,6 +590,25 @@ class InterVarsity_Customize {
 			'description' => 'When enabled, a list of related small groups will appear below any individual small group'
 		) );
 
+		$wp_customize->add_setting( 'iv_max_related_sgs', array(
+			'type'              => 'theme_mod',
+			'transport'         => 'refresh',
+			'sanitize_callback' => array( $this, 'sanitize_integer' ),
+			'default'           => IV_DEFAULT_MAX_RELATED_SGS
+		) );
+		$wp_customize->add_control( 'iv_max_related_sgs', array(
+			'section'     => 'iv_related_sg_options',
+			'type'        => 'select',
+			'label'       => 'Max Related Small Group Count',
+			'description' => 'The maximum number of related small groups to show for any individual small group',
+			'choices'     => array(
+				'4'  => '4',
+				'6'  => '6',
+				'8'  => '8',
+				'10' => '10'
+			)
+		) );
+
 	}
 
 	public function add_special_page_options( $wp_customize ) {
