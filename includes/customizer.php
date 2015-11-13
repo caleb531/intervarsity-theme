@@ -599,32 +599,13 @@ class InterVarsity_Customize {
 		$wp_customize->add_control( 'iv_max_related_sgs', array(
 			'section'     => 'iv_related_sg_options',
 			'type'        => 'select',
-			'label'       => 'Maximum Related Small Group Count',
+			'label'       => 'Max Related Small Group Count',
 			'description' => 'The maximum number of related small groups to show for any individual small group',
 			'choices'     => array(
 				'4'  => '4',
 				'6'  => '6',
 				'8'  => '8',
 				'10' => '10'
-			)
-		) );
-
-		$wp_customize->add_setting( 'iv_sg_relevance_threshold', array(
-			'type'              => 'theme_mod',
-			'transport'         => 'refresh',
-			'sanitize_callback' => array( $this, 'sanitize_integer' ),
-			'default'           => IV_DEFAULT_SG_RELEVANCE_THRESHOLD
-		) );
-		$wp_customize->add_control( 'iv_sg_relevance_threshold', array(
-			'section'     => 'iv_related_sg_options',
-			'type'        => 'select',
-			'label'       => 'Relevance Threshold',
-			'description' => 'Controls how similar a small group must be in order to be deemed related to another small group. The default and recommended value is 2; increase it to 3 if supposedly-related small groups do not actually appear relevant.',
-			'choices'     => array(
-				'1'  => '1',
-				'2'  => '2',
-				'3'  => '3',
-				'4'  => '4'
 			)
 		) );
 

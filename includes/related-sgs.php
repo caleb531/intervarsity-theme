@@ -40,6 +40,10 @@ function iv_get_sg_gender( $title ) {
 
 }
 
+// The minimum relevance factor a SG must have in order to be deemed similar to
+// the target SG
+define( 'IV_MIN_SG_RELEVANCE_FACTOR', 2 );
+
 // Retrieve related small groups for the given small group (SG)
 function iv_get_related_sgs( $target_sg ) {
 	// The target SG is the SG for which to find related SGs
@@ -70,10 +74,6 @@ function iv_get_related_sgs( $target_sg ) {
 	$coed_sg_groups = array();
 	$gender_sg_groups = array();
 
-	// The minimum relevance factor a SG must have in order to be deemed similar
-	// to the target SG
-	$relevance_threshold = get_theme_mod( 'iv_sg_relevance_threshold', IV_DEFAULT_SG_RELEVANCE_THRESHOLD );
-
 	foreach ( $campus_sgs as $sg ) {
 
 		// Retrieve SG data for comparison
@@ -87,7 +87,7 @@ function iv_get_related_sgs( $target_sg ) {
 
 		// All related SGs must have a relevance factor greater than or equal to
 		// the minimum in order to be considered related
-		if ( $relevance_factor >= $relevance_threshold ) {
+		if ( $relevance_factor >= IV_MIN_SG_RELEVANCE_FACTOR ) {
 
 			// If SG is co-ed
 			if ( null === $sg_gender ) {
