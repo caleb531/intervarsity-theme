@@ -599,7 +599,7 @@ class InterVarsity_Customize {
 		$wp_customize->add_control( 'iv_max_related_sgs', array(
 			'section'     => 'iv_related_sg_options',
 			'type'        => 'select',
-			'label'       => 'Max Related Small Group Count',
+			'label'       => 'Maximum Related Small Groups',
 			'description' => 'The maximum number of related small groups to show for any individual small group',
 			'choices'     => array(
 				'4'  => '4',
