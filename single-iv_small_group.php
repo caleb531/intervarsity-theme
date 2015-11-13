@@ -39,7 +39,7 @@ get_header(); ?>
 		global $post;
 		require_once IV_THEME_DIR . '/includes/related-sgs.php';
 		$iv_related_sgs = iv_get_related_sgs( $post );
-		if ( get_theme_mod( 'iv_related_sgs_enabled', IV_DEFAULT_RELATED_SGS_ENABLED ) && 0 !== count ( $iv_related_sgs ) ):
+		if ( get_theme_mod( 'iv_related_sgs_enabled', IV_DEFAULT_RELATED_SGS_ENABLED ) && 0 !== count( $iv_related_sgs ) ):
 		?>
 
 			<hr />
