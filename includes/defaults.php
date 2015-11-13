@@ -22,6 +22,8 @@ define( 'IV_DEFAULT_SGS_PER_PAGE', 6 );
 define( 'IV_DEFAULT_RELATED_SGS_ENABLED', true );
 // Default maximum number of related small groups to list for any small group
 define( 'IV_DEFAULT_MAX_RELATED_SGS', 10 );
+// Default relevance threshold used to determine relevant small groups
+define( 'IV_DEFAULT_SG_RELEVANCE_THRESHOLD', 2 );
 
 // Default accent color used throughout site
 define( 'IV_DEFAULT_ACCENT_COLOR', '#3366cc' );
