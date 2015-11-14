@@ -23,7 +23,7 @@ function the_sg_details( $before = '', $after = '' ) {
 			<?php
 		}
 		// If entry is not being viewed from its campus page
-		if ( ! is_tax( 'sg_category' ) && ! is_singular( 'iv_small_group' ) ) {
+		if ( ! is_tax( 'sg_campus' ) && ! is_singular( 'iv_small_group' ) ) {
 			// Display campus name within small group details to reduce
 			// ambiguity for small groups with same title
 			$campuses = get_the_term_list( $post->ID, 'sg_campus', '', ', ', '' );
