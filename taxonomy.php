@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all small groups for a particular campus
+ * The template for displaying all small groups in a particular taxonomy term
  *
  * @package InterVarsity
  */

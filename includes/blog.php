@@ -6,7 +6,11 @@
 // must be used in The Loop, and so we must retrieve the author ID using
 // get_queried_object() and work from there
 function iv_blog_details( $before = '', $after = '' ) {
-	$author_id = get_queried_object()->post_author;
+	if ( is_single() ) {
+		$author_id = get_queried_object()->post_author;
+	} else {
+		$author_id = get_the_author_meta( 'ID' );
+	}
 	echo $before;
 	?>
 	<div class="post-details">

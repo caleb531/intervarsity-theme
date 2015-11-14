@@ -7,7 +7,7 @@
 ?>
 
 <?php
-$is_small_group = ( is_tax( 'sg_campus' ) || is_search() );
+$is_small_group = ( is_tax() || is_search() );
 $is_post = ( is_home() || is_archive() );
 ?>
 

@@ -18,7 +18,7 @@
 		?>
 		<?php get_search_form(); ?>
 
-	<?php elseif ( is_tax( 'sg_campus' ) ) : ?>
+	<?php elseif ( is_tax() ) : ?>
 
 		<?php if ( ! empty( $_GET['sg_day'] ) ): ?>
 
