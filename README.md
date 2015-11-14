@@ -20,7 +20,7 @@ The theme sports a clean, responsive design which focuses on content and user ex
 
 ### Small group templates
 
-Small groups are organized according to the campuses you create and assign to them. You can view all small groups for a particular campus at `yourchapter.com/small-groups/my-campus/`. Individual small groups are viewable at `yourchapter.com/small-groups/some-campus/some-group/`.
+Small groups are organized according to the campuses and categories you create and assign to them. You can view all small groups for a particular campus at `yourchapter.com/small-groups/campus/my-campus/`. You can view all small groups for a particular category at `yourchapter.com/small-groups/category/my-category/`. Individual small groups are viewable at `yourchapter.com/small-group/some-group/`.
 
 #### Filter by day
 

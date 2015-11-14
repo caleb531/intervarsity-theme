@@ -10,12 +10,11 @@
 
 get_header(); ?>
 
-	<?php $obj = get_queried_object(); ?>
-	<?php if ( ! ( ! empty( $obj ) && post_password_required( $obj->ID ) ) ): ?>
+	<?php if ( ! ( is_home() && ! is_front_page() && post_password_required( get_queried_object()->ID ) ) ): ?>
 
 		<?php if ( is_author() ): ?>
 
-			<?php $author_name = $obj->display_name; ?>
+			<?php $author_name = get_the_author(); ?>
 			<?php if ( ! empty( $author_name ) && 0 !== get_the_author_posts() ): ?>
 
 				<p>These are all of the blog posts by the user <strong><?php echo $author_name; ?></strong>.</p>

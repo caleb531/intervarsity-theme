@@ -93,7 +93,7 @@ function iv_modify_posts_query( $query ) {
 	// Ensure query is not a secondary (nested) query
 	if ( $query->is_main_query() ) {
 		// If page displays small group entries on the frontend
-		if ( $query->is_tax( 'sg_campus' ) || ( $query->is_search() && ! is_admin() ) ) {
+		if ( $query->is_tax() || ( $query->is_search() && ! is_admin() ) ) {
 
 			// Always display small groups for frontend search results
 			$query->set( 'post_type', 'iv_small_group' );
