@@ -133,7 +133,8 @@ function iv_sg_filter_form() {
 
 	// Ensure the filter works on paginated campus pages by setting the form
 	// action to the first campus page, regardless of what page the user is on
-	$first_page = get_term_link( get_queried_object()->term_id, 'sg_campus' );
+	$term = get_queried_object();
+	$first_page = get_term_link( $term->term_id, $term->taxonomy );
 	?>
 	<form method="get" action="<?php echo $first_page ?>" id="sg-filter">
 		<p><label for="iv-day-filter">Filter by Day:</label> <?php iv_sg_filter_select( 'sg_day' ); ?></p>

@@ -20,6 +20,10 @@ function iv_page_header_title() {
 		echo 'Posts by ' . get_queried_object()->display_name;
 	} else if ( is_front_page() && is_home() ) {
 		bloginfo( 'name' );
+	} else if ( is_category() ) {
+		echo "Category: " . get_queried_object()->cat_name;
+	} else if ( is_tag() ) {
+		echo "Tag: " . get_queried_object()->name;
 	} else {
 		single_post_title();
 	}
@@ -56,7 +60,7 @@ function iv_page_breadcrumbs() {
 	<?php
 	// Store booleans indicating type of page
 	$is_small_group = ( is_singular( 'iv_small_group' ) );
-	$is_campus = is_tax( 'sg_campus' );
+	$is_sg_tax = is_tax();
 	$is_page = is_page() || ( is_home() && ! is_front_page() );
 	$is_post = is_singular( 'post' ) || is_author();
 	if ( 'page' == get_option( 'show_on_front' ) ) {
@@ -73,15 +77,15 @@ function iv_page_breadcrumbs() {
 		$blog_link = esc_url( home_url( '/' ) );
 	}
 	// If page is for a small group or a campus
-	if ( $is_small_group || $is_campus ) {
-		if ( $is_campus ) {
+	if ( $is_small_group || $is_sg_tax ) {
+		if ( $is_sg_tax ) {
 			// Retrieve campus object for current term page
-			$campus = get_queried_object();
+			$sg_term = get_queried_object();
 		} else {
 			// Otherwise, get campus object from current small group
-			$campus = iv_get_campus( $post );
+			$sg_term = iv_get_campus( $post );
 		}
-		if ( $campus ) {
+		if ( $sg_term ) {
 			// If small groups index exists
 			$sg_index_id = get_theme_mod( 'iv_sg_index_page' );
 			if ( ! empty( $sg_index_id ) && null !== get_post( $sg_index_id ) ) {
@@ -97,8 +101,8 @@ function iv_page_breadcrumbs() {
 				iv_breadcrumb_delimiter();
 				// Breadcrumb for campus page
 				iv_breadcrumb_link(
-					$campus->name,
-					get_term_link( $campus )
+					$sg_term->name,
+					get_term_link( $sg_term )
 				);
 			}
 		}
