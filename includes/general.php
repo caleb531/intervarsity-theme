@@ -43,10 +43,9 @@ function iv_get_taxonomy_post_types() {
 
 }
 
-// Retrieves the campus object for the given small group
-// Small groups can technically have multiple associated campuses, but
-// it is only practical to have one campus per small group
-function iv_get_campus( $sg ) {
+// Retrieves the first campus associated with the given small group
+function iv_get_sg_campus( $sg ) {
+
 	// Retrieve all campuses associated with this small group
 	$campuses = get_the_terms( $sg->ID, 'sg_campus' );
 	// If one or more campuses is associated with this SG
@@ -59,7 +58,22 @@ function iv_get_campus( $sg ) {
 		$campus = null;
 	}
 	return $campus;
+
 }
+
+// Retrieves the first category associated with the given small group
+function iv_get_sg_category( $sg ) {
+
+	$categories = get_the_terms( $sg->ID, 'sg_category' );
+	if ( is_array( $categories ) && count( $categories ) > 0 ) {
+		$category = current( $categories );
+	} else {
+		$category = null;
+	}
+	return $category;
+
+}
+
 
 // Outputs the custom footer for the site
 function iv_footer() {

@@ -57,84 +57,99 @@ function iv_page_breadcrumbs() {
 	global $post;
 	?>
 	<div id="page-breadcrumbs">
-	<?php
-	// Store booleans indicating type of page
-	$is_small_group = ( is_singular( 'iv_small_group' ) );
-	$is_sg_tax = is_tax();
-	$is_page = is_page() || ( is_home() && ! is_front_page() );
-	$is_post = is_singular( 'post' ) || is_author();
-	if ( 'page' == get_option( 'show_on_front' ) ) {
-		$blog_page = get_post( get_option( 'page_for_posts' ) );
-		if ( ! empty( $blog_page ) ) {
-			$blog_title = $blog_page->post_title;
-			$blog_link = get_permalink( $blog_page->ID );
-		} else {
-			$blog_title = 'Blog';
-			$blog_link = esc_url( home_url( '/' ) );
-		}
-	} else {
-		$blog_title = 'Blog';
-		$blog_link = esc_url( home_url( '/' ) );
-	}
-	// If page is for a small group or a campus
-	if ( $is_small_group || $is_sg_tax ) {
-		if ( $is_sg_tax ) {
-			// Retrieve campus object for current term page
-			$sg_term = get_queried_object();
-		} else {
-			// Otherwise, get campus object from current small group
-			$sg_term = iv_get_campus( $post );
-		}
-		if ( $sg_term ) {
-			// If small groups index exists
-			$sg_index_id = get_theme_mod( 'iv_sg_index_page' );
-			if ( ! empty( $sg_index_id ) && null !== get_post( $sg_index_id ) ) {
-				// Breadcrumb for small groups page
-				iv_breadcrumb_link(
-					get_the_title( $sg_index_id ),
-					get_permalink( $sg_index_id )
-				);
+		<?php
+		if ( is_singular( 'iv_small_group' ) || is_tax() ) {
+			// If this is a small group campus/category page or an individual
+			// small group page
+
+			if ( is_tax() ) {
+				// Retrieve campus object if this is a term page
+				$sg_term = get_queried_object();
 			} else {
-				iv_static_breadcrumb( "Small Groups" );
+				// Otherwise, get campus for this small group if it exists
+				$sg_term = iv_get_sg_campus( $post );
+				if ( empty( $sg_term ) ) {
+					// If it doesn't exist, try fetching category
+					$sg_term = iv_get_sg_category( $post );
+				}
 			}
-			if ( $is_small_group ) {
+			if ( ! empty( $sg_term ) ) {
+				$sg_index_id = get_theme_mod( 'iv_sg_index_page' );
+				if ( ! empty( $sg_index_id ) && null !== get_post( $sg_index_id ) ) {
+					// If small group index exists, show breadcrumb for small
+					// groups index page
+					iv_breadcrumb_link(
+						get_the_title( $sg_index_id ),
+						get_permalink( $sg_index_id )
+					);
+				} else {
+					// Otherwise, still indicate some sort of a hierarchy
+					iv_static_breadcrumb( 'Small Groups' );
+				}
+				// Indicate what taxonomy this is (i.e. Campus or Category)
+				$sg_tax = get_taxonomy( $sg_term->taxonomy );
 				iv_breadcrumb_delimiter();
-				// Breadcrumb for campus page
+				iv_static_breadcrumb( $sg_tax->labels->name );
+				if ( is_single() ) {
+					iv_breadcrumb_delimiter();
+					// Show breadcrumb for campus page
+					iv_breadcrumb_link(
+						$sg_term->name,
+						get_term_link( $sg_term )
+					);
+				}
+			}
+
+		} else if ( is_page() || ( is_home() && ! is_front_page() ) ) {
+			// If this is a page (even the Posts page) show parent pages as
+			// breadcrumbs
+
+			$parent_ids = get_post_ancestors( get_queried_object()->ID );
+			$last_parent_id = end( $parent_ids );
+			foreach ( $parent_ids as $parent_id ) {
+				$parent = get_post( $parent_id );
+				// Breadcrumb for each parent page
 				iv_breadcrumb_link(
-					$sg_term->name,
-					get_term_link( $sg_term )
+					get_the_title( $parent ),
+					get_permalink( $parent )
+				);
+				// Add delimiter between breadcrumbs
+				if ( $last_parent_id !== $parent_id ) {
+					iv_breadcrumb_delimiter();
+				}
+			}
+
+		} else if ( is_singular( 'post' ) || is_author() || is_category() || is_tag() ) {
+			// If this is some other Blog-related page, show the Posts page as
+			// the only breadcrumb
+
+			if ( 'page' == get_option( 'show_on_front' ) ) {
+				// If Front Page is set to show static page, get title and
+				// permalink for that page
+				$blog_page = get_post( get_option( 'page_for_posts' ) );
+				if ( ! empty( $blog_page ) ) {
+					iv_breadcrumb_link(
+						$blog_page->post_title,
+						get_permalink( $blog_page->ID )
+					);
+				}
+			} else {
+				// If Front Page is set to show latest posts, Blog page is same as Front Page
+				iv_breadcrumb_link(
+					'Blog',
+					esc_url( home_url( '/' ) )
 				);
 			}
+
 		}
-	} else if ( $is_page ) {
-		// Loop through parent pages
-		$parent_ids = get_post_ancestors( get_queried_object()->ID );
-		$last_parent_id = end( $parent_ids );
-		foreach ( $parent_ids as $parent_id ) {
-			$parent = get_post( $parent_id );
-			// Breadcrumb for each parent page
-			iv_breadcrumb_link(
-				get_the_title( $parent ),
-				get_permalink( $parent )
-			);
-			// Add delimiter between breadcrumbs
-			if ( $last_parent_id !== $parent_id ) {
-				iv_breadcrumb_delimiter();
-			}
-		}
-	} else if ( $is_post ) {
-		iv_breadcrumb_link(
-			$blog_title,
-			$blog_link
-		);
-	}
-	?>
+		?>
 	</div>
 	<?php
 }
 
 // Output social header if enabled
 function iv_social_header() {
+
 	$icons = array(
 		array(
 			'id'        => 'iv_facebook_link',
@@ -200,10 +215,12 @@ function iv_social_header() {
 	?>
 	</ul></div>
 	<?php
+
 }
 
 // Output page slider
 function iv_header_slider() {
+
 	// Sliders are only supported on static pages
 	$page = get_queried_object();
 	$slider_id = get_post_meta( $page->ID, '_iv_slider_id', true );
@@ -222,13 +239,16 @@ function iv_header_slider() {
 			<?php
 		}
 	}
+
 }
 
 // Trigger responsive viewport on front-end pages and Maintenance Mode page
 function iv_enable_responsive_viewport() {
+
 	?>
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
 	<?php
+
 }
 add_action( 'wp_head', 'iv_enable_responsive_viewport', 10 );
 // WP Maintenance Mode page

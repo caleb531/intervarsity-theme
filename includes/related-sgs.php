@@ -29,7 +29,7 @@ function iv_get_related_sgs( $target_sg ) {
 	// The target SG is the SG for which to find related SGs
 
 	// Retrieve associated campus object for target SG
-	$campus = iv_get_campus( $target_sg );
+	$campus = iv_get_sg_campus( $target_sg );
 	// Keep array of related SGs
 	$related_sgs = array();
 	// Retrieve all other SGs from same campus
