@@ -257,6 +257,3 @@ add_action( 'wpmm_head', 'iv_enable_responsive_viewport', 10 );
 // Add site icons to login screen and Naintenance Mode
 add_action( 'login_head', 'wp_site_icon', 10 );
 add_action( 'wpmm_head', 'wp_site_icon', 10 );
-
-// Remove generator tag indicating site runs on WordPress
-remove_action( 'wp_head', 'wp_generator', 10 );
