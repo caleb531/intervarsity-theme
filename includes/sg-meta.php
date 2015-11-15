@@ -139,7 +139,7 @@ function iv_sg_filter_form() {
 	$first_page = get_term_link( $term->term_id, $term->taxonomy );
 	?>
 	<form method="get" action="<?php echo $first_page ?>" id="sg-filter">
-		<p><label for="iv-day-filter">Filter by Day:</label> <?php iv_sg_filter_select( 'sg_day' ); ?></p>
+		<label for="iv-day-filter">Filter by Day:</label> <?php iv_sg_filter_select( 'sg_day' ); ?>
 		<input type="submit" value="Filter" />
 	</form>
 	<?php

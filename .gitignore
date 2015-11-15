@@ -3,3 +3,6 @@
 
 # Directory containing cache for compiled SCSS files
 .sass-cache
+
+# Node.js files/directories
+node_modules
