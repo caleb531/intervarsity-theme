@@ -90,4 +90,9 @@ module.exports = function(grunt) {
 		'uglify'
 	]);
 
+	grunt.registerTask('serve', [
+		'build',
+		'watch'
+	]);
+
 };
