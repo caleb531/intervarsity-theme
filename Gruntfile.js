@@ -41,7 +41,7 @@ module.exports = function(grunt) {
 			scripts: {
 				files: {
 					'scripts/customize-preview.min.js': 'scripts/customize-preview.js',
-					'scripts/site.min.js': 'scripts/site.js',
+					'scripts/site.min.js': 'scripts/site.js'
 				}
 			}
 		},
