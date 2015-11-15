@@ -20,6 +20,20 @@ module.exports = function(grunt) {
 			}
 		},
 
+		postcss: {
+			options: {
+				map: false,
+				processors: [
+					require('autoprefixer')({
+						browsers: 'last 2 versions'
+					})
+				]
+			},
+			styles: {
+				src: 'styles/css/*.css'
+			}
+		},
+
 		uglify: {
 			options: {
 				sourceMap: false
@@ -47,7 +61,8 @@ module.exports = function(grunt) {
 					'styles/sass/*.scss'
 				],
 				tasks: [
-					'sass:styles'
+					'sass',
+					'postcss'
 				]
 			}
 		}
@@ -55,6 +70,7 @@ module.exports = function(grunt) {
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-postcss');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
