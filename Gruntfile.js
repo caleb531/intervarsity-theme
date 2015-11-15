@@ -8,14 +8,23 @@ module.exports = function(grunt) {
 		sass: {
 			options: {
 				style: 'compressed',
-				sourcemap: 'none',
 				cacheLocation: 'styles/sass/.sass-cache'
 			},
-			styles: {
+			external: {
+				options: {
+					sourcemap: 'file'
+				},
 				files: {
 					'styles/css/site.css': 'styles/sass/site.scss',
-					'styles/css/customizations.css': 'styles/sass/customizations.scss',
 					'styles/css/editor.css': 'styles/sass/editor.scss',
+				}
+			},
+			internal: {
+				options: {
+					sourcemap: 'inline'
+				},
+				files: {
+					'styles/css/customizations.css': 'styles/sass/customizations.scss',
 					'styles/css/maintenance.css': 'styles/sass/maintenance.scss'
 				}
 			}
@@ -23,7 +32,7 @@ module.exports = function(grunt) {
 
 		postcss: {
 			options: {
-				map: false,
+				map: true,
 				processors: [
 					require('autoprefixer')({
 						browsers: 'last 2 versions'
@@ -37,7 +46,7 @@ module.exports = function(grunt) {
 
 		uglify: {
 			options: {
-				sourceMap: false
+				sourceMap: true
 			},
 			scripts: {
 				files: {
@@ -75,7 +84,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
-	grunt.registerTask('compile', [
+	grunt.registerTask('build', [
 		'sass',
 		'postcss',
 		'uglify'
