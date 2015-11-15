@@ -84,9 +84,12 @@ $sg-tile-max-width: 400px;
 	}
 }
 
-// Do not display Submit button for small group "Filter by Day" form; the
-// front-end script will automatically submit the form when the user selects a
-// value
-#sg-filter input[type="submit"] {
-	display: none;
+// Small group "Filter by Day" form
+#sg-filter {
+	margin-bottom: 10px;
+	// Do not display form Submit button; the front-end script will
+	// automatically submit the form when the user selects a value
+	input[type="submit"] {
+		display: none;
+	}
 }
