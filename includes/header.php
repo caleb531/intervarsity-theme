@@ -147,72 +147,72 @@ function iv_page_breadcrumbs() {
 	<?php
 }
 
+// Parameters for social header icons
+$iv_social_icons = array(
+	array(
+		'link'    => 'iv_facebook_link',
+		'enabled' => 'iv_facebook_enabled',
+		'title'   => 'Facebook',
+		'icon'    => 'iv-icon-facebook',
+		'class'   => 'facebook'
+	),
+	array(
+		'link'    => 'iv_twitter_link',
+		'enabled' => 'iv_twitter_enabled',
+		'title'   => 'Twitter',
+		'icon'    => 'iv-icon-twitter',
+		'class'   => 'twitter'
+	),
+	array(
+		'link'    => 'iv_instagram_link',
+		'enabled' => 'iv_instagram_enabled',
+		'title'   => 'Instagram',
+		'icon'    => 'iv-icon-instagram',
+		'class'   => 'instagram'
+	),
+	array(
+		'link'    => 'iv_email_address',
+		'enabled' => 'iv_email_enabled',
+		'title'   => 'Email',
+		'icon'    => 'iv-icon-mail',
+		'class'   => 'email'
+	)
+);
+
 // Output social header if enabled
 function iv_social_header() {
+	global $iv_social_icons;
 
-	$icons = array(
-		array(
-			'id'        => 'iv_facebook_link',
-			'toggle_id' => 'iv_facebook_enabled',
-			'title'     => 'Facebook',
-			'icon'      => 'iv-icon-facebook',
-			'class'     => 'facebook'
-		),
-		array(
-			'id'        => 'iv_twitter_link',
-			'toggle_id' => 'iv_twitter_enabled',
-			'title'     => 'Twitter',
-			'icon'      => 'iv-icon-twitter',
-			'class'     => 'twitter'
-		),
-		array(
-			'id'        => 'iv_instagram_link',
-			'toggle_id' => 'iv_instagram_enabled',
-			'title'     => 'Instagram',
-			'icon'      => 'iv-icon-instagram',
-			'class'     => 'instagram'
-		),
-		array(
-			'id'        => 'iv_email_address',
-			'toggle_id' => 'iv_email_enabled',
-			'title'     => 'Email',
-			'icon'      => 'iv-icon-mail',
-			'class'     => 'email'
-		)
-	);
-
-	// Output social header
 	?>
 	<div id="site-header-social"><ul>
-	<?php
-	$social_message_enabled = get_theme_mod( 'iv_social_message_enabled', false );
-	// Output social header message
-	if ( $social_message_enabled ) {
-		$social_message = get_theme_mod( 'iv_social_message' );
-		?>
-		<li class="social message"><?php echo $social_message; ?></li>
-		<?php
-	}
-	// Output social icons
-	foreach ( $icons as $icon ) {
-		$enabled = get_theme_mod( $icon['toggle_id'], false );
-		if ( $enabled ) {
-			$link = get_theme_mod( $icon['id'] );
-			// Obscure email address in HTML to deter harvesting
-			if ( is_email( $link ) ) {
-				$link = "mailto:" . antispambot( $link, 1 );
-			}
-			// Output social icon
-			?>
-			<li class="social <?php echo $icon['class']; ?>">
-				<a href="<?php echo $link; ?>" data-tooltip data-tooltip-title="<?php echo $icon['title'];?>">
-					<span class="iv-icon <?php echo $icon['icon']; ?>"></span>
-				</a>
-			</li>
-			<?php
-		}
-	}
-	?>
+
+		<?php if ( get_theme_mod( 'iv_social_message_enabled' ) ): ?>
+
+			<li class="social message"><?php echo get_theme_mod( 'iv_social_message' ); ?></li>
+
+		<?php endif; ?>
+
+		<?php foreach ( $iv_social_icons as $icon ): ?>
+
+			<?php if ( get_theme_mod( $icon['enabled'] ) ): ?>
+
+				<?php
+				$link = get_theme_mod( $icon['link'] );
+				// Obscure email address in HTML to deter harvesting
+				if ( is_email( $link ) ) {
+					$link = "mailto:" . antispambot( $link, 1 );
+				}
+				?>
+				<li class="social <?php echo $icon['class']; ?>">
+					<a href="<?php echo $link; ?>" data-tooltip data-tooltip-title="<?php echo $icon['title'];?>">
+						<span class="iv-icon <?php echo $icon['icon']; ?>"></span>
+					</a>
+				</li>
+
+			<?php endif; ?>
+
+		<?php endforeach; ?>
+
 	</ul></div>
 	<?php
 
