@@ -23,7 +23,7 @@ function the_sg_details( $before = '', $after = '' ) {
 			<?php
 		}
 		// If entry is not being viewed from its campus page
-		if ( ! is_tax( 'sg_category' ) && ! is_singular( 'iv_small_group' ) ) {
+		if ( ! is_tax( 'sg_campus' ) && ! is_singular( 'iv_small_group' ) ) {
 			// Display campus name within small group details to reduce
 			// ambiguity for small groups with same title
 			$campuses = get_the_term_list( $post->ID, 'sg_campus', '', ', ', '' );
@@ -139,7 +139,7 @@ function iv_sg_filter_form() {
 	$first_page = get_term_link( $term->term_id, $term->taxonomy );
 	?>
 	<form method="get" action="<?php echo $first_page ?>" id="sg-filter">
-		<p><label for="iv-day-filter">Filter by Day:</label> <?php iv_sg_filter_select( 'sg_day' ); ?></p>
+		<label for="iv-day-filter">Filter by Day:</label> <?php iv_sg_filter_select( 'sg_day' ); ?>
 		<input type="submit" value="Filter" />
 	</form>
 	<?php
