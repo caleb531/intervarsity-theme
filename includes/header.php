@@ -254,6 +254,8 @@ add_action( 'wp_head', 'iv_enable_responsive_viewport', 10 );
 // WP Maintenance Mode page
 add_action( 'wpmm_head', 'iv_enable_responsive_viewport', 10 );
 
-// Add site icons to login screen and Naintenance Mode
-add_action( 'login_head', 'wp_site_icon', 10 );
-add_action( 'wpmm_head', 'wp_site_icon', 10 );
+// Add site icons to login screen and Maintenance Mode
+if ( function_exists( 'wp_site_icon' ) ) {
+	add_action( 'login_head', 'wp_site_icon', 10 );
+	add_action( 'wpmm_head', 'wp_site_icon', 10 );
+}
