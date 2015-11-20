@@ -17,12 +17,12 @@ $is_post = ( is_home() || is_archive() );
 
 	<header class="entry-header">
 
-		<h2 class="entry-title">
+		<h3 class="entry-title">
 			<?php if ( is_sticky() ): ?>
 				<span class="iv-icon iv-icon-pin"></span>
 			<?php endif; ?>
 			<a href="<?php echo $url; ?>"><?php the_title(); ?></a>
-		</h2>
+		</h3>
 		<?php if ( current_user_can( 'edit_posts' ) ): ?>
 			<a class="entry-edit-link dashicons-before dashicons-edit" href="<?php echo get_edit_post_link(); ?>" target="_blank">Edit Post</a>
 		<?php endif; ?>

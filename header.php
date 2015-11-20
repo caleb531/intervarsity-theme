@@ -26,6 +26,7 @@
 		<div id="site-logo">
 
 			<a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo ( has_header_image() ? get_header_image() : IV_DEFAULT_HEADER_IMAGE_URL ); ?>" alt="<?php echo get_bloginfo( 'title' ) ; ?>" /></a>
+			<h1 class="screen-reader-text"><?php echo get_option( 'blogname' ); ?></h1>
 
 		</div>
 
@@ -37,7 +38,7 @@
 				// Add responsive navigation list
 				wp_nav_menu( array(
 					'theme_location' => 'header_menu',
-					'items_wrap'	 => '<div id="nav-control-responsive"><span class="iv-icon iv-icon-list"></span></div><ul id="%1$s" class="%2$s">%3$s</ul>',
+					'items_wrap'	 => '<h2 class="screen-reader-text">Site Navigation (Header)</h2><div id="nav-control-responsive"><span class="iv-icon iv-icon-list"></span></div><ul id="%1$s" class="%2$s">%3$s</ul>',
 					'container'		 => 'nav',
 					'container_id'	 => 'site-header-nav',
 					'menu_id'        => 'site-header-nav-list',
@@ -57,7 +58,7 @@
 
 	</header>
 
-	<div id="page">
+	<section id="page">
 
 		<?php
 		// Hide page header (via CSS class):
@@ -68,7 +69,7 @@
 
 			<header id="page-header" class="<?php echo ( is_front_page() && ! get_theme_mod( 'iv_home_page_header_enabled', IV_DEFAULT_HOME_PAGE_HEADER_ENABLED ) ? 'screen-reader-text' : '' ); ?>">
 				<div id="page-heading">
-					<h1><?php iv_page_header_title(); ?></h1>
+					<h2><?php iv_page_header_title(); ?></h2>
 					<?php if ( is_singular( 'post' ) && ! post_password_required() ): ?>
 						<?php iv_blog_details(); ?>
 					<?php endif; ?>

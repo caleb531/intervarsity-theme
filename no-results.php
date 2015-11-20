@@ -11,7 +11,7 @@
 
 	<?php if ( is_search() ) : ?>
 
-		<h2><?php echo get_theme_mod( 'iv_search_null_heading', IV_DEFAULT_NULL_SEARCH_HEADING ) ?></h2>
+		<h3><?php echo get_theme_mod( 'iv_search_null_heading', IV_DEFAULT_NULL_SEARCH_HEADING ) ?></h3>
 
 		<?php
 		echo wpautop( get_theme_mod( 'iv_search_null_message', IV_DEFAULT_NULL_SEARCH_MESSAGE ) );
@@ -22,7 +22,7 @@
 
 		<?php if ( ! empty( $_GET['sg_day'] ) ): ?>
 
-			<h2><?php echo get_theme_mod( 'iv_search_null_heading', IV_DEFAULT_NULL_SEARCH_HEADING ) ?></h2>
+			<h3><?php echo get_theme_mod( 'iv_search_null_heading', IV_DEFAULT_NULL_SEARCH_HEADING ) ?></h3>
 
 			<?php
 			echo wpautop( get_theme_mod( 'iv_search_null_message', IV_DEFAULT_NULL_SEARCH_MESSAGE ) );
@@ -32,7 +32,7 @@
 
 		<?php else: ?>
 
-			<h2><?php echo get_theme_mod( 'iv_no_sg_heading', 'No Small Groups Listed' ); ?></h2>
+			<h3><?php echo get_theme_mod( 'iv_no_sg_heading', 'No Small Groups Listed' ); ?></h3>
 
 			<?php
 			$campus_name = single_term_title( '', false );
