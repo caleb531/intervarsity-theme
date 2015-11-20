@@ -3,7 +3,7 @@
  * The template for displaying blog posts
  *
  * This template is used for the front page if latest posts are set to show or
- * on the designated Posts page. It is also used for author pages.
+ * on the designated Posts page.
  *
  * @package InterVarsity
  */
@@ -12,20 +12,7 @@ get_header(); ?>
 
 	<?php if ( ! ( is_home() && ! is_front_page() && post_password_required( get_queried_object()->ID ) ) ): ?>
 
-		<?php if ( is_author() ): ?>
-
-			<?php $author_name = get_the_author(); ?>
-			<?php if ( ! empty( $author_name ) && 0 !== get_the_author_posts() ): ?>
-
-				<p>These are all of the blog posts by the user <strong><?php echo $author_name; ?></strong>.</p>
-
-			<?php else: ?>
-
-				<p>There are no posts for the user <strong><?php echo $author_name; ?></strong>.</p>
-
-			<?php endif; ?>
-
-		<?php elseif ( is_home() && ! is_front_page() ): ?>
+		<?php if ( is_home() && ! is_front_page() ): ?>
 
 			<?php echo apply_filters( 'the_content', get_queried_object()->post_content ); ?>
 
