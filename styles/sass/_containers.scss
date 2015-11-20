@@ -8,15 +8,10 @@ html {
 }
 
 body {
-	margin: 0;
-	color: #fff;
-}
-
-// The core container for all page elements in <body>, excluding scripts
-#body-core {
+	margin: 0 auto;
 	max-width: $body-max-width;
 	min-width: 320px;
-	margin: 0 auto;
+	color: #fff;
 }
 
 // The container for everything beneath site header but above site footer

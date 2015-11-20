@@ -17,9 +17,7 @@
 <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
-
-<div id="body-core" class="hfeed site">
+<body <?php body_class( 'hfeed site' ); ?>>
 
 	<header id="site-header">
 
