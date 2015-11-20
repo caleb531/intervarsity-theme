@@ -25,13 +25,9 @@ get_header(); ?>
 
 			<?php endif; ?>
 
-		<?php else: ?>
+		<?php elseif ( is_home() && ! is_front_page() ): ?>
 
-			<?php if ( ! empty( $obj ) ): ?>
-
-				<?php echo wpautop( $obj->post_content ); ?>
-
-			<?php endif; ?>
+			<?php echo apply_filters( 'the_content', get_queried_object()->post_content ); ?>
 
 		<?php endif; ?>
 
