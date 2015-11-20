@@ -5,7 +5,11 @@
 	display: none;
 	width: $nav-control-size;
 	height: $nav-control-size;
+	margin: 0;
 	padding: $nav-control-padding-y $nav-control-padding-x;
+	border-width: 0;
+	border-radius: 0;
+	background: none;
 	font-size: $nav-control-size;
 	line-height: $nav-control-size;
 	transition: padding $transition-duration $transition-easing;
