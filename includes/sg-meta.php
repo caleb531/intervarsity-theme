@@ -79,7 +79,7 @@ function the_sg_contact( $before = '', $after = '' ) {
 
 }
 
-// Return select options for Day filter
+// Returns select options for Day filter
 function iv_filter_day_options() {
 	return array(
 		array(
@@ -109,40 +109,37 @@ function iv_filter_day_options() {
 	);
 }
 
-function iv_filter_campus_options() {
-	$campuss = get_terms( 'sg_campus' );
+// Retrieves select options for the filter for the given taxonomy
+function iv_filter_term_options( $taxonomy ) {
+	$terms = get_terms( $taxonomy );
+	$tax_name_singular = get_taxonomy( $taxonomy )->labels->singular_name;
 	$options = array(
 		array(
-			'label' => 'Any Campus',
+			'label' => sprintf( 'Any %1$s', $tax_name_singular ),
 			'value' => ''
 		)
 	);
-	foreach ( $campuss as $campus ) {
+	foreach ( $terms as $term ) {
 		array_push( $options, array(
-			'label' => $campus->name,
-			'value' => $campus->slug
-		) );
-	}
-	return $options;
-}
-function iv_filter_category_options() {
-	$campuss = get_terms( 'sg_category' );
-	$options = array(
-		array(
-			'label' => 'Any Category',
-			'value' => ''
-		)
-	);
-	foreach ( $campuss as $campus ) {
-		array_push( $options, array(
-			'label' => $campus->name,
-			'value' => $campus->slug
+			'label' => $term->name,
+			'value' => $term->slug
 		) );
 	}
 	return $options;
 }
 
-// Outputs day selection control for small groups
+// Retrieves select options for Campus filter
+function iv_filter_campus_options() {
+	return iv_filter_term_options( 'sg_campus' );
+}
+
+// Retrieves select options for Category filter
+function iv_filter_category_options() {
+	return iv_filter_term_options( 'sg_category' );
+}
+
+// Outputs a filter menu for the given key, the options for which are
+// retrieved using the given callback function
 function iv_sg_filter_select( $key, $options_callback ) {
 	global $iv_filter_options, $wp_query;
 
@@ -163,7 +160,7 @@ function iv_sg_filter_select( $key, $options_callback ) {
 
 }
 
-// Outputs the form for all small group filter controls
+// Outputs the form containing all small group filter menus
 function iv_sg_filter_form() {
 
 	$archive_url = get_post_type_archive_link( 'iv_small_group' );
