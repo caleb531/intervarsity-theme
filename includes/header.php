@@ -10,20 +10,21 @@ if ( ! defined( 'HEADER_IMAGE_HEIGHT' ) ) {
 
 // Augment the logic for selecting the title in the page header
 function iv_page_header_title() {
-	if ( is_tax() ) {
-		// Handle taxonomy archives
-		printf( '%1$s Small Groups', single_term_title() );
+	global $wp_query;
+	if ( is_post_type_archive( 'iv_small_group' ) ) {
+		printf( 'All Small Groups' );
+	} else if ( is_tax( 'sg_campus' ) || is_tax( 'sg_category' ) ) {
+		printf( '%1$s Small Groups', single_term_title( '', false ) );
 	} else if ( is_search() ) {
-		// Indicate that search is excluded to small groups
-		echo 'Small Group Search';
+		printf( 'Small Group Search' );
 	} else if ( is_author() ) {
-		echo 'Posts by ' . get_queried_object()->display_name;
+		printf( 'Posts by %1$s', get_queried_object()->display_name );
 	} else if ( is_front_page() && is_home() ) {
 		bloginfo( 'name' );
 	} else if ( is_category() ) {
-		echo "Category: " . get_queried_object()->cat_name;
+		printf('Category: %1$s', get_queried_object()->cat_name);
 	} else if ( is_tag() ) {
-		echo "Tag: " . get_queried_object()->name;
+		printf('Tag: %1$s', get_queried_object()->name);
 	} else {
 		single_post_title();
 	}
@@ -58,11 +59,12 @@ function iv_page_breadcrumbs() {
 	?>
 	<div id="page-breadcrumbs">
 		<?php
-		if ( is_singular( 'iv_small_group' ) || is_tax() ) {
+		$is_sg_tax = ( is_tax( 'sg_campus' ) || is_tax( 'sg_category' ) );
+		if ( is_singular( 'iv_small_group' ) || $is_sg_tax || is_post_type_archive( 'iv_small_group' ) ) {
 			// If this is a small group campus/category page or an individual
 			// small group page
 
-			if ( is_tax() ) {
+			if ( $is_sg_tax ) {
 				// Retrieve campus object if this is a term page
 				$sg_term = get_queried_object();
 			} else {
@@ -87,9 +89,11 @@ function iv_page_breadcrumbs() {
 					iv_static_breadcrumb( 'Small Groups' );
 				}
 				// Indicate what taxonomy this is (i.e. Campus or Category)
-				$sg_tax = get_taxonomy( $sg_term->taxonomy );
-				iv_breadcrumb_delimiter();
-				iv_static_breadcrumb( $sg_tax->labels->name );
+				if ( $is_sg_tax ) {
+					$sg_tax = get_taxonomy( $sg_term->taxonomy );
+					iv_breadcrumb_delimiter();
+					iv_static_breadcrumb( $sg_tax->labels->name );
+				}
 				if ( is_single() ) {
 					iv_breadcrumb_delimiter();
 					// Show breadcrumb for campus page

@@ -26,7 +26,7 @@ get_header(); ?>
 
 	<?php endif; ?>
 
-	<div class="blog-posts entries">
+	<div class="entries post">
 
 		<?php while ( have_posts() ) : the_post(); ?>
 

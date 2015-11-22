@@ -1,7 +1,7 @@
 // Styling for blog entries
 
 // Container for all blog post entries on a given page
-.blog-posts.entries {
+.post.entries {
 	max-width: $post-max-width;
 	@include layout(compact) {
 		max-width: none;

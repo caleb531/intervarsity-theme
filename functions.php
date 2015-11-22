@@ -67,6 +67,10 @@ function iv_after_setup_theme() {
 	) ) );
 	add_editor_style( IV_THEME_DIR_URI . '/styles/css/editor.css' );
 
+	// Enable WordPress to recognize sg_day as query parameter for filtering
+	// small groups
+	add_rewrite_tag( '%sg_day%', '([\w\-]+)' );
+
 }
 add_action( 'after_setup_theme', 'iv_after_setup_theme', 99 );
 
@@ -93,7 +97,7 @@ function iv_modify_posts_query( $query ) {
 	// Ensure query is not a secondary (nested) query
 	if ( $query->is_main_query() ) {
 		// If page displays small group entries on the frontend
-		if ( $query->is_tax() || ( $query->is_search() && ! is_admin() ) ) {
+		if ( $query->is_post_type_archive( 'iv_small_group' ) || $query->is_tax( 'sg_campus' ) || $query->is_tax( 'sg_category' ) || ( $query->is_search() && ! is_admin() ) ) {
 
 			// Always display small groups for frontend search results
 			$query->set( 'post_type', 'iv_small_group' );
@@ -102,11 +106,11 @@ function iv_modify_posts_query( $query ) {
 			$query->set( 'posts_per_page', intval( get_theme_mod( 'iv_sgs_per_page', IV_DEFAULT_SGS_PER_PAGE ) ) );
 
 			// Filter small groups by day if the sg_day parameter is given
-			if ( ! empty( $_GET['sg_day'] ) ) {
+			if ( $query->get( 'sg_day' ) ) {
 				$query->set( 'meta_query', array(
 					array(
 						'key'     => '_sg_time',
-						'value'   => $_GET['sg_day'],
+						'value'   => $query->get( 'sg_day' ),
 						'compare' => 'LIKE'
 					)
 				) );

@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying blog posts
+ * The template for displaying blog post and small group archives
  *
  * This template is used for the front page if latest posts are set to show or
  * on the designated Posts page.
@@ -18,17 +18,29 @@ get_header(); ?>
 
 		<?php endif; ?>
 
-		<div class="blog-posts entries">
+		<?php if ( have_posts() ): ?>
 
-			<?php while ( have_posts() ) : the_post(); ?>
+			<?php if ( 'iv_small_group' === get_post_type() ): ?>
+				<?php iv_sg_filter_form(); ?>
+			<?php endif; ?>
 
-				<?php get_template_part( 'content' ); ?>
+			<div class="entries <?php echo get_post_type(); ?>">
 
-			<?php endwhile; wp_reset_query(); ?>
+				<?php while ( have_posts() ) : the_post(); ?>
 
-		</div>
+					<?php get_template_part( 'content' ); ?>
 
-		<?php iv_paginate_links(); ?>
+				<?php endwhile; wp_reset_query(); ?>
+
+			</div>
+
+			<?php iv_paginate_links(); ?>
+
+		<?php else: ?>
+
+			<?php get_template_part( 'no-results' ); ?>
+
+		<?php endif; ?>
 
 	<?php else: ?>
 

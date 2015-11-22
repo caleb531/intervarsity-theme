@@ -7,8 +7,9 @@
 ?>
 
 <?php
-$is_small_group = ( is_tax() || is_search() );
-$is_post = ( is_home() || is_archive() );
+$post_type = get_post_type();
+$is_small_group = ( 'iv_small_group' === $post_type );
+$is_post = ( 'post' === $post_type );
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'entry entry-tile' ); ?>>
@@ -49,15 +50,15 @@ $is_post = ( is_home() || is_archive() );
 
 		</div>
 
-		<?php if ( $is_small_group ): ?>
+		<?php if ( ! post_password_required() ): ?>
 
-			<?php the_sg_details( '<hr /><div class="sg-details">', '</div>' ); ?>
+			<?php if ( $is_small_group ): ?>
 
-			<?php the_sg_contact( '<hr /><div class="sg-contact"><span class="entry-label">Contact:</span> ', '</div>' ); ?>
+				<?php the_sg_details( '<hr /><div class="sg-details">', '</div>' ); ?>
 
-		<?php elseif ( $is_post ): ?>
+				<?php the_sg_contact( '<hr /><div class="sg-contact"><span class="entry-label">Contact:</span> ', '</div>' ); ?>
 
-			<?php if ( ! post_password_required() ): ?>
+			<?php elseif ( $is_post ): ?>
 
 				<?php iv_blog_details( '<hr />' ); ?>
 				<?php iv_blog_terms( '<hr />' ); ?>
