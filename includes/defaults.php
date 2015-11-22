@@ -14,7 +14,7 @@ define( 'IV_DEFAULT_NO_SG_MESSAGE', 'Sorry, but there are no {{campus}} small gr
 
 // Default copy for "No Small Groups Found" search result page
 define( 'IV_DEFAULT_NULL_SEARCH_HEADING', 'No Small Groups Found' );
-define( 'IV_DEFAULT_NULL_SEARCH_MESSAGE', "Sorry, but no small groups matched your search terms.\nPlease try again with some different keywords." );
+define( 'IV_DEFAULT_NULL_SEARCH_MESSAGE', "Sorry, but no small groups matched your search query.\nPlease try refining your search." );
 
 // Default maximum number of small groups to list per page
 define( 'IV_DEFAULT_SGS_PER_PAGE', 6 );
