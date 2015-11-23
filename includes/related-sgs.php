@@ -66,12 +66,18 @@ function iv_get_related_sgs( $target_sg ) {
 		// categories it shares with that of the target SG
 		$relevance_factor = count( array_intersect( $target_terms, $sg_terms ) );
 
-		// If SG is gender-specific and its gender matches that of the target
-		// SG, increase its precedence
-		if ( null !== $sg_gender && $target_gender === $sg_gender ) {
-			$relevance_factor += IV_SG_GENDER_MATCH_WEIGHT;
+		// If both this SG and the target SG are gender-specific
+		if ( null !== $sg_gender && null !== $target_gender ) {
+			if ( $target_gender === $sg_gender ) {
+				// SG is very relevant if its gender matches that of the target
+				$relevance_factor += IV_SG_GENDER_MATCH_WEIGHT;
+			} else {
+				// Otherwise SG is not relevant because genders do not match
+				continue;
+			}
 		}
 
+		// Do not list SGs that are not relevant whatsoever
 		if ( 0 !== $relevance_factor ) {
 
 			// Place key into groups container according to its relevance

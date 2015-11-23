@@ -10,20 +10,21 @@ if ( ! defined( 'HEADER_IMAGE_HEIGHT' ) ) {
 
 // Augment the logic for selecting the title in the page header
 function iv_page_header_title() {
-	if ( is_tax() ) {
-		// Handle taxonomy archives
-		printf( '%1$s Small Groups', single_term_title() );
+	global $wp_query;
+	if ( is_post_type_archive( 'iv_small_group' ) ) {
+		printf( 'All Small Groups' );
+	} else if ( is_tax( 'sg_campus' ) || is_tax( 'sg_category' ) ) {
+		printf( '%1$s Small Groups', single_term_title( '', false ) );
 	} else if ( is_search() ) {
-		// Indicate that search is excluded to small groups
-		echo 'Small Group Search';
+		printf( 'Small Group Search' );
 	} else if ( is_author() ) {
-		echo 'Posts by ' . get_queried_object()->display_name;
+		printf( 'Posts by %1$s', get_queried_object()->display_name );
 	} else if ( is_front_page() && is_home() ) {
 		bloginfo( 'name' );
 	} else if ( is_category() ) {
-		echo "Category: " . get_queried_object()->cat_name;
+		printf('Category: %1$s', get_queried_object()->cat_name);
 	} else if ( is_tag() ) {
-		echo "Tag: " . get_queried_object()->name;
+		printf('Tag: %1$s', get_queried_object()->name);
 	} else {
 		single_post_title();
 	}
@@ -58,11 +59,12 @@ function iv_page_breadcrumbs() {
 	?>
 	<div id="page-breadcrumbs">
 		<?php
-		if ( is_singular( 'iv_small_group' ) || is_tax() ) {
+		$is_sg_tax = ( is_tax( 'sg_campus' ) || is_tax( 'sg_category' ) );
+		if ( is_singular( 'iv_small_group' ) || $is_sg_tax || is_post_type_archive( 'iv_small_group' ) ) {
 			// If this is a small group campus/category page or an individual
 			// small group page
 
-			if ( is_tax() ) {
+			if ( $is_sg_tax ) {
 				// Retrieve campus object if this is a term page
 				$sg_term = get_queried_object();
 			} else {
@@ -87,9 +89,11 @@ function iv_page_breadcrumbs() {
 					iv_static_breadcrumb( 'Small Groups' );
 				}
 				// Indicate what taxonomy this is (i.e. Campus or Category)
-				$sg_tax = get_taxonomy( $sg_term->taxonomy );
-				iv_breadcrumb_delimiter();
-				iv_static_breadcrumb( $sg_tax->labels->name );
+				if ( $is_sg_tax ) {
+					$sg_tax = get_taxonomy( $sg_term->taxonomy );
+					iv_breadcrumb_delimiter();
+					iv_static_breadcrumb( $sg_tax->labels->name );
+				}
 				if ( is_single() ) {
 					iv_breadcrumb_delimiter();
 					// Show breadcrumb for campus page
@@ -147,72 +151,72 @@ function iv_page_breadcrumbs() {
 	<?php
 }
 
+// Parameters for social header icons
+$iv_social_icons = array(
+	array(
+		'link'    => 'iv_facebook_link',
+		'enabled' => 'iv_facebook_enabled',
+		'title'   => 'Facebook',
+		'icon'    => 'iv-icon-facebook',
+		'class'   => 'facebook'
+	),
+	array(
+		'link'    => 'iv_twitter_link',
+		'enabled' => 'iv_twitter_enabled',
+		'title'   => 'Twitter',
+		'icon'    => 'iv-icon-twitter',
+		'class'   => 'twitter'
+	),
+	array(
+		'link'    => 'iv_instagram_link',
+		'enabled' => 'iv_instagram_enabled',
+		'title'   => 'Instagram',
+		'icon'    => 'iv-icon-instagram',
+		'class'   => 'instagram'
+	),
+	array(
+		'link'    => 'iv_email_address',
+		'enabled' => 'iv_email_enabled',
+		'title'   => 'Email',
+		'icon'    => 'iv-icon-mail',
+		'class'   => 'email'
+	)
+);
+
 // Output social header if enabled
 function iv_social_header() {
+	global $iv_social_icons;
 
-	$icons = array(
-		array(
-			'id'        => 'iv_facebook_link',
-			'toggle_id' => 'iv_facebook_enabled',
-			'title'     => 'Facebook',
-			'icon'      => 'iv-icon-facebook',
-			'class'     => 'facebook'
-		),
-		array(
-			'id'        => 'iv_twitter_link',
-			'toggle_id' => 'iv_twitter_enabled',
-			'title'     => 'Twitter',
-			'icon'      => 'iv-icon-twitter',
-			'class'     => 'twitter'
-		),
-		array(
-			'id'        => 'iv_instagram_link',
-			'toggle_id' => 'iv_instagram_enabled',
-			'title'     => 'Instagram',
-			'icon'      => 'iv-icon-instagram',
-			'class'     => 'instagram'
-		),
-		array(
-			'id'        => 'iv_email_address',
-			'toggle_id' => 'iv_email_enabled',
-			'title'     => 'Email',
-			'icon'      => 'iv-icon-mail',
-			'class'     => 'email'
-		)
-	);
-
-	// Output social header
 	?>
 	<div id="site-header-social"><ul>
-	<?php
-	$social_message_enabled = get_theme_mod( 'iv_social_message_enabled', false );
-	// Output social header message
-	if ( $social_message_enabled ) {
-		$social_message = get_theme_mod( 'iv_social_message' );
-		?>
-		<li class="social message"><?php echo $social_message; ?></li>
-		<?php
-	}
-	// Output social icons
-	foreach ( $icons as $icon ) {
-		$enabled = get_theme_mod( $icon['toggle_id'], false );
-		if ( $enabled ) {
-			$link = get_theme_mod( $icon['id'] );
-			// Obscure email address in HTML to deter harvesting
-			if ( is_email( $link ) ) {
-				$link = "mailto:" . antispambot( $link, 1 );
-			}
-			// Output social icon
-			?>
-			<li class="social <?php echo $icon['class']; ?>">
-				<a href="<?php echo $link; ?>" data-tooltip data-tooltip-title="<?php echo $icon['title'];?>">
-					<span class="iv-icon <?php echo $icon['icon']; ?>"></span>
-				</a>
-			</li>
-			<?php
-		}
-	}
-	?>
+
+		<?php if ( get_theme_mod( 'iv_social_message_enabled' ) ): ?>
+
+			<li class="social message"><?php echo get_theme_mod( 'iv_social_message' ); ?></li>
+
+		<?php endif; ?>
+
+		<?php foreach ( $iv_social_icons as $icon ): ?>
+
+			<?php if ( get_theme_mod( $icon['enabled'] ) ): ?>
+
+				<?php
+				$link = get_theme_mod( $icon['link'] );
+				// Obscure email address in HTML to deter harvesting
+				if ( is_email( $link ) ) {
+					$link = "mailto:" . antispambot( $link, 1 );
+				}
+				?>
+				<li class="social <?php echo $icon['class']; ?>">
+					<a href="<?php echo $link; ?>" data-tooltip data-tooltip-title="<?php echo $icon['title'];?>">
+						<span class="iv-icon <?php echo $icon['icon']; ?>"></span>
+					</a>
+				</li>
+
+			<?php endif; ?>
+
+		<?php endforeach; ?>
+
 	</ul></div>
 	<?php
 
@@ -254,6 +258,8 @@ add_action( 'wp_head', 'iv_enable_responsive_viewport', 10 );
 // WP Maintenance Mode page
 add_action( 'wpmm_head', 'iv_enable_responsive_viewport', 10 );
 
-// Add site icons to login screen and Naintenance Mode
-add_action( 'login_head', 'wp_site_icon', 10 );
-add_action( 'wpmm_head', 'wp_site_icon', 10 );
+// Add site icons to login screen and Maintenance Mode
+if ( function_exists( 'wp_site_icon' ) ) {
+	add_action( 'login_head', 'wp_site_icon', 10 );
+	add_action( 'wpmm_head', 'wp_site_icon', 10 );
+}

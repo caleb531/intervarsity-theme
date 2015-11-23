@@ -25,9 +25,9 @@ get_header(); ?>
 						<?php the_content(); ?>
 					</div>
 
-					<?php the_sg_details( '<h2>Details</h2><p class="sg-details">', '</p>' ); ?>
+					<?php the_sg_details( '<h3>Details</h3><p class="sg-details">', '</p>' ); ?>
 
-					<?php the_sg_contact( '<h2>Contact</h2><p class="sg-contact">For questions, contact ', '.</p>' ); ?>
+					<?php the_sg_contact( '<h3>Contact</h3><p class="sg-contact">For questions, contact ', '.</p>' ); ?>
 
 				</div>
 
@@ -46,7 +46,7 @@ get_header(); ?>
 
 			<section class="sg-related">
 
-				<h2>Related Small Groups</h2>
+				<h3>Related Small Groups</h3>
 
 				<p>Click the small group name for more details.</p>
 

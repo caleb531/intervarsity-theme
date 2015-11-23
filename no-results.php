@@ -11,37 +11,33 @@
 
 	<?php if ( is_search() ) : ?>
 
-		<h2><?php echo get_theme_mod( 'iv_search_null_heading', IV_DEFAULT_NULL_SEARCH_HEADING ) ?></h2>
+		<h3><?php echo get_theme_mod( 'iv_search_null_heading', IV_DEFAULT_NULL_SEARCH_HEADING ) ?></h3>
 
 		<?php
 		echo wpautop( get_theme_mod( 'iv_search_null_message', IV_DEFAULT_NULL_SEARCH_MESSAGE ) );
 		?>
 		<?php get_search_form(); ?>
 
-	<?php elseif ( is_tax() ) : ?>
+	<?php elseif ( is_post_type_archive( 'iv_small_group' ) ) : ?>
 
-		<?php if ( ! empty( $_GET['sg_day'] ) ): ?>
+		<h3><?php echo get_theme_mod( 'iv_search_null_heading', IV_DEFAULT_NULL_SEARCH_HEADING ) ?></h3>
 
-			<h2><?php echo get_theme_mod( 'iv_search_null_heading', IV_DEFAULT_NULL_SEARCH_HEADING ) ?></h2>
+		<?php
+		echo wpautop( get_theme_mod( 'iv_search_null_message', IV_DEFAULT_NULL_SEARCH_MESSAGE ) );
+		?>
 
-			<?php
-			echo wpautop( get_theme_mod( 'iv_search_null_message', IV_DEFAULT_NULL_SEARCH_MESSAGE ) );
-			?>
+		<?php echo iv_sg_filter_form(); ?>
 
-			<?php echo iv_sg_filter_form(); ?>
+	<?php elseif ( is_tax( 'sg_campus' ) || is_tax( 'sg_category' ) ) : ?>
 
-		<?php else: ?>
+		<h3><?php echo get_theme_mod( 'iv_no_sg_heading', 'No Small Groups Listed' ); ?></h3>
 
-			<h2><?php echo get_theme_mod( 'iv_no_sg_heading', 'No Small Groups Listed' ); ?></h2>
-
-			<?php
-			$campus_name = single_term_title( '', false );
-			$no_sg_message = get_theme_mod( 'iv_no_sg_message', IV_DEFAULT_NO_SG_MESSAGE );
-			$no_sg_message = str_replace( '{{campus}}', $campus_name, $no_sg_message );
-			echo wpautop( $no_sg_message );
-			?>
-
-		<?php endif; ?>
+		<?php
+		$campus_name = single_term_title( '', false );
+		$no_sg_message = get_theme_mod( 'iv_no_sg_message', IV_DEFAULT_NO_SG_MESSAGE );
+		$no_sg_message = str_replace( '{{campus}}', $campus_name, $no_sg_message );
+		echo wpautop( $no_sg_message );
+		?>
 
 	<?php endif; ?>
 

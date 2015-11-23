@@ -1,9 +1,9 @@
 <?php
 /**
- * The template for displaying blog posts
+ * The template for displaying blog post and small group archives
  *
  * This template is used for the front page if latest posts are set to show or
- * on the designated Posts page. It is also used for author pages.
+ * on the designated Posts page.
  *
  * @package InterVarsity
  */
@@ -12,40 +12,35 @@ get_header(); ?>
 
 	<?php if ( ! ( is_home() && ! is_front_page() && post_password_required( get_queried_object()->ID ) ) ): ?>
 
-		<?php if ( is_author() ): ?>
+		<?php if ( is_home() && ! is_front_page() ): ?>
 
-			<?php $author_name = get_the_author(); ?>
-			<?php if ( ! empty( $author_name ) && 0 !== get_the_author_posts() ): ?>
-
-				<p>These are all of the blog posts by the user <strong><?php echo $author_name; ?></strong>.</p>
-
-			<?php else: ?>
-
-				<p>There are no posts for the user <strong><?php echo $author_name; ?></strong>.</p>
-
-			<?php endif; ?>
-
-		<?php else: ?>
-
-			<?php if ( ! empty( $obj ) ): ?>
-
-				<?php echo wpautop( $obj->post_content ); ?>
-
-			<?php endif; ?>
+			<?php echo apply_filters( 'the_content', get_queried_object()->post_content ); ?>
 
 		<?php endif; ?>
 
-		<div class="blog-posts entries">
+		<?php if ( have_posts() ): ?>
 
-			<?php while ( have_posts() ) : the_post(); ?>
+			<?php if ( 'iv_small_group' === get_post_type() ): ?>
+				<?php iv_sg_filter_form(); ?>
+			<?php endif; ?>
 
-				<?php get_template_part( 'content' ); ?>
+			<div class="entries <?php echo get_post_type(); ?>">
 
-			<?php endwhile; wp_reset_query(); ?>
+				<?php while ( have_posts() ) : the_post(); ?>
 
-		</div>
+					<?php get_template_part( 'content' ); ?>
 
-		<?php iv_paginate_links(); ?>
+				<?php endwhile; wp_reset_query(); ?>
+
+			</div>
+
+			<?php iv_paginate_links(); ?>
+
+		<?php else: ?>
+
+			<?php get_template_part( 'no-results' ); ?>
+
+		<?php endif; ?>
 
 	<?php else: ?>
 

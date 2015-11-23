@@ -79,9 +79,9 @@ function the_sg_contact( $before = '', $after = '' ) {
 
 }
 
-// Options for small group filter dropdowns
-$iv_filter_options = array(
-	'sg_day' => array(
+// Returns select options for Day filter
+function iv_filter_day_options() {
+	return array(
 		array(
 			'label' => 'Any Day',
 			'value' => ''
@@ -106,19 +106,49 @@ $iv_filter_options = array(
 			'label' => 'Friday',
 			'value' => 'friday'
 		)
-	)
-);
+	);
+}
 
-// Outputs day selection control for small groups
-function iv_sg_filter_select( $key ) {
-	global $iv_filter_options;
+// Retrieves select options for the filter for the given taxonomy
+function iv_filter_term_options( $taxonomy ) {
+	$terms = get_terms( $taxonomy );
+	$tax_name_singular = get_taxonomy( $taxonomy )->labels->singular_name;
+	$options = array(
+		array(
+			'label' => sprintf( 'Any %1$s', $tax_name_singular ),
+			'value' => ''
+		)
+	);
+	foreach ( $terms as $term ) {
+		array_push( $options, array(
+			'label' => $term->name,
+			'value' => $term->slug
+		) );
+	}
+	return $options;
+}
 
-	$options = $iv_filter_options[ $key ];
+// Retrieves select options for Campus filter
+function iv_filter_campus_options() {
+	return iv_filter_term_options( 'sg_campus' );
+}
+
+// Retrieves select options for Category filter
+function iv_filter_category_options() {
+	return iv_filter_term_options( 'sg_category' );
+}
+
+// Outputs a filter menu for the given key, the options for which are
+// retrieved using the given callback function
+function iv_sg_filter_select( $key, $options_callback ) {
+	global $iv_filter_options, $wp_query;
+
+	$options = call_user_func_array( $options_callback, array( $key ) );
 	?>
 	<select name="<?php echo $key; ?>" id="iv-day-filter">
 		<?php foreach ( $options as $option ): ?>
 
-			<?php if ( ! empty( $_GET[ $key ] ) && $_GET[ $key ] === $option['value'] ): ?>
+			<?php if ( $option['value'] === $wp_query->get( $key ) ): ?>
 				<option value="<?php echo $option['value']; ?>" selected><?php echo $option['label']; ?></option>
 			<?php else: ?>
 				<option value="<?php echo $option['value']; ?>"><?php echo $option['label']; ?></option>
@@ -130,16 +160,16 @@ function iv_sg_filter_select( $key ) {
 
 }
 
-// Outputs the form for all small group filter controls
+// Outputs the form containing all small group filter menus
 function iv_sg_filter_form() {
 
-	// Ensure the filter works on paginated campus pages by setting the form
-	// action to the first campus page, regardless of what page the user is on
-	$term = get_queried_object();
-	$first_page = get_term_link( $term->term_id, $term->taxonomy );
+	$archive_url = get_post_type_archive_link( 'iv_small_group' );
 	?>
-	<form method="get" action="<?php echo $first_page ?>" id="sg-filter">
-		<label for="iv-day-filter">Filter by Day:</label> <?php iv_sg_filter_select( 'sg_day' ); ?>
+	<form method="get" action="<?php echo $archive_url; ?>" id="sg-filter">
+		<label>Filter By:</label>
+		<?php iv_sg_filter_select( 'sg_day', 'iv_filter_day_options' ); ?>
+		<?php iv_sg_filter_select( 'sg_campus', 'iv_filter_campus_options' ); ?>
+		<?php iv_sg_filter_select( 'sg_category', 'iv_filter_category_options' ); ?>
 		<input type="submit" value="Filter" />
 	</form>
 	<?php

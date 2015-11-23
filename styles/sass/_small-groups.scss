@@ -5,7 +5,7 @@ $sg-tile-max-width: 400px;
 // Container for small group entry tiles; tiles are left-aligned within the
 // container so as to create a grid-like appearance; setting a max-width centers
 // the grid
-.iv-small-groups.entries {
+.iv_small_group.entries {
 	max-width: ($sg-tile-max-width + ($entry-tile-margin * 2)) * 2;
 }
 

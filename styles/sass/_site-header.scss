@@ -81,6 +81,9 @@
 	padding: 0;
 	text-align: center;
 	font-size: 0;
+	h1 {
+		margin: 0;
+	}
 	// Ensure that link takes on width and height of inner image
 	a {
 		display: inline-block;

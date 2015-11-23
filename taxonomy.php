@@ -13,7 +13,7 @@ get_header(); ?>
 
 		<?php echo iv_sg_filter_form(); ?>
 
-		<div class="iv-small-groups entries">
+		<div class="entries <?php echo get_post_type(); ?>">
 
 			<?php while ( have_posts() ): the_post(); ?>
 

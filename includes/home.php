@@ -15,7 +15,7 @@ function iv_home_box_content( $icon, $title, $desc ) {
 		</div>
 	</div>
 	<div class="home-box-content">
-		<h2 class="home-box-title"><?php echo $title; ?></h2>
+		<h3 class="home-box-title"><?php echo $title; ?></h3>
 		<p class="home-box-desc"><?php echo $desc; ?></p>
 	</div>
 	<?php

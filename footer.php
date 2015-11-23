@@ -9,7 +9,7 @@
 
 		</div><!-- end #content -->
 
-	</div><!-- end #page -->
+	</section><!-- end #page -->
 
 	<footer id="site-footer">
 
@@ -17,6 +17,7 @@
 
 			<?php wp_nav_menu( array(
 				'theme_location'  => 'footer_menu',
+				'items_wrap'	 => '<h2 class="screen-reader-text">Site Navigation (Footer)</h2><ul id="%1$s" class="%2$s">%3$s</ul>',
 				'container'       => 'nav',
 				'container_id'    => 'site-footer-nav',
 				'menu_id'         => 'site-footer-nav-list',
@@ -31,9 +32,7 @@
 
 	</footer>
 
-</div><!-- end #body-core -->
-
-<?php wp_footer(); ?>
+	<?php wp_footer(); ?>
 
 </body>
 </html>
