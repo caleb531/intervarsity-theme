@@ -84,9 +84,23 @@ $sg-tile-max-width: 400px;
 	}
 }
 
-// Small group "Filter by Day" form
+// Form containing small group filter dropdowns
 #sg-filter {
 	margin-bottom: 10px;
+	text-align: center;
+	// Ensure label and dropdown menus are vertically centered
+	label, select {
+		vertical-align: middle;
+	}
+	label {
+		font-size: 14px;
+		vertical-align: middle;
+		// Place label on a line by itself for compact layout so as to avoid
+		// awkward collapsing of dropdown menus
+		@include layout(hybrid) {
+			display: block;
+		}
+	}
 	// Do not display form Submit button; the front-end script will
 	// automatically submit the form when the user selects a value
 	input[type="submit"] {
