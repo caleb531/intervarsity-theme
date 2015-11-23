@@ -20,11 +20,16 @@ The theme sports a clean, responsive design which focuses on content and user ex
 
 ### Small group templates
 
-Small groups are organized according to the campuses and categories you create and assign to them. You can view all small groups for a particular campus at `yourchapter.com/small-groups/campus/my-campus/`. You can view all small groups for a particular category at `yourchapter.com/small-groups/category/my-category/`. Individual small groups are viewable at `yourchapter.com/small-group/some-group/`.
+The theme provides several templates for displaying small groups:
 
-#### Filter by day
+- You can view any individual small group at `yourchapter.com/small-group/my-group/`.
+- You can view all small groups for a particular campus at `yourchapter.com/small-groups/campus/my-campus/`.
+- You can view all small groups for a particular category at `yourchapter.com/small-groups/category/my-category/`.
+- You can view all small groups irrespective of campus or category at `yourchapter.com/small-groups/archive/`.
 
-Every campus page includes a dropdown menu which allows you to view all small groups that occur on a particular day of the week at that campus.
+#### Small group filters
+
+Every page that lists small groups includes dropdown menus which allow you to filter those respective small groups by campus, category, and day of the week.
 
 ### Related small groups
 
