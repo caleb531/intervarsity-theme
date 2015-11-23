@@ -25,8 +25,8 @@
 
 		<div id="site-logo">
 
-			<a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo ( has_header_image() ? get_header_image() : IV_DEFAULT_HEADER_IMAGE_URL ); ?>" alt="<?php echo get_bloginfo( 'title' ) ; ?>" /></a>
-			<h1 class="screen-reader-text"><?php echo get_option( 'blogname' ); ?></h1>
+			<a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo ( has_header_image() ? get_header_image() : IV_DEFAULT_HEADER_IMAGE_URL ); ?>" alt="<?php bloginfo( 'name' ) ; ?>" /></a>
+			<h1 class="screen-reader-text"><?php bloginfo( 'name' ); ?></h1>
 
 		</div>
 
