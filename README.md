@@ -10,7 +10,7 @@ This theme integrates perfectly with the [InterVarsity plugin](https://github.co
 ## Requirements
 
 1. Your site must be running WordPress 4.0 or newer.
-2. You must install and activate the aforementioned [InterVarsity plugin](https://github.com/caleb531/intervarsity-plugin), as well as the one plugin it requires, [Awesome CPT](https://github.com/caleb531/awesome-cpt).
+2. You must install and activate the aforementioned [InterVarsity plugin](https://github.com/caleb531/intervarsity-plugin) (v2.2.0 or newer), as well as the one plugin it requires, [Awesome CPT](https://github.com/caleb531/awesome-cpt).
 
 ## Features
 
