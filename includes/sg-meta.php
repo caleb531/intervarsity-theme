@@ -166,10 +166,10 @@ function iv_sg_filter_form() {
 	$archive_url = get_post_type_archive_link( 'iv_small_group' );
 	?>
 	<form method="get" action="<?php echo $archive_url; ?>" id="sg-filter">
-		<label>Filter By:</label>
-		<?php iv_sg_filter_select( 'sg_day', 'iv_filter_day_options' ); ?>
+		<label>Filter:</label>
 		<?php iv_sg_filter_select( 'sg_campus', 'iv_filter_campus_options' ); ?>
 		<?php iv_sg_filter_select( 'sg_category', 'iv_filter_category_options' ); ?>
+		<?php iv_sg_filter_select( 'sg_day', 'iv_filter_day_options' ); ?>
 		<input type="submit" value="Filter" />
 	</form>
 	<?php
