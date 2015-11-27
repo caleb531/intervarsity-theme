@@ -89,18 +89,19 @@ function iv_page_breadcrumbs() {
 					iv_static_breadcrumb( 'Small Groups' );
 				}
 				// Indicate what taxonomy this is (i.e. Campus or Category)
-				if ( $is_sg_tax ) {
+				if ( $is_sg_tax || is_single() ) {
 					$sg_tax = get_taxonomy( $sg_term->taxonomy );
 					iv_breadcrumb_delimiter();
 					iv_static_breadcrumb( $sg_tax->labels->name );
-				}
-				if ( is_single() ) {
-					iv_breadcrumb_delimiter();
-					// Show breadcrumb for campus page
-					iv_breadcrumb_link(
-						$sg_term->name,
-						get_term_link( $sg_term )
-					);
+					// If this is a single small group page
+					if ( ! $is_sg_tax ) {
+						iv_breadcrumb_delimiter();
+						// Show breadcrumb for campus page
+						iv_breadcrumb_link(
+							$sg_term->name,
+							get_term_link( $sg_term )
+						);
+					}
 				}
 			}
 
