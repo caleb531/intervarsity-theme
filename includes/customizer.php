@@ -350,8 +350,7 @@ class InterVarsity_Customize {
 		$wp_customize->add_setting( 'iv_email_enabled', array(
 			'type'              => 'theme_mod',
 			'transport'         => 'refresh',
-			'sanitize_callback' => array( $this, 'sanitize_boolean' ),
-			'default'           => get_option( 'admin_email' )
+			'sanitize_callback' => array( $this, 'sanitize_boolean' )
 		) );
 		$wp_customize->add_control( 'iv_email_enabled', array(
 			'section' => 'iv_email_panel',
@@ -361,7 +360,8 @@ class InterVarsity_Customize {
 		$wp_customize->add_setting( 'iv_email_address', array(
 			'type'              => 'theme_mod',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => 'sanitize_email'
+			'sanitize_callback' => 'sanitize_email',
+			'default'           => get_bloginfo( 'admin_email' )
 		) );
 		$wp_customize->add_control( 'iv_email_address', array(
 			'section' => 'iv_email_panel',
