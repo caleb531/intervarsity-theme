@@ -4,7 +4,6 @@ $( document ).ready(function () {
 
 // Retrieve most useful jQuery elements for use throughout the script
 var $$ = {};
-$$.bodyCore = $( '#body-core' );
 $$.siteHeader = $( '#site-header' );
 $$.navControlResponsive = $( '#nav-control-responsive' );
 $$.siteHeaderNavList = $( '#site-header-nav-list' );
@@ -99,7 +98,7 @@ $$.sgFilter.on( 'change', 'select', function () {
 });
 
 // Enable FastClick for all elements on the page
-FastClick.attach( $$.bodyCore[0] );
+FastClick.attach( document.body );
 
 });
 }( window, jQuery, window.FastClick ));
