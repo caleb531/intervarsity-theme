@@ -60,7 +60,9 @@ function iv_page_breadcrumbs() {
 	<div id="page-breadcrumbs">
 		<?php
 		$is_sg_tax = ( is_tax( 'sg_campus' ) || is_tax( 'sg_category' ) );
-		if ( is_singular( 'iv_small_group' ) || $is_sg_tax || is_post_type_archive( 'iv_small_group' ) ) {
+		$is_sg_archive = is_post_type_archive( 'iv_small_group' );
+		$is_sg_single = is_singular( 'iv_small_group' );
+		if ( $is_sg_single || $is_sg_tax || $is_sg_archive ) {
 			// If this is a small group campus/category page or an individual
 			// small group page
 
@@ -86,15 +88,18 @@ function iv_page_breadcrumbs() {
 					);
 				} else {
 					// Otherwise, still indicate some sort of a hierarchy
-					iv_static_breadcrumb( 'Small Groups' );
+					iv_breadcrumb_link(
+						'Small Groups',
+						get_post_type_archive_link( 'iv_small_group' )
+					);
 				}
 				// Indicate what taxonomy this is (i.e. Campus or Category)
-				if ( $is_sg_tax ) {
+				if ( $is_sg_tax || $is_sg_single ) {
 					$sg_tax = get_taxonomy( $sg_term->taxonomy );
 					iv_breadcrumb_delimiter();
 					iv_static_breadcrumb( $sg_tax->labels->name );
 				}
-				if ( is_single() ) {
+				if ( $is_sg_single ) {
 					iv_breadcrumb_delimiter();
 					// Show breadcrumb for campus page
 					iv_breadcrumb_link(

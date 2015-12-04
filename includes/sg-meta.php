@@ -145,17 +145,19 @@ function iv_sg_filter_select( $key, $options_callback ) {
 
 	$options = call_user_func_array( $options_callback, array( $key ) );
 	?>
-	<select name="<?php echo $key; ?>" id="iv-day-filter">
-		<?php foreach ( $options as $option ): ?>
+	<?php if ( ! ( count( $options ) === 1 && '' === $options[0]['value'] ) ): ?>
+		<select name="<?php echo $key; ?>" id="iv-day-filter">
+			<?php foreach ( $options as $option ): ?>
 
-			<?php if ( $option['value'] === $wp_query->get( $key ) ): ?>
-				<option value="<?php echo $option['value']; ?>" selected><?php echo $option['label']; ?></option>
-			<?php else: ?>
-				<option value="<?php echo $option['value']; ?>"><?php echo $option['label']; ?></option>
-			<?php endif; ?>
+				<?php if ( $option['value'] === $wp_query->get( $key ) ): ?>
+					<option value="<?php echo $option['value']; ?>" selected><?php echo $option['label']; ?></option>
+				<?php else: ?>
+					<option value="<?php echo $option['value']; ?>"><?php echo $option['label']; ?></option>
+				<?php endif; ?>
 
-		<?php endforeach; ?>
-	</select>
+			<?php endforeach; ?>
+		</select>
+	<?php endif; ?>
 	<?php
 
 }
@@ -166,11 +168,24 @@ function iv_sg_filter_form() {
 	$archive_url = get_post_type_archive_link( 'iv_small_group' );
 	?>
 	<form method="get" action="<?php echo $archive_url; ?>" id="sg-filter">
-		<label>Filter:</label>
+
+		<?php
+		// Capture output of dropdown menus; if no dropdowns are outputted, the
+		// "Filters:" label should not be outputted either
+		ob_start();
+		?>
 		<?php iv_sg_filter_select( 'sg_campus', 'iv_filter_campus_options' ); ?>
 		<?php iv_sg_filter_select( 'sg_category', 'iv_filter_category_options' ); ?>
 		<?php iv_sg_filter_select( 'sg_day', 'iv_filter_day_options' ); ?>
+		<?php $filters = trim( ob_get_clean() ); ?>
+
+		<?php if ( ! empty( $filters ) ): ?>
+			<label>Filter:</label>
+			<?php echo $filters; ?>
+		<?php endif; ?>
+
 		<input type="submit" value="Filter" />
+
 	</form>
 	<?php
 
