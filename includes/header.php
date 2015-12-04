@@ -89,12 +89,12 @@ function iv_page_breadcrumbs() {
 				} else {
 					// Otherwise, still indicate some sort of a hierarchy
 					iv_breadcrumb_link(
-						'Small Groups!',
+						'Small Groups',
 						get_post_type_archive_link( 'iv_small_group' )
 					);
 				}
 				// Indicate what taxonomy this is (i.e. Campus or Category)
-				if ( ! $is_sg_archive ) {
+				if ( $is_sg_tax || $is_sg_single ) {
 					$sg_tax = get_taxonomy( $sg_term->taxonomy );
 					iv_breadcrumb_delimiter();
 					iv_static_breadcrumb( $sg_tax->labels->name );
