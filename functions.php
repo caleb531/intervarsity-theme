@@ -95,9 +95,9 @@ if ( ! defined( 'INTERVARSITY_PLUGIN' ) ) {
 function iv_modify_posts_query( $query ) {
 
 	// Ensure query is not a secondary (nested) query
-	if ( $query->is_main_query() ) {
+	if ( $query->is_main_query() && ! is_admin() ) {
 		// If page displays small group entries on the frontend
-		if ( $query->is_post_type_archive( 'iv_small_group' ) || $query->is_tax( 'sg_campus' ) || $query->is_tax( 'sg_category' ) || ( $query->is_search() && ! is_admin() ) ) {
+		if ( $query->is_post_type_archive( 'iv_small_group' ) || $query->is_tax( 'sg_campus' ) || $query->is_tax( 'sg_category' ) || $query->is_search() ) {
 
 			// Always display small groups for frontend search results
 			$query->set( 'post_type', 'iv_small_group' );
