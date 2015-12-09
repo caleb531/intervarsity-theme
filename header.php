@@ -9,7 +9,6 @@
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
-<title><?php wp_title( '|', true, 'right' ); ?></title>
 <!--[if lt IE 9]>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
 <![endif]-->
