@@ -26,17 +26,18 @@
 	}
 	// Pager control allowing for random access to any slide
 	.cycloneslider-pager {
+        $pager-control-size: 12px;
+        $pager-control-margin-y: 10px;
 		position: static;
-		height: auto;
+		height: $pager-control-size + ($pager-control-margin-y * 2);
 		text-align: center;
 		font-size: 0;
 		// Pager dot corresponding to a single slide
 		span {
 			display: inline-block;
-            $pager-control-size: 12px;
 			width: $pager-control-size;
 			height: $pager-control-size;
-			margin: 10px 8px;
+			margin: $pager-control-margin-y 8px;
 			background-color: rgba(#000, 0.25);
 			border-radius: 50%;
 			box-shadow: none;
