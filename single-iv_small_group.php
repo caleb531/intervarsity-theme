@@ -27,7 +27,7 @@ get_header(); ?>
 
 					<?php the_sg_details( '<h3>Details</h3><p class="sg-details">', '</p>' ); ?>
 
-					<?php the_sg_contact( '<h3>Contact</h3><p class="sg-contact">For questions, contact ', '.</p>' ); ?>
+					<?php the_sg_contact( '<h3>Contact</h3><p class="sg-contact">If you\'re interested, contact ', '.</p>' ); ?>
 
 				</div>
 
