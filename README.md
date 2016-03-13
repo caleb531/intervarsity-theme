@@ -1,6 +1,6 @@
 # InterVarsity WordPress Theme
 
-*Copyright 2015 Caleb Evans*  
+*Copyright 2016 Caleb Evans*  
 *Released under the GNU General Public License v2.0*
 
 The InterVarsity theme is a WordPress theme intended for [InterVarsity Christian Fellowship/USA](http://intervarsity.org/) chapters with a WordPress site. I originally created the theme for the [InterVarsity North County chapter website](http://ivnorthcounty.org/), but I have since decided to open-source the theme for the benefit of all InterVarsity chapters.
