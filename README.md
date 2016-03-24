@@ -44,6 +44,7 @@ The InterVarsity theme allows you to search for small groups using the search ic
 - Location
 - Leaders
 - Campus
+- Category
 
 #### Example queries
 
