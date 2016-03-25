@@ -86,6 +86,6 @@ There are many more features and options available in the InterVarsity theme, in
 
 ## Credits
 
-The InterVarsity theme and its companion plugin are both licensed under version 2 of the GNU General Public License.
+I originally created the InterVarsity theme as a child theme of [Engrave Lite](https://wordpress.org/themes/engrave-lite/), and while I have since rewritten substantial portions of my theme to make it more distinct and fully independent, remnants of Engrave's design and markup are still present.
 
 The InterVarsity logo apart of this theme (used as the default header image) is a registered trademark of InterVarsity Christian Fellowship/USA.
