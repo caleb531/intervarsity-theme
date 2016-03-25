@@ -3,14 +3,14 @@
 *Copyright 2016 Caleb Evans*  
 *Released under the GNU General Public License v2.0*
 
-The InterVarsity theme is a WordPress theme intended for [InterVarsity Christian Fellowship/USA](http://intervarsity.org/) chapters with a WordPress site. I originally created the theme for the [InterVarsity North County chapter website](http://ivnorthcounty.org/), but I have since decided to open-source the theme for the benefit of all InterVarsity chapters. Please note that this is an unofficial theme which is not affiliated with InterVarsity.
+The InterVarsity Theme is a WordPress theme intended for [InterVarsity Christian Fellowship/USA](http://intervarsity.org/) chapters with a WordPress site. I originally created the theme for the [InterVarsity North County chapter website](http://ivnorthcounty.org/), but I have since decided to open-source the theme for the benefit of all InterVarsity chapters. Please note that this is an unofficial theme which is not affiliated with InterVarsity.
 
-This theme integrates perfectly with the [InterVarsity plugin](https://github.com/caleb531/intervarsity-plugin), which I also created for the InterVarsity North County website. The plugin allows you to create and manage small groups, and this theme includes templates for displaying them. This theme also integrates with several other features of the plugin, including page sliders and a Facebook Like Button.
+This theme integrates perfectly with the [InterVarsity Plugin](https://github.com/caleb531/intervarsity-plugin), which I also created for the InterVarsity North County website. The plugin allows you to create and manage small groups, and this theme includes templates for displaying them. This theme also integrates with several other features of the plugin, including page sliders and a Facebook Like Button.
 
 ## Requirements
 
 1. Your site must be running WordPress 4.4 or newer.
-2. You must install and activate the aforementioned [InterVarsity plugin](https://github.com/caleb531/intervarsity-plugin) (v2.2.0 or newer), as well as the one plugin it requires, [Awesome CPT](https://github.com/caleb531/awesome-cpt).
+2. You must install and activate the aforementioned [InterVarsity Plugin](https://github.com/caleb531/intervarsity-plugin) (v2.2.0 or newer), as well as the one plugin it requires, [Awesome CPT](https://github.com/caleb531/awesome-cpt).
 
 ## Features
 
@@ -37,7 +37,7 @@ Every individual small group page not only lists details for that particular gro
 
 ### Small group search
 
-The InterVarsity theme allows you to search for small groups using the search icon which sits on the right side of the site header. The search function is designed to match (in any order) whole words contained in any of the following small group fields:
+The InterVarsity Theme allows you to search for small groups using the search icon which sits on the right side of the site header. The search function is designed to match (in any order) whole words contained in any of the following small group fields:
 
 - Name
 - Time
@@ -59,7 +59,7 @@ The theme displays social icons which link to your chapter's profile pages on Fa
 
 ### Cyclone Slider 2 integration
 
-The InterVarsity plugin that integrates with this theme allows you to assign an existing [Cyclone Slider 2](https://wordpress.org/plugins/cyclone-slider-2/) slider to any page you've created. Needless to say, this theme will display the slider for any page that has one assigned to it.
+The InterVarsity Plugin that integrates with this theme allows you to assign an existing [Cyclone Slider 2](https://wordpress.org/plugins/cyclone-slider-2/) slider to any page you've created. Needless to say, this theme will display the slider for any page that has one assigned to it.
 
 ### Front page content boxes
 
@@ -82,10 +82,10 @@ The theme customizer also allows you to choose from the hundreds of available Go
 
 ### ...but wait, there's more!
 
-There are many more features and options available in the InterVarsity theme, including options for the site footer, small group settings, and a slew of customizable messages.
+There are many more features and options available in the InterVarsity Theme, including options for the site footer, small group settings, and a slew of customizable messages.
 
 ## Credits
 
-I originally created the InterVarsity theme as a child theme of [Engrave Lite](https://wordpress.org/themes/engrave-lite/), and while I have since rewritten substantial portions of my theme to make it more distinct and fully independent, remnants of Engrave's design and markup are still present.
+I originally created the InterVarsity Theme as a child theme of [Engrave Lite](https://wordpress.org/themes/engrave-lite/), and while I have since rewritten substantial portions of my theme to make it more distinct and fully independent, remnants of Engrave's design and markup are still present.
 
 The InterVarsity logo apart of this theme (used as the default header image) is a registered trademark of InterVarsity Christian Fellowship/USA.
