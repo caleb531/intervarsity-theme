@@ -58,12 +58,10 @@ function the_sg_contact( $before = '', $after = '' ) {
 	$phone = get_the_sg_contact_phone();
 	$email = get_the_sg_contact_email();
 	// If any of the meta data was entered
-	if ( $name || $phone || $email ) {
+	if ( $name && ( $phone || $email ) ) {
 		// Display contact meta data
 		echo $before;
-		if ( $name && ( $phone || $email ) ) {
-			?><span class="sg-contact-name"><?php echo $name; ?></span><?php
-		}
+		?><span class="sg-contact-name"><?php echo $name; ?></span><?php
 		if ( $phone ) {
 			$phone = iv_format_phone_number( $phone );
 			?> at <span class="sg-contact-phone"><?php echo $phone; ?></span><?php
