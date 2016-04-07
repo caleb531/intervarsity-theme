@@ -11,9 +11,8 @@ $sg-tile-max-width: 400px;
 
 .iv_small_group.entry-tile {
 	display: inline-block;
-	max-width: $sg-tile-max-width;
+	width: $sg-tile-max-width;
 	@include layout(compact) {
-		max-width: none;
 		width: 100%;
 	}
 }
