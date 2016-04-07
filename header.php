@@ -78,10 +78,10 @@
 
 		<?php endif; ?>
 
-		<?php if ( is_page() || ( is_front_page() && ! is_home() ) ): ?>
+		<?php if ( is_page() || ( is_front_page() && ! is_home() ) || ( is_home() && ! is_front_page() ) ): ?>
 
-			<?php if ( has_post_thumbnail() ): ?>
-				<div id="page-thumbnail"><?php the_post_thumbnail(); ?></div>
+			<?php if ( has_post_thumbnail( get_queried_object() ) ): ?>
+				<div id="page-thumbnail"><?php echo get_the_post_thumbnail( get_queried_object() ); ?></div>
 			<?php else: ?>
 				<?php iv_header_slider(); ?>
 			<?php endif; ?>
