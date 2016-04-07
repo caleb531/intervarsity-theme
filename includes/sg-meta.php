@@ -57,7 +57,6 @@ function the_sg_contact( $before = '', $after = '' ) {
 	$name = get_the_sg_contact_name();
 	$phone = get_the_sg_contact_phone();
 	$email = get_the_sg_contact_email();
-	// If any of the meta data was entered
 	if ( $name && ( $phone || $email ) ) {
 		// Display contact meta data
 		echo $before;
