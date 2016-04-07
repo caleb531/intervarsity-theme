@@ -16,7 +16,7 @@ get_header(); ?>
 		?>
 		<p>Found <?php echo "$pluralized"; ?> matching <span class="search-query"><?php echo get_search_query(); ?></span>:</p>
 
-		<div class="iv-small-groups entries">
+		<div class="iv_small_group entries">
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
