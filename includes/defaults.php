@@ -37,6 +37,8 @@ define( 'IV_DEFAULT_ACCENT_FONT_FAMILY', 'Montserrat' );
 define( 'IV_DEFAULT_HOME_PAGE_HEADER_ENABLED', true );
 // Default "enabled" state for front page content boxes
 define( 'IV_DEFAULT_HOME_BOX_ENABLED', false );
+// Default number of recent blog posts to show on the front page
+define( 'IV_DEFAULT_NUM_HOME_POSTS', 0 );
 
 // The default text used for the IVCF link in the site footer
 define( 'IV_DEFAULT_FOOTER_IVCF_TEXT', 'InterVarsity Christian Fellowship/USA' );

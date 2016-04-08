@@ -428,6 +428,26 @@ class InterVarsity_Customize {
 			'description' => 'When disabled, hides the page header and title on the front page'
 		) );
 
+		$wp_customize->add_setting( 'iv_num_home_posts', array(
+			'type'              => 'theme_mod',
+			'transport'         => 'refresh',
+			'sanitize_callback' => array( $this, 'sanitize_integer' ),
+			'default'           => IV_DEFAULT_NUM_HOME_POSTS
+		) );
+		$wp_customize->add_control( 'iv_num_home_posts', array(
+			'section'     => 'iv_home_general_options',
+			'type'        => 'select',
+			'label'       => 'Posts to show',
+			'description' => 'The number of recent blog posts to show on the front page',
+			'choices'     => array(
+				'0'  => '0',
+				'4'  => '4',
+				'6'  => '6',
+				'8'  => '8',
+				'10' => '10'
+			)
+		) );
+
 		for ( $i = 1; $i <= IV_NUM_HOME_BOXES; $i += 1 ) {
 			$this->add_home_box_settings( $wp_customize, $i );
 		}
