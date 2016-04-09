@@ -437,8 +437,8 @@ class InterVarsity_Customize {
 		$wp_customize->add_control( 'iv_num_home_posts', array(
 			'section'     => 'iv_home_general_options',
 			'type'        => 'select',
-			'label'       => 'Posts to show',
-			'description' => 'The number of recent blog posts to show on the front page',
+			'label'       => 'Blog posts to show on static front page',
+			'description' => 'The number of recent blog posts to show on the front page. This setting only takes effect when the front page is set to display a static page (see the "Static Front Page" section).',
 			'choices'     => array(
 				'0'  => '0',
 				'4'  => '4',
