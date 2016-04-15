@@ -24,7 +24,7 @@
 
 		<div id="site-logo">
 
-			<a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo ( has_header_image() ? get_header_image() : IV_DEFAULT_HEADER_IMAGE_URL ); ?>" alt="<?php bloginfo( 'name' ) ; ?>" /></a>
+			<a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo ( has_header_image() ? get_header_image() : IV_DEFAULT_HEADER_IMAGE_URL ); ?>" alt="<?php echo get_bloginfo( 'name' ) . ' Logo'; ?>" /></a>
 			<h1 class="screen-reader-text"><?php bloginfo( 'name' ); ?></h1>
 
 		</div>
@@ -37,7 +37,7 @@
 				// Add responsive navigation list
 				wp_nav_menu( array(
 					'theme_location' => 'header_menu',
-					'items_wrap'	 => '<h2 class="screen-reader-text">Site Navigation (Header)</h2><button id="nav-control-responsive"><span class="iv-icon iv-icon-list"></span></button><ul id="%1$s" class="%2$s">%3$s</ul>',
+					'items_wrap'	 => '<h2 class="screen-reader-text">Site Navigation (Header)</h2><button id="nav-control-responsive"><span class="iv-icon iv-icon-list"></span><span class="screen-reader-text">Menu</span></button><ul id="%1$s" class="%2$s">%3$s</ul>',
 					'container'		 => 'nav',
 					'container_id'	 => 'site-header-nav',
 					'menu_id'        => 'site-header-nav-list',
@@ -78,10 +78,10 @@
 
 		<?php endif; ?>
 
-		<?php if ( is_page() || ( is_front_page() && ! is_home() ) ): ?>
+		<?php if ( is_page() || ( is_front_page() && ! is_home() ) || ( is_home() && ! is_front_page() ) ): ?>
 
-			<?php if ( has_post_thumbnail() ): ?>
-				<div id="page-thumbnail"><?php the_post_thumbnail(); ?></div>
+			<?php if ( has_post_thumbnail( get_queried_object() ) ): ?>
+				<div id="page-thumbnail"><?php echo get_the_post_thumbnail( get_queried_object() ); ?></div>
 			<?php else: ?>
 				<?php iv_header_slider(); ?>
 			<?php endif; ?>

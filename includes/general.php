@@ -86,7 +86,7 @@ function iv_footer() {
 		?>
 		<a href="<?php echo esc_url( $ivcf_link ); ?>" class="ivcf-link">
 			<?php if ( ! empty( $ivcf_image_id ) ): ?>
-				<img src="<?php echo wp_get_attachment_url( $ivcf_image_id ); ?>" alt="<?php $ivcf_text; ?>" class="ivcf-image" />
+				<img src="<?php echo wp_get_attachment_url( $ivcf_image_id ); ?>" alt="<?php echo $ivcf_text; ?>" class="ivcf-image" />
 			<?php else: ?>
 				<?php echo $ivcf_text; ?>
 			<?php endif; ?>

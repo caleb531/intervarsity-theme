@@ -268,3 +268,13 @@ if ( function_exists( 'wp_site_icon' ) ) {
 	add_action( 'login_head', 'wp_site_icon', 10 );
 	add_action( 'wpmm_head', 'wp_site_icon', 10 );
 }
+
+// Declare the site's theme color for various browsers
+function iv_set_theme_color_meta() {
+	$accent_color = get_theme_mod( 'iv_color_accent' );
+	?>
+	<meta name="theme-color" content="<?php echo $accent_color; ?>" />
+	<meta name="msapplication-navbutton-color" content="<?php echo $accent_color; ?>" />
+	<?php
+}
+add_action( 'wp_head', 'iv_set_theme_color_meta', 10 );
