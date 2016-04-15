@@ -142,7 +142,7 @@ function iv_sg_filter_select( $key, $options_callback ) {
 
 	$options = call_user_func_array( $options_callback, array( $key ) );
 	?>
-	<?php if ( ! ( count( $options ) === 1 && '' === $options[0]['value'] ) ): ?>
+	<?php if ( count( $options ) !== 1 ): ?>
 		<select name="<?php echo $key; ?>" id="iv-day-filter">
 			<?php foreach ( $options as $option ): ?>
 
