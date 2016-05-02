@@ -92,6 +92,9 @@ existing [Cyclone Slider 2](https://wordpress.org/plugins/cyclone-slider-2/)
 slider to any page you've created. Needless to say, this theme will display the
 slider for any page that has one assigned to it.
 
+Currently, this theme only supports the *Standard* template for sliders, so be
+sure to use that!
+
 ### Front page content boxes
 
 You can also enable up to three content boxes which can be used to describe the
