@@ -255,7 +255,7 @@ function iv_header_slider() {
 function iv_enable_responsive_viewport() {
 
 	?>
-	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
 	<?php
 
 }
