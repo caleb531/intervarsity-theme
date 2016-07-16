@@ -48,7 +48,7 @@ function iv_static_breadcrumb( $title ) {
 function iv_breadcrumb_delimiter() {
 	?>
 	<span class="page-breadcrumb-delimiter">
-		<span class="iv-icon iv-icon-chevron-right"></span>
+		<?php iv_icon('chevron-right'); ?>
 	</span>
 	<?php
 }
