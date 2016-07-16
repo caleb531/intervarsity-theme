@@ -102,3 +102,8 @@ function iv_footer() {
 		<?php
 	}
 }
+
+// Output website icon SVG
+function iv_icon( $icon_id ) {
+	require IV_THEME_DIR . '/icons/' . $icon_id . '.svg';
+}

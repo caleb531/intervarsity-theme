@@ -157,6 +157,11 @@ object {
 img {
 	height: auto;
 }
+svg {
+	width: inherit;
+	height: inherit;
+	fill: currentColor;
+}
 
 // Floating classes
 
