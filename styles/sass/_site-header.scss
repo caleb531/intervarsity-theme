@@ -11,8 +11,7 @@
 	user-select: none;
 	vertical-align: middle;
 	@include layout(hybrid) {
-		padding-left: 0;
-		padding-right: 0;
+		padding: 0;
 		border-left-width: 0;
 		border-right-width: 0;
 		border-radius: 0;

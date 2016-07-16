@@ -9,6 +9,7 @@
 	padding: $nav-control-padding-y $nav-control-padding-x;
 	border-width: 0;
 	border-radius: 0;
+	box-sizing: content-box;
 	background: none;
 	font-size: $nav-control-size;
 	line-height: $nav-control-size;
@@ -52,7 +53,7 @@
 		// Top-level menu converts to popover menu for hybrid layout
 		@include layout(hybrid) {
 			@include floating-menu();
-			@include panel-arrow(top, 24px);
+			@include panel-arrow(top, 21px);
 			margin-left: 4px;
 			transition-delay: 0s;
 			.site-header-nav-open &,
