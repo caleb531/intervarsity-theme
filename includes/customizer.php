@@ -380,7 +380,7 @@ class InterVarsity_Customize {
 		'facebook'  => 'Facebook',
 		'twitter'   => 'Twitter',
 		'instagram' => 'Instagram',
-		'mail'      => 'Mail',
+		'email'     => 'Email',
 		'search'    => 'Search',
 		'quote'     => 'Quote'
 	);
