@@ -20,7 +20,7 @@ $is_post = ( 'post' === $post_type );
 
 		<h3 class="entry-title">
 			<?php if ( is_sticky() ): ?>
-				<span class="iv-icon iv-icon-pin"></span>
+				<span class="pin-icon"><?php iv_icon( 'pin' ); ?></span>
 			<?php endif; ?>
 			<a href="<?php echo $url; ?>"><?php the_title(); ?></a>
 		</h3>
