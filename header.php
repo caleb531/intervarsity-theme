@@ -47,7 +47,9 @@
 
 			<?php endif; ?>
 
-			<?php iv_social_header(); ?>
+			<div id="site-header-social"><ul>
+				<?php iv_social_header_icons(); ?>
+			</ul></div>
 
 			<div id="site-header-search">
 				<?php get_search_form(); ?>

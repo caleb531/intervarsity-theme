@@ -243,7 +243,7 @@ class InterVarsity_Customize {
 		) );
 		$wp_customize->add_setting( 'iv_social_message_enabled', array(
 			'type'              => 'theme_mod',
-			'transport'         => 'refresh',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => array( $this, 'sanitize_boolean' )
 		) );
 		$wp_customize->add_control( 'iv_social_message_enabled', array(
@@ -271,7 +271,7 @@ class InterVarsity_Customize {
 		) );
 		$wp_customize->add_setting( 'iv_facebook_enabled', array(
 			'type'              => 'theme_mod',
-			'transport'         => 'refresh',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => array( $this, 'sanitize_boolean' )
 		) );
 		$wp_customize->add_control( 'iv_facebook_enabled', array(
@@ -297,7 +297,7 @@ class InterVarsity_Customize {
 		) );
 		$wp_customize->add_setting( 'iv_twitter_enabled', array(
 			'type'              => 'theme_mod',
-			'transport'         => 'refresh',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => array( $this, 'sanitize_boolean' )
 		) );
 		$wp_customize->add_control( 'iv_twitter_enabled', array(
@@ -323,7 +323,7 @@ class InterVarsity_Customize {
 		) );
 		$wp_customize->add_setting( 'iv_instagram_enabled', array(
 			'type'              => 'theme_mod',
-			'transport'         => 'refresh',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => array( $this, 'sanitize_boolean' )
 		) );
 		$wp_customize->add_control( 'iv_instagram_enabled', array(
@@ -349,7 +349,7 @@ class InterVarsity_Customize {
 		) );
 		$wp_customize->add_setting( 'iv_email_enabled', array(
 			'type'              => 'theme_mod',
-			'transport'         => 'refresh',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => array( $this, 'sanitize_boolean' )
 		) );
 		$wp_customize->add_control( 'iv_email_enabled', array(
@@ -367,6 +367,19 @@ class InterVarsity_Customize {
 			'section' => 'iv_email_panel',
 			'type'    => 'email',
 			'label'   => 'Email Address'
+		) );
+
+		$wp_customize->selective_refresh->add_partial( 'iv_social', array(
+			'settings'         => array(
+				'iv_social_message_enabled',
+				'iv_facebook_enabled',
+				'iv_twitter_enabled',
+				'iv_instagram_enabled',
+				'iv_email_enabled'
+			),
+			'selector'         => '#site-header-social',
+			'render_callback'  => 'iv_social_header_icons',
+			'fallback_refresh' => true
 		) );
 
 	}
