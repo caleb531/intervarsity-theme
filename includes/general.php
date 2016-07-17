@@ -75,8 +75,8 @@ function iv_get_sg_category( $sg ) {
 }
 
 
-// Outputs the custom footer for the site
-function iv_footer() {
+// Outputs the custom footer content for the site
+function iv_footer_content() {
 	$ivcf_enabled = get_theme_mod( 'iv_footer_ivcf_enabled' );
 	$ivcf_link = get_theme_mod( 'iv_footer_ivcf_link' );
 	$ivcf_text = get_theme_mod( 'iv_footer_ivcf_text', IV_DEFAULT_FOOTER_IVCF_TEXT );

@@ -771,7 +771,7 @@ class InterVarsity_Customize {
 				'iv_footer_copyright_text'
 			),
 			'selector'         => '#site-footer-content',
-			'render_callback'  => 'iv_footer',
+			'render_callback'  => 'iv_footer_content',
 			'fallback_refresh' => true
 		) );
 

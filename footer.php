@@ -27,7 +27,7 @@
 		<?php endif; ?>
 
 		<div id="site-footer-content">
-			<?php iv_footer() ?>
+			<?php iv_footer_content() ?>
 		</div>
 
 	</footer>
