@@ -119,7 +119,7 @@ colors)
 The theme customizer also allows you to choose from the hundreds of available
 Google fonts to use for your site. You are able to set:
 
-1. The accent font, used for page headings exclusively
+1. The accent font, used for page/section headings exclusively
 
 2. The primary font, used for everything else
 
