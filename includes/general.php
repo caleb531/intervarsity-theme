@@ -96,6 +96,8 @@ function iv_footer_content() {
 	// Output custom copyright text
 	$copyright_enabled = get_theme_mod( 'iv_footer_copyright_enabled' );
 	$copyright_text = get_theme_mod( 'iv_footer_copyright_text', '' );
+	// Substitute in template variables (like {{year}})
+	$copyright_text = str_replace( '{{year}}', current_time( 'Y' ), $copyright_text );
 	if ( ! empty( $copyright_enabled ) ) {
 		?>
 		<div class="copyright"><?php echo wpautop( $copyright_text ); ?></div>

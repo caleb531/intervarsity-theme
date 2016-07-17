@@ -876,7 +876,7 @@ class InterVarsity_Customize {
 			'section'     => 'iv_footer_copyright_options',
 			'type'        => 'textarea',
 			'label'       => 'Copyright Text',
-			'description' => 'Type &amp;copy; to insert a copyright symbol'
+			'description' => 'Type &amp;copy; to insert a copyright symbol. Type {{year}} to insert the current year.'
 		) );
 
 	}
