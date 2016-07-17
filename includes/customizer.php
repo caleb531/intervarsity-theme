@@ -229,17 +229,17 @@ class InterVarsity_Customize {
 
 	public function add_social_options( $wp_customize ) {
 
-		$wp_customize->add_panel( 'iv_social_options', array(
+		$wp_customize->add_panel( 'iv_social_panel', array(
 			'title'       => 'Social Header',
 			// Place panel just above "Menus" panel
 			'priority'    => 100,
 			'description' => 'This panel allows you to customize links and text in the social header below the site header image, to the right.'
 		) );
 
-		$wp_customize->add_section( 'iv_social_message_panel', array(
+		$wp_customize->add_section( 'iv_social_message_options', array(
 			'title'       => 'Social Message',
 			'description' => 'This section allows you to customize the message displayed to the left of the social header icons.',
-			'panel'       => 'iv_social_options'
+			'panel'       => 'iv_social_panel'
 		) );
 		$wp_customize->add_setting( 'iv_social_message_enabled', array(
 			'type'              => 'theme_mod',
@@ -247,7 +247,7 @@ class InterVarsity_Customize {
 			'sanitize_callback' => array( $this, 'sanitize_boolean' )
 		) );
 		$wp_customize->add_control( 'iv_social_message_enabled', array(
-			'section' => 'iv_social_message_panel',
+			'section' => 'iv_social_message_options',
 			'type'    => 'checkbox',
 			'label'   => 'Enabled'
 		) );
@@ -258,7 +258,7 @@ class InterVarsity_Customize {
 			'sanitize_callback' => 'sanitize_text_field'
 		) );
 		$wp_customize->add_control( 'iv_social_message', array(
-			'section'     => 'iv_social_message_panel',
+			'section'     => 'iv_social_message_options',
 			'type'        => 'text',
 			'label'       => 'Social Message',
 			'description' => 'The short message to display (e.g. "Connect")'
@@ -267,7 +267,7 @@ class InterVarsity_Customize {
 		$wp_customize->add_section( 'iv_facebook_panel', array(
 			'title'       => 'Facebook',
 			'description' => 'This section allows you to customize the Facebook link in the social header.',
-			'panel'       => 'iv_social_options'
+			'panel'       => 'iv_social_panel'
 		) );
 		$wp_customize->add_setting( 'iv_facebook_enabled', array(
 			'type'              => 'theme_mod',
@@ -293,7 +293,7 @@ class InterVarsity_Customize {
 		$wp_customize->add_section( 'iv_twitter_panel', array(
 			'title'       => 'Twitter',
 			'description' => 'This section allows you to customize the Twitter link in the social header.',
-			'panel'       => 'iv_social_options'
+			'panel'       => 'iv_social_panel'
 		) );
 		$wp_customize->add_setting( 'iv_twitter_enabled', array(
 			'type'              => 'theme_mod',
@@ -319,7 +319,7 @@ class InterVarsity_Customize {
 		$wp_customize->add_section( 'iv_instagram_panel', array(
 			'title'       => 'Instagram',
 			'description' => 'This section allows you to customize the Instagram link in the social header.',
-			'panel'       => 'iv_social_options'
+			'panel'       => 'iv_social_panel'
 		) );
 		$wp_customize->add_setting( 'iv_instagram_enabled', array(
 			'type'              => 'theme_mod',
@@ -342,10 +342,10 @@ class InterVarsity_Customize {
 			'label'   => 'Link'
 		) );
 
-		$wp_customize->add_section( 'iv_email_panel', array(
+		$wp_customize->add_section( 'iv_email_options', array(
 			'title'       => 'Email',
 			'description' => 'This section allows you to customize the site email link in the social header.',
-			'panel'       => 'iv_social_options'
+			'panel'       => 'iv_social_panel'
 		) );
 		$wp_customize->add_setting( 'iv_email_enabled', array(
 			'type'              => 'theme_mod',
@@ -353,7 +353,7 @@ class InterVarsity_Customize {
 			'sanitize_callback' => array( $this, 'sanitize_boolean' )
 		) );
 		$wp_customize->add_control( 'iv_email_enabled', array(
-			'section' => 'iv_email_panel',
+			'section' => 'iv_email_options',
 			'type'    => 'checkbox',
 			'label'   => 'Enabled'
 		) );
@@ -364,7 +364,7 @@ class InterVarsity_Customize {
 			'default'           => get_bloginfo( 'admin_email' )
 		) );
 		$wp_customize->add_control( 'iv_email_address', array(
-			'section' => 'iv_email_panel',
+			'section' => 'iv_email_options',
 			'type'    => 'email',
 			'label'   => 'Email Address'
 		) );
