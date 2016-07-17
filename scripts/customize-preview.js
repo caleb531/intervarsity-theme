@@ -57,11 +57,17 @@
 
 		wp.customize( id_base + '_icon', function( oldIcon ) {
 			oldIcon.bind( function( newIcon ) {
-				$( '.home-box' )
-					.eq( index - 1 )
-					.find( '.iv-icon' )
-					.removeClass()
-					.addClass( 'iv-icon iv-icon-' + newIcon );
+				var $homeBox = $( '.home-box' ).eq( index - 1 );
+				var $boxIcon = $homeBox.find('.home-box-icon');
+				if ( newIcon !== '' ) {
+					var svgUrl = '/wp-content/themes/intervarsity/icons/' + newIcon + '.svg';
+					$.get(svgUrl, function (data) {
+						var $svg = $(data).find('svg');
+						$boxIcon.empty().append($svg);
+					});
+				} else {
+					$boxIcon.empty();
+				}
 			});
 		});
 		wp.customize( id_base + '_title', function( oldTitle ) {

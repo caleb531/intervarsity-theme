@@ -8,9 +8,7 @@ function iv_home_box_content( $icon, $title, $desc ) {
 	<div class="home-box-header">
 		<div class="home-box-icon">
 			<?php if ( ! empty( $icon ) ): ?>
-				<span class="iv-icon iv-icon-<?php echo $icon; ?>"></span>
-			<?php else: ?>
-				<span class="iv-icon"></span>
+				<?php iv_icon( $icon ); ?>
 			<?php endif; ?>
 		</div>
 	</div>

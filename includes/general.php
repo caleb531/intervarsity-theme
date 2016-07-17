@@ -16,8 +16,8 @@ function iv_paginate_links() {
 			'format'     => '?paged=%#%',
 			'current'    => max( 1, get_query_var('paged') ),
 			'total'      => $wp_query->max_num_pages,
-			'prev_text'  => '<span class="iv-icon iv-icon-chevron-left"></span>',
-			'next_text'  => '<span class="iv-icon iv-icon-chevron-right"></span>',
+			'prev_text'  => get_iv_icon('chevron-left'),
+			'next_text'  => get_iv_icon('chevron-right'),
 			'show_all'	 => true
 		) );
 	}
@@ -101,4 +101,16 @@ function iv_footer() {
 		<div class="copyright"><?php echo wpautop( $copyright_text ); ?></div>
 		<?php
 	}
+}
+
+// Return website icon SVG
+function get_iv_icon( $icon_id ) {
+	ob_start();
+	require IV_THEME_DIR . '/icons/' . $icon_id . '.svg';
+	return ob_get_clean();
+}
+
+// Output website icon SVG
+function iv_icon( $icon_id ) {
+	echo get_iv_icon( $icon_id );
 }

@@ -111,6 +111,16 @@ blockquote {
 	border-color: iv-color-accent-mid;
 }
 
-.entry.sticky .iv-icon-pin {
+.entry.sticky .pin-icon {
+	display: inline-block;
+	$pin-size: 20px;
+	width: $pin-size;
+	height: $pin-size;
+	position: relative;
+	$icon-spacing: 4px;
+	top: -$icon-spacing;
+	margin-right: $icon-spacing;
 	color: iv-color-accent-light;
+	font-size: 0;
+	vertical-align: middle;
 }

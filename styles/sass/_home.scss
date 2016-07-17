@@ -99,9 +99,11 @@ $icon-offset-y: 2px;
 	}
 	// Icon badge
 	.home-box-icon {
-		display: inline-block;
+		display: inline-flex;
 		width: $icon-size;
 		height: $icon-size;
+		justify-content: center;
+		align-items: center;
 		position: relative;
 		margin-top: (-$icon-size / 2) - $icon-border-width;
 		border-style: solid;
@@ -116,16 +118,13 @@ $icon-offset-y: 2px;
 			height: $icon-size-compact;
 			margin-top: 0;
 		}
-	}
-	// Icon glyph within icon badge
-	.iv-icon {
-		position: relative;
-		top: $icon-offset-y;
-		font-size: 50px;
-		color: #fff;
-		@include layout(compact) {
-			// Center icon with badge according to new badge size
-			top: $icon-offset-y - (($icon-size - $icon-size-compact) / 2);
+		// Icon glyph within icon badge
+		svg {
+			$icon-size-inner: 50px;
+			width: $icon-size-inner;
+			height: $icon-size-inner;
+			font-size: 0;
+			color: #fff;
 		}
 	}
 	// Short content description for content box
