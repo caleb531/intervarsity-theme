@@ -4,15 +4,6 @@
 	// The maximum number of home content boxes allowed by the theme
 	var NUM_HOME_BOXES = 3;
 
-	// A poor man's implementation of wpautop; converts sequences of two or more
-	// newlines into <p> tags
-	function wpautop( str ) {
-		str = str.replace( /\n(\s*\n)+/gi, '</p><p>' );
-		str = str.replace( /\n/gi, '<br />' );
-		str = '<p>' + str + '</p>';
-		return str;
-	}
-
 	wp.customize( 'iv_social_message', function( oldMessage ) {
 		oldMessage.bind( function( newMessage ) {
 			$( '#site-header' ).find( '.social.message' ).html( newMessage );
@@ -113,12 +104,6 @@
 			if ( 0 === $link.find('img').length ) {
 				$link.text( newText );
 			}
-		});
-	});
-
-	wp.customize( 'iv_footer_copyright_text', function( oldContent ) {
-		oldContent.bind( function( newContent ) {
-			$( '#site-footer' ).find( '.copyright' ).html( wpautop( newContent ) );
 		});
 	});
 

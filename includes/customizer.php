@@ -763,6 +763,18 @@ class InterVarsity_Customize {
 		$this->add_ivcf_link_options( $wp_customize );
 		$this->add_copyright_text_options( $wp_customize );
 
+		$wp_customize->selective_refresh->add_partial( 'iv_footer', array(
+			'settings'         => array(
+				'iv_footer_ivcf_enabled',
+				'iv_footer_ivcf_image',
+				'iv_footer_copyright_enabled',
+				'iv_footer_copyright_text'
+			),
+			'selector'         => '#site-footer-content',
+			'render_callback'  => 'iv_footer',
+			'fallback_refresh' => true
+		) );
+
 	}
 
 	public function add_ivcf_link_options( $wp_customize ) {
@@ -775,7 +787,7 @@ class InterVarsity_Customize {
 
 		$wp_customize->add_setting( 'iv_footer_ivcf_enabled', array(
 			'type'              => 'theme_mod',
-			'transport'         => 'refresh',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => array( $this, 'sanitize_boolean' )
 		) );
 		$wp_customize->add_control( 'iv_footer_ivcf_enabled', array(
@@ -811,7 +823,7 @@ class InterVarsity_Customize {
 
 		$wp_customize->add_setting( 'iv_footer_ivcf_image', array(
 			'type'              => 'theme_mod',
-			'transport'         => 'refresh',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => array( $this, 'sanitize_integer' )
 		) );
 		$wp_customize->add_control( new WP_Customize_Media_Control( $wp_customize, 'iv_footer_ivcf_image', array(
@@ -833,7 +845,7 @@ class InterVarsity_Customize {
 
 		$wp_customize->add_setting( 'iv_footer_copyright_enabled', array(
 			'type'              => 'theme_mod',
-			'transport'         => 'refresh',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => array( $this, 'sanitize_boolean' )
 		) );
 		$wp_customize->add_control( 'iv_footer_copyright_enabled', array(
