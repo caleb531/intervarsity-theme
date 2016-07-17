@@ -59,13 +59,14 @@
 			oldIcon.bind( function( newIcon ) {
 				var $homeBox = $( '.home-box' ).eq( index - 1 );
 				var $boxIcon = $homeBox.find('.home-box-icon');
-				$boxIcon.empty();
 				if ( newIcon !== '' ) {
 					var svgUrl = '/wp-content/themes/intervarsity/icons/' + newIcon + '.svg';
 					$.get(svgUrl, function (data) {
 						var $svg = $(data).find('svg');
-						$boxIcon.append($svg);
+						$boxIcon.empty().append($svg);
 					});
+				} else {
+					$boxIcon.empty();
 				}
 			});
 		});
