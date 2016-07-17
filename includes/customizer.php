@@ -377,7 +377,7 @@ class InterVarsity_Customize {
 				'iv_instagram_enabled',
 				'iv_email_enabled'
 			),
-			'selector'         => '#site-header-social',
+			'selector'         => '#site-header-social ul',
 			'render_callback'  => 'iv_social_header_icons',
 			'fallback_refresh' => true
 		) );
