@@ -19,7 +19,7 @@ sliders and a Facebook Like Button.
 
 ## Requirements
 
-1. Your site must be running WordPress 4.4 or newer.
+1. Your site must be running WordPress 4.5 or newer.
 
 2. You must install and activate the aforementioned [InterVarsity
 Plugin](https://github.com/caleb531/intervarsity-plugin) (v2.2.0 or newer), as
