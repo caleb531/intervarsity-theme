@@ -188,43 +188,39 @@ $iv_social_icons = array(
 	)
 );
 
-// Output social header if enabled
-function iv_social_header() {
+// Output each social header icon if enabled
+function iv_social_header_icons() {
 	global $iv_social_icons;
-
 	?>
-	<div id="site-header-social"><ul>
 
-		<?php if ( get_theme_mod( 'iv_social_message_enabled' ) ): ?>
+	<?php if ( get_theme_mod( 'iv_social_message_enabled' ) ): ?>
 
-			<li class="social message"><?php echo get_theme_mod( 'iv_social_message' ); ?></li>
+		<li class="social message"><?php echo get_theme_mod( 'iv_social_message' ); ?></li>
+
+	<?php endif; ?>
+
+	<?php foreach ( $iv_social_icons as $icon ): ?>
+
+		<?php if ( get_theme_mod( $icon['enabled'] ) ): ?>
+
+			<?php
+			$link = get_theme_mod( $icon['link'] );
+			// Obscure email address in HTML to deter harvesting
+			if ( is_email( $link ) ) {
+				$link = "mailto:" . antispambot( $link, 1 );
+			}
+			?>
+			<li class="social <?php echo $icon['class']; ?>">
+				<a href="<?php echo $link; ?>" data-tooltip data-tooltip-title="<?php echo $icon['title'];?>">
+					<?php iv_icon( $icon['icon'] ); ?>
+				</a>
+			</li>
 
 		<?php endif; ?>
 
-		<?php foreach ( $iv_social_icons as $icon ): ?>
+	<?php endforeach; ?>
 
-			<?php if ( get_theme_mod( $icon['enabled'] ) ): ?>
-
-				<?php
-				$link = get_theme_mod( $icon['link'] );
-				// Obscure email address in HTML to deter harvesting
-				if ( is_email( $link ) ) {
-					$link = "mailto:" . antispambot( $link, 1 );
-				}
-				?>
-				<li class="social <?php echo $icon['class']; ?>">
-					<a href="<?php echo $link; ?>" data-tooltip data-tooltip-title="<?php echo $icon['title'];?>">
-						<?php iv_icon( $icon['icon'] ); ?>
-					</a>
-				</li>
-
-			<?php endif; ?>
-
-		<?php endforeach; ?>
-
-	</ul></div>
 	<?php
-
 }
 
 // Output page slider
