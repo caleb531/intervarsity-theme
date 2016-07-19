@@ -136,13 +136,12 @@ class InterVarsity_Customize {
 
 	}
 
-	// Checks if the given font family value exists within the fetched list of
-	// valid font families; if it is not, the value will not be saved to the
-	// database
+	// Checks if the given font family value is a valid font name (all 779
+	// Google fonts already match the below pattern, so it should be
+	// future-proof)
 	public function sanitize_font_family( $family ) {
 
-		$font_family_choices = $this->get_font_family_choices();
-		if ( ! empty( $font_family_choices[ $family ] ) ) {
+		if ( preg_match( '/^[A-Za-z0-9\- ]+$/', $family ) ) {
 			return $family;
 		} else {
 			wp_die( "Invalid font family: $family" );
