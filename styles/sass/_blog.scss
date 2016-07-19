@@ -18,6 +18,22 @@
 	}
 }
 
+.pin-icon {
+	display: none;
+	$pin-size: 20px;
+	width: $pin-size;
+	height: $pin-size;
+	position: relative;
+	$icon-spacing: 4px;
+	top: -$icon-spacing;
+	margin-right: $icon-spacing;
+	font-size: 0;
+	vertical-align: middle;
+	.entry.sticky & {
+		display: inline-block;
+	}
+}
+
 .post.entry-single .entry-thumbnail {
 	text-align: center;
 }
