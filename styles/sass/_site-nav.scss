@@ -16,7 +16,6 @@
 	transition: padding $transition-duration $transition-easing;
 	color: #fff;
 	cursor: default;
-	// Only show site
 	@include layout(hybrid) {
 		display: block;
 	}
