@@ -16,11 +16,6 @@
 	transition: padding $transition-duration $transition-easing;
 	color: #fff;
 	cursor: default;
-	// Menu icon isn't perfectly centered; shift it slightly
-	.iv-icon {
-		position: relative;
-		top: 1px;
-	}
 	// Only show site
 	@include layout(hybrid) {
 		display: block;
