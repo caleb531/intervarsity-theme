@@ -394,7 +394,8 @@ class InterVarsity_Customize {
 		'instagram' => 'Instagram',
 		'email'     => 'Email',
 		'search'    => 'Search',
-		'quote'     => 'Quote'
+		'quote'     => 'Quote',
+		'heart'     => 'Heart'
 	);
 
 	// Similar to sanitize_font_family() in that this checks if the given value
