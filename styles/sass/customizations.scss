@@ -1,6 +1,7 @@
 // Styles for Customizer-configurable styles
 // Styles consists mostly of colors, but aren't limited to such
 @import 'variables';
+@import 'mixins';
 
 body {
 	background-color: iv-color-background-default;
@@ -113,4 +114,35 @@ blockquote {
 
 .pin-icon {
 	color: iv-color-accent-light;
+}
+
+#site-header-nav > ul {
+	@include layout(hybrid) {
+		li {
+			background-color: iv-color-background-page;
+		}
+		&:after {
+			border-bottom-color: iv-color-background-page;
+		}
+	}
+}
+
+#site-header-nav .sub-menu {
+	li {
+		background-color: iv-color-background-page;
+	}
+	&:after {
+		border-bottom-color: iv-color-background-page;
+		@include layout(hybrid) {
+			border-bottom-color: transparent;
+			border-right-color: iv-color-background-page;
+		}
+	}
+}
+
+#site-header .tooltip {
+	background-color: iv-color-background-page;
+	&:after {
+		border-bottom-color: iv-color-background-page;
+	}
 }

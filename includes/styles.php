@@ -81,10 +81,13 @@ function iv_get_color_vars() {
 		$background_logo = 'transparent';
 	}
 
+	$background_page = '#' . get_theme_mod( 'background_color', IV_DEFAULT_BG_COLOR );
+
 	return array(
 		'color-accent-dark'        => $accent_dark,
 		'color-accent-mid'         => $accent_mid,
 		'color-accent-light'       => $accent_light,
+		'color-background-page'    => $background_page,
 		'color-background-logo'    => $background_logo,
 		'color-background-default' => IV_DEFAULT_BG_COLOR
 	);
