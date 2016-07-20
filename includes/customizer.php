@@ -393,6 +393,7 @@ class InterVarsity_Customize {
 		'group'     => 'Group',
 		'heart'     => 'Heart',
 		'instagram' => 'Instagram',
+		'money'     => 'Money',
 		'quote'     => 'Quote',
 		'search'    => 'Search',
 		'twitter'   => 'Twitter'
