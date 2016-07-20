@@ -119,30 +119,30 @@ blockquote {
 #site-header-nav > ul {
 	@include layout(hybrid) {
 		li {
-			background-color: iv-color-background-page;
+			background-color: iv-color-background-body;
 		}
 		&:after {
-			border-bottom-color: iv-color-background-page;
+			border-bottom-color: iv-color-background-body;
 		}
 	}
 }
 
 #site-header-nav .sub-menu {
 	li {
-		background-color: iv-color-background-page;
+		background-color: iv-color-background-body;
 	}
 	&:after {
-		border-bottom-color: iv-color-background-page;
+		border-bottom-color: iv-color-background-body;
 		@include layout(hybrid) {
 			border-bottom-color: transparent;
-			border-right-color: iv-color-background-page;
+			border-right-color: iv-color-background-body;
 		}
 	}
 }
 
 #site-header .tooltip {
-	background-color: iv-color-background-page;
+	background-color: iv-color-background-body;
 	&:after {
-		border-bottom-color: iv-color-background-page;
+		border-bottom-color: iv-color-background-body;
 	}
 }
