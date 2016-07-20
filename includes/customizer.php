@@ -386,6 +386,7 @@ class InterVarsity_Customize {
 	public $home_box_icon_choices = array(
 		''          => '(no icon)',
 		'book'      => 'Book',
+		'chat'      => 'Chat',
 		'cross'     => 'Cross',
 		'email'     => 'Email',
 		'facebook'  => 'Facebook',
