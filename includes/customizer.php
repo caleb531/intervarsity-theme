@@ -387,15 +387,15 @@ class InterVarsity_Customize {
 		''          => '(no icon)',
 		'book'      => 'Book',
 		'cross'     => 'Cross',
-		'group'     => 'Group',
-		'globe'     => 'Globe',
-		'facebook'  => 'Facebook',
-		'twitter'   => 'Twitter',
-		'instagram' => 'Instagram',
 		'email'     => 'Email',
-		'search'    => 'Search',
+		'facebook'  => 'Facebook',
+		'globe'     => 'Globe',
+		'group'     => 'Group',
+		'heart'     => 'Heart',
+		'instagram' => 'Instagram',
 		'quote'     => 'Quote',
-		'heart'     => 'Heart'
+		'search'    => 'Search',
+		'twitter'   => 'Twitter'
 	);
 
 	// Similar to sanitize_font_family() in that this checks if the given value
