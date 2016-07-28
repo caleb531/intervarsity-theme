@@ -16,8 +16,8 @@ function iv_paginate_links() {
 			'format'     => '?paged=%#%',
 			'current'    => max( 1, get_query_var('paged') ),
 			'total'      => $wp_query->max_num_pages,
-			'prev_text'  => get_iv_icon('chevron-left'),
-			'next_text'  => get_iv_icon('chevron-right'),
+			'prev_text'  => get_iv_icon('chevron-left') . 'Previous',
+			'next_text'  => get_iv_icon('chevron-right') . 'Next',
 			'show_all'	 => true
 		) );
 	}
