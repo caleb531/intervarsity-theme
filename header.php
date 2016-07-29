@@ -37,7 +37,7 @@
 				// Add responsive navigation list
 				wp_nav_menu( array(
 					'theme_location' => 'header_menu',
-					'items_wrap'	 => '<h2 class="screen-reader-text">Site Navigation (Header)</h2><button id="nav-control-responsive">' . get_iv_icon('navigation') . '<span class="screen-reader-text">Menu</span></button><ul id="%1$s" class="%2$s">%3$s</ul>',
+					'items_wrap'	 => '<h2 class="screen-reader-text">Site Navigation (Header)</h2><button id="nav-control-responsive" aria-label="Menu">' . get_iv_icon('navigation') . '</button><ul id="%1$s" class="%2$s">%3$s</ul>',
 					'container'		 => 'nav',
 					'container_id'	 => 'site-header-nav',
 					'menu_id'        => 'site-header-nav-list',
