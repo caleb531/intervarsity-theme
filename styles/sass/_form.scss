@@ -85,6 +85,15 @@ input.search {
 	padding-left: $search-icon-size + $search-icon-padding + $input-padding-x;
 }
 
+// Add margin-bottom on the page's search field and search submit button so that
+// some space separates the field and the button when the form collapses
+#content {
+	.search-field,
+	input.searchsubmit {
+		margin-bottom: 10px;
+	}
+}
+
 // Search query
 .search-query {
 	font-style: italic;
