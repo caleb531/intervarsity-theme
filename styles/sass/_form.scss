@@ -58,11 +58,14 @@ textarea {
 
 .searchform {
 	display: inline-block;
-	position: relative;
 	cursor: default;
 }
+.search-field {
+	position: relative;
+}
 
-$search-icon-size: 16px;
+
+$search-icon-size: 15px;
 $search-icon-padding: $search-icon-size / 2;
 
 .search-icon {
