@@ -82,6 +82,7 @@ $search-icon-padding: 7px;
 }
 
 input.search {
+	width: 200px;
 	padding-left: $search-icon-size + $search-icon-padding + $input-padding-x;
 }
 
