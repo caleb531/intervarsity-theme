@@ -209,7 +209,7 @@ function iv_get_frontend_font_url() {
 function iv_substitute_style_vars( $stylesheet, $style_vars ) {
 
 	foreach ( $style_vars as $name => $value ) {
-		$stylesheet = str_replace( IV_STYLE_VAR_PREFIX . $name, $value, $stylesheet );
+		$stylesheet = str_replace( '\'' . IV_STYLE_VAR_PREFIX . $name . '\'', $value, $stylesheet );
 	}
 
 	return $stylesheet;
