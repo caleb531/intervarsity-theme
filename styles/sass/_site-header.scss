@@ -189,7 +189,7 @@
 		// attribute as soon as its value property is changed, so this is
 		// guaranteed to work)
 		&:focus,
-		&:not([value=""]) {
+		&:not([value='']) {
 			width: 160px;
 			border-color: $header-border-color;
 			background-color: rgba(#fff, 0.1);

@@ -103,7 +103,7 @@ $sg-tile-max-width: 400px;
 	}
 	// Do not display form Submit button; the front-end script will
 	// automatically submit the form when the user selects a value
-	input[type="submit"] {
+	input[type='submit'] {
 		display: none;
 	}
 }

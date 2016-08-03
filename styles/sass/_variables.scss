@@ -50,8 +50,8 @@ $box-border-color: #aaa;
 $subtle-gray: rgba(#fff, 0.5);
 
 // Styling for form elements (inputs, buttons)
-$input-button: 'input[type="button"], input[type="submit"], button';
-$input-text: 'input[type="text"], input[type="password"], input[type="search"], textarea';
+$input-button: "input[type='button'], input[type='submit'], button";
+$input-text: "input[type='text'], input[type='password'], input[type='search'], textarea";
 $input-padding-x: 10px;
 $input-padding-y: 6px;
 $input-border-width: 1px;
