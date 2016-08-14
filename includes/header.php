@@ -211,7 +211,7 @@ function iv_social_header_icons() {
 			}
 			?>
 			<li class="social <?php echo $icon['class']; ?>">
-				<a href="<?php echo $link; ?>" data-tooltip data-tooltip-title="<?php echo $icon['title'];?>">
+				<a href="<?php echo $link; ?>" data-tooltip data-tooltip-title="<?php echo $icon['title'];?>" aria-label="<?php echo $icon['title'];?>">
 					<?php iv_icon( $icon['icon'] ); ?>
 				</a>
 			</li>

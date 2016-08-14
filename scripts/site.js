@@ -68,7 +68,7 @@ $$.siteHeader.find( '[data-tooltip]' ).each(function ( e, elem ) {
 	var $parent, $tooltip;
 	$parent = $( elem );
 	// Create general tooltip container
-	$tooltip = $( '<div class="tooltip">' );
+	$tooltip = $( '<div class="tooltip" aria-hidden>' );
 	$tooltip.html( $parent.attr( 'data-tooltip-title' ) );
 	$parent.append( $tooltip );
 });
