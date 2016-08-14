@@ -81,6 +81,9 @@
 	height: 1px !important;
 	padding: 0 !important;
 	border-width: 0 !important;
+	background-color: $box-background-color !important;
+	font-weight: bold !important;
+	color: $content-color;
 	overflow: hidden !important;
 	// Skip links for screen readers
 	&.skip-link:focus {
@@ -89,8 +92,6 @@
 		width: auto !important;
 		height: auto !important;
 		padding: 15px 23px 14px !important;
-		background-color: $box-background-color !important;
-		font-weight: bold !important;
 		box-shadow: 0 0 2px 2px rgba(#000,0.6) !important;
 	}
 }
