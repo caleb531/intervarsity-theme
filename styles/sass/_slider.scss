@@ -18,6 +18,15 @@
         border-bottom-color: $box-border-color;
         background-color: #000;
 	}
+	// Next/Previous slide controls
+	.cycloneslider-prev,
+	.cycloneslider-next {
+		opacity: 1;
+		border: solid 2px rgba(#000, 0.5);
+		background-color: rgba(#fff, 0.75);
+		color: rgba(#000, 0.5);
+		box-shadow: none;
+	}
     // The plugin by default gives a white background to individual slides;
     // remove it so that the background of the slide container shows (the
     // background is only noticeable when transitioning between slides)
