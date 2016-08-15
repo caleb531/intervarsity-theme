@@ -17,9 +17,8 @@
 
 			<?php wp_nav_menu( array(
 				'theme_location'  => 'footer_menu',
-				'items_wrap'	 => '<h2 class="screen-reader-text">Site Navigation (Footer)</h2><ul id="%1$s" class="%2$s">%3$s</ul>',
-				'container'       => 'nav',
-				'container_id'    => 'site-footer-nav',
+				'items_wrap'	 => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+				'container'       => false,
 				'menu_id'         => 'site-footer-nav-list',
 				'depth'           => 1
 			) ); ?>
