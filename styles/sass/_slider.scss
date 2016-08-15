@@ -21,11 +21,38 @@
 	// Next/Previous slide controls
 	.cycloneslider-prev,
 	.cycloneslider-next {
+		display: inline-block;
+		$control-size: 28px;
+		width: $control-size;
+		height: $control-size;
 		opacity: 1;
 		border: solid 2px rgba(#000, 0.5);
+		border-radius: 50%;
 		background-color: rgba(#fff, 0.75);
-		color: rgba(#000, 0.5);
+		background-image: none;
 		box-shadow: none;
+		.arrow {
+			display: none;
+		}
+		&:before {
+			content: '';
+			display: inline-block;
+			position: absolute;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-repeat: no-repeat;
+			background-position: 50% 50%;
+			background-size: 15px;
+		}
+	}
+	.cycloneslider-prev:before {
+		right: 1px;
+		background-image: url('../../icons/chevron-left.svg');
+	}
+	.cycloneslider-next:before {
+		left: 1px;
+		background-image: url('../../icons/chevron-right.svg');
 	}
     // The plugin by default gives a white background to individual slides;
     // remove it so that the background of the slide container shows (the
