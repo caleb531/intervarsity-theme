@@ -9,7 +9,7 @@
 
 		</div><!-- end #content -->
 
-	</section><!-- end #page -->
+	</main><!-- end #page -->
 
 	<footer id="site-footer">
 

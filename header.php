@@ -60,7 +60,7 @@
 
 	</header>
 
-	<section id="page">
+	<main id="page">
 
 		<?php
 		// Hide page header (via CSS class):
