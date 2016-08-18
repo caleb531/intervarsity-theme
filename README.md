@@ -123,7 +123,7 @@ Google fonts to use for your site. You are able to set:
 
 2. The primary font, used for everything else
 
-### ...but wait, there's more!
+### Everything else
 
 There are many more features and options available in the InterVarsity Theme,
 including options for the site footer, small group settings, and a slew of
