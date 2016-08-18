@@ -24,7 +24,7 @@
 
 		<div id="site-logo">
 
-			<a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo ( has_header_image() ? get_header_image() : IV_DEFAULT_HEADER_IMAGE_URL ); ?>" alt="<?php echo get_bloginfo( 'name' ) . ' Logo'; ?>" /></a>
+			<a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo ( has_header_image() ? get_header_image() : IV_DEFAULT_HEADER_IMAGE_URL ); ?>" alt="InterVarsity Logo" /></a>
 			<h1 class="screen-reader-text"><?php bloginfo( 'name' ); ?></h1>
 
 		</div>
@@ -33,21 +33,24 @@
 
 			<?php if ( has_nav_menu( 'header_menu' ) ): ?>
 
+				<nav id="site-header-nav" aria-label="Site Navigation">
 				<?php
 				// Add responsive navigation list
 				wp_nav_menu( array(
 					'theme_location' => 'header_menu',
-					'items_wrap'	 => '<h2 class="screen-reader-text">Site Navigation (Header)</h2><button id="nav-control-responsive"><span class="iv-icon iv-icon-list"></span><span class="screen-reader-text">Menu</span></button><ul id="%1$s" class="%2$s">%3$s</ul>',
-					'container'		 => 'nav',
-					'container_id'	 => 'site-header-nav',
+					'items_wrap'	 => '<button id="nav-control-responsive" aria-label="Menu">' . get_iv_icon('navigation') . '</button><ul id="%1$s" class="%2$s">%3$s</ul>',
+					'container'		 => false,
 					'menu_id'        => 'site-header-nav-list',
 					'depth'          => 2
 				) );
 				?>
+				</nav>
 
 			<?php endif; ?>
 
-			<?php iv_social_header(); ?>
+			<div id="site-header-social"><ul>
+				<?php iv_social_header_icons(); ?>
+			</ul></div>
 
 			<div id="site-header-search">
 				<?php get_search_form(); ?>
@@ -57,7 +60,7 @@
 
 	</header>
 
-	<section id="page">
+	<main id="page">
 
 		<?php
 		// Hide page header (via CSS class):

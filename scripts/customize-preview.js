@@ -4,15 +4,6 @@
 	// The maximum number of home content boxes allowed by the theme
 	var NUM_HOME_BOXES = 3;
 
-	// A poor man's implementation of wpautop; converts sequences of two or more
-	// newlines into <p> tags
-	function wpautop( str ) {
-		str = str.replace( /\n(\s*\n)+/gi, '</p><p>' );
-		str = str.replace( /\n/gi, '<br />' );
-		str = '<p>' + str + '</p>';
-		return str;
-	}
-
 	wp.customize( 'iv_social_message', function( oldMessage ) {
 		oldMessage.bind( function( newMessage ) {
 			$( '#site-header' ).find( '.social.message' ).html( newMessage );
@@ -57,11 +48,17 @@
 
 		wp.customize( id_base + '_icon', function( oldIcon ) {
 			oldIcon.bind( function( newIcon ) {
-				$( '.home-box' )
-					.eq( index - 1 )
-					.find( '.iv-icon' )
-					.removeClass()
-					.addClass( 'iv-icon iv-icon-' + newIcon );
+				var $homeBox = $( '.home-box' ).eq( index - 1 );
+				var $boxIcon = $homeBox.find('.home-box-icon');
+				if ( newIcon !== '' ) {
+					var svgUrl = '/wp-content/themes/intervarsity/icons/' + newIcon + '.svg';
+					$.get(svgUrl, function (data) {
+						var $svg = $(data).find('svg');
+						$boxIcon.empty().append($svg);
+					});
+				} else {
+					$boxIcon.empty();
+				}
 			});
 		});
 		wp.customize( id_base + '_title', function( oldTitle ) {
@@ -107,12 +104,6 @@
 			if ( 0 === $link.find('img').length ) {
 				$link.text( newText );
 			}
-		});
-	});
-
-	wp.customize( 'iv_footer_copyright_text', function( oldContent ) {
-		oldContent.bind( function( newContent ) {
-			$( '#site-footer' ).find( '.copyright' ).html( wpautop( newContent ) );
 		});
 	});
 

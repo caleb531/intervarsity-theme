@@ -7,7 +7,9 @@
  */
 ?>
 <form method="get" class="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-	<span class="search-icon"><span class="iv-icon iv-icon-search"></span></span>
-	<input type="search" class="search" name="s" value="<?php echo esc_attr( get_search_query() ); ?>" placeholder="Search small groups" />
+	<div class="search-field">
+		<span class="search-icon"><?php iv_icon( 'search' ); ?></span>
+		<input type="search" class="search" name="s" value="<?php echo esc_attr( get_search_query() ); ?>" placeholder="Search small groups" aria-label="Search small groups" />
+	</div>
 	<input type="submit" class="searchsubmit" value="Search" />
 </form>

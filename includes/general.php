@@ -16,8 +16,8 @@ function iv_paginate_links() {
 			'format'     => '?paged=%#%',
 			'current'    => max( 1, get_query_var('paged') ),
 			'total'      => $wp_query->max_num_pages,
-			'prev_text'  => '<span class="iv-icon iv-icon-chevron-left"></span>',
-			'next_text'  => '<span class="iv-icon iv-icon-chevron-right"></span>',
+			'prev_text'  => get_iv_icon('chevron-left') . 'Previous',
+			'next_text'  => get_iv_icon('chevron-right') . 'Next',
 			'show_all'	 => true
 		) );
 	}
@@ -75,8 +75,8 @@ function iv_get_sg_category( $sg ) {
 }
 
 
-// Outputs the custom footer for the site
-function iv_footer() {
+// Outputs the custom footer content for the site
+function iv_footer_content() {
 	$ivcf_enabled = get_theme_mod( 'iv_footer_ivcf_enabled' );
 	$ivcf_link = get_theme_mod( 'iv_footer_ivcf_link' );
 	$ivcf_text = get_theme_mod( 'iv_footer_ivcf_text', IV_DEFAULT_FOOTER_IVCF_TEXT );
@@ -96,9 +96,23 @@ function iv_footer() {
 	// Output custom copyright text
 	$copyright_enabled = get_theme_mod( 'iv_footer_copyright_enabled' );
 	$copyright_text = get_theme_mod( 'iv_footer_copyright_text', '' );
+	// Substitute in template variables (like {{year}})
+	$copyright_text = str_replace( '{{year}}', current_time( 'Y' ), $copyright_text );
 	if ( ! empty( $copyright_enabled ) ) {
 		?>
 		<div class="copyright"><?php echo wpautop( $copyright_text ); ?></div>
 		<?php
 	}
+}
+
+// Return website icon SVG
+function get_iv_icon( $icon_id ) {
+	ob_start();
+	require IV_THEME_DIR . '/icons/' . $icon_id . '.svg';
+	return ob_get_clean();
+}
+
+// Output website icon SVG
+function iv_icon( $icon_id ) {
+	echo get_iv_icon( $icon_id );
 }

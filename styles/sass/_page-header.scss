@@ -47,5 +47,8 @@
 // Delimiters which separate indibidual breadcrumb links
 .page-breadcrumb-delimiter {
 	padding: 0 5px;
-	font-size: 10px;
+	$delimiter-size: 10px;
+	width: $delimiter-size;
+	height: $delimiter-size;
+	vertical-align: middle;
 }

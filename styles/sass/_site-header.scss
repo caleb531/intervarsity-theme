@@ -11,8 +11,7 @@
 	user-select: none;
 	vertical-align: middle;
 	@include layout(hybrid) {
-		padding-left: 0;
-		padding-right: 0;
+		padding: 0;
 		border-left-width: 0;
 		border-right-width: 0;
 		border-radius: 0;
@@ -190,7 +189,7 @@
 		// attribute as soon as its value property is changed, so this is
 		// guaranteed to work)
 		&:focus,
-		&:not([value=""]) {
+		&:not([value='']) {
 			width: 160px;
 			border-color: $header-border-color;
 			background-color: rgba(#fff, 0.1);

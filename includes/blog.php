@@ -61,7 +61,7 @@ function iv_list_comments( $comment, $args, $depth ) {
 	<?php if ( 'pingback' === $comment->comment_type || 'trackback' === $comment->comment_type ): ?>
 
 		<li class="post pingback">
-			<p><?php _e( 'Pingback:', 'intervarsity' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __( '(Edit)', 'intervarsity' ), ' ' ); ?></p>
+			<p><?php echo 'Pingback:'; ?> <?php comment_author_link(); ?><?php edit_comment_link( '(Edit)', ' ' ); ?></p>
 
 	<?php else: ?>
 
@@ -93,7 +93,7 @@ function iv_list_comments( $comment, $args, $depth ) {
 
 				<?php if ( 0 === $comment->comment_approved ) : ?>
 
-					<em><?php _e( 'Your comment is awaiting moderation.', 'intervarsity'); ?></em>
+					<em><?php echo 'Your comment is awaiting moderation.'; ?></em>
 					<br />
 
 				<?php endif; ?>
@@ -108,7 +108,7 @@ function iv_list_comments( $comment, $args, $depth ) {
 						'before'    => '<div class="comment-control comment-reply-control">',
 						'after'     => '</div>'
 					) ) ); ?>
-					<?php edit_comment_link( __( 'Edit', 'intervarsity' ), '<div class="comment-control comment-edit-control">', '</div>' ); ?>
+					<?php edit_comment_link( 'Edit', '<div class="comment-control comment-edit-control">', '</div>' ); ?>
 
 				</div>
 
@@ -122,8 +122,8 @@ function iv_list_comments( $comment, $args, $depth ) {
 function iv_comment_pagination_links( $placement ) {
 	?>
 	<nav role="navigation" id="comment-nav-<?php echo $placement; ?>" class="comment-navigation">
-		<div class="nav-previous"><?php previous_comments_link( __( 'Older Comments', 'intervarsity' ) ); ?></div>
-		<div class="nav-next"><?php next_comments_link( __( 'Newer Comments', 'intervarsity' ) ); ?></div>
+		<div class="nav-previous"><?php previous_comments_link( 'Older Comments' ); ?></div>
+		<div class="nav-next"><?php next_comments_link( 'Newer Comments' ); ?></div>
 	</nav>
 	<?php
 }

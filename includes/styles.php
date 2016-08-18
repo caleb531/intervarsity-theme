@@ -81,10 +81,13 @@ function iv_get_color_vars() {
 		$background_logo = 'transparent';
 	}
 
+	$background_body = '#' . get_theme_mod( 'background_color', IV_DEFAULT_BG_COLOR );
+
 	return array(
 		'color-accent-dark'        => $accent_dark,
 		'color-accent-mid'         => $accent_mid,
 		'color-accent-light'       => $accent_light,
+		'color-background-body'    => $background_body,
 		'color-background-logo'    => $background_logo,
 		'color-background-default' => IV_DEFAULT_BG_COLOR
 	);
@@ -206,7 +209,7 @@ function iv_get_frontend_font_url() {
 function iv_substitute_style_vars( $stylesheet, $style_vars ) {
 
 	foreach ( $style_vars as $name => $value ) {
-		$stylesheet = str_replace( IV_STYLE_VAR_PREFIX . $name, $value, $stylesheet );
+		$stylesheet = str_replace( '\'' . IV_STYLE_VAR_PREFIX . $name . '\'', $value, $stylesheet );
 	}
 
 	return $stylesheet;

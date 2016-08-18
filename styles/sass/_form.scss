@@ -43,10 +43,10 @@
 }
 
 // Strip all browser styling for search inputs
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration {
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
 	display: none;
 }
 
@@ -58,12 +58,17 @@ textarea {
 
 .searchform {
 	display: inline-block;
-	position: relative;
 	cursor: default;
 }
+.search-field {
+	display: inline-block;
+	position: relative;
+	vertical-align: middle;
+}
 
-$search-icon-size: 16px;
-$search-icon-padding: $search-icon-size / 2;
+
+$search-icon-size: 15px;
+$search-icon-padding: 7px;
 
 .search-icon {
 	display: inline-block;
@@ -73,12 +78,21 @@ $search-icon-padding: $search-icon-size / 2;
 	margin-top: -($search-icon-size / 2) - 1;
 	width: $search-icon-size;
 	height: $search-icon-size;
-	font-size: $search-icon-size;
 	line-height: $search-icon-size;
 }
 
 input.search {
+	width: 200px;
 	padding-left: $search-icon-size + $search-icon-padding + $input-padding-x;
+}
+
+// Add margin-bottom on the page's search field and search submit button so that
+// some space separates the field and the button when the form collapses
+#content {
+	.search-field,
+	input.searchsubmit {
+		margin-bottom: 10px;
+	}
 }
 
 // Search query

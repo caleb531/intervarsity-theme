@@ -19,7 +19,7 @@ sliders and a Facebook Like Button.
 
 ## Requirements
 
-1. Your site must be running WordPress 4.4 or newer.
+1. Your site must be running WordPress 4.5 or newer.
 
 2. You must install and activate the aforementioned [InterVarsity
 Plugin](https://github.com/caleb531/intervarsity-plugin) (v2.2.0 or newer), as
@@ -92,6 +92,9 @@ existing [Cyclone Slider 2](https://wordpress.org/plugins/cyclone-slider-2/)
 slider to any page you've created. Needless to say, this theme will display the
 slider for any page that has one assigned to it.
 
+Currently, this theme only supports the *Standard* template for sliders, so be
+sure to use that!
+
 ### Front page content boxes
 
 You can also enable up to three content boxes which can be used to describe the
@@ -116,15 +119,16 @@ colors)
 The theme customizer also allows you to choose from the hundreds of available
 Google fonts to use for your site. You are able to set:
 
-1. The accent font, used for page headings exclusively
+1. The accent font, used for page/section headings exclusively
 
 2. The primary font, used for everything else
 
-### ...but wait, there's more!
+### Everything else
 
 There are many more features and options available in the InterVarsity Theme,
 including options for the site footer, small group settings, and a slew of
-customizable messages.
+customizable messages. All of these options are available in the WordPress
+Customizer.
 
 ## Credits
 

@@ -53,7 +53,7 @@ if ( post_password_required() ) {
 		?>
 
 			<div id="nocomments" class="notification info">
-				<div class="icon"><?php _e( 'Comments are closed.', 'intervarsity' ); ?></div>
+				<div class="icon"><?php echo 'Comments are closed.'; ?></div>
 			</div>
 
 	<?php endif; ?>

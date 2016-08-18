@@ -12,6 +12,7 @@
 .pagination > span {
 	display: inline-block;
 	$link-size: 24px;
+	$font-size: 13px;
 	width: $link-size;
 	height: $link-size;
 	border-style: solid;
@@ -19,19 +20,24 @@
 	border-radius: 50%;
 	line-height: $link-size;
 	color: #fff;
-	font-size: 13px;
+	font-size: $font-size;
 	vertical-align: middle;
 	transition: all $transition-duration $transition-easing;
 	transition-property: border-color, background-color;
-	$icon-size: $link-size / 2;
-	.iv-icon {
-		position: relative;
-	}
 	$chevron-offset: 1px;
-	&.prev .iv-icon {
+	&.prev, &.next {
+		font-size: 0;
+	}
+	svg {
+		position: relative;
+		width: $font-size;
+		height: $font-size;
+		vertical-align: middle;
+	}
+	&.prev svg {
 		left: -$chevron-offset;
 	}
-	&.next .iv-icon {
+	&.next svg {
 		right: -$chevron-offset;
 	}
 }
@@ -75,6 +81,9 @@
 	height: 1px !important;
 	padding: 0 !important;
 	border-width: 0 !important;
+	background-color: $box-background-color !important;
+	font-weight: bold !important;
+	color: $content-color;
 	overflow: hidden !important;
 	// Skip links for screen readers
 	&.skip-link:focus {
@@ -83,8 +92,6 @@
 		width: auto !important;
 		height: auto !important;
 		padding: 15px 23px 14px !important;
-		background-color: $box-background-color !important;
-		font-weight: bold !important;
 		box-shadow: 0 0 2px 2px rgba(#000,0.6) !important;
 	}
 }

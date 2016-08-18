@@ -22,7 +22,7 @@ $entry-tile-margin: 20px;
 	}
 	@include layout(compact) {
 		margin-left: -$content-compact-padding-x;
-	    margin-right: -$content-compact-padding-x;
+		margin-right: -$content-compact-padding-x;
 	}
 }
 
@@ -126,8 +126,8 @@ $entry-tile-margin: 20px;
 		max-width: none;
 		margin-left: 0;
 		margin-right: 0;
-	    &:not(:last-child) {
-	    	margin-bottom: 0;
+		&:not(:last-child) {
+			margin-bottom: 0;
 			border-width: 0;
 		}
 		.entry-thumbnail img {

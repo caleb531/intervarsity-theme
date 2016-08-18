@@ -136,13 +136,12 @@ class InterVarsity_Customize {
 
 	}
 
-	// Checks if the given font family value exists within the fetched list of
-	// valid font families; if it is not, the value will not be saved to the
-	// database
+	// Checks if the given font family value is a valid font name (all 779
+	// Google fonts already match the below pattern, so it should be
+	// future-proof)
 	public function sanitize_font_family( $family ) {
 
-		$font_family_choices = $this->get_font_family_choices();
-		if ( ! empty( $font_family_choices[ $family ] ) ) {
+		if ( preg_match( '/^[A-Za-z0-9\- ]+$/', $family ) ) {
 			return $family;
 		} else {
 			wp_die( "Invalid font family: $family" );
@@ -229,25 +228,25 @@ class InterVarsity_Customize {
 
 	public function add_social_options( $wp_customize ) {
 
-		$wp_customize->add_panel( 'iv_social_options', array(
+		$wp_customize->add_panel( 'iv_social_panel', array(
 			'title'       => 'Social Header',
 			// Place panel just above "Menus" panel
 			'priority'    => 100,
 			'description' => 'This panel allows you to customize links and text in the social header below the site header image, to the right.'
 		) );
 
-		$wp_customize->add_section( 'iv_social_message_panel', array(
+		$wp_customize->add_section( 'iv_social_message_options', array(
 			'title'       => 'Social Message',
 			'description' => 'This section allows you to customize the message displayed to the left of the social header icons.',
-			'panel'       => 'iv_social_options'
+			'panel'       => 'iv_social_panel'
 		) );
 		$wp_customize->add_setting( 'iv_social_message_enabled', array(
 			'type'              => 'theme_mod',
-			'transport'         => 'refresh',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => array( $this, 'sanitize_boolean' )
 		) );
 		$wp_customize->add_control( 'iv_social_message_enabled', array(
-			'section' => 'iv_social_message_panel',
+			'section' => 'iv_social_message_options',
 			'type'    => 'checkbox',
 			'label'   => 'Enabled'
 		) );
@@ -258,7 +257,7 @@ class InterVarsity_Customize {
 			'sanitize_callback' => 'sanitize_text_field'
 		) );
 		$wp_customize->add_control( 'iv_social_message', array(
-			'section'     => 'iv_social_message_panel',
+			'section'     => 'iv_social_message_options',
 			'type'        => 'text',
 			'label'       => 'Social Message',
 			'description' => 'The short message to display (e.g. "Connect")'
@@ -267,11 +266,11 @@ class InterVarsity_Customize {
 		$wp_customize->add_section( 'iv_facebook_panel', array(
 			'title'       => 'Facebook',
 			'description' => 'This section allows you to customize the Facebook link in the social header.',
-			'panel'       => 'iv_social_options'
+			'panel'       => 'iv_social_panel'
 		) );
 		$wp_customize->add_setting( 'iv_facebook_enabled', array(
 			'type'              => 'theme_mod',
-			'transport'         => 'refresh',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => array( $this, 'sanitize_boolean' )
 		) );
 		$wp_customize->add_control( 'iv_facebook_enabled', array(
@@ -293,11 +292,11 @@ class InterVarsity_Customize {
 		$wp_customize->add_section( 'iv_twitter_panel', array(
 			'title'       => 'Twitter',
 			'description' => 'This section allows you to customize the Twitter link in the social header.',
-			'panel'       => 'iv_social_options'
+			'panel'       => 'iv_social_panel'
 		) );
 		$wp_customize->add_setting( 'iv_twitter_enabled', array(
 			'type'              => 'theme_mod',
-			'transport'         => 'refresh',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => array( $this, 'sanitize_boolean' )
 		) );
 		$wp_customize->add_control( 'iv_twitter_enabled', array(
@@ -319,11 +318,11 @@ class InterVarsity_Customize {
 		$wp_customize->add_section( 'iv_instagram_panel', array(
 			'title'       => 'Instagram',
 			'description' => 'This section allows you to customize the Instagram link in the social header.',
-			'panel'       => 'iv_social_options'
+			'panel'       => 'iv_social_panel'
 		) );
 		$wp_customize->add_setting( 'iv_instagram_enabled', array(
 			'type'              => 'theme_mod',
-			'transport'         => 'refresh',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => array( $this, 'sanitize_boolean' )
 		) );
 		$wp_customize->add_control( 'iv_instagram_enabled', array(
@@ -342,18 +341,18 @@ class InterVarsity_Customize {
 			'label'   => 'Link'
 		) );
 
-		$wp_customize->add_section( 'iv_email_panel', array(
+		$wp_customize->add_section( 'iv_email_options', array(
 			'title'       => 'Email',
 			'description' => 'This section allows you to customize the site email link in the social header.',
-			'panel'       => 'iv_social_options'
+			'panel'       => 'iv_social_panel'
 		) );
 		$wp_customize->add_setting( 'iv_email_enabled', array(
 			'type'              => 'theme_mod',
-			'transport'         => 'refresh',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => array( $this, 'sanitize_boolean' )
 		) );
 		$wp_customize->add_control( 'iv_email_enabled', array(
-			'section' => 'iv_email_panel',
+			'section' => 'iv_email_options',
 			'type'    => 'checkbox',
 			'label'   => 'Enabled'
 		) );
@@ -364,9 +363,22 @@ class InterVarsity_Customize {
 			'default'           => get_bloginfo( 'admin_email' )
 		) );
 		$wp_customize->add_control( 'iv_email_address', array(
-			'section' => 'iv_email_panel',
+			'section' => 'iv_email_options',
 			'type'    => 'email',
 			'label'   => 'Email Address'
+		) );
+
+		$wp_customize->selective_refresh->add_partial( 'iv_social', array(
+			'settings'         => array(
+				'iv_social_message_enabled',
+				'iv_facebook_enabled',
+				'iv_twitter_enabled',
+				'iv_instagram_enabled',
+				'iv_email_enabled'
+			),
+			'selector'         => '#site-header-social ul',
+			'render_callback'  => 'iv_social_header_icons',
+			'fallback_refresh' => true
 		) );
 
 	}
@@ -374,15 +386,18 @@ class InterVarsity_Customize {
 	public $home_box_icon_choices = array(
 		''          => '(no icon)',
 		'book'      => 'Book',
+		'chat'      => 'Chat',
 		'cross'     => 'Cross',
-		'group'     => 'Group',
-		'globe'     => 'Globe',
+		'email'     => 'Email',
 		'facebook'  => 'Facebook',
-		'twitter'   => 'Twitter',
+		'globe'     => 'Globe',
+		'group'     => 'Group',
+		'heart'     => 'Heart',
 		'instagram' => 'Instagram',
-		'mail'      => 'Mail',
+		'money'     => 'Money',
+		'quote'     => 'Quote',
 		'search'    => 'Search',
-		'quote'     => 'Quote'
+		'twitter'   => 'Twitter'
 	);
 
 	// Similar to sanitize_font_family() in that this checks if the given value
@@ -763,6 +778,18 @@ class InterVarsity_Customize {
 		$this->add_ivcf_link_options( $wp_customize );
 		$this->add_copyright_text_options( $wp_customize );
 
+		$wp_customize->selective_refresh->add_partial( 'iv_footer', array(
+			'settings'         => array(
+				'iv_footer_ivcf_enabled',
+				'iv_footer_ivcf_image',
+				'iv_footer_copyright_enabled',
+				'iv_footer_copyright_text'
+			),
+			'selector'         => '#site-footer-content',
+			'render_callback'  => 'iv_footer_content',
+			'fallback_refresh' => true
+		) );
+
 	}
 
 	public function add_ivcf_link_options( $wp_customize ) {
@@ -775,7 +802,7 @@ class InterVarsity_Customize {
 
 		$wp_customize->add_setting( 'iv_footer_ivcf_enabled', array(
 			'type'              => 'theme_mod',
-			'transport'         => 'refresh',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => array( $this, 'sanitize_boolean' )
 		) );
 		$wp_customize->add_control( 'iv_footer_ivcf_enabled', array(
@@ -811,7 +838,7 @@ class InterVarsity_Customize {
 
 		$wp_customize->add_setting( 'iv_footer_ivcf_image', array(
 			'type'              => 'theme_mod',
-			'transport'         => 'refresh',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => array( $this, 'sanitize_integer' )
 		) );
 		$wp_customize->add_control( new WP_Customize_Media_Control( $wp_customize, 'iv_footer_ivcf_image', array(
@@ -833,7 +860,7 @@ class InterVarsity_Customize {
 
 		$wp_customize->add_setting( 'iv_footer_copyright_enabled', array(
 			'type'              => 'theme_mod',
-			'transport'         => 'refresh',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => array( $this, 'sanitize_boolean' )
 		) );
 		$wp_customize->add_control( 'iv_footer_copyright_enabled', array(
@@ -851,7 +878,7 @@ class InterVarsity_Customize {
 			'section'     => 'iv_footer_copyright_options',
 			'type'        => 'textarea',
 			'label'       => 'Copyright Text',
-			'description' => 'Type &amp;copy; to insert a copyright symbol'
+			'description' => 'Type &amp;copy; to insert a copyright symbol. Type {{year}} to insert the current year.'
 		) );
 
 	}
