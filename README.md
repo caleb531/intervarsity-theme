@@ -127,7 +127,8 @@ Google fonts to use for your site. You are able to set:
 
 There are many more features and options available in the InterVarsity Theme,
 including options for the site footer, small group settings, and a slew of
-customizable messages.
+customizable messages. All of these options are available in the WordPress
+Customizer.
 
 ## Credits
 
