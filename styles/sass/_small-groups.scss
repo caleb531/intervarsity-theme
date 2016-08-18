@@ -51,8 +51,8 @@ $sg-tile-max-width: 400px;
 // Related small groups
 .sg-related {
 	// Totally arbitrary; might consider making this a variable
-    max-width: 600px;
-    margin: 0 auto;
+	max-width: 600px;
+	margin: 0 auto;
 	// Display table as a list for compact layout. Each related small group's
 	// time will appear under its respective name
 	@include layout(compact) {

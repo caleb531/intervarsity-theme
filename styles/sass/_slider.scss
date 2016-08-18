@@ -3,20 +3,20 @@
 // Container for a page slider; the InterVarsity theme and plugin both integrate
 // with the Cyclone Slider 2 plugin
 #page-slider {
-    background: none;
+	background: none;
 	user-select: none;
 	cursor: default;
-    // Container for slides container and pager
+	// Container for slides container and pager
 	.cycloneslider {
 		margin: 0;
 	}
-    // Add border below sliders container so that slides are visually separate
-    // from other page content
+	// Add border below sliders container so that slides are visually separate
+	// from other page content
 	.cycloneslider-slides {
-        border-bottom-style: solid;
-        border-bottom-width: 1px;
-        border-bottom-color: $box-border-color;
-        background-color: #000;
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+		border-bottom-color: $box-border-color;
+		background-color: #000;
 	}
 	// Next/Previous slide controls
 	.cycloneslider-prev,
@@ -54,16 +54,16 @@
 		left: 1px;
 		background-image: url('../../icons/chevron-right.svg');
 	}
-    // The plugin by default gives a white background to individual slides;
-    // remove it so that the background of the slide container shows (the
-    // background is only noticeable when transitioning between slides)
+	// The plugin by default gives a white background to individual slides;
+	// remove it so that the background of the slide container shows (the
+	// background is only noticeable when transitioning between slides)
 	.cycloneslider-slide {
 		background: none;
 	}
 	// Pager control allowing for random access to any slide
 	.cycloneslider-pager {
-        $pager-control-size: 12px;
-        $pager-control-margin-y: 10px;
+		$pager-control-size: 12px;
+		$pager-control-margin-y: 10px;
 		position: static;
 		height: $pager-control-size + ($pager-control-margin-y * 2);
 		text-align: center;
