@@ -12,9 +12,10 @@ body {
 
 .wrap {
 	width: auto;
-	text-align: left;
+	text-align: center;
 	h1, p {
 		padding: 0 50px;
+		text-align: left;
 		@include layout(compact) {
 			padding: 0 20px;
 		}
