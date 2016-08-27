@@ -123,6 +123,12 @@ Google fonts to use for your site. You are able to set:
 
 2. The primary font, used for everything else
 
+### WP Maintenance Mode integration
+
+The InterVarsity Theme also integrates with the [WP Maintenance
+Mode](https://wordpress.org/plugins/wp-maintenance-mode/) plugin by applying the
+chosen fonts and colors to the active maintenance page.
+
 ### Everything else
 
 There are many more features and options available in the InterVarsity Theme,
