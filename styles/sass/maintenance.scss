@@ -39,7 +39,9 @@ body {
 		font-size: 20px;
 		line-height: normal;
 	}
-	a {
+	a,
+	.contact_us,
+	.author_link a {
 		color: #36c;
 		color: 'iv-color-accent-mid';
 		&:hover {
@@ -47,5 +49,4 @@ body {
 			color: 'iv-color-accent-light';
 		}
 	}
-
 }
