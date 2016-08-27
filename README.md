@@ -92,8 +92,8 @@ existing [Cyclone Slider 2](https://wordpress.org/plugins/cyclone-slider-2/)
 slider to any page you've created. Needless to say, this theme will display the
 slider for any page that has one assigned to it.
 
-Currently, this theme only supports the *Standard* template for sliders, so be
-sure to use that!
+Currently, this theme only supports the *Default* and *Standard* templates for
+sliders, so be sure to use either of those!
 
 ### Front page content boxes
 
@@ -122,6 +122,12 @@ Google fonts to use for your site. You are able to set:
 1. The accent font, used for page/section headings exclusively
 
 2. The primary font, used for everything else
+
+### WP Maintenance Mode integration
+
+The InterVarsity Theme also integrates with the [WP Maintenance
+Mode](https://wordpress.org/plugins/wp-maintenance-mode/) plugin by applying the
+chosen fonts and colors to the active maintenance page.
 
 ### Everything else
 
