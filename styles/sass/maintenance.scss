@@ -44,6 +44,8 @@ body {
 	.author_link a {
 		color: #36c;
 		color: 'iv-color-accent-mid';
+		font-size: 24px;
+		text-decoration: underline;
 		&:hover {
 			color: #47d;
 			color: 'iv-color-accent-light';
