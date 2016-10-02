@@ -4,28 +4,33 @@
 // Outputs the details meta data for the given small group
 function the_sg_details( $before = '', $after = '' ) {
 	global $post;
-
 	$time = get_the_sg_time();
+	$start_date = get_the_sg_start_date();
+	// Get Unix timestamp for start date (for comparison); if start date is in
+	// future, display field (otherwise, don't display it)
+	$start_date_timestamp = strtotime( $start_date );
 	$location = get_the_sg_location();
-	if ( $time || $location ) {
-		echo $before;
-		if ( $time ) {
-			?>
-			<span class="entry-label">Time:</span>
-			<span class="sg-time"><?php echo $time; ?></span>
-			<?php
-		}
-		if ( $location ) {
-			?>
+	?>
+
+	<?php if ( $time && $location ): ?>
+
+		<?php echo $before; ?>
+		<span class="entry-label">Time:</span>
+		<span class="sg-time"><?php echo $time; ?></span>
+		<br />
+		<?php if ( $start_date && $start_date_timestamp > time() ): ?>
+			<span class="entry-label">Start Date:</span>
+			<span class="sg-start-date"><?php echo $start_date; ?></span>
 			<br />
-			<span class="entry-label">Location:</span>
-			<span class="sg-location"><?php echo $location; ?></span>
+		<?php endif; ?>
+		<span class="entry-label">Location:</span>
+		<span class="sg-location"><?php echo $location; ?></span>
+
+		<?php if ( ! is_tax( 'sg_campus' ) && ! is_singular( 'iv_small_group' ) ): ?>
 			<?php
-		}
-		// If entry is not being viewed from its campus page
-		if ( ! is_tax( 'sg_campus' ) && ! is_singular( 'iv_small_group' ) ) {
-			// Display campus name within small group details to reduce
-			// ambiguity for small groups with same title
+			// If entry is not being viewed from its campus page, display campus
+			// name within small group details to reduce ambiguity for small
+			// groups with same title
 			$campuses = get_the_term_list( $post->ID, 'sg_campus', '', ', ', '' );
 			?>
 			<?php if ( false !== $campuses ): ?>
@@ -33,11 +38,11 @@ function the_sg_details( $before = '', $after = '' ) {
 				<span class="entry-label">Campuses:</span>
 				<span class="sg-campuses"><?php echo $campuses; ?></span>
 			<?php endif; ?>
-			<?php
-		}
-		echo $after;
-	}
+		<?php endif; ?>
 
+		<?php echo $after; ?>
+	<?php endif; ?>
+	<?php
 }
 
 // Formats phone number for display on frontend
