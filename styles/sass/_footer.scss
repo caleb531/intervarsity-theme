@@ -27,11 +27,6 @@
 #site-footer-nav-list {
 	margin: 0;
 	margin-bottom: 10px;
-	// The footer navigation isn't guaranteed to fit in the footer at small
-	// viewport widths
-	@include layout(compact) {
-		display: none;
-	}
 	a {
 		padding: 0 8px;
 	}
