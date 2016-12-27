@@ -2,7 +2,7 @@
 // Functions for enqueing necessary frontend and backend stylesheets
 
 // URL used to load website fonts
-define( 'IV_BASE_FONT_URL', 'http://fonts.googleapis.com/css?family=' );
+define( 'IV_BASE_FONT_URL', 'https://fonts.googleapis.com/css?family=' );
 
 // Offset used to calculate light and dark shades of any base color
 define( 'IV_COLOR_OFFSET', 51 );
