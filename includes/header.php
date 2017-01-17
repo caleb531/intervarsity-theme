@@ -237,6 +237,11 @@ function iv_header_slider() {
 			// Evaluate slider shortcode
 			$slider_shortcode = "[cycloneslider id='{$slider->post_name}']";
 			$slider_eval = do_shortcode( $slider_shortcode );
+			// Upgrade Vimeo URLs to HTTPS (because Cyclone Sider 2 uses
+			// plain-HTTP Vimeo embeds by default, regardless of whether or not
+			// the URL you provide is HTTPS; this can lead to mixed content
+			// warning for HTTPS sites using this theme)
+			$slider_eval = str_replace( 'http://player.vimeo.com', 'https://player.vimeo.com', $slider_eval );
 			?>
 			<div id="page-slider">
 				<?php echo $slider_eval; ?>
