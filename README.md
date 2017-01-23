@@ -1,6 +1,6 @@
 # InterVarsity WordPress Theme
 
-*Copyright 2016 Caleb Evans*  
+*Copyright 2017 Caleb Evans*  
 *Released under the GNU General Public License v2.0*
 
 The InterVarsity Theme is a WordPress theme intended for [InterVarsity Christian
