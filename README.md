@@ -6,9 +6,9 @@
 The InterVarsity Theme is a WordPress theme intended for [InterVarsity Christian
 Fellowship/USA](http://intervarsity.org/) chapters with a WordPress site. I
 originally created the theme for the [InterVarsity North County chapter
-website](http://ivnorthcounty.org/), but I have since decided to open-source the
-theme for the benefit of all InterVarsity chapters. Please note that this is an
-unofficial theme which is not affiliated with InterVarsity.
+website](https://ivnorthcounty.org/), but I have since decided to open-source
+the theme for the benefit of all InterVarsity chapters. Please note that this is
+an unofficial theme which is not affiliated with InterVarsity.
 
 This theme integrates perfectly with the [InterVarsity
 Plugin](https://github.com/caleb531/intervarsity-plugin), which I also created
