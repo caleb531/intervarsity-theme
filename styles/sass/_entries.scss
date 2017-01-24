@@ -48,7 +48,9 @@ $entry-tile-margin: 20px;
 	.entry-content {
 		p {
 			&:first-child {
-				margin-top: 0;
+				// Move paragraph up a few pixels so it looks more visually
+				// aligned with any featured image alongside it
+				margin-top: -3px;
 			}
 			&:last-child {
 				margin-bottom: 0;
