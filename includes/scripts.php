@@ -43,11 +43,3 @@ function iv_enqueue_customize_preview_scripts() {
 
 }
 add_action( 'customize_preview_init', 'iv_enqueue_customize_preview_scripts', 10 );
-
-// Defer loading of frontend scripts until HTML parsing has finished
-function iv_defer_scripts( $tag, $handle ) {
-	return str_replace( ' src', ' defer src', $tag );
-}
-if ( ! is_admin() ) {
-	add_filter( 'script_loader_tag', 'iv_defer_scripts', 10, 2 );
-}
