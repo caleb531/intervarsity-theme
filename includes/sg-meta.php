@@ -8,7 +8,8 @@ function the_sg_details( $before = '', $after = '' ) {
 	$start_date = get_the_sg_start_date();
 	// Get Unix timestamp for start date (for comparison); if start date is in
 	// future, display field (otherwise, don't display it)
-	$start_date_timestamp = strtotime( $start_date );
+	$current_time = current_time( 'timestamp' );
+	$start_date_timestamp = strtotime( $start_date, $current_time );
 	$location = get_the_sg_location();
 	?>
 
@@ -18,7 +19,7 @@ function the_sg_details( $before = '', $after = '' ) {
 		<span class="entry-label">Time:</span>
 		<span class="sg-time"><?php echo $time; ?></span>
 		<br />
-		<?php if ( $start_date && $start_date_timestamp > time() ): ?>
+		<?php if ( $start_date && $start_date_timestamp > $current_time ): ?>
 			<span class="entry-label">Start Date:</span>
 			<span class="sg-start-date"><?php echo $start_date; ?></span>
 			<br />
