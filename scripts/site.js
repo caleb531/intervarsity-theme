@@ -97,6 +97,12 @@ $$.sgFilter.on( 'change', 'select', function () {
 	$$.sgFilter.trigger( 'submit' );
 });
 
+// Display a human-readable error message if the contact details for a specific
+// contact cannot be read
+function getContactFailMessage() {
+	return 'Sorry, there was a problem loading contact details.';
+}
+
 // Require that the user click a link to fetch and display contact info
 // (WordPress 4.7 or newer)
 $( '#content' ).on( 'click', '.reveal-sg-contact', function () {
@@ -115,10 +121,23 @@ $( '#content' ).on( 'click', '.reveal-sg-contact', function () {
 			xhr.setRequestHeader( 'X-WP-Nonce', wpApiSettings.nonce );
 		},
 		success: function ( sg ) {
-			$loading.replaceWith( '<span class="sg-contact-name">' + sg.sg_contact_name + '</span> at <span class="sg-contact-phone">' + sg.sg_contact_phone + ' (<a href="mailto:' + sg.sg_contact_email + '">Email</a>)' );
+			// Display whatever contact details were provided
+			if (sg.sg_contact_name && ( sg.sg_contact_phone || sg.sg_contact_email ) ) {
+				var $contact = $('<span class="sg-contact"></span>');
+				$contact.append( sg.sg_contact_name );
+				if ( sg.sg_contact_phone ) {
+					$contact.append( ' at ' + sg.sg_contact_phone );
+				}
+				if ( sg.sg_contact_email ) {
+					$contact.append( ' (<a href="mailto:' + sg.sg_contact_email + '">Email</a>)' );
+				}
+				$loading.replaceWith( $contact );
+			} else {
+				$loading.replaceWith( getContactFailMessage() );
+			}
 		},
 		error: function () {
-			$loading.replaceWith('Sorry, there was a problem loading contact details');
+			$loading.replaceWith( getContactFailMessage() );
 		}
 	});
 	return false;
