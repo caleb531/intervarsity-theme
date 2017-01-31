@@ -28,7 +28,7 @@ function iv_load_site_scripts() {
 	if ( is_singular( 'post' ) && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
-	// Load REST API functions
+	// Make REST API details available to JavaScript client
 	wp_enqueue_script( 'wp-api' );
 }
 add_action( 'wp_enqueue_scripts', 'iv_load_site_scripts', 10 );
