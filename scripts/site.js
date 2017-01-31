@@ -97,9 +97,6 @@ $$.sgFilter.on( 'change', 'select', function () {
 	$$.sgFilter.trigger( 'submit' );
 });
 
-// The URL base for the REST API
-var REST_URL_BASE = $('link[rel="https://api.w.org/"]').prop('href');
-
 // Require that the user click a link to fetch and display contact info
 // (WordPress 4.7 or newer)
 $( '#content' ).on( 'click', '.reveal-sg-contact', function () {
@@ -111,7 +108,12 @@ $( '#content' ).on( 'click', '.reveal-sg-contact', function () {
 	$a.replaceWith( $loading );
 	$.ajax({
 		type: 'GET',
-		url: REST_URL_BASE + 'wp/v2/small-groups/' + sgID,
+		url: wpApiSettings.root + 'wp/v2/small-groups/' + sgID,
+		// Require nonce to send contact details in response (so as to deter
+		// bots from harvesting the contact phone numbers and emails)
+		beforeSend: function (xhr) {
+			xhr.setRequestHeader( 'X-WP-Nonce', wpApiSettings.nonce );
+		},
 		success: function ( sg ) {
 			$loading.replaceWith( '<span class="sg-contact-name">' + sg.sg_contact_name + '</span> at <span class="sg-contact-phone">' + sg.sg_contact_phone + ' (<a href="mailto:' + sg.sg_contact_email + '">Email</a>)' );
 		},
