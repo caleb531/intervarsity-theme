@@ -58,26 +58,41 @@ function iv_format_phone_number( $phone ) {
 
 // Outputs the contact meta data for the given small group (name, phone, email)
 function the_sg_contact( $before = '', $after = '' ) {
+	global $wp_version;
 
-	// Retrieve contact meta data
-	$name = get_the_sg_contact_name();
-	$phone = get_the_sg_contact_phone();
-	$email = get_the_sg_contact_email();
-	if ( $name && ( $phone || $email ) ) {
-		// Display contact meta data
+	// WordPress 4.7 and newer support v2 of the REST API
+	if ( $wp_version >= 4.7 ) {
+
+		// If the REST API is supported
 		echo $before;
-		?><span class="sg-contact-name"><?php echo $name; ?></span><?php
-		if ( $phone ) {
-			$phone = iv_format_phone_number( $phone );
-			?> at <span class="sg-contact-phone"><?php echo $phone; ?></span><?php
-		}
-		if ( $email ) {
-			// Encode random characters in the email address to prevent spam
-			// bots from parsing it
-			$email = antispambot( $email, 1 );
-			?> (<span class="sg-contact-email"><a href="mailto:<?php echo $email; ?>">Email</a></span>)<?php
-		}
+		?>
+		<a href="#" class="reveal-sg-contact">Click to reveal contact details</a>
+		<?php
 		echo $after;
+
+	} else {
+
+		// Retrieve contact meta data
+		$name = get_the_sg_contact_name();
+		$phone = get_the_sg_contact_phone();
+		$email = get_the_sg_contact_email();
+		if ( $name && ( $phone || $email ) ) {
+			// Display contact meta data
+			echo $before;
+			?><span class="sg-contact-name"><?php echo $name; ?></span><?php
+			if ( $phone ) {
+				$phone = iv_format_phone_number( $phone );
+				?> at <span class="sg-contact-phone"><?php echo $phone; ?></span><?php
+			}
+			if ( $email ) {
+				// Encode random characters in the email address to prevent spam
+				// bots from parsing it
+				$email = antispambot( $email, 1 );
+				?> (<span class="sg-contact-email"><a href="mailto:<?php echo $email; ?>">Email</a></span>)<?php
+			}
+			echo $after;
+		}
+
 	}
 
 }

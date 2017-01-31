@@ -97,6 +97,31 @@ $$.sgFilter.on( 'change', 'select', function () {
 	$$.sgFilter.trigger( 'submit' );
 });
 
+// The URL base for the REST API
+var REST_URL_BASE = $('link[rel="https://api.w.org/"]').prop('href');
+
+// Require that the user click a link to fetch and display contact info
+// (WordPress 4.7 or newer)
+$( '#content' ).on( 'click', '.reveal-sg-contact', function () {
+	var $a = $(this);
+	var sgID = $a.closest('article').prop('id').match(/\d+/)[0];
+	// Add loading indicator while details are being feteched to improve
+	// responsiveness
+	var $loading = $('<span class="sg-contact-loading">Loading...</span>');
+	$a.replaceWith( $loading );
+	$.ajax({
+		type: 'GET',
+		url: REST_URL_BASE + 'wp/v2/small-groups/' + sgID,
+		success: function ( sg ) {
+			$loading.replaceWith( '<span class="sg-contact-name">' + sg.sg_contact_name + '</span> at <span class="sg-contact-phone">' + sg.sg_contact_phone + ' (<a href="mailto:' + sg.sg_contact_email + '">Email</a>)' );
+		},
+		error: function () {
+			$loading.replaceWith('Sorry, there was a problem loading contact details');
+		}
+	});
+	return false;
+});
+
 // Enable FastClick for all elements on the page
 FastClick.attach( document.body );
 
