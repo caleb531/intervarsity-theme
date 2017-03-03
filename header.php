@@ -33,18 +33,16 @@
 
 			<?php if ( has_nav_menu( 'header_menu' ) ): ?>
 
-				<nav id="site-header-nav" aria-label="Site Navigation">
 				<?php
 				// Add responsive navigation list
 				wp_nav_menu( array(
 					'theme_location' => 'header_menu',
-					'items_wrap'	 => '<button id="nav-control-responsive" aria-label="Menu">' . get_iv_icon('navigation') . '</button><ul id="%1$s" class="%2$s">%3$s</ul>',
+					'items_wrap'	 => '<nav id="site-header-nav" aria-label="Site Navigation"><button id="nav-control-responsive" aria-label="Menu">' . get_iv_icon('navigation') . '</button><ul id="%1$s" class="%2$s">%3$s</ul></nav>',
 					'container'		 => false,
 					'menu_id'        => 'site-header-nav-list',
 					'depth'          => 2
 				) );
 				?>
-				</nav>
 
 			<?php endif; ?>
 
