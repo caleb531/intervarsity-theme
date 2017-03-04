@@ -22,7 +22,7 @@ sliders and a Facebook Like Button.
 1. Your site must be running WordPress 4.5 or newer.
 
 2. You must install and activate the aforementioned [InterVarsity
-Plugin](https://github.com/caleb531/intervarsity-plugin) (v2.2.0 or newer), as
+Plugin](https://github.com/caleb531/intervarsity-plugin) (v2.6.0 or newer), as
 well as the one plugin it requires, [Awesome
 CPT](https://github.com/caleb531/awesome-cpt).
 
