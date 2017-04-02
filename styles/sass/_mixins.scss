@@ -9,8 +9,8 @@
 	}
 }
 
-// Applies an stylistic arrow to the given panel based on the given position
-// (top or left; the direction in which the arrow is pointing) and offset; wen
+// Applies a stylistic arrow to the given panel based on the given position (top
+// or left; the direction in which the arrow is pointing) and offset; when
 // including this mixin, be sure that the floating-panel() OR floating-menu()
 // mixin are also included
 @mixin panel-arrow($position, $offset: 50%) {
