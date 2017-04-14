@@ -85,4 +85,24 @@
 			}
 		}
 	}
+	// Optional caption (title and description) at the bottom of any slide
+	.cycloneslider-caption {
+		// Ensure that any slide link can still be clicked through the caption
+		pointer-events: none;
+		opacity: 1;
+		background-color: rgba(#000, 0.6);
+		@include layout(compact) {
+			// Increase background contrast on smaller resolutions to keep the
+			// text easy to read
+			background: rgba(#000, 0.75);
+		}
+	}
+	.cycloneslider-caption-title {
+		@include layout(compact) {
+			font-size: 16px;
+		}
+	}
+	.cycloneslider-caption-description {
+		padding-bottom: 10px;
+	}
 }
