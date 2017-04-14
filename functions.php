@@ -41,10 +41,10 @@ function iv_after_setup_theme() {
 
 	// Add support for featured images
 	add_theme_support( 'post-thumbnails' );
-	add_image_size( 'tile-1x', 150, 150 );
-	add_image_size( 'tile-2x', 300, 300 );
-	add_image_size( 'single-1x', 200, 200 );
-	add_image_size( 'single-2x', 400, 400 );
+	add_image_size( 'iv-tile-1x', 150, 150 );
+	add_image_size( 'iv-tile-2x', 300, 300 );
+	add_image_size( 'iv-single-1x', 200, 200 );
+	add_image_size( 'iv-single-2x', 400, 400 );
 
 	// Add support for custom header image
 	add_theme_support( 'custom-header', array(

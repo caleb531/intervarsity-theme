@@ -13,7 +13,7 @@ get_header(); ?>
 
 			<?php if ( has_post_thumbnail() ): ?>
 				<div class="entry-thumbnail">
-					<?php the_post_thumbnail( 'single-1x' ); ?>
+					<?php the_post_thumbnail( 'iv-single-1x' ); ?>
 				</div>
 			<?php endif; ?>
 

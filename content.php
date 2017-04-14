@@ -36,7 +36,7 @@ $is_post = ( 'post' === $post_type );
 
 			<?php if ( has_post_thumbnail() ): ?>
 				<div class="entry-thumbnail entry-cell">
-					<a href="<?php echo $url; ?>"><?php the_post_thumbnail( 'tile-1x' ); ?></a>
+					<a href="<?php echo $url; ?>"><?php the_post_thumbnail( 'iv-tile-1x' ); ?></a>
 				</div>
 			<?php endif; ?>
 
