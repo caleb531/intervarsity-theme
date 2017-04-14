@@ -38,8 +38,6 @@ get_header(); ?>
 				) ); ?>
 			</div>
 
-			<hr />
-
 			<?php comments_template(); ?>
 
 		<?php endif; ?>

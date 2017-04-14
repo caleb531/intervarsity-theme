@@ -13,6 +13,8 @@ if ( post_password_required() ) {
 }
 ?>
 
+	<hr />
+
 	<div id="comments" class="comments-area">
 
 		<?php if ( have_comments() ): ?>
