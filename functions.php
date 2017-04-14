@@ -6,8 +6,12 @@
  */
 
 // Server path and public URL to theme directory
-define( 'IV_THEME_DIR', get_stylesheet_directory() );
-define( 'IV_THEME_DIR_URI', get_stylesheet_directory_uri() );
+if ( ! defined( 'IV_THEME_DIR' ) ) {
+	define( 'IV_THEME_DIR', get_stylesheet_directory() );
+}
+if ( ! defined( 'IV_THEME_DIR_URI' ) ) {
+	define( 'IV_THEME_DIR_URI', get_stylesheet_directory_uri() );
+}
 
 // Define number of content boxes to allow on homepage
 define( 'IV_NUM_HOME_BOXES', 3 );
