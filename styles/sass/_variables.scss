@@ -30,7 +30,7 @@ $nav-control-padding-y: 5px;
 $tooltip-arrow-width: 20px;
 $tooltip-arrow-height: $tooltip-arrow-width / 2;
 $tooltip-container-padding: 5px;
-$tooltip-arrow-inner-width: $tooltip-arrow-width - ($header-border-width * 2) / 2;
+$tooltip-arrow-inner-width: $tooltip-arrow-width - $header-border-width;
 $tooltip-arrow-inner-height: $tooltip-arrow-inner-width / 2;
 
 // Page content
