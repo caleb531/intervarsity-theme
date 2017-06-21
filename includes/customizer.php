@@ -186,16 +186,43 @@ class InterVarsity_Customize {
 			'description' => 'The font family used for body text, the site header/footer, etc.'
 		) );
 
-		$wp_customize->add_setting( 'iv_font_primary_thin', array(
+		$wp_customize->add_setting( 'iv_font_primary_weight', array(
 			'type'              => 'theme_mod',
 			'transport'         => 'refresh',
-			'sanitize_callback' => array( $this, 'sanitize_boolean' )
+			'default'           => IV_DEFAULT_PRIMARY_FONT_WEIGHT,
+			'sanitize_callback' => array( $this, 'sanitize_integer' )
 		) );
-		$wp_customize->add_control( 'iv_font_primary_thin', array(
+		$wp_customize->add_control( 'iv_font_primary_weight', array(
 			'section'     => 'iv_font_options',
-			'type'        => 'checkbox',
-			'label'       => 'Thin primary font',
-			'description' => 'Use a thin font weight for the selected primary font (if available)'
+			'type'        => 'select',
+			'label'       => 'Primary Font Weight',
+			'description' => 'The font weight to use for the above primary font; not all font weights are supported by every font',
+			'choices'     => array(
+				'300' => '300',
+				'400' => '400',
+				'500' => '500',
+				'600' => '600',
+				'700' => '700'
+			)
+		) );
+
+		$wp_customize->add_setting( 'iv_font_primary_bold_weight', array(
+			'type'              => 'theme_mod',
+			'transport'         => 'refresh',
+			'default'           => IV_DEFAULT_PRIMARY_FONT_BOLD_WEIGHT,
+			'sanitize_callback' => array( $this, 'sanitize_integer' )
+		) );
+		$wp_customize->add_control( 'iv_font_primary_bold_weight', array(
+			'section'     => 'iv_font_options',
+			'type'        => 'select',
+			'label'       => 'Primary Font Weight (Bold)',
+			'description' => 'The font weight to use for the bold version of the above primary font; not all font weights are supported by every font',
+			'choices'     => array(
+				'400' => '400',
+				'500' => '500',
+				'600' => '600',
+				'700' => '700'
+			)
 		) );
 
 		$wp_customize->add_setting( 'iv_font_accent_family', array(
@@ -212,16 +239,23 @@ class InterVarsity_Customize {
 			'description' => 'The font family used for page and section headings (including small group titles)'
 		) );
 
-		$wp_customize->add_setting( 'iv_font_accent_bold', array(
+		$wp_customize->add_setting( 'iv_font_accent_weight', array(
 			'type'              => 'theme_mod',
 			'transport'         => 'refresh',
-			'sanitize_callback' => array( $this, 'sanitize_boolean' )
+			'default'           => IV_DEFAULT_ACCENT_FONT_WEIGHT,
+			'sanitize_callback' => array( $this, 'sanitize_integer' )
 		) );
-		$wp_customize->add_control( 'iv_font_accent_bold', array(
+		$wp_customize->add_control( 'iv_font_accent_weight', array(
 			'section'     => 'iv_font_options',
-			'type'        => 'checkbox',
-			'label'       => 'Bold accent font',
-			'description' => 'Use a bold font weight for the selected accent font (if available)'
+			'type'        => 'select',
+			'label'       => 'Accent Font Weight',
+			'description' => 'The font weight to use for the above accent font; not all font weights are supported by every font',
+			'choices'     => array(
+				'400' => '400',
+				'500' => '500',
+				'600' => '600',
+				'700' => '700'
+			)
 		) );
 
 	}

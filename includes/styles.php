@@ -117,20 +117,16 @@ function iv_get_font_family_theme_mods() {
 
 }
 
-// Retrieves the user-chosen font weights (determined from font weight settings)
-// in a simple array format
+// Retrieves the user-chosen font weights in a simple array format
 function iv_get_font_weight_theme_mods() {
-
-	$is_primary_thin = get_theme_mod( 'iv_font_primary_thin', false );
-	$is_accent_bold = get_theme_mod( 'iv_font_accent_bold', false );
 
 	return array(
 		'primary'    => array(
-			'normal' => $is_primary_thin ? 300 : 400,
-			'bold'   => 600
+			'normal' => get_theme_mod( 'iv_font_primary_weight', IV_DEFAULT_PRIMARY_FONT_WEIGHT ),
+			'bold'   => get_theme_mod( 'iv_font_primary_bold_weight', IV_DEFAULT_PRIMARY_FONT_BOLD_WEIGHT )
 		),
 		'accent'     => array(
-			'normal' => $is_accent_bold ? 600 : 400
+			'normal' => get_theme_mod( 'iv_font_accent_weight', IV_DEFAULT_ACCENT_FONT_WEIGHT ),
 		)
 	);
 
