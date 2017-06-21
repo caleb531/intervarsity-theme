@@ -4,4 +4,5 @@
 .gitignore export-ignore
 .editorconfig export-ignore
 package.json export-ignore
+package-lock.json export-ignore
 Gruntfile.js export-ignore
