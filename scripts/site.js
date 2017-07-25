@@ -60,7 +60,7 @@ $$.searchInput
 	this.setAttribute( 'value', this.value );
 })
 // Make other elements aware of the search field's focus state
-.on( 'focus blur', detectSearchState);
+.on( 'focus blur', detectSearchState );
 detectSearchState();
 
 // Add tooltips to the designated elements
@@ -80,14 +80,14 @@ $$.searchForm.on( 'click', '.tooltip', function () {
 
 // Do not visit on first click nav items which have submenus
 $$.siteHeaderNavList.on( 'click', 'a', function () {
-	var $link = $(this),
+	var $link = $( this ),
 		$subMenu = $link.next( '.sub-menu' );
 	// If nav menu is open and sub menu exists and sub menu is not open
 	if ( $$.siteHeader.hasClass( 'site-header-nav-open' ) && 1 === $subMenu.length && false === $subMenu.hasClass( 'sub-menu-open' ) ) {
 		// Close any open submenus
 		$( '.sub-menu-open' ).removeClass( 'sub-menu-open' );
 		// Open submenu for clicked link
-		$subMenu.addClass('sub-menu-open');
+		$subMenu.addClass( 'sub-menu-open' );
 		return false;
 	}
 });
@@ -106,24 +106,24 @@ function getContactFailMessage() {
 // Require that the user click a link to fetch and display contact info
 // (WordPress 4.7 or newer)
 $( '#content' ).on( 'click', '.reveal-sg-contact', function () {
-	var $a = $(this);
-	var sgID = $a.closest('article').prop('id').match(/\d+/)[0];
+	var $a = $( this );
+	var sgID = $a.closest( 'article' ).prop( 'id' ).match( /\d+/ )[0];
 	// Add loading indicator while details are being feteched to improve
 	// responsiveness
-	var $loading = $('<span class="sg-contact-loading">Loading...</span>');
+	var $loading = $( '<span class="sg-contact-loading">Loading...</span>' );
 	$a.replaceWith( $loading );
 	$.ajax({
 		type: 'GET',
 		url: wpApiSettings.root + 'wp/v2/small-groups/' + sgID,
 		// Require nonce to send contact details in response (so as to deter
 		// bots from harvesting the contact phone numbers and emails)
-		beforeSend: function (xhr) {
+		beforeSend: function ( xhr ) {
 			xhr.setRequestHeader( 'X-WP-Nonce', wpApiSettings.nonce );
 		},
 		success: function ( sg ) {
 			// Display whatever contact details were provided
-			if (sg.sg_contact_name && ( sg.sg_contact_phone || sg.sg_contact_email ) ) {
-				var $contact = $('<span class="sg-contact"></span>');
+			if ( sg.sg_contact_name && ( sg.sg_contact_phone || sg.sg_contact_email ) ) {
+				var $contact = $( '<span class="sg-contact"></span>' );
 				$contact.append( sg.sg_contact_name );
 				if ( sg.sg_contact_phone ) {
 					$contact.append( ' at ' + sg.sg_contact_phone );
@@ -147,4 +147,4 @@ $( '#content' ).on( 'click', '.reveal-sg-contact', function () {
 FastClick.attach( document.body );
 
 });
-}( window, jQuery, window.FastClick ));
+}( window, jQuery, window.FastClick ) );
