@@ -4,7 +4,7 @@
 *Released under the GNU General Public License v3.0*
 
 The InterVarsity Theme is a WordPress theme intended for [InterVarsity Christian
-Fellowship/USA](http://intervarsity.org/) chapters with a WordPress site. I
+Fellowship/USA](https://intervarsity.org/) chapters with a WordPress site. I
 originally created the theme for the [InterVarsity North County chapter
 website](https://ivnorthcounty.org/), but I have since decided to open-source
 the theme for the benefit of all InterVarsity chapters. Please note that this is

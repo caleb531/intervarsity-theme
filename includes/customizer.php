@@ -849,7 +849,7 @@ class InterVarsity_Customize {
 			'type'              => 'theme_mod',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'esc_url_raw',
-			'default'           => 'http://intervarsity.org/'
+			'default'           => 'https://intervarsity.org/'
 		) );
 		$wp_customize->add_control( 'iv_footer_ivcf_link', array(
 			'section'     => 'iv_footer_ivcf_options',
