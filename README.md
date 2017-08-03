@@ -26,6 +26,8 @@ Plugin](https://github.com/caleb531/intervarsity-plugin) (v3.0.0 or newer), as
 well as the one plugin it requires, [Awesome
 CPT](https://github.com/caleb531/awesome-cpt).
 
+![Screenshot](screenshot.png)
+
 ## Features
 
 ### Design
