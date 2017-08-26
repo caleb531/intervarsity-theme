@@ -1,3 +1,5 @@
+var path = require('path');
+
 // Config file for Grunt, which enables automatic style/script compilation
 module.exports = function(grunt) {
 
@@ -10,23 +12,22 @@ module.exports = function(grunt) {
 				style: 'compressed',
 				cacheLocation: 'styles/sass/.sass-cache'
 			},
-			external: {
+			all: {
 				options: {
 					sourcemap: 'file'
 				},
-				files: {
-					'styles/css/site.css': 'styles/sass/site.scss',
-					'styles/css/editor.css': 'styles/sass/editor.scss',
-				}
-			},
-			internal: {
-				options: {
-					sourcemap: 'inline'
-				},
-				files: {
-					'styles/css/customizations.css': 'styles/sass/customizations.scss',
-					'styles/css/maintenance.css': 'styles/sass/maintenance.scss'
-				}
+				files: [{
+					expand: true,
+					cwd: '.',
+					src: ['styles/sass/*.scss'],
+					rename: function (dest, src) {
+						return path.join(
+							path.dirname(path.dirname(src)),
+							'css',
+							path.basename(src).replace('.scss', '.css')
+						);
+					}
+				}]
 			}
 		},
 
@@ -48,19 +49,24 @@ module.exports = function(grunt) {
 			options: {
 				sourceMap: true
 			},
-			scripts: {
-				files: {
-					'scripts/customize-preview.min.js': 'scripts/customize-preview.js',
-					'scripts/site.min.js': 'scripts/site.js'
-				}
+			all: {
+				files: [{
+					expand: true,
+					cwd: '.',
+					src: [
+						'scripts/*.js',
+						'!scripts/*.min.js'
+					],
+					ext: '.min.js'
+				}]
 			}
 		},
 
 		watch: {
 			scripts: {
 				files: [
-					'scripts/site.js',
-					'scripts/customize-preview.js'
+					'scripts/*.js',
+					'!scripts/*.min.js'
 				],
 				tasks: [
 					'uglify'
