@@ -1,5 +1,3 @@
-var path = require('path');
-
 // Config file for Grunt, which enables automatic style/script compilation
 module.exports = function(grunt) {
 
@@ -18,15 +16,10 @@ module.exports = function(grunt) {
 				},
 				files: [{
 					expand: true,
-					cwd: '.',
-					src: ['styles/sass/*.scss'],
-					rename: function (dest, src) {
-						return path.join(
-							path.dirname(path.dirname(src)),
-							'css',
-							path.basename(src).replace('.scss', '.css')
-						);
-					}
+					cwd: 'styles/sass',
+					src: '*.scss',
+					dest: 'styles/css',
+					ext: '.css'
 				}]
 			}
 		},
@@ -52,11 +45,12 @@ module.exports = function(grunt) {
 			all: {
 				files: [{
 					expand: true,
-					cwd: '.',
+					cwd: 'scripts',
 					src: [
-						'scripts/*.js',
-						'!scripts/*.min.js'
+						'*.js',
+						'!*.min.js'
 					],
+					dest: 'scripts',
 					ext: '.min.js'
 				}]
 			}
