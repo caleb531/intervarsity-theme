@@ -201,7 +201,7 @@
 		}
 		&::placeholder {
 			transition: color $transition-duration $transition-easing;
-			color: #000;
+			color: transparent;
 		}
 	}
 	// Do not display Submit button; the front end script makes the Search icon trigger a form submit when clicked (only if the search input is not empty)
