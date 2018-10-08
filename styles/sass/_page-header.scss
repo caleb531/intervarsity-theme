@@ -2,13 +2,18 @@
 
 // Page header containing both the page title and navigational breadcrumb links
 #page-header {
-	display: table;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	width: 100%;
 	padding: 15px 20px;
 	box-sizing: border-box;
 	background-color: $box-background-color;
 	box-shadow: none;
 	@include layout(hybrid) {
+		flex-direction: column-reverse;
+		justify-content: flex-start;
+		align-items: flex-start;
 		padding: 10px 12px;
 	}
 	h2 {
@@ -19,26 +24,15 @@
 		}
 	}
 }
-// Page heading containing the page title (h1) as well as the author and date
-// info (if it's a blog post)
-#page-heading {
-	display: table-cell;
-	@include layout(hybrid) {
-		display: table-row;
-	}
-}
-
 // Container for the navigational breadcrumbs that indicate the page's hierarchy
 // on the site
 #page-breadcrumbs {
-	display: table-cell;
 	text-align: right;
 	font-size: 12px;
 	text-shadow: none;
 	vertical-align: middle;
 	cursor: default;
 	@include layout(hybrid) {
-		display: table-row;
 		text-align: left;
 	}
 }

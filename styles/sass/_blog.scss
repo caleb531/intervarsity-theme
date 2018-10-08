@@ -113,11 +113,8 @@
 }
 
 .comment-controls {
-	display: table;
+	display: flex;
 	width: 100%;
-}
-.comment-control {
-	display: table-cell;
 }
 
 .comment-reply-control {

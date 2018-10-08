@@ -59,19 +59,12 @@
 // The horizontal row containing navigation, social links, and search (i.e.
 // everything in site header except logo)
 #site-header-core {
-	display: table;
+	display: flex;
+	align-items: center;
 	width: 100%;
 	// Set a min-height to ensure search icon does not butt up against page
 	// container if nav and social header are both empty
 	min-height: 36px;
-}
-
-// Ensure all containers within #site-header-core have the proper layout
-#site-header-nav,
-#site-header-social,
-#site-header-search {
-	display: table-cell;
-	vertical-align: middle;
 }
 
 // Container for the site logo (i.e. the header image)
@@ -144,7 +137,6 @@
 
 // Container for site search field
 #site-header-search {
-	width: 1%;
 	position: relative;
 	padding: 0;
 	text-align: right;

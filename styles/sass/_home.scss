@@ -18,8 +18,7 @@ $icon-offset-y: 2px;
 
 // Container for all home content boxes
 #home-boxes {
-	display: table;
-	table-layout: fixed;
+	display: flex;
 	width: 100%;
 	// Ensure enpugh spacing exists between the home box container and top of
 	// the page container
@@ -37,6 +36,7 @@ $icon-offset-y: 2px;
 		margin-top: ceil($icon-size * 3 / 4);
 	}
 	@include layout(compact) {
+		flex-direction: column;
 		padding: $box-compact-margin-y $box-compact-margin-x;
 		// Make home box container butt up against preceding container to
 		// conserve space
@@ -52,7 +52,7 @@ $icon-offset-y: 2px;
 	}
 	// A single content box
 	.home-box {
-		display: table-cell;
+		flex-basis: (100% / 3);
 		position: relative;
 		border-style: solid;
 		border-width: 0;
@@ -63,10 +63,6 @@ $icon-offset-y: 2px;
 		vertical-align: top;
 		&:last-child {
 			border-right-width: 0;
-		}
-		& > a {
-			display: block;
-			color: inherit;
 		}
 		@include layout(compact) {
 			display: block;
@@ -81,15 +77,14 @@ $icon-offset-y: 2px;
 				margin-bottom: 0;
 				border-bottom-width: 0;
 			}
+			& > a {
+				display: flex;
+			}
 		}
 	}
 	// Header containing icon badge
 	.home-box-header {
 		display: inline-block;
-		@include layout(compact) {
-			display: table-cell;
-			vertical-align: middle;
-		}
 	}
 	// Icon badge
 	.home-box-icon {
@@ -124,7 +119,6 @@ $icon-offset-y: 2px;
 		padding: $box-padding-y $box-padding-x;
 		padding-top: 0;
 		@include layout(compact) {
-			display: table-cell;
 			vertical-align: middle;
 			padding: 0;
 			padding-left: $box-compact-padding-x;
