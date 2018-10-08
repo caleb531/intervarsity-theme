@@ -11,7 +11,7 @@ gulp.task('assets', function () {
 		.pipe(uglify())
 		.pipe(sourcemaps.write('.'))
 		.pipe(rename({suffix: '.min'}))
-		.pipe(gulp.dest('scripts/'));
+		.pipe(gulp.dest('scripts'));
 });
 
 gulp.task('sass', () => {
@@ -34,7 +34,7 @@ gulp.task('uglify', function () {
 		.pipe(uglify())
 		.pipe(sourcemaps.write('.'))
 		.pipe(rename({suffix: '.min'}))
-		.pipe(gulp.dest('scripts/'));
+		.pipe(gulp.dest('scripts'));
 });
 
 gulp.task('uglify:watch', function () {
