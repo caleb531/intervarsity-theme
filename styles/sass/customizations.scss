@@ -6,14 +6,15 @@
 body {
 	// The built-in background_color setting adds its own background-color
 	// declaration; this declaration is merely a fallback
-	background-color: 'iv-color-background-default';
-	font-family: 'iv-font-primary-family';
-	font-weight: 'iv-font-primary-weight-normal';
+	background-color: #ffffff;
+	font-family: 'Avenir', 'Trebuchet MS', Arial, Helvetica, sans-serif;
+	font-weight: 400;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'iv-font-accent-family';
-	font-weight: 'iv-font-accent-weight-normal';
+	font-family: inherit;
+	font-weight: 500;
+	color: $color-orange-mid;
 }
 
 strong,
@@ -25,97 +26,94 @@ strong,
 .author-name,
 .comment-reply-link,
 .comment-edit-link {
-	font-weight: 'iv-font-primary-weight-bold';
+	font-weight: 500;
 }
 
 a {
-	color: 'iv-color-accent-mid';
+	color: $color-teal-mid;
 	&:hover,
 	#site-header-nav ul &:hover,
 	#site-footer &:hover {
-		color: 'iv-color-accent-light';
+		color: $color-teal-light;
 	}
 }
 
 blockquote {
-	border-left-color: 'iv-color-accent-mid';
+	border-left-color: $color-teal-mid;
 	&:after {
-		color: 'iv-color-accent-mid';
+		color: $color-teal-light;
 	}
 }
 
 #{$input-button} {
 	font-family: 'iv-font-primary-family';
-	font-weight: 'iv-font-primary-weight-normal';
-	border-color: 'iv-color-accent-dark';
-	background-color: 'iv-color-accent-mid';
+	font-weight: 400;
+	background-color: $color-orange-mid;
 	&:focus {
 		outline-width: 0;
-		border-color: 'iv-color-accent-mid';
-		background-color: 'iv-color-accent-light';
+		background-color: $color-orange-light;
 	}
 }
 
 #{$input-text},
 #site-header-search .search {
 	font-family: 'iv-font-primary-family';
-	font-weight: 'iv-font-primary-weight-normal';
+	font-weight: 400;
+	color: $color-gray-mid;
 	&:focus {
 		outline-width: 0;
-		border-color: 'iv-color-accent-light';
-		box-shadow: 0 0 3px 1px 'iv-color-accent-light';
+		border-color: $color-orange-mid;
+		box-shadow: 0 0 3px 1px $color-orange-light;
+		& + .search-icon {
+			color: $color-orange-mid;
+		}
 	}
 }
-// This background will "shine through" any transparent regions of the site logo
-#site-logo img {
-	background-color: 'iv-color-background-logo';
-}
-
 // Page slider navigation dot for current slide
 #page-slider .cycloneslider-pager span.cycle-pager-active {
-	background-color: 'iv-color-accent-light';
+	background-color: $color-blue-mid;
 }
 
 #home-boxes {
 	.home-box-icon {
-		border-color: 'iv-color-accent-dark';
-		background-color: 'iv-color-accent-mid';
+		background-color: $color-orange-mid;
 	}
 	a:hover .home-box-icon {
-		border-color: 'iv-color-accent-mid';
-		background-color: 'iv-color-accent-light';
+		background-color: $color-orange-light;
 	}
 }
 
 .entry-tile .entry-header {
-	border-color: 'iv-color-accent-dark';
-	background-color: 'iv-color-accent-mid';
+	border-color: $color-orange-dark;
+	background-color: $color-orange-mid;
 }
 
 .pagination {
 	& > a {
-		border-color: 'iv-color-accent-dark';
-		background-color: 'iv-color-accent-mid';
+		background-color: $color-orange-mid;
 	}
 	& > a:hover,
 	& > span {
-		border-color: 'iv-color-accent-mid';
-		background-color: 'iv-color-accent-light';
-		color: #fff;
+		background-color: $color-orange-light;
+		color: #ffffff;
 	}
 }
 
 ::selection {
-	background-color: 'iv-color-accent-light';
-	color: #fff;
+	background-color: $color-orange-light;
+	color: #ffffff;
 }
 
 .bypostauthor .comment-body {
-	border-color: 'iv-color-accent-mid';
+	border-color: $color-orange-mid;
 }
 
 .pin-icon {
-	color: 'iv-color-accent-light';
+	color: $color-orange-light;
+}
+
+#site-header-nav a {
+	font-weight: 500;
 }
 
 #site-header-nav > ul {

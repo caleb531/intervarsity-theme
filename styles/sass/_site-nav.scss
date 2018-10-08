@@ -35,14 +35,14 @@
 		display: block;
 		box-sizing: border-box;
 		text-align: left;
-		font-size: 13px;
-		color: #fff;
+		font-size: 14px;
 		white-space: nowrap;
 	}
 	// Top-level navigation menu
 	& > ul {
 		a {
-			padding: 9px 15px 7px;
+			padding: 0 15px;
+			padding-top: 9px;
 		}
 		// Top-level menu converts to popover menu for hybrid layout
 		@include layout(hybrid) {

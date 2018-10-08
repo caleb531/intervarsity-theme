@@ -13,8 +13,6 @@
 }
 
 #{$input-button} {
-	border-style: solid;
-	border-width: $input-border-width;
 	border-radius: 2px;
 	text-align: center;
 	transition: all $transition-duration $transition-easing;
@@ -38,7 +36,6 @@
 	background-color: #fff;
 	transition: all ($transition-duration / 2) $transition-easing;
 	transition-property: border-color, background-color, box-shadow;
-	color: #666;
 	box-shadow: none;
 }
 
@@ -71,6 +68,7 @@ $search-icon-size: 15px;
 $search-icon-padding: 7px;
 
 .search-icon {
+	pointer-events: none;
 	display: inline-block;
 	position: absolute;
 	top: 50%;

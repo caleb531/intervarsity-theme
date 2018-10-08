@@ -5,8 +5,8 @@
 #site-header {
 	position: relative;
 	text-align: left;
+	border-bottom: solid 1px $color-teal-mid;
 	padding: 0 10px;
-	padding-bottom: 2px;
 	font-size: 13px;
 	user-select: none;
 	vertical-align: middle;
@@ -92,7 +92,7 @@
 	img {
 		// The maximum width for the site logo; a completely arbitrary value;
 		// might be worth making this value a variable in the future
-		max-width: 800px;
+		max-width: 600px;
 		width: 100%;
 		max-height: none;
 		margin-top: 0;
@@ -143,7 +143,10 @@
 			text-align: center;
 			font-size: $social-icon-size;
 			line-height: $social-icon-size;
-			color: #fff;
+			color: $color-blue-dark;
+			&:hover {
+				color: $color-blue-light;
+			}
 		}
 	}
 }
@@ -167,7 +170,7 @@
 	$input-width: $search-icon-size + $search-icon-padding + ($input-padding-x * 2) + ($input-border-width * 2);
 	.search-icon {
 		left: $search-icon-padding;
-		color: #fff;
+		color: $color-blue-dark;
 	}
 	// Search input
 	.search {

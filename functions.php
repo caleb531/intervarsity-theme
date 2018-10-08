@@ -51,11 +51,6 @@ function iv_after_setup_theme() {
 		'header-text'   => false,
 		'default-image' => IV_THEME_DIR_URI . '/images/header-image-default.png'
 	) );
-	// Add support for custom background
-	add_theme_support( 'custom-background', array(
-		# WordPress saves custom background color without hash (#)
-		'default-color' => str_replace( '#', '', IV_DEFAULT_BG_COLOR )
-	) );
 
 	// Allow plugins to modify the <title> tag
 	add_theme_support( 'title-tag' );

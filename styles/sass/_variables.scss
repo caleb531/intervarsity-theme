@@ -1,4 +1,5 @@
 // Stylesheet parameters
+@import 'colors';
 
 // Transitions
 $transition-duration: 0.3s;
@@ -34,7 +35,7 @@ $tooltip-arrow-inner-width: $tooltip-arrow-width - $header-border-width;
 $tooltip-arrow-inner-height: $tooltip-arrow-inner-width / 2;
 
 // Page content
-$content-color: #444;
+$content-color: $color-gray-mid;
 // Content padding
 $content-padding-x: 30px;
 $content-padding-y: 30px;
@@ -44,10 +45,10 @@ $content-compact-padding-x: 15px;
 $content-compact-padding-y: 20px;
 
 // Content box (also used for tables)
-$box-background-color: #f3f3f3;
-$box-border-color: #aaa;
+$box-background-color: #fff;
+$box-border-color: $color-gray-light;
 // Sutle gray text color used against black backgrounds
-$subtle-gray: rgba(#fff, 0.5);
+$subtle-gray: $color-gray-light;
 
 // Styling for form elements (inputs, buttons)
 $input-button: "input[type='button'], input[type='submit'], button";
