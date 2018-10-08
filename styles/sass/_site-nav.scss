@@ -43,6 +43,7 @@
 		a {
 			padding: 0 15px;
 			padding-top: 9px;
+			padding-bottom: 4px;
 		}
 		// Top-level menu converts to popover menu for hybrid layout
 		@include layout(hybrid) {
