@@ -77,6 +77,7 @@ $search-icon-padding: 7px;
 	width: $search-icon-size;
 	height: $search-icon-size;
 	line-height: $search-icon-size;
+	transition: color $transition-duration $transition-easing;
 }
 
 input.search {
