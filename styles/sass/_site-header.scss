@@ -161,6 +161,7 @@
 	$input-width: $search-icon-size + $search-icon-padding + ($input-padding-x * 2) + ($input-border-width * 2);
 	.search-icon {
 		left: $search-icon-padding;
+		transform: scale(1.25);
 		color: $color-blue-dark;
 	}
 	// Search input
@@ -193,6 +194,9 @@
 			cursor: text;
 			&::placeholder {
 				color: $subtle-gray;
+			}
+			& + .search-icon {
+				transform: scale(1);
 			}
 		}
 		&::placeholder {
