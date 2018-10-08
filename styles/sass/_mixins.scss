@@ -101,7 +101,7 @@
 	@include floating-panel();
 	top: 100%;
 	left: 0;
-	margin-top: 4px;
+	margin-top: 6px;
 	li {
 		display: block;
 		position: relative;
@@ -110,16 +110,16 @@
 		padding: 0;
 		border-width: 0;
 		border-bottom: solid $header-border-width $header-border-color;
-		background-color: $menu-background-color;
+		background-color: #ffffff;
 		// Ensure that rounded corners of first and last children match that of
 		// the parent (for the appropriate corners, of course)
 		&:first-child {
-			border-top-left-radius: $header-border-radius - $header-border-width;
-			border-top-right-radius: $header-border-radius - $header-border-width;
+			border-top-left-radius: $header-border-radius;
+			border-top-right-radius: $header-border-radius;
 		}
 		&:last-child {
-			border-bottom-left-radius: $header-border-radius - $header-border-width;
-			border-bottom-right-radius: $header-border-radius - $header-border-width;
+			border-bottom-left-radius: $header-border-radius;
+			border-bottom-right-radius: $header-border-radius;
 			border-bottom-width: 0;
 		}
 	}

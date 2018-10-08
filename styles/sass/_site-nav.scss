@@ -14,7 +14,7 @@
 	font-size: $nav-control-size;
 	line-height: $nav-control-size;
 	transition: padding $transition-duration $transition-easing;
-	color: #fff;
+	color: $color-teal-mid;
 	cursor: default;
 	@include layout(hybrid) {
 		display: block;

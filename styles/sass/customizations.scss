@@ -121,6 +121,9 @@ blockquote {
 		li {
 			background-color: 'iv-color-background-body';
 		}
+		a {
+			color: #ffffff;
+		}
 		&:after {
 			border-bottom-color: 'iv-color-background-body';
 		}
@@ -129,7 +132,11 @@ blockquote {
 
 #site-header-nav .sub-menu {
 	li {
-		background-color: 'iv-color-background-body';
+		background-color: $color-teal-mid;
+	}
+	a {
+		padding: 9px 15px;
+		color: #ffffff;
 	}
 	&:after {
 		border-bottom-color: 'iv-color-background-body';
