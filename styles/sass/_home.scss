@@ -31,7 +31,7 @@ $icon-offset-y: 2px;
 	font-size: 0;
 	// Extra margin-top isn't needed if slider or featured image is present
 	#page-slider + & {
-		margin-top: $icon-size / 2;
+		margin-top: 55px;
 	}
 	#page-thumbnail + & {
 		margin-top: ceil($icon-size * 3 / 4);
