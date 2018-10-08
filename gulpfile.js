@@ -6,6 +6,14 @@ var autoprefixer = require('autoprefixer')
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 
+gulp.task('assets', function () {
+	return gulp.src(['node_modules/fastclick/lib/fastclick.js'])
+		.pipe(uglify())
+		.pipe(sourcemaps.write('.'))
+		.pipe(rename({suffix: '.min'}))
+		.pipe(gulp.dest('scripts/'));
+});
+
 gulp.task('sass', () => {
 	return gulp.src(['styles/sass/*.scss', '!styles/sass/_*.scss'])
 		.pipe(sourcemaps.init())
@@ -34,6 +42,7 @@ gulp.task('uglify:watch', function () {
 });
 
 gulp.task('build', gulp.parallel(
+	'assets',
 	'sass',
 	'uglify'
 ));
