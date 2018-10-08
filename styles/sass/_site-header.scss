@@ -124,14 +124,19 @@
 			$social-icon-size: 24px;
 			width: $social-icon-size;
 			height: $social-icon-size;
-			margin-right: 2px;
+			margin-right: 6px;
 			padding: 7px 0;
 			text-align: center;
 			font-size: $social-icon-size;
 			line-height: $social-icon-size;
 			color: $color-blue-dark;
+			transition: all $transition-duration, $transition-easing;
+			transition-property: margin-right, color;
 			&:hover {
 				color: $color-blue-light;
+			}
+			@include layout(compact) {
+				margin-right: 4px;
 			}
 		}
 	}
