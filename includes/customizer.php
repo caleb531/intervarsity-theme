@@ -269,34 +269,6 @@ class InterVarsity_Customize {
 			'description' => 'This panel allows you to customize links and text in the social header below the site header image, to the right.'
 		) );
 
-		$wp_customize->add_section( 'iv_social_message_options', array(
-			'title'       => 'Social Message',
-			'description' => 'This section allows you to customize the message displayed to the left of the social header icons.',
-			'panel'       => 'iv_social_panel'
-		) );
-		$wp_customize->add_setting( 'iv_social_message_enabled', array(
-			'type'              => 'theme_mod',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => array( $this, 'sanitize_boolean' )
-		) );
-		$wp_customize->add_control( 'iv_social_message_enabled', array(
-			'section' => 'iv_social_message_options',
-			'type'    => 'checkbox',
-			'label'   => 'Enabled'
-		) );
-		$wp_customize->add_setting( 'iv_social_message', array(
-			'type'              => 'theme_mod',
-			'transport'         => 'postMessage',
-			'default'           => 'Connect',
-			'sanitize_callback' => 'sanitize_text_field'
-		) );
-		$wp_customize->add_control( 'iv_social_message', array(
-			'section'     => 'iv_social_message_options',
-			'type'        => 'text',
-			'label'       => 'Social Message',
-			'description' => 'The short message to display (e.g. "Connect")'
-		) );
-
 		$wp_customize->add_section( 'iv_facebook_panel', array(
 			'title'       => 'Facebook',
 			'description' => 'This section allows you to customize the Facebook link in the social header.',

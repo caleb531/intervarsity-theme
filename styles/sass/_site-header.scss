@@ -117,20 +117,6 @@
 		display: inline-block;
 		font-size: 13px;
 		vertical-align: middle;
-		&.message {
-			padding-right: 10px;
-			cursor: default;
-			color: $subtle-gray;
-			transition: all $transition-duration $transition-easing;
-			transition-property: opacity, margin, padding, font-size;
-			// Slide message out of view when search box is open
-			.site-header-search-active & {
-				opacity: 0;
-				margin-right: -100%;
-				padding-right: 0;
-				font-size: 0;
-			}
-		}
 		// Only the social icons
 		a {
 			display: block;

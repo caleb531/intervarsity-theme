@@ -193,12 +193,6 @@ function iv_social_header_icons() {
 	global $iv_social_icons;
 	?>
 
-	<?php if ( get_theme_mod( 'iv_social_message_enabled' ) ): ?>
-
-		<li class="social message"><?php echo get_theme_mod( 'iv_social_message' ); ?></li>
-
-	<?php endif; ?>
-
 	<?php foreach ( $iv_social_icons as $icon ): ?>
 
 		<?php if ( get_theme_mod( $icon['enabled'] ) ): ?>

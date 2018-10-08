@@ -4,12 +4,6 @@
 	// The maximum number of home content boxes allowed by the theme
 	var NUM_HOME_BOXES = 3;
 
-	wp.customize( 'iv_social_message', function( oldMessage ) {
-		oldMessage.bind( function( newMessage ) {
-			$( '#site-header' ).find( '.social.message' ).html( newMessage );
-		});
-	});
-
 	wp.customize( 'iv_facebook_link', function( oldLink ) {
 		oldLink.bind( function( newLink ) {
 			$( '#site-header' ).find( '.social.facebook' ).find( 'a' ).prop({
