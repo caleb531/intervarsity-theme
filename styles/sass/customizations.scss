@@ -89,11 +89,13 @@ blockquote {
 
 .pagination {
 	& > a {
-		background-color: $color-orange-mid;
+		border-color: #fff;
+		background-color: #ffffff;
+		color: $color-orange-mid;
 	}
 	& > a:hover,
 	& > span {
-		background-color: $color-orange-light;
+		background-color: $color-orange-mid;
 		color: #ffffff;
 	}
 }
