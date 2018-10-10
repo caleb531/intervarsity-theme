@@ -110,7 +110,7 @@
 		padding: 0;
 		border-width: 0;
 		border-bottom: solid $header-border-width $header-border-color;
-		background-color: #ffffff;
+		background-color: #fff;
 		// Ensure that rounded corners of first and last children match that of
 		// the parent (for the appropriate corners, of course)
 		&:first-child {

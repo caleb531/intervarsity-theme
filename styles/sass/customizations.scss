@@ -6,7 +6,7 @@
 body {
 	// The built-in background_color setting adds its own background-color
 	// declaration; this declaration is merely a fallback
-	background-color: #ffffff;
+	background-color: #fff;
 	font-family: 'Avenir', 'Trebuchet MS', Arial, Helvetica, sans-serif;
 	font-weight: 400;
 }
@@ -90,19 +90,19 @@ blockquote {
 .pagination {
 	& > a {
 		border-color: #fff;
-		background-color: #ffffff;
+		background-color: #fff;
 		color: $color-orange-mid;
 	}
 	& > a:hover,
 	& > span {
 		background-color: $color-orange-mid;
-		color: #ffffff;
+		color: #fff;
 	}
 }
 
 ::selection {
 	background-color: $color-orange-light;
-	color: #ffffff;
+	color: #fff;
 }
 
 .bypostauthor .comment-body {
@@ -123,7 +123,7 @@ blockquote {
 			background-color: 'iv-color-background-body';
 		}
 		a {
-			color: #ffffff;
+			color: #fff;
 		}
 		&:after {
 			border-bottom-color: 'iv-color-background-body';
@@ -137,7 +137,7 @@ blockquote {
 	}
 	a {
 		padding: 9px 15px;
-		color: #ffffff;
+		color: #fff;
 	}
 	&:after {
 		border-bottom-color: 'iv-color-background-body';
