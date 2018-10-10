@@ -68,13 +68,13 @@
 		if ( ! is_404() ): ?>
 
 			<header id="page-header" class="<?php echo ( is_front_page() && ! get_theme_mod( 'iv_home_page_header_enabled', IV_DEFAULT_HOME_PAGE_HEADER_ENABLED ) ? 'screen-reader-text' : '' ); ?>">
+				<?php iv_page_breadcrumbs(); ?>
 				<div id="page-heading">
 					<h2><?php iv_page_header_title(); ?></h2>
 					<?php if ( is_singular( 'post' ) && ! post_password_required() ): ?>
 						<?php iv_blog_details(); ?>
 					<?php endif; ?>
 				</div>
-				<?php iv_page_breadcrumbs(); ?>
 			</header>
 
 		<?php endif; ?>
