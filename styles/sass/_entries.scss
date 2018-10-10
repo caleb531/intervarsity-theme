@@ -1,6 +1,6 @@
 // Styling for all post and small group entries
 
-$entry-tile-border-radius: 4px;
+$entry-tile-border-radius: 5px;
 $entry-tile-margin: 20px;
 
 // Classes used to enable flexible table layout for some container elements
@@ -74,8 +74,6 @@ $entry-tile-margin: 20px;
 		position: relative;
 		margin: 0;
 		padding: 6px 12px;
-		border-style: solid;
-		border-width: 1px;
 		border-top-left-radius: $entry-tile-border-radius;
 		border-top-right-radius: $entry-tile-border-radius;
 		box-sizing: border-box;
