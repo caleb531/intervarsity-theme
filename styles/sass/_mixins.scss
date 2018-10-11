@@ -29,7 +29,7 @@
 			bottom: 100%;
 			left: $offset;
 			margin-bottom: $header-border-width;
-			margin-left: -$tooltip-arrow-width / 2;
+			transform: translateX(-$tooltip-arrow-height);
 			border-top-width: 0;
 			border-bottom-color: $panel-border-color;
 		} @else if $position == left {
@@ -47,21 +47,20 @@
 		position: absolute;
 		z-index: 20;
 		border-style: solid;
-		border-width: $tooltip-arrow-inner-height;
+		border-width: floor($tooltip-arrow-inner-height);
 		border-color: transparent;
 		transition: transform $transition-duration $transition-easing;
 		@if $position == top {
 			bottom: 100%;
 			left: $offset;
 			margin-bottom: 0;
-			margin-left: -$tooltip-arrow-inner-width / 2;
+			transform: translateX(-$tooltip-arrow-inner-height);
 			border-top-width: 0;
 			border-bottom-color: $menu-background-color;
 		} @else if $position == left {
-			left: -$header-border-width;
 			top: $offset;
-			margin-left: (-$tooltip-arrow-inner-width / 2) + $header-border-width;
-			margin-top: $header-border-width / 2;
+			left: 0;
+			margin-top: ceil($header-border-width / 2);
 			border-left-width: 0;
 			border-right-color: $menu-background-color;
 		}

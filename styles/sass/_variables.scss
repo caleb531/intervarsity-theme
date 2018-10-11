@@ -15,8 +15,8 @@ $page-border-radius: 5px;
 
 // Site header
 $header-border-color: rgba(#fff, 0.25);
-$panel-border-color: #fff;
-$header-border-width: 1px;
+$panel-border-color: #0f0;
+$header-border-width: 2px;
 $header-border-radius: 4px;
 $header-box-shadow: 0 5px 10px rgba(#000, 0.5);
 $menu-background-color: #000;
@@ -29,10 +29,10 @@ $nav-control-padding-y: 5px;
 
 // Header tooltips
 $tooltip-arrow-width: 20px;
-$tooltip-arrow-height: $tooltip-arrow-width / 2;
+$tooltip-arrow-height: 11px;
 $tooltip-container-padding: 5px;
 $tooltip-arrow-inner-width: $tooltip-arrow-width - $header-border-width;
-$tooltip-arrow-inner-height: $tooltip-arrow-inner-width / 2;
+$tooltip-arrow-inner-height: $tooltip-arrow-height - $header-border-width;
 
 // Page content
 $content-color: $color-gray-mid;
