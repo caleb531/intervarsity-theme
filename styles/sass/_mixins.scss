@@ -28,7 +28,7 @@
 		@if $position == top {
 			bottom: 100%;
 			left: $offset;
-			margin-bottom: $header-border-width;
+			margin-bottom: $header-border-width - floor($header-border-width / 2);
 			transform: translateX(-$tooltip-arrow-height);
 			border-top-width: 0;
 			border-bottom-color: $panel-border-color;
