@@ -33,7 +33,7 @@
 			border-top-width: 0;
 			border-bottom-color: $panel-border-color;
 		} @else if $position == left {
-			left: -$header-border-width;
+			left: -1px;
 			top: $offset;
 			border-left-width: 0;
 			border-right-color: $panel-border-color;
@@ -60,7 +60,7 @@
 		} @else if $position == left {
 			top: $offset;
 			left: 0;
-			margin-top: ceil($header-border-width / 2);
+			margin-top: $header-border-width;
 			border-left-width: 0;
 			border-right-color: $menu-background-color;
 		}
