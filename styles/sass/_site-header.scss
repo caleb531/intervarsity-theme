@@ -179,7 +179,6 @@
 		&:focus,
 		&:not([value='']) {
 			width: 160px;
-			background-color: rgba(#fff, 0.1);
 			outline: none;
 			cursor: text;
 			&::placeholder {
