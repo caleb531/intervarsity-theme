@@ -75,6 +75,7 @@
 	z-index: -1;
 	transition-property: opacity, z-index;
 	transition-duration: $transition-duration, $transition-duration * 2;
+	transition-delay: $transition-duration, 0s;
 	transition-timing-function: $transition-easing;
 }
 
