@@ -76,7 +76,6 @@
 	.sub-menu {
 		@include floating-menu();
 		@include panel-arrow(top, 30px);
-		transition-delay: $transition-duration;
 		text-align: left;
 		// Reposition sub-menus for hybrid layout so they remain accessible
 		@include layout(hybrid) {
@@ -85,7 +84,6 @@
 			margin-top: -$header-border-width;
 			margin-left: $tooltip-arrow-height + $header-border-width;
 			pointer-events: none;
-			transition-delay: 0s;
 			@include panel-arrow(left, 12px);
 		}
 	}

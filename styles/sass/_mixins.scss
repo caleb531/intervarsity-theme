@@ -28,12 +28,13 @@
 		@if $position == top {
 			bottom: 100%;
 			left: $offset;
-			margin-bottom: $header-border-width;
-			margin-left: -$tooltip-arrow-width / 2;
+			margin-bottom: $header-border-width - floor($header-border-width / 2);
+			transform: translateX(-$tooltip-arrow-height - $header-border-width + 1px);
 			border-top-width: 0;
 			border-bottom-color: $panel-border-color;
 		} @else if $position == left {
-			left: -$header-border-width;
+			left: -1px;
+			transform: translateX(-$tooltip-arrow-height);
 			top: $offset;
 			border-left-width: 0;
 			border-right-color: $panel-border-color;
@@ -47,21 +48,21 @@
 		position: absolute;
 		z-index: 20;
 		border-style: solid;
-		border-width: $tooltip-arrow-inner-height;
+		border-width: floor($tooltip-arrow-inner-height);
 		border-color: transparent;
 		transition: transform $transition-duration $transition-easing;
 		@if $position == top {
 			bottom: 100%;
 			left: $offset;
 			margin-bottom: 0;
-			margin-left: -$tooltip-arrow-inner-width / 2;
+			transform: translateX(-$tooltip-arrow-inner-height - $header-border-width + 1px);
 			border-top-width: 0;
 			border-bottom-color: $menu-background-color;
 		} @else if $position == left {
-			left: -$header-border-width;
 			top: $offset;
-			margin-left: (-$tooltip-arrow-inner-width / 2) + $header-border-width;
-			margin-top: $header-border-width / 2;
+			left: 0;
+			transform: translateX(-$tooltip-arrow-inner-height);
+			margin-top: $header-border-width;
 			border-left-width: 0;
 			border-right-color: $menu-background-color;
 		}
@@ -74,6 +75,7 @@
 	z-index: -1;
 	transition-property: opacity, z-index;
 	transition-duration: $transition-duration, $transition-duration * 2;
+	transition-delay: $transition-duration, 0s;
 	transition-timing-function: $transition-easing;
 }
 
@@ -109,7 +111,7 @@
 		margin: 0;
 		padding: 0;
 		border-width: 0;
-		border-bottom: solid $header-border-width $header-border-color;
+		border-bottom: solid $header-border-width $header-separator-color;
 		background-color: #fff;
 		// Ensure that rounded corners of first and last children match that of
 		// the parent (for the appropriate corners, of course)
