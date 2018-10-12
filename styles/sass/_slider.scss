@@ -15,6 +15,9 @@
 	.cycloneslider-slides {
 		border-radius: 5px;
 		overflow: hidden;
+		@include layout(body-max) {
+			border-radius: 0;
+		}
 	}
 	// Next/Previous slide controls
 	.cycloneslider-prev,
