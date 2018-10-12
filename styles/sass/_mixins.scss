@@ -29,11 +29,11 @@
 			bottom: 100%;
 			left: $offset;
 			margin-bottom: $header-border-width - floor($header-border-width / 2);
-			transform: translateX(-$tooltip-arrow-height);
+			transform: translateX(-$tooltip-arrow-height - $header-border-width + 1px);
 			border-top-width: 0;
 			border-bottom-color: $panel-border-color;
 		} @else if $position == left {
-			left: -1px;
+			left: -1px - $header-border-width + 1px;
 			top: $offset;
 			border-left-width: 0;
 			border-right-color: $panel-border-color;
@@ -54,7 +54,7 @@
 			bottom: 100%;
 			left: $offset;
 			margin-bottom: 0;
-			transform: translateX(-$tooltip-arrow-inner-height);
+			transform: translateX(-$tooltip-arrow-inner-height - $header-border-width + 1px);
 			border-top-width: 0;
 			border-bottom-color: $menu-background-color;
 		} @else if $position == left {
