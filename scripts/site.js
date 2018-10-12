@@ -28,8 +28,9 @@ $$.navControlResponsive.on( 'click', function () {
 // Bind intuitive behavior to search icon
 $( '.search-icon' ).on( 'mousedown touchstart', function () {
 	var $searchIcon = $( this ),
-		$searchInput = $searchIcon.next( '.search' ),
-		$searchSubmit = $searchInput.parent().next( '.searchsubmit' );
+		$searchField = $searchIcon.parent(),
+		$searchInput = $searchField.find( '.search' ),
+		$searchSubmit = $searchField.next( '.searchsubmit' );
 	// If search field is focused
 	if ( $searchInput[0] === document.activeElement ) {
 		// Submit search form

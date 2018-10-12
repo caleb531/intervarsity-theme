@@ -154,6 +154,9 @@
 		left: $search-icon-padding;
 		transform: scale(1.25);
 		color: $color-blue-dark;
+		&:hover {
+			color: $color-blue-light;
+		}
 	}
 	// Search input
 	.search {
