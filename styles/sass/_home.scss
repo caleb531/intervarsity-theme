@@ -64,6 +64,9 @@ $icon-offset-y: 2px;
 		&:last-child {
 			border-right-width: 0;
 		}
+		a {
+			display: inline-block;
+		}
 		@include layout(compact) {
 			display: block;
 			width: auto;
