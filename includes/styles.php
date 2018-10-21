@@ -11,10 +11,10 @@ define( 'IV_COLOR_OFFSET', 51 );
 // user-chosen values when the customization stylesheet is enqueuedz
 define( 'IV_STYLE_VAR_PREFIX', 'iv-' );
 
-// Check if the bundled InterVarsity fonts (Avenir) exist in the theme directory
-function iv_if_bundled_fonts_exist() {
+// Check if the Avenir InterVarsity font files exist in the theme directory
+function iv_if_avenir_fonts_exist() {
 	$font_dir = IV_THEME_DIR . '/styles/fonts';
-	// The array of bundled fonts that must be present for this check to pass
+	// The array of  fonts that must be present for this check to pass
 	$required_font_names = array(
 		"AvenirLTStd-Heavy",
 		"AvenirLTStd-HeavyOblique",
@@ -23,7 +23,7 @@ function iv_if_bundled_fonts_exist() {
 		"AvenirLTStd-Oblique",
 		"AvenirLTStd-Roman"
 	);
-	// Only assume that the .otf font files are bundled
+	// Only look for the .otf font files
 	$required_font_ext = 'otf';
 	$fonts_exist = true;
 	foreach ( $required_font_names as $font_name ) {
@@ -32,9 +32,9 @@ function iv_if_bundled_fonts_exist() {
 	return $fonts_exist;
 }
 
-// Define a constant so multiple functions can check if the bundled fonts are
+// Define a constant so multiple functions can check if the Avenir fonts are
 // available
-define( 'IV_HAS_BUNDLED_FONTS', iv_if_bundled_fonts_exist() );
+define( 'IV_HAS_AVENIR_FONTS', iv_if_avenir_fonts_exist() );
 
 // Enqueue all frontend stylesheets
 function iv_load_site_styles() {

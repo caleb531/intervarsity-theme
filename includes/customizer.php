@@ -65,7 +65,7 @@ class InterVarsity_Customize {
 
 		$choices = array();
 
-		if ( IV_HAS_BUNDLED_FONTS ) {
+		if ( IV_HAS_AVENIR_FONTS ) {
 			$choices['Avenir'] = 'Avenir';
 		}
 
