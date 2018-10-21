@@ -131,6 +131,10 @@ $icon-offset-y: 2px;
 }
 .home-box-title {
 	font-size: 20px;
+	transition: color $transition-duration $transition-easing;
+	a:hover & {
+		color: $color-orange-light;
+	}
 	@include layout(compact) {
 		margin: 0;
 	}
