@@ -30,9 +30,9 @@
 		color: #fff;
 		text-decoration: none;
 		cursor: inherit;
-		@include transition-fade();
 		@include floating-panel();
 		@include panel-arrow(top, 50%);
+		transition-delay: 0s;
 	}
 	// Place data-tooltip and data-tooltp-title attributes on any element in the
 	// header; the front end script will automatically append a tooltip to each
