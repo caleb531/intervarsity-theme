@@ -125,7 +125,7 @@ function iv_get_font_family_theme_mods() {
 
 	$primary_family = get_theme_mod( 'iv_font_primary_family', IV_DEFAULT_PRIMARY_FONT_FAMILY );
 
-	// If either font family is not set, use default values
+	// If font family is not set, use default
 	if ( empty( $primary_family ) ) {
 		$primary_family = IV_DEFAULT_PRIMARY_FONT_FAMILY;
 	}
