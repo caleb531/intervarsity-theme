@@ -136,6 +136,7 @@ $icon-offset-y: 2px;
 	}
 	.home-box-desc {
 		font-size: 14px;
+		color: $color-gray-mid;
 		@include layout(compact) {
 			// Add slight extra spacing between heading and description
 			margin-top: 2px;
