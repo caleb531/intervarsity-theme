@@ -25,7 +25,7 @@ $is_post = ( 'post' === $post_type );
 			<a href="<?php echo $url; ?>"><?php the_title(); ?></a>
 		</h3>
 		<?php if ( current_user_can( 'edit_posts' ) ): ?>
-			<a class="entry-edit-link dashicons-before dashicons-edit" href="<?php echo get_edit_post_link(); ?>" target="_blank">Edit Post</a>
+			<a class="entry-edit-link dashicons-before dashicons-edit" href="<?php echo get_edit_post_link(); ?>" target="_blank" rel="noopener">Edit Post</a>
 		<?php endif; ?>
 
 	</header>

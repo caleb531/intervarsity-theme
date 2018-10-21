@@ -146,7 +146,7 @@ class InterVarsity_Customize {
 			'title'       => 'Fonts',
 			// Place section between "Colors" and "Header Image" sections
 			'priority'    => 50,
-			'description' => 'This section allows you to customize the fonts used on the site. Visit <a href="https://www.google.com/fonts" target="_blank">Google Fonts</a> to browse through all available fonts.'
+			'description' => 'This section allows you to customize the fonts used on the site. Visit <a href="https://www.google.com/fonts" target="_blank" rel="noopener">Google Fonts</a> to browse through all available fonts.'
 		) );
 
 		$wp_customize->add_setting( 'iv_font_api_key', array(
@@ -158,7 +158,7 @@ class InterVarsity_Customize {
 			'section'     => 'iv_font_options',
 			'type'        => 'text',
 			'label'       => 'Google Fonts API Key',
-			'description' => 'The key which allows this theme to access Google Fonts. Watch <a href="https://youtu.be/mqI-dfysvxs" target="_blank">this video</a> to learn how to create one. When you do, paste it here, click "Publish", and refresh the page.'
+			'description' => 'The key which allows this theme to access Google Fonts. Watch <a href="https://youtu.be/mqI-dfysvxs" target="_blank" rel="noopener">this video</a> to learn how to create one. When you do, paste it here, click "Publish", and refresh the page.'
 		) );
 
 		$wp_customize->add_setting( 'iv_font_primary_family', array(

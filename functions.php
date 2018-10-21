@@ -82,7 +82,7 @@ add_action( 'switch_theme', 'flush_rewrite_rules', 0 );
 function iv_display_dependency_notice() {
 	?>
 	<div class="error">
-		<p>This plugin requires the <a href="https://github.com/caleb531/intervarsity-plugin" target="_blank">InterVarsity plugin</a> to function. Please install and activate it.</p>
+		<p>This plugin requires the <a href="https://github.com/caleb531/intervarsity-plugin" target="_blank" rel="noopener">InterVarsity plugin</a> to function. Please install and activate it.</p>
 	</div>
 	<?php
 }
