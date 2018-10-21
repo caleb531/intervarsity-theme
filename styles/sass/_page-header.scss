@@ -32,9 +32,11 @@
 }
 // Delimiters which separate indibidual breadcrumb links
 .page-breadcrumb-delimiter {
+	display: inline-block;
 	padding: 0 5px;
 	$delimiter-size: 10px;
 	width: $delimiter-size;
 	height: $delimiter-size;
+	line-height: 1;
 	vertical-align: middle;
 }
