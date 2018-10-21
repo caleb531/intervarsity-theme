@@ -3,11 +3,11 @@
 // Home content box variables
 $box-margin-x: 20px;
 $box-margin-y: 20px;
-$box-compact-margin-x: 0;
+$box-compact-margin-x: 15px;
 $box-compact-margin-y: 0;
 $box-padding-x: 10px;
 $box-padding-y: 15px;
-$box-compact-padding-x: 15px;
+$box-compact-padding-x: 0;
 $box-compact-padding-y: 15px;
 
 // Content box icon variables
@@ -27,6 +27,7 @@ $icon-offset-y: 2px;
 	margin-right: auto;
 	margin-bottom: 0;
 	padding-top: 1px;
+	box-sizing: border-box;
 	font-size: 0;
 	// Extra margin-top isn't needed if slider or featured image is present
 	#page-slider + & {
@@ -125,7 +126,7 @@ $icon-offset-y: 2px;
 	@include layout(compact) {
 		vertical-align: middle;
 		padding: 0;
-		padding-left: $box-compact-padding-x;
+		padding-left: $box-compact-margin-x;
 		text-align: left;
 	}
 }
