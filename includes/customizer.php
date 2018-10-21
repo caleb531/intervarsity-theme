@@ -158,7 +158,7 @@ class InterVarsity_Customize {
 			'section'     => 'iv_font_options',
 			'type'        => 'text',
 			'label'       => 'Google Fonts API Key',
-			'description' => 'The key which allows this theme to access Google Fonts. Watch <a href="https://youtu.be/mqI-dfysvxs" target="_blank">this video</a> to learn how to create one. When you do, paste it here, click "Save &amp; Publish", and refresh the page.'
+			'description' => 'The key which allows this theme to access Google Fonts. Watch <a href="https://youtu.be/mqI-dfysvxs" target="_blank">this video</a> to learn how to create one. When you do, paste it here, click "Publish", and refresh the page.'
 		) );
 
 		$wp_customize->add_setting( 'iv_font_primary_family', array(
