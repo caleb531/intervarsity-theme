@@ -13,7 +13,7 @@ define( 'IV_STYLE_VAR_PREFIX', 'iv-' );
 
 // Check if the Avenir InterVarsity font files exist in the theme directory
 function iv_if_avenir_fonts_exist() {
-	$font_dir = IV_THEME_DIR . '/styles/fonts';
+	$font_dir = IV_THEME_DIR . '/fonts';
 	// The array of  fonts that must be present for this check to pass
 	$required_font_names = array(
 		"AvenirLTStd-Heavy",
