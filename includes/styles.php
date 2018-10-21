@@ -106,14 +106,6 @@ function iv_get_color_vars() {
 	$accent_dark = iv_adjust_color( $accent_mid, -IV_COLOR_OFFSET );
 	$accent_light = iv_adjust_color( $accent_mid, IV_COLOR_OFFSET );
 
-	// If background color behind header image (logo) is enabled
-	if ( get_theme_mod( 'iv_logo_bg_enabled', false ) ) {
-		// Use accent color as background color behind logo
-		$background_logo = $accent_mid;
-	} else {
-		$background_logo = 'transparent';
-	}
-
 	$background_body = '#' . get_theme_mod( 'background_color', IV_DEFAULT_BG_COLOR );
 
 	return array(
@@ -121,7 +113,6 @@ function iv_get_color_vars() {
 		'color-accent-mid'         => $accent_mid,
 		'color-accent-light'       => $accent_light,
 		'color-background-body'    => $background_body,
-		'color-background-logo'    => $background_logo,
 		'color-background-default' => IV_DEFAULT_BG_COLOR
 	);
 

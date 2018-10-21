@@ -57,18 +57,6 @@ class InterVarsity_Customize {
 			'description' => 'The background color for the entire page; a dark color is recommended. Note that you may need to update header and footer images to match.'
 		) ) );
 
-		$wp_customize->add_setting( 'iv_logo_bg_enabled', array(
-			'type'              => 'theme_mod',
-			'transport'         => 'refresh',
-			'sanitize_callback' => array( $this, 'sanitize_boolean' )
-		) );
-		$wp_customize->add_control( 'iv_logo_bg_enabled', array(
-			'section'     => 'colors',
-			'type'        => 'checkbox',
-			'label'       => 'Use accent color as logo background',
-			'description' => 'When enabled, the background color behind the header image will be the chosen accent color. In effect, the accent color will "shine through" transparent regions of the image. This allows the header image to adapt to the current accent color.'
-		) );
-
 	}
 
 	// Retrieves list of all available Google fonts via API; list is cached for
