@@ -29,16 +29,11 @@ define( 'IV_DEFAULT_ACCENT_COLOR', '#3366cc' );
 define( 'IV_DEFAULT_BG_COLOR', '#000000' );
 
 // Default primary font family used for header/footer/body text
-define( 'IV_DEFAULT_PRIMARY_FONT_FAMILY', 'Open Sans' );
+define( 'IV_DEFAULT_PRIMARY_FONT_FAMILY', 'Lato' );
 // Default primary font weight used for header/footer/body text
 define( 'IV_DEFAULT_PRIMARY_FONT_WEIGHT', 400 );
 // Default primary font weight used for bold header/footer/body text
-define( 'IV_DEFAULT_PRIMARY_FONT_BOLD_WEIGHT', 600 );
-
-// Default accent font family used for section and small group headings
-define( 'IV_DEFAULT_ACCENT_FONT_FAMILY', 'Montserrat' );
-// Default accent font weight used for section and small group headings
-define( 'IV_DEFAULT_ACCENT_FONT_WEIGHT', 500 );
+define( 'IV_DEFAULT_PRIMARY_FONT_BOLD_WEIGHT', 400 );
 
 // Default "enabled" state for front page header
 define( 'IV_DEFAULT_HOME_PAGE_HEADER_ENABLED', true );

@@ -11,15 +11,48 @@ define( 'IV_COLOR_OFFSET', 51 );
 // user-chosen values when the customization stylesheet is enqueuedz
 define( 'IV_STYLE_VAR_PREFIX', 'iv-' );
 
+// Check if the bundled InterVarsity fonts (Avenir) exist in the theme directory
+function iv_if_bundled_fonts_exist() {
+	$font_dir = IV_THEME_DIR . '/styles/fonts';
+	// The array of bundled fonts that must be present for this check to pass
+	$required_font_names = array(
+		"AvenirLTStd-Heavy",
+		"AvenirLTStd-HeavyOblique",
+		"AvenirLTStd-Light",
+		"AvenirLTStd-LightOblique",
+		"AvenirLTStd-Oblique",
+		"AvenirLTStd-Roman"
+	);
+	// Only assume that the .otf font files are bundled
+	$required_font_ext = 'otf';
+	$fonts_exist = true;
+	foreach ( $required_font_names as $font_name ) {
+		$fonts_exist = $fonts_exist && file_exists( "$font_dir/$font_name.$required_font_ext" );
+	}
+	return $fonts_exist;
+}
+
+// Define a constant so multiple functions can check if the bundled fonts are
+// available
+define( 'IV_HAS_BUNDLED_FONTS', iv_if_bundled_fonts_exist() );
+
 // Enqueue all frontend stylesheets
 function iv_load_site_styles() {
 
-	// Enqueue Google fonts chosen by user
-	wp_enqueue_style(
-		'iv-fonts',
-		iv_get_frontend_font_url(),
-		array()
-	);
+	// Enqueue fonts chosen by user
+	if ( IV_HAS_BUNDLED_FONTS ) {
+		wp_enqueue_style(
+			'iv-fonts',
+			IV_THEME_DIR_URI . '/styles/css/fonts.css',
+			array()
+		);
+	} else {
+		wp_enqueue_style(
+			'iv-fonts',
+			iv_get_frontend_font_url(),
+			array()
+		);
+	}
 	// Enqueue main frontend stylesheet
 	wp_enqueue_style(
 		'iv-styles',
@@ -100,19 +133,14 @@ function iv_get_color_vars() {
 function iv_get_font_family_theme_mods() {
 
 	$primary_family = get_theme_mod( 'iv_font_primary_family', IV_DEFAULT_PRIMARY_FONT_FAMILY );
-	$accent_family = get_theme_mod( 'iv_font_accent_family', IV_DEFAULT_ACCENT_FONT_FAMILY );
 
 	// If either font family is not set, use default values
 	if ( empty( $primary_family ) ) {
 		$primary_family = IV_DEFAULT_PRIMARY_FONT_FAMILY;
 	}
-	if ( empty( $accent_family ) ) {
-		$accent_family = IV_DEFAULT_ACCENT_FONT_FAMILY;
-	}
 
 	return array(
-		'primary' => $primary_family,
-		'accent' => $accent_family
+		'primary' => $primary_family
 	);
 
 }
@@ -124,9 +152,6 @@ function iv_get_font_weight_theme_mods() {
 		'primary'    => array(
 			'normal' => get_theme_mod( 'iv_font_primary_weight', IV_DEFAULT_PRIMARY_FONT_WEIGHT ),
 			'bold'   => get_theme_mod( 'iv_font_primary_bold_weight', IV_DEFAULT_PRIMARY_FONT_BOLD_WEIGHT )
-		),
-		'accent'     => array(
-			'normal' => get_theme_mod( 'iv_font_accent_weight', IV_DEFAULT_ACCENT_FONT_WEIGHT ),
 		)
 	);
 
@@ -140,8 +165,6 @@ function iv_get_font_family_vars() {
 		// Use the platform-specific sans-serif font family as a fallback for
 		// the primary font family
 		'font-primary-family' => "'{$families['primary']}', sans-serif",
-		// Use the primary font family as a fallback for the accent font family
-		'font-accent-family'  => "'{$families['accent']}', '{$families['primary']}', sans-serif"
 	);
 
 }
@@ -152,8 +175,7 @@ function iv_get_font_weight_vars() {
 	$weights = iv_get_font_weight_theme_mods();
 	return array(
 		'font-primary-weight-normal' => $weights['primary']['normal'],
-		'font-primary-weight-bold'   => $weights['primary']['bold'],
-		'font-accent-weight-normal'  => $weights['accent']['normal']
+		'font-primary-weight-bold'   => $weights['primary']['bold']
 	);
 
 }
@@ -185,13 +207,6 @@ function iv_get_frontend_font_url() {
 				$weights['primary']['normal'],
 				$weights['primary']['normal'] . 'italic', $weights['primary']['bold'],
 				$weights['primary']['bold'] . 'italic'
-			)
-		),
-		array(
-			'family'  => $families['accent'],
-			'weights' => array(
-				$weights['accent']['normal'],
-				$weights['accent']['normal'] . 'italic'
 			)
 		)
 	);

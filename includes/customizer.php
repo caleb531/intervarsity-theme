@@ -117,15 +117,11 @@ class InterVarsity_Customize {
 				$families = iv_get_font_family_theme_mods();
 
 				$choices[ $families['primary'] ] = $families['primary'];
-				$choices[ $families['accent'] ] = $families['accent'];
 
 				// If default font families differ from font families set by
 				// user, then display those also
 				if ( IV_DEFAULT_PRIMARY_FONT_FAMILY !== $families['primary'] ) {
 					$choices[ IV_DEFAULT_PRIMARY_FONT_FAMILY ] = IV_DEFAULT_PRIMARY_FONT_FAMILY;
-				}
-				if ( IV_DEFAULT_ACCENT_FONT_FAMILY !== $families['accent'] ) {
-					$choices[ IV_DEFAULT_ACCENT_FONT_FAMILY ] = IV_DEFAULT_ACCENT_FONT_FAMILY;
 				}
 
 			}
@@ -217,39 +213,6 @@ class InterVarsity_Customize {
 			'type'        => 'select',
 			'label'       => 'Primary Font Weight (Bold)',
 			'description' => 'The font weight to use for the bold version of the above primary font; not all font weights are supported by every font',
-			'choices'     => array(
-				'400' => '400',
-				'500' => '500',
-				'600' => '600',
-				'700' => '700'
-			)
-		) );
-
-		$wp_customize->add_setting( 'iv_font_accent_family', array(
-			'type'      => 'theme_mod',
-			'transport' => 'refresh',
-			'default'   => IV_DEFAULT_ACCENT_FONT_FAMILY,
-			'sanitize_callback' => array( $this, 'sanitize_font_family' )
-		) );
-		$wp_customize->add_control( 'iv_font_accent_family', array(
-			'section'     => 'iv_font_options',
-			'type'        => 'select',
-			'label'       => 'Accent Font Family',
-			'choices'     => $font_family_choices,
-			'description' => 'The font family used for page and section headings (including small group titles)'
-		) );
-
-		$wp_customize->add_setting( 'iv_font_accent_weight', array(
-			'type'              => 'theme_mod',
-			'transport'         => 'refresh',
-			'default'           => IV_DEFAULT_ACCENT_FONT_WEIGHT,
-			'sanitize_callback' => array( $this, 'sanitize_integer' )
-		) );
-		$wp_customize->add_control( 'iv_font_accent_weight', array(
-			'section'     => 'iv_font_options',
-			'type'        => 'select',
-			'label'       => 'Accent Font Weight',
-			'description' => 'The font weight to use for the above accent font; not all font weights are supported by every font',
 			'choices'     => array(
 				'400' => '400',
 				'500' => '500',

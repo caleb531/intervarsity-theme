@@ -11,7 +11,7 @@ body {
 	margin: 0 auto;
 	max-width: $body-max-width;
 	min-width: 320px;
-	color: #fff;
+	color: $color-gray-mid;
 }
 
 // The container for everything beneath site header but above site footer
