@@ -38,6 +38,7 @@
 		text-align: left;
 		font-size: 14px;
 		white-space: nowrap;
+		color: $color-teal-mid;
 	}
 	// Top-level navigation menu
 	& > ul {
@@ -99,5 +100,33 @@
 		pointer-events: auto;
 		@include transition-fade-in();
 		transition-delay: 0s;
+	}
+}
+
+// The top-level list of nav links
+#site-header-nav-list {
+	& > li.menu-item-has-children {
+		$arrow-height: 5px;
+		margin-right: $arrow-height;
+		& > a:after {
+			content: '';
+			display: inline-block;
+			position: absolute;
+			top: 50%;
+			right: 0;
+			border: solid $arrow-height transparent;
+			border-top-color: $color-teal-mid;
+			transition: border-color $transition-duration $transition-easing;
+			vertical-align: middle;
+		}
+		& > a:hover:after {
+			border-top-color: $color-blue-mid;
+		}
+		@include layout(hybrid) {
+			margin-right: 0;
+			& > a:after {
+				display: none;
+			}
+		}
 	}
 }

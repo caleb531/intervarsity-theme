@@ -4,7 +4,7 @@
 
 // Define accent color used for emphasis; this will ultimately be overridden by
 // the user-chosen accent color on the frontend
-$accent-color: #25a;
+$accent-color: $color-teal-mid;
 
 body {
 	color: $content-color;

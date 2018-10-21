@@ -30,18 +30,11 @@ strong,
 }
 
 a {
-	color: $color-teal-mid;
+	color: $color-blue-dark;
 	&:hover,
 	#site-header-nav ul &:hover,
 	#site-footer &:hover {
-		color: $color-teal-light;
-	}
-}
-
-blockquote {
-	border-left-color: $color-teal-mid;
-	&:after {
-		color: $color-teal-light;
+		color: $color-blue-mid;
 	}
 }
 
