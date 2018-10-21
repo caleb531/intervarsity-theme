@@ -14,12 +14,12 @@ $page-background-color: #fff;
 $page-border-radius: 5px;
 
 // Site header
-$header-separator-color: rgba(#fff, 0.25);
+$panel-separator-color: rgba(#fff, 0.25);
 $panel-border-color: #fff;
-$header-border-width: 1px;
-$header-border-radius: 4px;
-$header-box-shadow: 0 5px 10px rgba(#000, 0.5);
-$menu-background-color: #000;
+$panel-border-width: 1px;
+$panel-border-radius: 4px;
+$panel-box-shadow: 0 5px 10px rgba(#000, 0.5);
+$panel-background-color: $color-teal-mid;
 
 // Site navigation toggle control
 $nav-control-size: 22px;
@@ -31,8 +31,8 @@ $nav-control-padding-y: 5px;
 $tooltip-arrow-width: 20px;
 $tooltip-arrow-height: 11px;
 $tooltip-container-padding: 5px;
-$tooltip-arrow-inner-width: $tooltip-arrow-width - $header-border-width;
-$tooltip-arrow-inner-height: $tooltip-arrow-height - $header-border-width;
+$tooltip-arrow-inner-width: $tooltip-arrow-width - $panel-border-width;
+$tooltip-arrow-inner-height: $tooltip-arrow-height - $panel-border-width;
 
 // Page content
 $content-color: $color-gray-mid;

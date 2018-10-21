@@ -28,8 +28,8 @@
 		@if $position == top {
 			bottom: 100%;
 			left: $offset;
-			margin-bottom: $header-border-width - floor($header-border-width / 2);
-			transform: translateX(-$tooltip-arrow-height - $header-border-width + 1px);
+			margin-bottom: $panel-border-width - floor($panel-border-width / 2);
+			transform: translateX(-$tooltip-arrow-height - $panel-border-width + 1px);
 			border-top-width: 0;
 			border-bottom-color: $panel-border-color;
 		} @else if $position == left {
@@ -55,16 +55,16 @@
 			bottom: 100%;
 			left: $offset;
 			margin-bottom: 0;
-			transform: translateX(-$tooltip-arrow-inner-height - $header-border-width + 1px);
+			transform: translateX(-$tooltip-arrow-inner-height - $panel-border-width + 1px);
 			border-top-width: 0;
-			border-bottom-color: $menu-background-color;
+			border-bottom-color: $panel-background-color;
 		} @else if $position == left {
 			top: $offset;
 			left: 0;
 			transform: translateX(-$tooltip-arrow-inner-height);
-			margin-top: $header-border-width;
+			margin-top: $panel-border-width;
 			border-left-width: 0;
-			border-right-color: $menu-background-color;
+			border-right-color: $panel-background-color;
 		}
 	}
 }
@@ -91,10 +91,10 @@
 @mixin floating-panel() {
 	display: block;
 	position: absolute;
-	border: solid $header-border-width $panel-border-color;
-	border-radius: $header-border-radius;
+	border: solid $panel-border-width $panel-border-color;
+	border-radius: $panel-border-radius;
 	box-sizing: border-box;
-	box-shadow: $header-box-shadow;
+	box-shadow: $panel-box-shadow;
 	@include transition-fade();
 }
 
@@ -111,17 +111,17 @@
 		margin: 0;
 		padding: 0;
 		border-width: 0;
-		border-bottom: solid $header-border-width $header-separator-color;
+		border-bottom: solid $panel-border-width $panel-separator-color;
 		background-color: #fff;
 		// Ensure that rounded corners of first and last children match that of
 		// the parent (for the appropriate corners, of course)
 		&:first-child {
-			border-top-left-radius: $header-border-radius;
-			border-top-right-radius: $header-border-radius;
+			border-top-left-radius: $panel-border-radius;
+			border-top-right-radius: $panel-border-radius;
 		}
 		&:last-child {
-			border-bottom-left-radius: $header-border-radius;
-			border-bottom-right-radius: $header-border-radius;
+			border-bottom-left-radius: $panel-border-radius;
+			border-bottom-right-radius: $panel-border-radius;
 			border-bottom-width: 0;
 		}
 	}

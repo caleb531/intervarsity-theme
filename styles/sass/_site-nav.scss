@@ -56,6 +56,9 @@
 			 {
 				@include transition-fade-in();
 			}
+			li {
+				background-color: $panel-background-color;
+			}
 			a {
 				padding: 10px $nav-control-padding-x;
 			}
@@ -77,12 +80,15 @@
 		@include floating-menu();
 		@include panel-arrow(top, 30px);
 		text-align: left;
+		li {
+			background-color: $panel-background-color;
+		}
 		// Reposition sub-menus for hybrid layout so they remain accessible
 		@include layout(hybrid) {
 			top: 0;
 			left: 100%;
-			margin-top: -$header-border-width;
-			margin-left: $tooltip-arrow-height + $header-border-width;
+			margin-top: -$panel-border-width;
+			margin-left: $tooltip-arrow-height + $panel-border-width;
 			pointer-events: none;
 			@include panel-arrow(left, 12px);
 		}
