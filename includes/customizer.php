@@ -64,6 +64,11 @@ class InterVarsity_Customize {
 	public function get_font_family_choices() {
 
 		$choices = array();
+
+		if ( IV_HAS_BUNDLED_FONTS ) {
+			$choices['Avenir'] = 'Avenir';
+		}
+
 		$families = get_transient( 'iv_font_families' );
 
 		if ( ! empty( $families ) ) {
@@ -102,13 +107,13 @@ class InterVarsity_Customize {
 				// font families)
 
 				// Function originally defined in styles.php
-				$families = iv_get_font_family_theme_mods();
+				$family = iv_get_font_family_theme_mod();
 
-				$choices[ $families['primary'] ] = $families['primary'];
+				$choices[ $family ] = $family;
 
 				// If default font families differ from font families set by
 				// user, then display those also
-				if ( IV_DEFAULT_PRIMARY_FONT_FAMILY !== $families['primary'] ) {
+				if ( IV_DEFAULT_PRIMARY_FONT_FAMILY !== $family ) {
 					$choices[ IV_DEFAULT_PRIMARY_FONT_FAMILY ] = IV_DEFAULT_PRIMARY_FONT_FAMILY;
 				}
 

@@ -40,7 +40,7 @@ define( 'IV_HAS_BUNDLED_FONTS', iv_if_bundled_fonts_exist() );
 function iv_load_site_styles() {
 
 	// Enqueue fonts chosen by user
-	if ( IV_HAS_BUNDLED_FONTS ) {
+	if ( iv_get_font_family_theme_mod() === 'Avenir' ) {
 		wp_enqueue_style(
 			'iv-fonts',
 			IV_THEME_DIR_URI . '/styles/css/fonts.css',
@@ -121,18 +121,16 @@ function iv_get_color_vars() {
 // Retrieves the user-chosen font families as unmodified values; this function
 // is used for both constructing the fonts URL as well as creating font family
 // style variables (see below)
-function iv_get_font_family_theme_mods() {
+function iv_get_font_family_theme_mod() {
 
-	$primary_family = get_theme_mod( 'iv_font_primary_family', IV_DEFAULT_PRIMARY_FONT_FAMILY );
+	$family = get_theme_mod( 'iv_font_primary_family', IV_DEFAULT_PRIMARY_FONT_FAMILY );
 
 	// If font family is not set, use default
-	if ( empty( $primary_family ) ) {
-		$primary_family = IV_DEFAULT_PRIMARY_FONT_FAMILY;
+	if ( empty( $family ) ) {
+		$family = IV_DEFAULT_PRIMARY_FONT_FAMILY;
 	}
 
-	return array(
-		'primary' => $primary_family
-	);
+	return $family;
 
 }
 
@@ -140,10 +138,8 @@ function iv_get_font_family_theme_mods() {
 function iv_get_font_weight_theme_mods() {
 
 	return array(
-		'primary'    => array(
-			'normal' => get_theme_mod( 'iv_font_primary_weight', IV_DEFAULT_PRIMARY_FONT_WEIGHT ),
-			'bold'   => get_theme_mod( 'iv_font_primary_bold_weight', IV_DEFAULT_PRIMARY_FONT_BOLD_WEIGHT )
-		)
+		'normal' => get_theme_mod( 'iv_font_primary_weight', IV_DEFAULT_PRIMARY_FONT_WEIGHT ),
+		'bold'   => get_theme_mod( 'iv_font_primary_bold_weight', IV_DEFAULT_PRIMARY_FONT_BOLD_WEIGHT )
 	);
 
 }
@@ -151,11 +147,11 @@ function iv_get_font_weight_theme_mods() {
 // Retrieves the user-chosen font families as an array of style variables
 function iv_get_font_family_vars() {
 
-	$families = iv_get_font_family_theme_mods();
+	$family = iv_get_font_family_theme_mod();
 	return array(
 		// Use the platform-specific sans-serif font family as a fallback for
 		// the primary font family
-		'font-primary-family' => "'{$families['primary']}', sans-serif",
+		'font-primary-family' => "'$family', sans-serif",
 	);
 
 }
@@ -165,8 +161,8 @@ function iv_get_font_weight_vars() {
 
 	$weights = iv_get_font_weight_theme_mods();
 	return array(
-		'font-primary-weight-normal' => $weights['primary']['normal'],
-		'font-primary-weight-bold'   => $weights['primary']['bold']
+		'font-primary-weight-normal' => $weights['normal'],
+		'font-primary-weight-bold'   => $weights['bold']
 	);
 
 }
@@ -188,16 +184,16 @@ function iv_get_font_url( $font_data ) {
 // user-chosen font families and font weights)
 function iv_get_frontend_font_url() {
 
-	$families = iv_get_font_family_theme_mods();
+	$family = iv_get_font_family_theme_mod();
 	$weights = iv_get_font_weight_theme_mods();
 
 	$font_data = array(
 		array(
-			'family'  => $families['primary'],
+			'family'  => $family,
 			'weights' => array(
-				$weights['primary']['normal'],
-				$weights['primary']['normal'] . 'italic', $weights['primary']['bold'],
-				$weights['primary']['bold'] . 'italic'
+				$weights['normal'],
+				$weights['normal'] . 'italic', $weights['bold'],
+				$weights['bold'] . 'italic'
 			)
 		)
 	);
