@@ -5,6 +5,7 @@
 	text-align: center;
 	cursor: default;
 	user-select: none;
+	font-size: 0;
 }
 // Page number links
 .pagination > a,
@@ -13,13 +14,15 @@
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
-	$link-size: 24px;
+	$link-size: 26px;
 	$font-size: 13px;
 	width: $link-size;
 	height: $link-size;
+	margin: 0 1px;
 	border-style: solid;
 	border-width: 1px;
 	border-radius: 50%;
+	line-height: 1;
 	font-weight: bold;
 	color: #fff;
 	font-size: $font-size;
