@@ -76,6 +76,7 @@ $entry-tile-margin: 20px;
 		padding: 6px 12px;
 		border-top-left-radius: $entry-tile-border-radius;
 		border-top-right-radius: $entry-tile-border-radius;
+		background-color: $color-orange-mid;
 		box-sizing: border-box;
 		@include layout(compact) {
 			border-left-width: 0;

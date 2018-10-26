@@ -29,34 +29,9 @@ strong,
 	font-weight: 'iv-font-primary-weight-bold';
 }
 
-.entry-tile .entry-header {
-	background-color: $color-orange-mid;
-}
-
-.pagination {
-	& > a {
-		border-color: #fff;
-		background-color: #fff;
-		color: $color-orange-mid;
-	}
-	& > a:hover,
-	& > span {
-		background-color: $color-orange-mid;
-		color: #fff;
-	}
-}
-
 ::selection {
 	background-color: $color-orange-light;
 	color: #fff;
-}
-
-.bypostauthor .comment-body {
-	border-color: $color-orange-mid;
-}
-
-.pin-icon {
-	color: $color-orange-light;
 }
 
 #site-header-nav a {

@@ -6,44 +6,54 @@
 	cursor: default;
 	user-select: none;
 	font-size: 0;
-}
-// Page number links
-.pagination > a,
-// Number for current page
-.pagination > span {
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
-	$link-size: 26px;
-	$font-size: 13px;
-	width: $link-size;
-	height: $link-size;
-	margin: 0 1px;
-	border-style: solid;
-	border-width: 1px;
-	border-radius: 50%;
-	line-height: 1;
-	font-weight: bold;
-	color: #fff;
-	font-size: $font-size;
-	vertical-align: middle;
-	transition: all $transition-duration $transition-easing;
-	transition-property: border-color, background-color, color;
-	$chevron-offset: 1px;
-	&.prev, &.next {
-		font-size: 0;
-	}
-	svg {
-		position: relative;
-		width: $font-size;
-		height: $font-size;
+	// Page number links
+	& > a,
+	// Number for current page
+	& > span {
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		$link-size: 26px;
+		$font-size: 13px;
+		width: $link-size;
+		height: $link-size;
+		margin: 0 1px;
+		border-style: solid;
+		border-width: 1px;
+		border-radius: 50%;
+		line-height: 1;
+		font-weight: bold;
+		color: #fff;
+		font-size: $font-size;
 		vertical-align: middle;
+		transition: all $transition-duration $transition-easing;
+		transition-property: border-color, background-color, color;
+		$chevron-offset: 1px;
+		&.prev, &.next {
+			font-size: 0;
+		}
+		svg {
+			position: relative;
+			width: $font-size;
+			height: $font-size;
+			vertical-align: middle;
+		}
+		&.prev svg {
+			left: -$chevron-offset;
+		}
+		&.next svg {
+			right: -$chevron-offset;
+		}
 	}
-	&.prev svg {
-		left: -$chevron-offset;
+	& > a {
+		border-color: #fff;
+		background-color: #fff;
+		color: $color-orange-mid;
 	}
-	&.next svg {
-		right: -$chevron-offset;
+	& > a:hover,
+	& > span {
+		background-color: $color-orange-mid;
+		color: #fff;
 	}
 }
 

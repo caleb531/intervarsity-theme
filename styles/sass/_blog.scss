@@ -29,6 +29,7 @@
 	margin-right: $icon-spacing;
 	font-size: 0;
 	vertical-align: middle;
+	color: $color-orange-light;
 	.entry.sticky & {
 		display: inline-block;
 	}
@@ -62,15 +63,12 @@
 // A comment's content body
 .comment-body {
 	padding: 20px;
-	border-style: solid;
-	border-width: 1px;
-	border-color: $box-border-color;
+	border: solid 1px $box-border-color;
 	background-color: $box-background-color;
 	border-radius: $page-border-radius;
 	// The body of a comment made by the author of the respective post
 	.bypostauthor & {
-		border-style: solid;
-		border-width: 2px;
+		border: solid 2px $color-orange-mid;
 	}
 }
 
