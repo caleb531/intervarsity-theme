@@ -39,7 +39,7 @@ a {
 }
 
 #{$input-button} {
-	font-family: 'iv-font-primary-family';
+	font-family: inherit;
 	font-weight: 400;
 	background-color: $color-orange-mid;
 	&:focus {
@@ -50,7 +50,7 @@ a {
 
 #{$input-text},
 #site-header-search .search {
-	font-family: 'iv-font-primary-family';
+	font-family: inherit;
 	font-weight: 400;
 	color: $color-gray-mid;
 	&:focus {
