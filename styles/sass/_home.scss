@@ -101,6 +101,7 @@ $icon-offset-y: 2px;
 	position: relative;
 	margin-top: (-$icon-size / 2) - $icon-border-width;
 	border-radius: 50%;
+	background-color: $color-orange-mid;
 	box-sizing: content-box;
 	transition: all $transition-duration $transition-easing;
 	transition-property: border-color, background-color;
@@ -109,6 +110,9 @@ $icon-offset-y: 2px;
 		width: $icon-size-compact;
 		height: $icon-size-compact;
 		margin-top: 0;
+	}
+	a:hover & {
+		background-color: $color-orange-light;
 	}
 	// Icon glyph within icon badge
 	svg {
