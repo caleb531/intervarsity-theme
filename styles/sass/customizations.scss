@@ -29,16 +29,6 @@ strong,
 	font-weight: 'iv-font-primary-weight-bold';
 }
 
-#{$input-button} {
-	font-family: inherit;
-	font-weight: 400;
-	background-color: $color-orange-mid;
-	&:focus {
-		outline-width: 0;
-		background-color: $color-orange-light;
-	}
-}
-
 #{$input-text},
 #site-header-search .search {
 	font-family: inherit;

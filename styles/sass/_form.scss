@@ -13,13 +13,23 @@
 }
 
 #{$input-button} {
-	border-radius: 2px;
+	font-family: inherit;
+	font-weight: inherit;
+	border-style: solid;
+	border-width: $input-border-width;
+	border-color: $color-orange-mid;
+	background-color: $color-orange-mid;
 	text-align: center;
 	transition: all $transition-duration $transition-easing;
 	transition-property: background-color;
 	color: #fff;
 	&:hover {
 		color: #fff;
+	}
+	&:focus {
+		outline-width: 0;
+		border-color: $color-orange-light;
+		background-color: $color-orange-light;
 	}
 	&.button-small {
 		padding: 4px 6px;
