@@ -7,14 +7,15 @@
 	margin: 0;
 	padding: $input-padding-y $input-padding-x;
 	box-sizing: border-box;
+	font-family: inherit;
+	font-weight: inherit;
 	font-size: 100%;
+	color: $color-gray-mid;
 	line-height: normal;
 	vertical-align: middle;
 }
 
 #{$input-button} {
-	font-family: inherit;
-	font-weight: inherit;
 	border-style: solid;
 	border-width: $input-border-width;
 	border-color: $color-orange-mid;
@@ -47,6 +48,11 @@
 	transition: all ($transition-duration / 2) $transition-easing;
 	transition-property: border-color, background-color, box-shadow;
 	box-shadow: none;
+	&:focus {
+		outline-width: 0;
+		border-color: $color-orange-mid;
+		box-shadow: 0 0 3px 1px $color-orange-light;
+	}
 }
 
 // Strip all browser styling for search inputs

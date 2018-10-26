@@ -169,7 +169,6 @@
 		box-sizing: border-box;
 		background: none;
 		font-size: 13px;
-		color: #fff;
 		cursor: default;
 		transition: all $transition-duration $transition-easing;
 		transition-property: width, border-color, background-color, box-shadow;
@@ -187,6 +186,7 @@
 			}
 			& + .search-icon {
 				transform: scale(1);
+				color: $color-orange-mid;
 			}
 		}
 		&::placeholder {

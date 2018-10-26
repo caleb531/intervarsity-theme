@@ -52,7 +52,7 @@ $subtle-gray: $color-gray-light;
 
 // Styling for form elements (inputs, buttons)
 $input-button: "input[type='button'], input[type='submit'], button";
-$input-text: "input[type='text'], input[type='password'], input[type='search'], textarea";
+$input-text: "input[type='text'], input[type='password'], input[type='search'], textarea, #site-header-search .search";
 $input-padding-x: 10px;
 $input-padding-y: 6px;
 $input-border-width: 1px;

@@ -29,20 +29,6 @@ strong,
 	font-weight: 'iv-font-primary-weight-bold';
 }
 
-#{$input-text},
-#site-header-search .search {
-	font-family: inherit;
-	font-weight: 400;
-	color: $color-gray-mid;
-	&:focus {
-		outline-width: 0;
-		border-color: $color-orange-mid;
-		box-shadow: 0 0 3px 1px $color-orange-light;
-		& + .search-icon {
-			color: $color-orange-mid;
-		}
-	}
-}
 // Page slider navigation dot for current slide
 #page-slider .cycloneslider-pager span.cycle-pager-active {
 	background-color: $color-blue-mid;
