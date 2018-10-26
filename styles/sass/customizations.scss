@@ -28,22 +28,3 @@ strong,
 .comment-edit-link {
 	font-weight: 'iv-font-primary-weight-bold';
 }
-
-#site-header-nav a {
-	font-weight: 'iv-font-primary-weight-normal';
-}
-
-#site-header-nav > ul {
-	@include layout(hybrid) {
-		a {
-			color: #fff;
-		}
-	}
-}
-
-#site-header-nav .sub-menu {
-	a {
-		padding: 9px 15px;
-		color: #fff;
-	}
-}
