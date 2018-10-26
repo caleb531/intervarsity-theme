@@ -29,15 +29,6 @@ strong,
 	font-weight: 'iv-font-primary-weight-bold';
 }
 
-a {
-	color: $color-blue-dark;
-	&:hover,
-	#site-header-nav ul &:hover,
-	#site-footer &:hover {
-		color: $color-blue-mid;
-	}
-}
-
 #{$input-button} {
 	font-family: inherit;
 	font-weight: 400;
