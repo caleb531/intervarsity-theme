@@ -9,6 +9,11 @@ body {
 	word-wrap: break-word;
 }
 
+::selection {
+	background-color: $color-orange-light;
+	color: #fff;
+}
+
 // Individual page/section headings
 h1, h2, h3, h4, h5, h6 {
 	clear: both;
