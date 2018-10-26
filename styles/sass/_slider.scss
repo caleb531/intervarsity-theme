@@ -84,6 +84,10 @@
 			&:only-child {
 				visibility: hidden;
 			}
+			// Pager dot for the current slide
+			&.cycle-pager-active {
+				background-color: $color-blue-mid;
+			}
 		}
 	}
 	// Optional caption (title and description) at the bottom of any slide
