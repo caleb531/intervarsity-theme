@@ -11,7 +11,6 @@ class InterVarsity_Customize {
 
 	function __construct( $wp_customize ) {
 
-		$this->add_color_options( $wp_customize );
 		$this->add_font_options( $wp_customize );
 		$this->add_social_options( $wp_customize );
 		$this->add_homepage_options( $wp_customize );
@@ -34,28 +33,6 @@ class InterVarsity_Customize {
 	public function sanitize_integer( $value ) {
 
 		return (int) $value;
-
-	}
-
-	public function add_color_options( $wp_customize ) {
-
-		$wp_customize->add_setting( 'iv_color_accent', array(
-			'type'              => 'theme_mod',
-			'transport'         => 'refresh',
-			'default'           => IV_DEFAULT_ACCENT_COLOR,
-			'sanitize_callback' => 'sanitize_hex_color'
-		) );
-		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'iv_color_accent', array(
-			'section'     => 'colors',
-			'label'       => 'Accent Color',
-			'description' => 'The accent color used for links, content box icons, small group headers, etc.'
-		) ) );
-
-		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'background_color', array(
-			'section'     => 'colors',
-			'label'       => 'Background Color',
-			'description' => 'The background color for the entire page; a dark color is recommended. Note that you may need to update header and footer images to match.'
-		) ) );
 
 	}
 
@@ -144,7 +121,7 @@ class InterVarsity_Customize {
 
 		$wp_customize->add_section( 'iv_font_options', array(
 			'title'       => 'Fonts',
-			// Place section between "Colors" and "Header Image" sections
+			// Place section between "Site Identity" and "Header Image" sections
 			'priority'    => 50,
 			'description' => 'This section allows you to customize the fonts used on the site. Visit <a href="https://www.google.com/fonts" target="_blank" rel="noopener">Google Fonts</a> to browse through all available fonts.'
 		) );
