@@ -60,6 +60,6 @@ function iv_get_font_url() {
 	if ( IV_HAS_AVENIR_FONTS ) {
 		return IV_THEME_DIR_URI . '/styles/css/fonts.css';
 	} else {
-		return IV_BASE_FONT_URL . 'Lato:400,400italic,500,500italic';
+		return IV_BASE_FONT_URL . 'Nunito:400,400italic,500,500italic';
 	}
 }
