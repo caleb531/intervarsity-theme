@@ -43,14 +43,11 @@
 	// Top-level navigation menu
 	& > ul {
 		a {
-			padding: 0 15px;
-			padding-top: 9px;
-			padding-bottom: 4px;
+			padding: 4px 15px;
 		}
 		// Top-level menu converts to popover menu for hybrid layout
 		@include layout(hybrid) {
 			@include floating-menu();
-			@include panel-arrow(top, 21px);
 			margin-left: 4px;
 			transition-delay: 0s;
 			.site-header-nav-open &,
@@ -59,10 +56,6 @@
 			}
 			li {
 				background-color: $panel-background-color;
-			}
-			a {
-				padding: 10px $nav-control-padding-x;
-				color: #fff;
 			}
 		}
 		// Padding of nav control is reduced for very-compact layout; shift menu
@@ -80,23 +73,13 @@
 	// Navigation sub-menus
 	.sub-menu {
 		@include floating-menu();
-		@include panel-arrow(top, 30px);
 		text-align: left;
-		li {
-			background-color: $panel-background-color;
-		}
-		a {
-			padding: 9px 15px;
-			color: #fff;
-		}
 		// Reposition sub-menus for hybrid layout so they remain accessible
 		@include layout(hybrid) {
 			top: 0;
 			left: 100%;
 			margin-top: -$panel-border-width;
-			margin-left: $tooltip-arrow-height + $panel-border-width;
 			pointer-events: none;
-			@include panel-arrow(left, 12px);
 		}
 	}
 	// All sub-menus fade in when hovered over

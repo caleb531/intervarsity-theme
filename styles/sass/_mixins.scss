@@ -28,13 +28,13 @@
 		@if $position == top {
 			bottom: 100%;
 			left: $offset;
-			margin-bottom: $panel-border-width - floor($panel-border-width / 2);
+			margin-bottom: $panel-border-width - ceil($panel-border-width / 2);
 			transform: translateX(-$tooltip-arrow-height - $panel-border-width + 1px);
 			border-top-width: 0;
 			border-bottom-color: $panel-border-color;
 		} @else if $position == left {
 			left: -1px;
-			transform: translateX(-$tooltip-arrow-height);
+			transform: translateX(-$tooltip-arrow-height + ($panel-border-width / 2));
 			top: $offset;
 			border-left-width: 0;
 			border-right-color: $panel-border-color;
@@ -94,7 +94,6 @@
 	border: solid $panel-border-width $panel-border-color;
 	border-radius: $panel-border-radius;
 	box-sizing: border-box;
-	box-shadow: $panel-box-shadow;
 	@include transition-fade();
 }
 
@@ -103,7 +102,6 @@
 	@include floating-panel();
 	top: 100%;
 	left: 0;
-	margin-top: 4px;
 	li {
 		display: block;
 		position: relative;
@@ -112,7 +110,8 @@
 		padding: 0;
 		border-width: 0;
 		border-bottom: solid $panel-border-width $panel-separator-color;
-		background-color: #fff;
+		background-color: $panel-background-color;
+		transition: background-color $transition-duration $transition-easing;
 		// Ensure that rounded corners of first and last children match that of
 		// the parent (for the appropriate corners, of course)
 		&:first-child {
@@ -123,6 +122,12 @@
 			border-bottom-left-radius: $panel-border-radius;
 			border-bottom-right-radius: $panel-border-radius;
 			border-bottom-width: 0;
+		}
+		&:hover {
+			background-color: $color-teal-light;
+		}
+		&:hover > a {
+			color: #fff;
 		}
 	}
 }
