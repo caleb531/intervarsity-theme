@@ -2,6 +2,8 @@
 // blockquotes, images, tables, etc.)
 
 body {
+	font-family: 'Avenir', 'Lato', 'Trebuchet MS', sans-serif;
+	font-weight: 400;
 	line-height: 1.7;
 	// break-word "indicates that normally unbreakable words may be broken at
 	// arbitrary points if there are no otherwise acceptable break points in the
@@ -19,6 +21,7 @@ h1, h2, h3, h4, h5, h6 {
 	clear: both;
 	margin: 0.8em 0;
 	font-family: inherit;
+	font-weight: 400;
 	line-height: 1.5;
 	color: $color-orange-mid;
 }
