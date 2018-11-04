@@ -58,7 +58,7 @@ function iv_after_setup_theme() {
 	add_theme_support( 'automatic-feed-links' );
 
 	// Add styles to visual editor
-	add_editor_style( iv_get_font_url() );
+	add_editor_style( IV_FONT_URL );
 	add_editor_style( IV_THEME_DIR_URI . '/styles/css/editor.css' );
 
 	// Enable WordPress to recognize sg_day as query parameter for filtering
