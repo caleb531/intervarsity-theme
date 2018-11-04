@@ -2,7 +2,7 @@
 @import 'color-variables';
 
 // Transitions
-$transition-duration: 0.3s;
+$transition-duration: 0s;
 $transition-easing: ease-in-out;
 
 // Core body of page
@@ -15,11 +15,11 @@ $page-border-radius: 5px;
 
 // Site header
 $panel-separator-color: rgba(#fff, 0.25);
-$panel-border-color: #fff;
+$panel-border-color: $color-teal-mid;
 $panel-border-width: 1px;
-$panel-border-radius: 4px;
+$panel-border-radius: 0;
 $panel-box-shadow: 0 5px 10px rgba(#000, 0.5);
-$panel-background-color: $color-teal-mid;
+$panel-background-color: #fff;
 
 // Site navigation toggle control
 $nav-control-size: 22px;
