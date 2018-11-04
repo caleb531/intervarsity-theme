@@ -24,7 +24,6 @@
 		border-style: solid;
 		border-width: $tooltip-arrow-height;
 		border-color: transparent;
-		transition: transform $transition-duration $transition-easing;
 		@if $position == top {
 			bottom: 100%;
 			left: $offset;
@@ -50,7 +49,6 @@
 		border-style: solid;
 		border-width: floor($tooltip-arrow-inner-height);
 		border-color: transparent;
-		transition: transform $transition-duration $transition-easing;
 		@if $position == top {
 			bottom: 100%;
 			left: $offset;
@@ -111,7 +109,6 @@
 		border-width: 0;
 		border-bottom: solid $panel-border-width $panel-separator-color;
 		background-color: $panel-background-color;
-		transition: background-color $transition-duration $transition-easing;
 		// Ensure that rounded corners of first and last children match that of
 		// the parent (for the appropriate corners, of course)
 		&:first-child {

@@ -95,7 +95,6 @@
 	font-size: 0;
 	text-align: right;
 	white-space: nowrap;
-	transition: padding $transition-duration $transition-easing;
 	.site-header-search-active & {
 		padding-right: 5px;
 	}
@@ -120,8 +119,6 @@
 			font-size: $social-icon-size;
 			line-height: $social-icon-size;
 			color: $color-blue-dark;
-			transition: all $transition-duration, $transition-easing;
-			transition-property: color, margin-right;
 			&:hover {
 				color: $color-blue-light;
 			}
@@ -170,8 +167,6 @@
 		background: none;
 		font-size: 13px;
 		cursor: default;
-		transition: all $transition-duration $transition-easing;
-		transition-property: width, border-color, background-color, box-shadow;
 		// Expand search box to its open state when it is focused or when it
 		// contains a value (the front end script updates the input's value
 		// attribute as soon as its value property is changed, so this is
@@ -190,7 +185,6 @@
 			}
 		}
 		&::placeholder {
-			transition: color $transition-duration $transition-easing;
 			color: transparent;
 		}
 	}

@@ -60,7 +60,6 @@ a {
 	color: $color-blue-dark;
 	outline-width: 0;
 	text-decoration: none;
-	transition: color $transition-duration $transition-easing;
 	&:hover,
 	#site-header-nav ul &:hover,
 	#site-footer &:hover {
