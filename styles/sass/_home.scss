@@ -103,6 +103,8 @@ $icon-offset-y: 2px;
 	border-radius: 50%;
 	background-color: $color-orange-mid;
 	box-sizing: content-box;
+	transition: all $transition-duration $transition-easing;
+	transition-property: border-color, background-color;
 	// Shrink icon badges slightly
 	@include layout(compact) {
 		width: $icon-size-compact;
@@ -134,6 +136,7 @@ $icon-offset-y: 2px;
 }
 .home-box-title {
 	font-size: 20px;
+	transition: color $transition-duration $transition-easing;
 	a:hover & {
 		color: $color-orange-light;
 	}

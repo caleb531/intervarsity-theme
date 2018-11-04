@@ -26,6 +26,8 @@
 		color: #fff;
 		font-size: $font-size;
 		vertical-align: middle;
+		transition: all $transition-duration $transition-easing;
+		transition-property: border-color, background-color, color;
 		$chevron-offset: 1px;
 		&.prev, &.next {
 			font-size: 0;

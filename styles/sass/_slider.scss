@@ -78,6 +78,8 @@
 			background-color: rgba($color-gray-light, 0.5);
 			border-radius: 50%;
 			box-shadow: none;
+			transition: all $transition-duration $transition-easing;
+			transition-property: background-color;
 			// Do not show the single pager dot if only one slide exists
 			&:only-child {
 				visibility: hidden;

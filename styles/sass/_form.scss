@@ -21,6 +21,8 @@
 	border-color: $color-orange-mid;
 	background-color: $color-orange-mid;
 	text-align: center;
+	transition: all $transition-duration $transition-easing;
+	transition-property: background-color;
 	color: #fff;
 	&:hover {
 		color: #fff;
@@ -43,6 +45,8 @@
 	border-color: $box-border-color;
 	border-radius: 2px;
 	background-color: #fff;
+	transition: all ($transition-duration / 2) $transition-easing;
+	transition-property: border-color, background-color, box-shadow;
 	box-shadow: none;
 	&:focus {
 		outline-width: 0;
@@ -88,6 +92,8 @@ $search-icon-padding: 7px;
 	width: $search-icon-size;
 	height: $search-icon-size;
 	line-height: $search-icon-size;
+	transition: all $transition-duration $transition-easing;
+	transition-property: transform, color;
 }
 
 input.search {

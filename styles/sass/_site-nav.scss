@@ -13,6 +13,7 @@
 	background: none;
 	font-size: $nav-control-size;
 	line-height: $nav-control-size;
+	transition: padding $transition-duration $transition-easing;
 	color: $color-teal-mid;
 	cursor: default;
 	@include layout(hybrid) {
@@ -105,6 +106,7 @@
 			right: 0;
 			border: solid $arrow-height transparent;
 			border-top-color: $color-teal-mid;
+			transition: border-color $transition-duration $transition-easing;
 			vertical-align: middle;
 		}
 		& > a:hover:after {
