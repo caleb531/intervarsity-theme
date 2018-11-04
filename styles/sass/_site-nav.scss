@@ -43,7 +43,7 @@
 	// Top-level navigation menu
 	& > ul {
 		a {
-			padding: 4px 15px;
+			padding: 4px 14px;
 		}
 		// Top-level menu converts to popover menu for hybrid layout
 		@include layout(hybrid) {
@@ -73,9 +73,11 @@
 	// Navigation sub-menus
 	.sub-menu {
 		@include floating-menu();
+		margin-left: 7px;
 		text-align: left;
 		// Reposition sub-menus for hybrid layout so they remain accessible
 		@include layout(hybrid) {
+			margin-left: 0;
 			top: 0;
 			left: 100%;
 			margin-top: -$panel-border-width;
