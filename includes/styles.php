@@ -22,3 +22,13 @@ function iv_load_site_styles() {
 
 }
 add_action( 'wp_enqueue_scripts', 'iv_load_site_styles', 10 );
+
+// Add styles for WP Maintenance Mode page
+function iv_add_maintenance_color_styles() {
+	?>
+	<link rel="stylesheet" href="<?php echo IV_FONT_URL; ?>" />
+	<link rel="stylesheet" href="<?php echo IV_THEME_DIR_URI . '/styles/css/maintenance.css'; ?>" />
+	<?php
+
+}
+add_action( 'wpmm_head', 'iv_add_maintenance_color_styles', 10 );

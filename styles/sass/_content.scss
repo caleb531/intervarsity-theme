@@ -9,6 +9,8 @@ body {
 	// arbitrary points if there are no otherwise acceptable break points in the
 	// line." (https://developer.mozilla.org/en-US/docs/Web/CSS/word-wrap)
 	word-wrap: break-word;
+	// Enable subpixel antialiasing within Webkit browsers
+    -webkit-font-smoothing: subpixel-antialiased !important;
 }
 
 ::selection {
