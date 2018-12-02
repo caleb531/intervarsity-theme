@@ -22,7 +22,7 @@
 // Container for the navigational breadcrumbs that indicate the page's hierarchy
 // on the site
 #page-breadcrumbs {
-	font-size: 12px;
+	font-size: 13px;
 	text-shadow: none;
 	vertical-align: middle;
 	cursor: default;
@@ -37,6 +37,6 @@
 	$delimiter-size: 10px;
 	width: $delimiter-size;
 	height: $delimiter-size;
-	line-height: 1;
+	line-height: $delimiter-size;
 	vertical-align: middle;
 }
