@@ -148,10 +148,12 @@
 	$input-padding-x: 4px;
 	$input-border-width: 1px;
 	$input-width: $search-icon-size + $search-icon-padding + ($input-padding-x * 2) + ($input-border-width * 2);
+	$input-transition: $transition-duration * 2;
 	.search-icon {
 		left: $search-icon-padding;
 		transform: scale(1.25);
 		color: $color-blue-dark;
+		transition-duration: $input-transition;
 		&:hover {
 			color: $color-blue-light;
 		}
@@ -170,7 +172,7 @@
 		background: none;
 		font-size: 13px;
 		cursor: default;
-		transition: all $transition-duration $transition-easing;
+		transition: all $input-transition $transition-easing;
 		transition-property: width, border-color, background-color, box-shadow;
 		// Expand search box to its open state when it is focused or when it
 		// contains a value (the front end script updates the input's value
@@ -190,7 +192,7 @@
 			}
 		}
 		&::placeholder {
-			transition: color $transition-duration $transition-easing;
+			transition: color $input-transition $transition-easing;
 			color: transparent;
 		}
 	}
