@@ -58,6 +58,9 @@
 			li {
 				background-color: $panel-background-color;
 			}
+			a {
+				padding: 6px 14px;
+			}
 		}
 		// Padding of nav control is reduced for very-compact layout; shift menu
 		// arrow in accordance with reduced padding so arrow is still centered
