@@ -1,8 +1,13 @@
 # OS X
 .DS_Store
 
-# Sass
+# Styles
 .sass-cache
+styles/css
+fonts
+
+# Scripts
+scripts/*.min.js
 
 # Source maps
 *.map

@@ -14,7 +14,7 @@
 	font-size: $nav-control-size;
 	line-height: $nav-control-size;
 	transition: padding $transition-duration $transition-easing;
-	color: #fff;
+	color: $color-teal-mid;
 	cursor: default;
 	@include layout(hybrid) {
 		display: block;
@@ -30,32 +30,36 @@
 
 // Site navigation
 #site-header-nav {
+	flex-grow: 1;
+	font-size: 0;
 	// All navigation links
 	ul a {
 		display: block;
 		box-sizing: border-box;
 		text-align: left;
-		font-size: 13px;
-		color: #fff;
+		font-size: 14px;
 		white-space: nowrap;
+		color: $color-teal-mid;
 	}
 	// Top-level navigation menu
 	& > ul {
 		a {
-			padding: 9px 15px 7px;
+			padding: 4px 14px;
 		}
 		// Top-level menu converts to popover menu for hybrid layout
 		@include layout(hybrid) {
 			@include floating-menu();
-			@include panel-arrow(top, 21px);
 			margin-left: 4px;
 			transition-delay: 0s;
 			.site-header-nav-open &,
 			 {
 				@include transition-fade-in();
 			}
+			li {
+				background-color: $panel-background-color;
+			}
 			a {
-				padding: 10px $nav-control-padding-x;
+				padding: 10px 14px;
 			}
 		}
 		// Padding of nav control is reduced for very-compact layout; shift menu
@@ -73,18 +77,15 @@
 	// Navigation sub-menus
 	.sub-menu {
 		@include floating-menu();
-		@include panel-arrow(top, 30px);
-		transition-delay: $transition-duration;
+		margin-left: 7px;
 		text-align: left;
 		// Reposition sub-menus for hybrid layout so they remain accessible
 		@include layout(hybrid) {
+			margin-left: 0;
 			top: 0;
 			left: 100%;
-			margin-top: -$header-border-width;
-			margin-left: $tooltip-arrow-height + $header-border-width;
+			margin-top: -$panel-border-width;
 			pointer-events: none;
-			transition-delay: 0s;
-			@include panel-arrow(left, 12px);
 		}
 	}
 	// All sub-menus fade in when hovered over
@@ -93,5 +94,33 @@
 		pointer-events: auto;
 		@include transition-fade-in();
 		transition-delay: 0s;
+	}
+}
+
+// The top-level list of nav links
+#site-header-nav-list {
+	& > li.menu-item-has-children {
+		$arrow-height: 5px;
+		margin-right: $arrow-height;
+		& > a:after {
+			content: '';
+			display: inline-block;
+			position: absolute;
+			top: 50%;
+			right: 0;
+			border: solid $arrow-height transparent;
+			border-top-color: $color-teal-mid;
+			transition: border-color $transition-duration $transition-easing;
+			vertical-align: middle;
+		}
+		& > a:hover:after {
+			border-top-color: $color-blue-mid;
+		}
+		@include layout(hybrid) {
+			margin-right: 0;
+			& > a:after {
+				display: none;
+			}
+		}
 	}
 }

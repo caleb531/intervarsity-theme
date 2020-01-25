@@ -49,12 +49,13 @@ function iv_after_setup_theme() {
 	// Add support for custom header image
 	add_theme_support( 'custom-header', array(
 		'header-text'   => false,
-		'default-image' => IV_THEME_DIR_URI . '/images/header-image-default.png'
-	) );
-	// Add support for custom background
-	add_theme_support( 'custom-background', array(
-		# WordPress saves custom background color without hash (#)
-		'default-color' => str_replace( '#', '', IV_DEFAULT_BG_COLOR )
+		'default-image' => IV_THEME_DIR_URI . '/images/header-image-default.png',
+		'width'         => 1600,
+		'height'        => 280,
+		// Allow the user to skip cropping their custom header image to the
+		// above dimensions after uploading
+		'flex-width'    => true,
+		'flex-height'   => true
 	) );
 
 	// Allow plugins to modify the <title> tag
@@ -63,12 +64,7 @@ function iv_after_setup_theme() {
 	add_theme_support( 'automatic-feed-links' );
 
 	// Add styles to visual editor
-	add_editor_style( iv_get_font_url( array(
-		array(
-			'family'  => 'Open Sans',
-			'weights' => array( '400', '400italic', '600', '600italic' )
-		)
-	) ) );
+	add_editor_style( IV_FONT_URL );
 	add_editor_style( IV_THEME_DIR_URI . '/styles/css/editor.css' );
 
 	// Enable WordPress to recognize sg_day as query parameter for filtering
@@ -87,7 +83,7 @@ add_action( 'switch_theme', 'flush_rewrite_rules', 0 );
 function iv_display_dependency_notice() {
 	?>
 	<div class="error">
-		<p>This plugin requires the <a href="https://github.com/caleb531/intervarsity-plugin" target="_blank">InterVarsity plugin</a> to function. Please install and activate it.</p>
+		<p>This plugin requires the <a href="https://github.com/caleb531/intervarsity-plugin" target="_blank" rel="noopener">InterVarsity plugin</a> to function. Please install and activate it.</p>
 	</div>
 	<?php
 }

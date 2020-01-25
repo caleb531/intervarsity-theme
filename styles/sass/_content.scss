@@ -2,18 +2,30 @@
 // blockquotes, images, tables, etc.)
 
 body {
+	font-family: 'Nunito', 'Trebuchet MS', sans-serif;
+	font-weight: 400;
 	line-height: 1.7;
 	// break-word "indicates that normally unbreakable words may be broken at
 	// arbitrary points if there are no otherwise acceptable break points in the
 	// line." (https://developer.mozilla.org/en-US/docs/Web/CSS/word-wrap)
 	word-wrap: break-word;
+	// Enable subpixel antialiasing within Webkit browsers
+    -webkit-font-smoothing: subpixel-antialiased !important;
+}
+
+::selection {
+	background-color: $color-orange-light;
+	color: #fff;
 }
 
 // Individual page/section headings
 h1, h2, h3, h4, h5, h6 {
 	clear: both;
 	margin: 0.8em 0;
+	font-family: inherit;
+	font-weight: 400;
 	line-height: 1.5;
+	color: $color-orange-mid;
 }
 h1 {
 	font-size: 32px;
@@ -47,9 +59,15 @@ strong, b, dt {
 
 // Links
 a {
+	color: $color-blue-dark;
 	outline-width: 0;
 	text-decoration: none;
 	transition: color $transition-duration $transition-easing;
+	&:hover,
+	#site-header-nav ul &:hover,
+	#site-footer &:hover {
+		color: $color-blue-mid;
+	}
 	&:focus {
 		outline-width: 0;
 	}
@@ -69,8 +87,8 @@ blockquote {
 	margin: 0 15px;
 	padding-left: 15px;
 	padding-right: 30px;
-	border-left-style: solid;
-	border-left-width: 2px;
+	font-size: 1.2em;
+	color: $color-teal-mid;
 	quotes: none;
 }
 
@@ -112,7 +130,7 @@ ol ul {
 }
 
 ul {
-	list-style: square;
+	list-style: disc;
 }
 
 ol {

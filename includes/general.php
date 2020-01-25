@@ -8,7 +8,6 @@ function iv_paginate_links() {
 	if ( $wp_query->max_num_pages > 1 ) {
 		// Output pagination links
 		?>
-		<hr />
 		<div class="pagination">
 		<?php
 		echo paginate_links( array(

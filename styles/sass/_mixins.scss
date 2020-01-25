@@ -28,12 +28,13 @@
 		@if $position == top {
 			bottom: 100%;
 			left: $offset;
-			margin-bottom: $header-border-width;
-			margin-left: -$tooltip-arrow-width / 2;
+			margin-bottom: $panel-border-width - ceil($panel-border-width / 2);
+			transform: translateX(-$tooltip-arrow-height - $panel-border-width + 1px);
 			border-top-width: 0;
 			border-bottom-color: $panel-border-color;
 		} @else if $position == left {
-			left: -$header-border-width;
+			left: -1px;
+			transform: translateX(-$tooltip-arrow-height + ($panel-border-width / 2));
 			top: $offset;
 			border-left-width: 0;
 			border-right-color: $panel-border-color;
@@ -47,23 +48,23 @@
 		position: absolute;
 		z-index: 20;
 		border-style: solid;
-		border-width: $tooltip-arrow-inner-height;
+		border-width: floor($tooltip-arrow-inner-height);
 		border-color: transparent;
 		transition: transform $transition-duration $transition-easing;
 		@if $position == top {
 			bottom: 100%;
 			left: $offset;
 			margin-bottom: 0;
-			margin-left: -$tooltip-arrow-inner-width / 2;
+			transform: translateX(-$tooltip-arrow-inner-height - $panel-border-width + 1px);
 			border-top-width: 0;
-			border-bottom-color: $menu-background-color;
+			border-bottom-color: $panel-background-color;
 		} @else if $position == left {
-			left: -$header-border-width;
 			top: $offset;
-			margin-left: (-$tooltip-arrow-inner-width / 2) + $header-border-width;
-			margin-top: $header-border-width / 2;
+			left: 0;
+			transform: translateX(-$tooltip-arrow-inner-height);
+			margin-top: $panel-border-width;
 			border-left-width: 0;
-			border-right-color: $menu-background-color;
+			border-right-color: $panel-background-color;
 		}
 	}
 }
@@ -89,10 +90,9 @@
 @mixin floating-panel() {
 	display: block;
 	position: absolute;
-	border: solid $header-border-width $panel-border-color;
-	border-radius: $header-border-radius;
+	border: solid $panel-border-width $panel-border-color;
+	border-radius: $panel-border-radius;
 	box-sizing: border-box;
-	box-shadow: $header-box-shadow;
 	@include transition-fade();
 }
 
@@ -101,7 +101,6 @@
 	@include floating-panel();
 	top: 100%;
 	left: 0;
-	margin-top: 4px;
 	li {
 		display: block;
 		position: relative;
@@ -109,18 +108,25 @@
 		margin: 0;
 		padding: 0;
 		border-width: 0;
-		border-bottom: solid $header-border-width $header-border-color;
-		background-color: $menu-background-color;
+		border-bottom: solid $panel-border-width $panel-separator-color;
+		background-color: $panel-background-color;
+		transition: background-color $transition-duration $transition-easing;
 		// Ensure that rounded corners of first and last children match that of
 		// the parent (for the appropriate corners, of course)
 		&:first-child {
-			border-top-left-radius: $header-border-radius - $header-border-width;
-			border-top-right-radius: $header-border-radius - $header-border-width;
+			border-top-left-radius: $panel-border-radius;
+			border-top-right-radius: $panel-border-radius;
 		}
 		&:last-child {
-			border-bottom-left-radius: $header-border-radius - $header-border-width;
-			border-bottom-right-radius: $header-border-radius - $header-border-width;
+			border-bottom-left-radius: $panel-border-radius;
+			border-bottom-right-radius: $panel-border-radius;
 			border-bottom-width: 0;
+		}
+		&:hover {
+			background-color: $color-teal-light;
+		}
+		&:hover > a {
+			color: #fff;
 		}
 	}
 }

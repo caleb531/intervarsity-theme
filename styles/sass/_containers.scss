@@ -11,13 +11,13 @@ body {
 	margin: 0 auto;
 	max-width: $body-max-width;
 	min-width: 320px;
-	color: #fff;
+	background-color: #fff;
+	color: $color-gray-mid;
 }
 
 // The container for everything beneath site header but above site footer
 #page {
 	background-color: $page-background-color;
-	border-radius: $page-border-radius;
 	color: $content-color;
 	overflow: hidden;
 	@include layout(body-max) {

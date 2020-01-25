@@ -1,7 +1,8 @@
 // Stylesheet parameters
+@import 'color-variables';
 
 // Transitions
-$transition-duration: 0.3s;
+$transition-duration: 150ms;
 $transition-easing: ease-in-out;
 
 // Core body of page
@@ -13,12 +14,12 @@ $page-background-color: #fff;
 $page-border-radius: 5px;
 
 // Site header
-$header-border-color: rgba(#fff, 0.25);
-$panel-border-color: #fff;
-$header-border-width: 2px;
-$header-border-radius: 4px;
-$header-box-shadow: 0 5px 10px rgba(#000, 0.5);
-$menu-background-color: #000;
+$panel-separator-color: rgba(#fff, 0.25);
+$panel-border-color: $color-teal-mid;
+$panel-border-width: 1px;
+$panel-border-radius: 0;
+$panel-box-shadow: 0 5px 10px rgba(#000, 0.5);
+$panel-background-color: #fff;
 
 // Site navigation toggle control
 $nav-control-size: 22px;
@@ -28,13 +29,13 @@ $nav-control-padding-y: 5px;
 
 // Header tooltips
 $tooltip-arrow-width: 20px;
-$tooltip-arrow-height: $tooltip-arrow-width / 2;
+$tooltip-arrow-height: 11px;
 $tooltip-container-padding: 5px;
-$tooltip-arrow-inner-width: $tooltip-arrow-width - $header-border-width;
-$tooltip-arrow-inner-height: $tooltip-arrow-inner-width / 2;
+$tooltip-arrow-inner-width: $tooltip-arrow-width - $panel-border-width;
+$tooltip-arrow-inner-height: $tooltip-arrow-height - $panel-border-width;
 
 // Page content
-$content-color: #444;
+$content-color: $color-gray-mid;
 // Content padding
 $content-padding-x: 30px;
 $content-padding-y: 30px;
@@ -44,14 +45,14 @@ $content-compact-padding-x: 15px;
 $content-compact-padding-y: 20px;
 
 // Content box (also used for tables)
-$box-background-color: #f3f3f3;
-$box-border-color: #aaa;
+$box-background-color: #fff;
+$box-border-color: $color-gray-light;
 // Sutle gray text color used against black backgrounds
-$subtle-gray: rgba(#fff, 0.5);
+$subtle-gray: $color-gray-light;
 
 // Styling for form elements (inputs, buttons)
 $input-button: "input[type='button'], input[type='submit'], button";
-$input-text: "input[type='text'], input[type='password'], input[type='search'], textarea";
+$input-text: "input[type='text'], input[type='password'], input[type='search'], textarea, #site-header-search .search";
 $input-padding-x: 10px;
 $input-padding-y: 6px;
 $input-border-width: 1px;

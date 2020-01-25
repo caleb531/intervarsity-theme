@@ -3,11 +3,11 @@
 // Home content box variables
 $box-margin-x: 20px;
 $box-margin-y: 20px;
-$box-compact-margin-x: 0;
+$box-compact-margin-x: 15px;
 $box-compact-margin-y: 0;
-$box-padding-x: 15px;
+$box-padding-x: 10px;
 $box-padding-y: 15px;
-$box-compact-padding-x: 15px;
+$box-compact-padding-x: 0;
 $box-compact-padding-y: 15px;
 
 // Content box icon variables
@@ -18,8 +18,7 @@ $icon-offset-y: 2px;
 
 // Container for all home content boxes
 #home-boxes {
-	display: table;
-	table-layout: fixed;
+	display: flex;
 	width: 100%;
 	// Ensure enpugh spacing exists between the home box container and top of
 	// the page container
@@ -28,21 +27,17 @@ $icon-offset-y: 2px;
 	margin-right: auto;
 	margin-bottom: 0;
 	padding-top: 1px;
-	border-style: solid;
-	border-width: 1px;
-	border-left-width: 0;
-	border-right-width: 0;
-	border-color: $box-border-color;
-	background-color: $box-background-color;
+	box-sizing: border-box;
 	font-size: 0;
 	// Extra margin-top isn't needed if slider or featured image is present
 	#page-slider + & {
-		margin-top: $icon-size / 2;
+		margin-top: 55px;
 	}
 	#page-thumbnail + & {
 		margin-top: ceil($icon-size * 3 / 4);
 	}
 	@include layout(compact) {
+		flex-direction: column;
 		padding: $box-compact-margin-y $box-compact-margin-x;
 		// Make home box container butt up against preceding container to
 		// conserve space
@@ -56,101 +51,105 @@ $icon-offset-y: 2px;
 			margin-top: 0;
 		}
 	}
-	// A single content box
-	.home-box {
-		display: table-cell;
-		position: relative;
-		border-style: solid;
+}
+// A single content box
+.home-box {
+	flex-basis: (100% / 3);
+	position: relative;
+	border-style: solid;
+	border-width: 0;
+	border-right-width: 1px;
+	border-color: $box-border-color;
+	box-sizing: border-box;
+	text-align: center;
+	vertical-align: top;
+	&:last-child {
+		border-right-width: 0;
+	}
+	a {
+		display: inline-block;
+	}
+	@include layout(compact) {
+		display: block;
+		width: auto;
+		padding: $box-compact-padding-y $box-compact-padding-x;
+		background: none;
 		border-width: 0;
-		border-right-width: 1px;
-		border-color: $box-border-color;
-		box-sizing: border-box;
-		text-align: center;
-		vertical-align: top;
+		border-bottom-width: 1px;
+		border-bottom-color: $box-border-color;
+		border-radius: 0;
 		&:last-child {
-			border-right-width: 0;
+			margin-bottom: 0;
+			border-bottom-width: 0;
 		}
 		& > a {
-			display: block;
-			color: inherit;
-		}
-		@include layout(compact) {
-			display: block;
-			width: auto;
-			padding: $box-compact-padding-y $box-compact-padding-x;
-			background: none;
-			border-width: 0;
-			border-bottom-width: 1px;
-			border-bottom-color: $box-border-color;
-			border-radius: 0;
-			&:last-child {
-				margin-bottom: 0;
-				border-bottom-width: 0;
-			}
+			display: flex;
 		}
 	}
-	// Header containing icon badge
-	.home-box-header {
-		display: inline-block;
-		@include layout(compact) {
-			display: table-cell;
-			vertical-align: middle;
-		}
+}
+// Header containing icon badge
+.home-box-header {
+	display: inline-block;
+}
+// Icon badge
+.home-box-icon {
+	display: inline-flex;
+	width: $icon-size;
+	height: $icon-size;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	margin-top: (-$icon-size / 2) - $icon-border-width;
+	border-radius: 50%;
+	background-color: $color-orange-mid;
+	box-sizing: content-box;
+	transition: all $transition-duration $transition-easing;
+	transition-property: border-color, background-color;
+	// Shrink icon badges slightly
+	@include layout(compact) {
+		width: $icon-size-compact;
+		height: $icon-size-compact;
+		margin-top: 0;
 	}
-	// Icon badge
-	.home-box-icon {
-		display: inline-flex;
-		width: $icon-size;
-		height: $icon-size;
-		justify-content: center;
-		align-items: center;
-		position: relative;
-		margin-top: (-$icon-size / 2) - $icon-border-width;
-		border-style: solid;
-		border-width: $icon-border-width;
-		border-radius: 50%;
-		box-sizing: content-box;
-		transition: all $transition-duration $transition-easing;
-		transition-property: border-color, background-color;
-		// Shrink icon badges slightly
-		@include layout(compact) {
-			width: $icon-size-compact;
-			height: $icon-size-compact;
-			margin-top: 0;
-		}
-		// Icon glyph within icon badge
-		svg {
-			$icon-size-inner: 50px;
-			width: $icon-size-inner;
-			height: $icon-size-inner;
-			font-size: 0;
-			color: #fff;
-		}
+	a:hover & {
+		background-color: $color-orange-light;
 	}
-	// Short content description for content box
-	.home-box-content {
-		padding: $box-padding-y $box-padding-x;
-		padding-top: 0;
-		@include layout(compact) {
-			display: table-cell;
-			vertical-align: middle;
-			padding: 0;
-			padding-left: $box-compact-padding-x;
-			text-align: left;
-		}
+	// Icon glyph within icon badge
+	svg {
+		$icon-size-inner: 50px;
+		width: $icon-size-inner;
+		height: $icon-size-inner;
+		font-size: 0;
+		color: #fff;
 	}
-	.home-box-title {
-		font-size: 20px;
-		@include layout(compact) {
-			margin: 0;
-		}
+}
+// Short content description for content box
+.home-box-content {
+	padding: $box-padding-y $box-padding-x;
+	padding-top: 0;
+	@include layout(compact) {
+		vertical-align: middle;
+		padding: 0;
+		padding-left: $box-compact-margin-x;
+		text-align: left;
 	}
-	.home-box-desc {
-		font-size: 13px;
-		@include layout(compact) {
-			// Add slight extra spacing between heading and description
-			margin-top: 2px;
-			margin-bottom: 0;
-		}
+}
+.home-box-title {
+	font-size: 20px;
+	transition: color $transition-duration $transition-easing;
+	a:hover & {
+		color: $color-orange-light;
+	}
+	@include layout(compact) {
+		margin: 0;
+	}
+}
+.home-box-desc {
+	font-size: 14px;
+	color: $color-gray-mid;
+	@include layout(compact) {
+		// Add slight extra spacing between heading and description
+		margin-top: 2px;
+		margin-bottom: 0;
 	}
 }

@@ -1,21 +1,13 @@
 // Styles for Customizer-configurable styles
-// Styles consists mostly of colors, but aren't limited to such
-@import 'variables';
-@import 'mixins';
+// Styles are mostly font-related
 
 body {
-	// The built-in background_color setting adds its own background-color
-	// declaration; this declaration is merely a fallback
-	background-color: 'iv-color-background-default';
+	background-color: #fff;
 	font-family: 'iv-font-primary-family';
 	font-weight: 'iv-font-primary-weight-normal';
 }
 
-h1, h2, h3, h4, h5, h6 {
-	font-family: 'iv-font-accent-family';
-	font-weight: 'iv-font-accent-weight-normal';
-}
-
+h1, h2, h3, h4, h5, h6,
 strong,
 .page-breadcrumb,
 #sg-filter label,
@@ -26,125 +18,4 @@ strong,
 .comment-reply-link,
 .comment-edit-link {
 	font-weight: 'iv-font-primary-weight-bold';
-}
-
-a {
-	color: 'iv-color-accent-mid';
-	&:hover,
-	#site-header-nav ul &:hover,
-	#site-footer &:hover {
-		color: 'iv-color-accent-light';
-	}
-}
-
-blockquote {
-	border-left-color: 'iv-color-accent-mid';
-	&:after {
-		color: 'iv-color-accent-mid';
-	}
-}
-
-#{$input-button} {
-	font-family: 'iv-font-primary-family';
-	font-weight: 'iv-font-primary-weight-normal';
-	border-color: 'iv-color-accent-dark';
-	background-color: 'iv-color-accent-mid';
-	&:focus {
-		outline-width: 0;
-		border-color: 'iv-color-accent-mid';
-		background-color: 'iv-color-accent-light';
-	}
-}
-
-#{$input-text},
-#site-header-search .search {
-	font-family: 'iv-font-primary-family';
-	font-weight: 'iv-font-primary-weight-normal';
-	&:focus {
-		outline-width: 0;
-		border-color: 'iv-color-accent-light';
-		box-shadow: 0 0 3px 1px 'iv-color-accent-light';
-	}
-}
-// This background will "shine through" any transparent regions of the site logo
-#site-logo img {
-	background-color: 'iv-color-background-logo';
-}
-
-// Page slider navigation dot for current slide
-#page-slider .cycloneslider-pager span.cycle-pager-active {
-	background-color: 'iv-color-accent-light';
-}
-
-#home-boxes {
-	.home-box-icon {
-		border-color: 'iv-color-accent-dark';
-		background-color: 'iv-color-accent-mid';
-	}
-	a:hover .home-box-icon {
-		border-color: 'iv-color-accent-mid';
-		background-color: 'iv-color-accent-light';
-	}
-}
-
-.entry-tile .entry-header {
-	border-color: 'iv-color-accent-dark';
-	background-color: 'iv-color-accent-mid';
-}
-
-.pagination {
-	& > a {
-		border-color: 'iv-color-accent-dark';
-		background-color: 'iv-color-accent-mid';
-	}
-	& > a:hover,
-	& > span {
-		border-color: 'iv-color-accent-mid';
-		background-color: 'iv-color-accent-light';
-		color: #fff;
-	}
-}
-
-::selection {
-	background-color: 'iv-color-accent-light';
-	color: #fff;
-}
-
-.bypostauthor .comment-body {
-	border-color: 'iv-color-accent-mid';
-}
-
-.pin-icon {
-	color: 'iv-color-accent-light';
-}
-
-#site-header-nav > ul {
-	@include layout(hybrid) {
-		li {
-			background-color: 'iv-color-background-body';
-		}
-		&:after {
-			border-bottom-color: 'iv-color-background-body';
-		}
-	}
-}
-
-#site-header-nav .sub-menu {
-	li {
-		background-color: 'iv-color-background-body';
-	}
-	&:after {
-		border-bottom-color: 'iv-color-background-body';
-		@include layout(hybrid) {
-			border-bottom-color: transparent;
-			border-right-color: 'iv-color-background-body';
-		}
-	}
-}
-
-#site-header .tooltip {
-	background-color: 'iv-color-background-body';
-	&:after {
-		border-bottom-color: 'iv-color-background-body';
-	}
 }

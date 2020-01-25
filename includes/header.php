@@ -1,13 +1,5 @@
 <?php
 
-// Define a recommended header size
-if ( ! defined( 'HEADER_IMAGE_WIDTH' ) ) {
-	define( 'HEADER_IMAGE_WIDTH', 1600 );
-}
-if ( ! defined( 'HEADER_IMAGE_HEIGHT' ) ) {
-	define( 'HEADER_IMAGE_HEIGHT', 280 );
-}
-
 // Augment the logic for selecting the title in the page header
 function iv_page_header_title() {
 	global $wp_query;
@@ -192,12 +184,6 @@ $iv_social_icons = array(
 function iv_social_header_icons() {
 	global $iv_social_icons;
 	?>
-
-	<?php if ( get_theme_mod( 'iv_social_message_enabled' ) ): ?>
-
-		<li class="social message"><?php echo get_theme_mod( 'iv_social_message' ); ?></li>
-
-	<?php endif; ?>
 
 	<?php foreach ( $iv_social_icons as $icon ): ?>
 

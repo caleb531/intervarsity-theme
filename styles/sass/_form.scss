@@ -7,7 +7,10 @@
 	margin: 0;
 	padding: $input-padding-y $input-padding-x;
 	box-sizing: border-box;
+	font-family: inherit;
+	font-weight: inherit;
 	font-size: 100%;
+	color: $color-gray-mid;
 	line-height: normal;
 	vertical-align: middle;
 }
@@ -15,13 +18,19 @@
 #{$input-button} {
 	border-style: solid;
 	border-width: $input-border-width;
-	border-radius: 2px;
+	border-color: $color-orange-mid;
+	background-color: $color-orange-mid;
 	text-align: center;
 	transition: all $transition-duration $transition-easing;
 	transition-property: background-color;
 	color: #fff;
 	&:hover {
 		color: #fff;
+	}
+	&:focus {
+		outline-width: 0;
+		border-color: $color-orange-light;
+		background-color: $color-orange-light;
 	}
 	&.button-small {
 		padding: 4px 6px;
@@ -38,8 +47,12 @@
 	background-color: #fff;
 	transition: all ($transition-duration / 2) $transition-easing;
 	transition-property: border-color, background-color, box-shadow;
-	color: #666;
 	box-shadow: none;
+	&:focus {
+		outline-width: 0;
+		border-color: $color-orange-mid;
+		box-shadow: 0 0 3px 1px $color-orange-light;
+	}
 }
 
 // Strip all browser styling for search inputs
@@ -79,6 +92,8 @@ $search-icon-padding: 7px;
 	width: $search-icon-size;
 	height: $search-icon-size;
 	line-height: $search-icon-size;
+	transition: all $transition-duration $transition-easing;
+	transition-property: transform, color;
 }
 
 input.search {
