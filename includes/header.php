@@ -1,13 +1,5 @@
 <?php
 
-// Define a recommended header size
-if ( ! defined( 'HEADER_IMAGE_WIDTH' ) ) {
-	define( 'HEADER_IMAGE_WIDTH', 1600 );
-}
-if ( ! defined( 'HEADER_IMAGE_HEIGHT' ) ) {
-	define( 'HEADER_IMAGE_HEIGHT', 280 );
-}
-
 // Augment the logic for selecting the title in the page header
 function iv_page_header_title() {
 	global $wp_query;

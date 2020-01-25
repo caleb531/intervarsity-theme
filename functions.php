@@ -49,7 +49,13 @@ function iv_after_setup_theme() {
 	// Add support for custom header image
 	add_theme_support( 'custom-header', array(
 		'header-text'   => false,
-		'default-image' => IV_THEME_DIR_URI . '/images/header-image-default.png'
+		'default-image' => IV_THEME_DIR_URI . '/images/header-image-default.png',
+		'width'         => 1600,
+		'height'        => 280,
+		// Allow the user to skip cropping their custom header image to the
+		// above dimensions after uploading
+		'flex-width'    => true,
+		'flex-height'   => true
 	) );
 
 	// Allow plugins to modify the <title> tag
