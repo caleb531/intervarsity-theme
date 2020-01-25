@@ -17,7 +17,8 @@ manage small groups, and this theme includes templates for displaying them. This
 theme also integrates with several other features of the plugin, including page
 sliders and a Facebook Like Button.
 
-[Download InterVarsity Theme (ZIP)](https://github.com/caleb531/intervarsity-theme/releases/download/v5.0.0/intervarsity-theme-5.0.0.zip)
+[Download InterVarsity Theme (ZIP)](https://github.com/caleb531/intervarsity-theme/releases/download/v5.0.0/intervarsity-theme-5.0.0.zip)  
+[Download InterVarsity Plugin (ZIP)](https://github.com/caleb531/intervarsity-plugin/releases/download/v4.0.0/intervarsity-plugin-4.0.0.zip)
 
 ## Requirements
 
