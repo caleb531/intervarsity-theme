@@ -105,29 +105,6 @@ sliders, so be sure to use either of those!
 You can also enable up to three content boxes which can be used to describe the
 vision for your chapter and direct visitors to other pages on your site.
 
-### Custom colors
-
-The theme customizer provides several options for customizing the site's colors:
-
-1. The site's accent color (used for content box icons, form buttons, and small
-group headings)
-
-2. The site's background color (if you have also set a background image, the
-color will show underneath)
-
-3. An option to use the accent color as the background color for the header
-image (which can be useful if you want your header image to match your site
-colors)
-
-### Custom fonts
-
-The theme customizer also allows you to choose from the hundreds of available
-Google fonts to use for your site. You are able to set:
-
-1. The accent font, used for page/section headings exclusively
-
-2. The primary font, used for everything else
-
 ### WP Maintenance Mode integration
 
 The InterVarsity Theme also integrates with the [WP Maintenance
