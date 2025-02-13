@@ -1,4 +1,6 @@
 // Styling for blog entries
+@use 'variables' as *;
+@use 'mixins' as *;
 
 // Container for all blog post entries on a given page
 .post.entries {
@@ -96,9 +98,7 @@
 .author-name {
 	display: block;
 	font-style: normal;
-	// h3 styling is in page.scss
-	@extend h3;
-	vertical-align: middle;
+	font-size: 24px;
 }
 .comment-date {
 	display: block;

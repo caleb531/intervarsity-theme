@@ -1,4 +1,6 @@
 // Styling for site-wide container elements
+@use 'variables' as *;
+@use 'mixins' as *;
 
 html {
 	-webkit-text-size-adjust: 100%;

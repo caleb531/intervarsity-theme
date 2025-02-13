@@ -1,7 +1,7 @@
 // Styles for maintenance page created by WP Maintenance Mode
-@import 'mixins';
-@import 'variables';
-@import 'content';
+@use 'mixins' as *;
+@use 'variables' as *;
+@use 'content' as *;
 
 body {
 	margin: 0 auto;

@@ -1,4 +1,6 @@
 // Styling for site header
+@use 'variables' as *;
+@use 'mixins' as *;
 
 // Heading for the entire site; contains the site logo (header image), site
 // navigation, social links, and search box

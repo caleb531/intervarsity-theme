@@ -1,4 +1,6 @@
 // Small groups
+@use 'variables' as *;
+@use 'mixins' as *;
 
 $sg-tile-max-width: 400px;
 

@@ -1,9 +1,12 @@
 // Sass Mixins
+@use 'sass:map';
+@use 'sass:math';
+@use 'variables' as *;
 
 // Applies the given styling to a media query; all allowable values for $layout
 // are declared in the $layout-widths variable in variables.scss
 @mixin layout($layout) {
-	$width: map-get($layout-widths, $layout);
+	$width: map.get($layout-widths, $layout);
 	@media only screen and (max-width: $width) {
 		@content;
 	}
@@ -28,13 +31,13 @@
 		@if $position == top {
 			bottom: 100%;
 			left: $offset;
-			margin-bottom: $panel-border-width - ceil($panel-border-width / 2);
+			margin-bottom: $panel-border-width - math.ceil(math.div($panel-border-width, 2));
 			transform: translateX(-$tooltip-arrow-height - $panel-border-width + 1px);
 			border-top-width: 0;
 			border-bottom-color: $panel-border-color;
 		} @else if $position == left {
 			left: -1px;
-			transform: translateX(-$tooltip-arrow-height + ($panel-border-width / 2));
+			transform: translateX(-$tooltip-arrow-height + math.div($panel-border-width, 2));
 			top: $offset;
 			border-left-width: 0;
 			border-right-color: $panel-border-color;
@@ -48,7 +51,7 @@
 		position: absolute;
 		z-index: 20;
 		border-style: solid;
-		border-width: floor($tooltip-arrow-inner-height);
+		border-width: math.floor($tooltip-arrow-inner-height);
 		border-color: transparent;
 		transition: transform $transition-duration $transition-easing;
 		@if $position == top {

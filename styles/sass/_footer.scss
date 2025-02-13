@@ -1,4 +1,6 @@
 // Styling for site footer
+@use 'variables' as *;
+@use 'mixins' as *;
 
 #site-footer {
 	padding: 20px 10px;

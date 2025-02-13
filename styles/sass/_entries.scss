@@ -1,7 +1,6 @@
 // Styling for all post and small group entries
-
-$entry-tile-border-radius: 5px;
-$entry-tile-margin: 20px;
+@use 'variables' as *;
+@use 'mixins' as *;
 
 // Classes used to enable flexible table layout for some container elements
 .entry-row {

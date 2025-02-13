@@ -1,4 +1,6 @@
 // Styling for site navigation within site header
+@use 'variables' as *;
+@use 'mixins' as *;
 
 // Site navigation control for hybrid layout
 #nav-control-responsive {

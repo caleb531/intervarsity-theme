@@ -1,4 +1,6 @@
 // Styling for page header
+@use 'variables' as *;
+@use 'mixins' as *;
 
 // Page header containing both the page title and navigational breadcrumb links
 #page-header {

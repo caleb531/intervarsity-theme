@@ -1,5 +1,7 @@
 // Styling for content-type elements (e.g. headings, links, paragraphs, lists,
 // blockquotes, images, tables, etc.)
+@use 'variables' as *;
+@use 'mixins' as *;
 
 body {
 	font-family: 'Nunito', 'Trebuchet MS', sans-serif;

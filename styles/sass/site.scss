@@ -1,17 +1,17 @@
-@import 'mixins';
-@import 'variables';
+@use 'mixins';
+@use 'variables';
 
 // Import stylesheet components
-@import 'content';
-@import 'page';
-@import 'containers';
-@import 'form';
-@import 'site-header';
-@import 'site-nav';
-@import 'page-header';
-@import 'home';
-@import 'slider';
-@import 'entries';
-@import 'small-groups';
-@import 'blog';
-@import 'footer'
+@use 'content';
+@use 'page';
+@use 'containers';
+@use 'form';
+@use 'site-header';
+@use 'site-nav';
+@use 'page-header';
+@use 'home';
+@use 'slider';
+@use 'entries';
+@use 'small-groups';
+@use 'blog';
+@use 'footer'

@@ -1,5 +1,5 @@
 // Enables needed and useful UI behaviors with JavaScript
-(function ( window, $, FastClick ) {
+(function ( window, $ ) {
 $( document ).ready(function () {
 
 // Retrieve most useful jQuery elements for use throughout the script
@@ -144,8 +144,5 @@ $( '#content' ).on( 'click', '.reveal-sg-contact', function () {
 	return false;
 });
 
-// Enable FastClick for all elements on the page
-FastClick.attach( document.body );
-
 });
-}( window, jQuery, window.FastClick ) );
+}( window, jQuery ) );

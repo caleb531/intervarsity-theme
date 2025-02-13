@@ -1,5 +1,6 @@
 // Stylesheet parameters
-@import 'color-variables';
+@use 'color-variables' as *;
+@forward 'color-variables';
 
 // Transitions
 $transition-duration: 150ms;
@@ -34,6 +35,10 @@ $tooltip-container-padding: 5px;
 $tooltip-arrow-inner-width: $tooltip-arrow-width - $panel-border-width;
 $tooltip-arrow-inner-height: $tooltip-arrow-height - $panel-border-width;
 
+// Search
+$search-icon-size: 15px;
+$search-icon-padding: 7px;
+
 // Page content
 $content-color: $color-gray-mid;
 // Content padding
@@ -49,6 +54,10 @@ $box-background-color: #fff;
 $box-border-color: $color-gray-light;
 // Sutle gray text color used against black backgrounds
 $subtle-gray: $color-gray-light;
+
+// Entries
+$entry-tile-border-radius: 5px;
+$entry-tile-margin: 20px;
 
 // Styling for form elements (inputs, buttons)
 $input-button: "input[type='button'], input[type='submit'], button";

@@ -1,4 +1,6 @@
 // Styling for standard semantic and container elements
+@use 'variables' as *;
+@use 'mixins' as *;
 
 // Pagination links
 .pagination {

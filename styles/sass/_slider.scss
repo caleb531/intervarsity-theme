@@ -1,4 +1,6 @@
 // Styling for slider added by InterVarsity plugin
+@use 'variables' as *;
+@use 'mixins' as *;
 
 // Container for a page slider; the InterVarsity theme and plugin both integrate
 // with the Cyclone Slider 2 plugin

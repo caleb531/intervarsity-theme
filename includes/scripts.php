@@ -4,22 +4,11 @@
 // Enqueue all frontend scripts
 function iv_load_site_scripts() {
 
-	// Enqueue FastClick to remove 300ms tap delay on mobile devices
-	wp_enqueue_script(
-		'iv-fastclick',
-		IV_THEME_DIR_URI . '/scripts/fastclick.min.js',
-		// FastClick has no dependencies
-		array(),
-		// Do not specify a version number
-		false,
-		// Place script at the end of page <body>
-		true
-	);
 	// Enqueue main frontend script
 	wp_enqueue_script(
 		'iv-frontend',
 		IV_THEME_DIR_URI . '/scripts/site.min.js',
-		array( 'jquery', 'iv-fastclick' ),
+		array( 'jquery' ),
 		false,
 		true
 	);

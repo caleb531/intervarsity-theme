@@ -1,4 +1,7 @@
 // Styling for elements that only appear on the homepage
+@use 'sass:math';
+@use 'variables' as *;
+@use 'mixins' as *;
 
 // Home content box variables
 $box-margin-x: 20px;
@@ -34,7 +37,7 @@ $icon-offset-y: 2px;
 		margin-top: 55px;
 	}
 	#page-thumbnail + & {
-		margin-top: ceil($icon-size * 3 / 4);
+		margin-top: math.ceil($icon-size * math.div(3, 4));
 	}
 	@include layout(compact) {
 		flex-direction: column;
@@ -54,7 +57,7 @@ $icon-offset-y: 2px;
 }
 // A single content box
 .home-box {
-	flex-basis: (100% / 3);
+	flex-basis: math.div(100%, 3);
 	position: relative;
 	border-style: solid;
 	border-width: 0;
@@ -99,7 +102,7 @@ $icon-offset-y: 2px;
 	justify-content: center;
 	align-items: center;
 	position: relative;
-	margin-top: (-$icon-size / 2) - $icon-border-width;
+	margin-top: (math.div(-$icon-size, 2)) - $icon-border-width;
 	border-radius: 50%;
 	background-color: $color-orange-mid;
 	box-sizing: content-box;

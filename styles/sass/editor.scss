@@ -1,6 +1,6 @@
 // Styling for the content of the visual editor
-@import 'variables';
-@import 'content';
+@use 'variables' as *;
+@use 'content' as *;
 
 // Define accent color used for emphasis; this will ultimately be overridden by
 // the user-chosen accent color on the frontend

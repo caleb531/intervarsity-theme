@@ -1,9 +1,14 @@
 // Styling for all form elements
+@use 'sass:math';
+@use 'variables' as *;
+@use 'mixins' as *;
 
 #{$input-button},
 #{$input-text} {
 	display: inline-block;
+	appearance: none;
 	-webkit-appearance: none;
+	-moz-appearance: none;
 	margin: 0;
 	padding: $input-padding-y $input-padding-x;
 	box-sizing: border-box;
@@ -45,7 +50,7 @@
 	border-color: $box-border-color;
 	border-radius: 2px;
 	background-color: #fff;
-	transition: all ($transition-duration / 2) $transition-easing;
+	transition: all math.div($transition-duration, 2) $transition-easing;
 	transition-property: border-color, background-color, box-shadow;
 	box-shadow: none;
 	&:focus {
@@ -80,15 +85,12 @@ textarea {
 }
 
 
-$search-icon-size: 15px;
-$search-icon-padding: 7px;
-
 .search-icon {
 	display: inline-block;
 	position: absolute;
 	top: 50%;
-	left: (($search-icon-padding + $input-padding-x) / 2) + $input-border-width + 1px;
-	margin-top: -($search-icon-size / 2) - 1;
+	left: math.div(($search-icon-padding + $input-padding-x), 2) + $input-border-width + 1px;
+	margin-top: math.div(-$search-icon-size, 2) - 1;
 	width: $search-icon-size;
 	height: $search-icon-size;
 	line-height: $search-icon-size;
