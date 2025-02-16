@@ -1,6 +1,6 @@
 {
   "name": "intervarsity",
-  "version": "4.0.0",
+  "version": "5.1.0",
   "description": "A WordPress theme for InterVarsity Christian Fellowship chapters",
   "scripts": {
     "build": "gulp build",
