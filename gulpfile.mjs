@@ -11,7 +11,7 @@ gulp.task('styles', () => {
 		.pipe(sass({outputStyle: 'compressed', sourcemaps: true}).on('error', sass.logError))
 		.pipe(gulp.dest('styles/css'));
 });
-gulp.task('sass:watch', () => {
+gulp.task('styles:watch', () => {
   return gulp.watch('styles/**/*.scss', gulp.series('styles'));
 });
 
@@ -33,7 +33,7 @@ gulp.task('build', gulp.parallel(
 gulp.task('build:watch', gulp.series(
   'build',
   gulp.parallel(
-    'sass:watch',
+    'styles:watch',
     'scripts:watch'
   )
 ));
